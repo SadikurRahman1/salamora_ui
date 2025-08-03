@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final responsive = AppResponsive();
-    final SplashController splashController = Get.find<SplashController>();
+    Get.find<SplashController>();
     return Scaffold(
       body: BackgroundGradient(
         child: Padding(

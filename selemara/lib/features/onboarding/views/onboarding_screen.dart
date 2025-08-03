@@ -109,6 +109,7 @@ class OnboardingScreen extends StatelessWidget {
                  SizedBox(height: res.hp(10),),
                   CustomButton(
                     text: 'Skip',
+                    textColor: AppColors.darkBlueGrey.withValues(alpha: 0.6),
                     onTap: controller.skip,
                     isBorder: true,
                     btnColor: AppColors.skipBtnColor.withValues(alpha: 0.01),

@@ -8,4 +8,6 @@ class AppColors {
   static const Color geryColor = Color(0xFFA9A9A9);
   static const Color lightCream = Color(0xFFFDFCF9);
   static const Color borderColor = Color(0xFFD2DAE3);
+  static const Color darkBlueGrey = Color(0xFF1F2C37);
+
 }
