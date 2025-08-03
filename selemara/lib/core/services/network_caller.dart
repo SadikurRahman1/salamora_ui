@@ -1,118 +1,133 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:selemara/core/constants/token_key.dart';
 import 'package:selemara/core/helper/shared_preferences_helper.dart';
-import 'package:selemara/core/services/api_exception_handler.dart';
 import 'package:selemara/core/services/response_data.dart';
 
-class NetworkCaller extends GetxService {
-  static const Duration _timeout = Duration(seconds: 30);
-  final Map<String, String> _defaultHeaders = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  };
+class NetworkCaller {
+  final http.Client _client = http.Client();
 
   Future<ResponseData> getRequest(
     String url, {
-    bool requireAuth = false,
+    Map<String, String>? queryParams,
   }) async {
     try {
-      final headers = await _buildHeaders(requireAuth);
-      final response = await http
-          .get(Uri.parse(url), headers: headers)
-          .timeout(_timeout);
+      final uri = Uri.parse(url).replace(queryParameters: queryParams);
+      final headers = await _buildHeaders();
 
-      return _processResponse(response);
+      final response = await _client.get(uri, headers: headers);
+      return _handleResponse(response);
     } catch (e) {
-      return ResponseData.error(ApiExceptionHandler.parse(e));
+      return ResponseData(isSuccess: false, message: e.toString());
     }
   }
 
-  Future<ResponseData> postRequest(
-    String url,
-    Map<String, dynamic> body, {
-    bool requireAuth = false,
+  Future<ResponseData> postRequest({
+    required String url,
+    required Map<String, dynamic> body,
   }) async {
     try {
-      final headers = await _buildHeaders(requireAuth);
-      final response = await http
-          .post(Uri.parse(url), headers: headers, body: jsonEncode(body))
-          .timeout(_timeout);
-
-      return _processResponse(response);
+      final headers = await _buildHeaders();
+      final response = await _client.post(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonEncode(body),
+      );
+      return _handleResponse(response);
     } catch (e) {
-      return ResponseData.error(ApiExceptionHandler.parse(e));
+      return ResponseData(isSuccess: false, message: e.toString());
     }
   }
 
-  Future<ResponseData> putRequest(
-    String url,
-    Map<String, dynamic> body, {
-    bool requireAuth = false,
+  Future<ResponseData> putRequest({
+    required String url,
+    required Map<String, dynamic> body,
   }) async {
     try {
-      final headers = await _buildHeaders(requireAuth);
-      final response = await http
-          .put(Uri.parse(url), headers: headers, body: jsonEncode(body))
-          .timeout(_timeout);
-
-      return _processResponse(response);
+      final headers = await _buildHeaders();
+      final response = await _client.put(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonEncode(body),
+      );
+      return _handleResponse(response);
     } catch (e) {
-      return ResponseData.error(ApiExceptionHandler.parse(e));
+      return ResponseData(isSuccess: false, message: e.toString());
     }
   }
 
-  Future<ResponseData> postFormData(
-    String url,
-    Map<String, String> fields, {
-    http.MultipartFile? file,
-    bool requireAuth = false,
+  Future<ResponseData> postMultipartRequest(
+    String url, {
+
+    Map<String, String>? fields,
+    Map<String, File>? files,
   }) async {
     try {
-      final headers = await _buildHeaders(requireAuth, isMultipart: true);
-      final request = http.MultipartRequest('POST', Uri.parse(url));
-      request.headers.addAll(headers);
-      request.fields.addAll(fields);
-      if (file != null) request.files.add(file);
+      final uri = Uri.parse(url);
+      final request = http.MultipartRequest('POST', uri);
 
-      final response = await http.Response.fromStream(await request.send());
-
-      return _processResponse(response);
-    } catch (e) {
-      return ResponseData.error(ApiExceptionHandler.parse(e));
-    }
-  }
-
-  Future<Map<String, String>> _buildHeaders(
-    bool requireAuth, {
-    bool isMultipart = false,
-  }) async {
-    final headers = Map<String, String>.from(_defaultHeaders);
-    if (isMultipart) {
-      headers['Content-Type'] = 'multipart/form-data';
-    }
-
-    if (requireAuth) {
       final token = SharedPreferencesHelper.readString(TokenKey.accessToken);
       if (token != null) {
-        headers['Authorization'] = 'Bearer $token';
+        request.headers['Authorization'] = token;
+      }
+
+      request.headers['Content-Type'] = 'multipart/form-data';
+
+      if (fields != null) {
+        request.fields.addAll(fields);
+      }
+
+      if (files != null) {
+        for (final entry in files.entries) {
+          final file = await http.MultipartFile.fromPath(
+            entry.key,
+            entry.value.path,
+          );
+          request.files.add(file);
+        }
+      }
+
+      final streamedResponse = await request.send();
+      final response = await http.Response.fromStream(streamedResponse);
+      return _handleResponse(response);
+    } catch (e) {
+      return ResponseData(isSuccess: false, message: e.toString());
+    }
+  }
+
+  Future<Map<String, String>> _buildHeaders({bool withToken = true}) async {
+    final headers = <String, String>{'Content-Type': 'application/json'};
+    if (withToken) {
+      final token = SharedPreferencesHelper.readString(TokenKey.accessToken);
+      if (token != null && token.isNotEmpty) {
+        headers['Authorization'] = token;
       }
     }
-
     return headers;
   }
 
-  ResponseData _processResponse(http.Response response) {
-    final statusCode = response.statusCode;
-    final decoded = jsonDecode(response.body);
-
-    if (statusCode >= 200 && statusCode < 300) {
-      return ResponseData.success(decoded, statusCode: statusCode);
-    } else {
-      final error = decoded['message'] ?? 'Something went wrong';
-      return ResponseData.error(error.toString(), statusCode: statusCode);
+  ResponseData _handleResponse(http.Response response) {
+    try {
+      final decoded = jsonDecode(response.body);
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return ResponseData(isSuccess: true, data: decoded);
+      } else {
+        return ResponseData(
+          isSuccess: false,
+          message: decoded['message'] ?? 'Unknown error',
+        );
+      }
+    } catch (e) {
+      return ResponseData(
+        isSuccess: false,
+        message: 'Failed to parse response: ${response.body}',
+      );
     }
+  }
+
+  void dispose() {
+    _client.close();
   }
 }
