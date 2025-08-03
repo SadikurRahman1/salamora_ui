@@ -92,7 +92,7 @@ class OnboardingScreen extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: res.hp(150)),
+            SizedBox(height: res.hp(120)),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: res.wp(20)),
               child: Column(
@@ -106,10 +106,17 @@ class OnboardingScreen extends StatelessWidget {
                               : 'Next',
                     ),
                   ),
-                  TextButton(
-                    onPressed: controller.skip,
-                    child: Text('Skip', style: TextStyle(fontSize: res.sp(14))),
+                 SizedBox(height: res.hp(10),),
+                  CustomButton(
+                    text: 'Skip',
+                    onTap: controller.skip,
+                    isBorder: true,
+                    btnColor: AppColors.skipBtnColor.withValues(alpha: 0.01),
                   ),
+                  // TextButton(
+                  //   onPressed: controller.skip,
+                  //   child: Text('Skip', style: TextStyle(fontSize: res.sp(14))),
+                  // ),
                 ],
               ),
             ),

@@ -9,6 +9,7 @@ class CustomButton extends StatelessWidget {
   final Color btnColor;
   final String text;
   final VoidCallback onTap;
+  final bool isBorder;
 
   const CustomButton({
     super.key,
@@ -16,6 +17,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     required this.text,
     required this.onTap,
+    this.isBorder = false,
     this.btnColor = AppColors.primaryColor,
   });
 
@@ -30,6 +32,7 @@ class CustomButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: btnColor,
+          border: isBorder?Border.all(color: AppColors.geryColor):null,
           borderRadius: BorderRadius.circular(responsive.wp(20)),
         ),
         child: AppText(text),
