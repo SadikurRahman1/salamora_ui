@@ -14,7 +14,7 @@ class BackgroundGradient extends StatelessWidget {
             Color(0xFF2563EB).withValues(alpha: 0.2),
             Color(0xFF00A16E).withValues(alpha: 0.3), // green
           ],
-          stops: [0.0, 0.6],
+          stops: [0.0, 0.8],
           begin: Alignment.topLeft,
           end: Alignment.bottomLeft,
         ),
