@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text_inter.dart';
+import 'package:selemara/core/widgets/background_gradient.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 import 'package:selemara/features/onboarding/controller/onboarding_controller.dart';
 import 'package:selemara/features/onboarding/model/onboarding_item.dart';
-import 'package:selemara/core/widgets/background_gradient.dart';
 
 class OnboardingScreen extends StatelessWidget {
   final OnboardingController controller = Get.put(OnboardingController());
@@ -102,13 +102,13 @@ class OnboardingScreen extends StatelessWidget {
                       onTap: controller.nextPage,
                       text:
                           controller.currentPage.value == 3
-                              ? 'Get Started'
-                              : 'Next',
+                              ? 'get_started'.tr
+                              : 'next'.tr,
                     ),
                   ),
-                 SizedBox(height: res.hp(10),),
+                  SizedBox(height: res.hp(10)),
                   CustomButton(
-                    text: 'Skip',
+                    text: 'skip'.tr,
                     textColor: AppColors.darkBlueGrey.withValues(alpha: 0.6),
                     onTap: controller.skip,
                     isBorder: true,
