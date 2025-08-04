@@ -10,4 +10,6 @@ class AppColors {
   static const Color lightCream = Color(0xFFFDFCF9);
   static const Color borderColor = Color(0xFFD2DAE3);
   static const Color darkBlueGrey = Color(0xFF1F2C37);
+  static const Color graphite = Color(0xFF45474E);
+  static const Color slateGray = Color(0xFF667085);
 }
