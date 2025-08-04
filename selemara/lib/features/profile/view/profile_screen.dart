@@ -7,18 +7,19 @@ import '../../../core/constants/app_images.dart';
 import '../../../core/constants/app_responsive.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_appbar.dart';
+import '../../../core/widgets/custom_button.dart';
 import '../widget/profile_option_tile.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
 
+  final res = AppResponsive();
+
   final controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
-    final res = AppResponsive();
-
     return Scaffold(
       appBar: CustomAppBar(title: 'Profile', centerTitle: true),
 
@@ -87,23 +88,21 @@ class ProfileScreen extends StatelessWidget {
 
             SizedBox(height: res.hp(20)),
 
-            GestureDetector(
+            ProfileOptionTile(
               onTap: () {
                 Get.toNamed(AppRoutes.editProfileScreen);
               },
-              child: ProfileOptionTile(
-                iconPath: AppImages.profileIcon,
-                title: 'Profile',
+              iconPath: AppImages.profileIcon,
+              title: 'Profile',
 
-                textSize: 12,
-                bottomMargin: 0,
-                padding: EdgeInsets.all(0),
+              textSize: 16,
+              bottomMargin: 0,
+              padding: EdgeInsets.all(0),
 
-                // optional
-                boxDecoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(15),
-                ),
+              // optional
+              boxDecoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
 
@@ -164,23 +163,20 @@ class ProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(color: Color(0xFFEAECF0)),
             ),
 
-            GestureDetector(
+            ProfileOptionTile(
+              iconPath: AppImages.lock,
+              title: 'Password',
               onTap: () {
                 Get.toNamed(AppRoutes.updatePasswordScreen);
               },
-              child: ProfileOptionTile(
-                iconPath: AppImages.lock,
-                title: 'Password',
+              textSize: 16,
+              bottomMargin: 0,
+              padding: EdgeInsets.all(0),
 
-                textSize: 12,
-                bottomMargin: 0,
-                padding: EdgeInsets.all(0),
-
-                // optional
-                boxDecoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(15),
-                ),
+              // optional
+              boxDecoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
 
@@ -191,23 +187,20 @@ class ProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(color: Color(0xFFEAECF0)),
             ),
 
-            GestureDetector(
+            ProfileOptionTile(
+              iconPath: AppImages.privacy,
+              title: 'Privacy Policy',
               onTap: () {
                 Get.toNamed(AppRoutes.privacyPolicyScreen);
               },
-              child: ProfileOptionTile(
-                iconPath: AppImages.privacy,
-                title: 'Privacy Policy',
+              textSize: 16,
+              bottomMargin: 0,
+              padding: EdgeInsets.all(0),
 
-                textSize: 12,
-                bottomMargin: 0,
-                padding: EdgeInsets.all(0),
-
-                // optional
-                boxDecoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(15),
-                ),
+              // optional
+              boxDecoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
 
@@ -218,43 +211,115 @@ class ProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(color: Color(0xFFEAECF0)),
             ),
 
-            GestureDetector(
+            ProfileOptionTile(
+              iconPath: AppImages.logout,
+              title: 'Logout',
               onTap: () {
-
-                Get.toNamed(AppRoutes.updatePasswordScreen);
-
-
-
+                showBeautifulBottomSheet(context);
               },
-              child: Column(
-                children: [
-                  ProfileOptionTile(
-                    iconPath: AppImages.logout,
-                    title: 'Logout',
+              textSize: 16,
+              bottomMargin: 0,
+              padding: EdgeInsets.all(0),
 
-                    textSize: 12,
-                    bottomMargin: 0,
-                    padding: EdgeInsets.all(0),
-
-                    // optional
-                    boxDecoration: BoxDecoration(
-                      color: Colors.blue.shade50,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(bottom: 15, top: 16),
-                    width: double.infinity,
-                    height: 1,
-                    decoration: BoxDecoration(color: Color(0xFFEAECF0)),
-                  ),
-                ],
+              // optional
+              boxDecoration: BoxDecoration(
+                color: Colors.blue.shade50,
+                borderRadius: BorderRadius.circular(15),
               ),
+            ),
+
+            Container(
+              margin: EdgeInsets.only(bottom: 15, top: 16),
+              width: double.infinity,
+              height: 1,
+              decoration: BoxDecoration(color: Color(0xFFEAECF0)),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  void showBeautifulBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      // Transparent to show rounded corners
+      isScrollControlled: true,
+      builder: (context) {
+        return Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(70),
+              topRight: Radius.circular(70),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 10,
+                spreadRadius: 2,
+                offset: Offset(0, -3),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppText(
+                "Logout",
+                color: AppColors.textColor2939,
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
+              ),
+              SizedBox(height: res.hp(40)),
+              AppText(
+                "Are you sure you want to log out?",
+                color: Color(0xFF344054),
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+              ),
+
+              SizedBox(height: res.hp(24)),
+
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: CustomButton(
+                        text: "No",
+                        onTap: () {},
+                        btnColor: AppColors.backGroundColor,
+                        borderColor: AppColors.primaryColor,
+                        isBorder: true,
+                        textColor: AppColors.primaryColor,
+                        borderRadius: 8,
+
+                      ),
+                    ),
+
+                    SizedBox(width: res.wp(16)),
+
+                    Expanded(
+                      child: CustomButton(text: "Yes", onTap: () {},
+                        borderRadius: 8,
+
+                      ),
+                    ),
+
+
+
+
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
