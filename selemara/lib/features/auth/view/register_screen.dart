@@ -18,7 +18,7 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? selectedUserType;
+    // String? selectedUserType;
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     final AuthController authController = Get.find<AuthController>();
     final res = AppResponsive();
@@ -32,14 +32,14 @@ class RegisterScreen extends StatelessWidget {
             children: [
               SizedBox(height: res.hp(30)),
               AppText(
-                "Create Your Account",
+                'create_account'.tr,
                 color: AppColors.textColor,
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
               ),
               // SizedBox(height: res.hp(8)),
               AppText(
-                "Join our community of vehicle enthusiasts",
+                'join_text'.tr,
                 color: AppColors.textColor.withValues(alpha: 0.8),
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -61,55 +61,55 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: res.hp(10)),
                     AppText(
-                      "Full Name",
+                      'full_name'.tr,
                       color: AppColors.textColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Enter your full name",
+                      hintText: 'enter_name'.tr,
                       validator: Validators.required,
                       prefixIcon: AppImages.userIcon,
                     ),
                     SizedBox(height: res.hp(10)),
                     AppText(
-                      "Email addresss",
+                      'email'.tr,
                       color: AppColors.textColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Enter your email address",
+                      hintText: 'enter_email'.tr,
                       validator: Validators.required,
                       prefixIcon: AppImages.emailIcon,
                     ),
 
                     SizedBox(height: res.hp(10)),
                     AppText(
-                      "Phone Number",
+                      'phone_number'.tr,
                       color: AppColors.textColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Enter your phone number",
+                      hintText:  'enter_phone'.tr,
                       validator: Validators.required,
                       prefixIcon: AppImages.phoneIcon,
                     ),
 
                     SizedBox(height: res.hp(10)),
                     AppText(
-                      "Password",
+                      'password'.tr,
                       color: AppColors.textColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Enter your password",
+                      hintText: 'password_hint'.tr,
                       isPassword: true,
                       validator: Validators.password,
                       prefixIcon: AppImages.lockIcon,
@@ -117,21 +117,21 @@ class RegisterScreen extends StatelessWidget {
                     // SizedBox(height: res.hp(5)),
                     SizedBox(height: res.hp(10)),
                     AppText(
-                      "Confirm Password",
+                      'confirm_password'.tr,
                       color: AppColors.textColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Enter your confirm password",
+                      hintText: 'enter_confirm_password'.tr,
                       isPassword: true,
                       validator: Validators.password,
                       prefixIcon: AppImages.lockIcon,
                     ),
                     SizedBox(height: res.hp(5)),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
@@ -152,20 +152,20 @@ class RegisterScreen extends StatelessWidget {
 
                             RichText(
                               text: TextSpan(
-                                text: "I agree to the ",
+                                text: 'agree_prefix'.tr,
                                 style: GoogleFonts.inter(
                                   color: AppColors.graphite,
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: "Terms of Service ",
+                                    text: 'terms_of_service'.tr,
                                     style: GoogleFonts.inter(
                                       color: AppColors.primaryColor,
                                     ),
                                   ),
-                                  TextSpan(text: "and "),
+                                  TextSpan(text: 'and'.tr),
                                   TextSpan(
-                                    text: "\nPrivacy Policy",
+                                    text: "\n${'privacy_policy'.tr}",
                                     style: GoogleFonts.inter(
                                       color: AppColors.primaryColor,
                                     ),
@@ -183,19 +183,19 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: res.hp(50)),
+                    SizedBox(height: res.hp(30)),
                     CustomButton(
-                      text: "Create Account",
+                      text: 'register_account'.tr,
                       onTap: () {
                         authController.login();
                       },
                     ),
-                    SizedBox(height: res.hp(20)),
+                    SizedBox(height: res.hp(10)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppText(
-                          "Already have an account?",
+                          'already_have_account'.tr,
                           color: AppColors.slateGray,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -205,7 +205,7 @@ class RegisterScreen extends StatelessWidget {
                             Get.toNamed(AppRoutes.login);
                           },
                           child: AppText(
-                            "Log In",
+                           'login'.tr,
                             color: AppColors.primaryColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w500,

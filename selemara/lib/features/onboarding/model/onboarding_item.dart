@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_images.dart';
 
 class OnboardingItem {
@@ -15,26 +16,22 @@ class OnboardingItem {
 final List<OnboardingItem> onboardingPages = [
   OnboardingItem(
     imagePath: AppImages.onBoardingOne,
-    title: 'Smart AutoCare',
-    description:
-        'Track your car’s full service history, book garage appointments, and verify any vehicle by VIN number — all in one app.',
+    title: 'onboard_title_1'.tr,
+    description: 'onboard_desc_1'.tr,
   ),
   OnboardingItem(
     imagePath: AppImages.onBoardingTwo,
-    title: 'Service & History',
-    description:
-        'Car owners can easily book services, track maintenance history, and access service records anytime.',
+    title: 'onboard_title_2'.tr,
+    description: 'onboard_desc_2'.tr,
   ),
   OnboardingItem(
     imagePath: AppImages.onBoardingThree,
-    title: 'Check Before You Buy',
-    description:
-        'Enter the VIN number to verify how many times a car was serviced and where — transparency before you.',
+    title: 'onboard_title_3'.tr,
+    description: 'onboard_desc_3'.tr,
   ),
   OnboardingItem(
     imagePath: AppImages.onBoardingFour,
-    title: 'Grow Your Garage Business',
-    description:
-        'Garages can log services done, dealerships can sell cars with verified history — all synced with our platform.',
+    title: 'onboard_title_4'.tr,
+    description: 'onboard_desc_4'.tr,
   ),
 ];

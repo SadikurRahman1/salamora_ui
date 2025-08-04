@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
@@ -39,12 +40,39 @@ class UserTypeDropdown extends StatelessWidget {
       ),
       style: const TextStyle(color: Colors.black),
       dropdownColor: Colors.white,
-      hint:  AppText("Select user type",color: AppColors.textColor.withValues(alpha: 0.5),),
-      items:  [
-        DropdownMenuItem(value: 'car_owner', child: AppText('Car Owner', color: AppColors.textColor.withValues(alpha: 0.5),)),
-        DropdownMenuItem(value: 'garage', child: AppText('Garage',color: AppColors.textColor.withValues(alpha: 0.5))),
-        DropdownMenuItem(value: 'dealership', child: AppText('Dealership',color: AppColors.textColor.withValues(alpha: 0.5))),
-        DropdownMenuItem(value: 'buyer', child: AppText('Buyer',color: AppColors.textColor.withValues(alpha: 0.5))),
+      hint: AppText(
+        'select_user_type'.tr,
+        color: AppColors.textColor.withValues(alpha: 0.5),
+      ),
+      items: [
+        DropdownMenuItem(
+          value: 'car_owner',
+          child: AppText(
+            'Car Owner',
+            color: AppColors.textColor.withValues(alpha: 0.5),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'garage',
+          child: AppText(
+            'Garage',
+            color: AppColors.textColor.withValues(alpha: 0.5),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'dealership',
+          child: AppText(
+            'Dealership',
+            color: AppColors.textColor.withValues(alpha: 0.5),
+          ),
+        ),
+        DropdownMenuItem(
+          value: 'buyer',
+          child: AppText(
+            'Buyer',
+            color: AppColors.textColor.withValues(alpha: 0.5),
+          ),
+        ),
       ],
     );
   }
