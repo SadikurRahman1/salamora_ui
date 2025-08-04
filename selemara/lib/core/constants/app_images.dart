@@ -16,10 +16,12 @@ class AppImages {
   static const beckButton = "assets/images/beck_button.png";
 
 
+
+
+
   //icons
   static const userIcon = "assets/icons/user.png";
   static const emailIcon = "assets/icons/email.png";
   static const lockIcon = "assets/icons/lock.png";
   static const phoneIcon = "assets/icons/phone.png";
 }
-

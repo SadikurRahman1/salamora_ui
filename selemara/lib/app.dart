@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/core/localization/translation_service.dart';
 import 'package:selemara/core/routes/app_pages.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 
@@ -13,6 +14,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Selemara',
       debugShowCheckedModeBanner: false,
+      translations: AppTranslation(),
+      locale: const Locale('en', 'US'),
       initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
       initialBinding: AppPages.initialBinding,

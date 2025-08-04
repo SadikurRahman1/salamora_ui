@@ -28,14 +28,14 @@ class LoginScreen extends StatelessWidget {
             children: [
               // SizedBox(height: res.hp(50)),
               AppText(
-                "Welcome back",
+                'welcome_back'.tr,
                 color: AppColors.textColor,
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
               ),
               // SizedBox(height: res.hp(8)),
               AppText(
-                "Sign in to your account",
+                'sign_in'.tr,
                 color: AppColors.textColor.withValues(alpha: 0.8),
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -47,27 +47,27 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText(
-                      "Phone Number",
+                      'phone_number'.tr,
                       color: AppColors.textColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Enter your phone",
+                      hintText: 'enter_phone'.tr,
                       validator: Validators.email,
                     ),
 
                     SizedBox(height: res.hp(10)),
                     AppText(
-                      "Password",
+                      'password'.tr,
                       color: AppColors.textColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Password",
+                      hintText: 'password_hint'.tr,
                       isPassword: true,
                       validator: Validators.password,
                     ),
@@ -78,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                         Row(
                           children: [
                             Obx(
-                              ()=> Checkbox(
+                              () => Checkbox(
                                 side: BorderSide(color: AppColors.primaryColor),
                                 activeColor: AppColors.primaryColor,
                                 checkColor: AppColors.primaryColor,
@@ -94,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                             AppText(
-                              "Remember me",
+                              'remember_me'.tr,
                               color: AppColors.graphite,
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -106,7 +106,7 @@ class LoginScreen extends StatelessWidget {
                             Get.toNamed(AppRoutes.profile);
                           },
                           child: AppText(
-                            "Forgot password",
+                            'forgot_password'.tr,
                             color: AppColors.primaryColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
@@ -115,18 +115,13 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: res.hp(80)),
-                    CustomButton(
-                      text: "Log In",
-                      onTap: () {
-                        authController.login();
-                      },
-                    ),
+                    CustomButton(text: 'login'.tr, onTap: () {}),
                     SizedBox(height: res.hp(20)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         AppText(
-                          "Don't have an Account?",
+                          "dont_have_account".tr,
                           color: AppColors.slateGray,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -136,7 +131,7 @@ class LoginScreen extends StatelessWidget {
                             Get.toNamed(AppRoutes.register);
                           },
                           child: AppText(
-                            "Sign Up",
+                            "sign_up".tr,
                             color: AppColors.primaryColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
