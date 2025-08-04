@@ -13,6 +13,8 @@ import 'package:selemara/core/widgets/custom_text_form_field.dart';
 import 'package:selemara/features/auth/controller/auth_controller.dart';
 import 'package:selemara/features/auth/widgets/user_type_drop_down.dart';
 
+
+
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 

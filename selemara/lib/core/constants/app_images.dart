@@ -15,6 +15,10 @@ class AppImages {
   static const backArrow = "assets/images/back_arrow.png";
   static const beckButton = "assets/images/beck_button.png";
 
+
+
+
+
   //icons
   static const userIcon = "assets/icons/user.png";
   static const emailIcon = "assets/icons/email.png";

@@ -12,6 +12,10 @@ class AppColors {
   static const Color backGroundColor = Color(0xFFFCFCFC);
   static const skipBtnColor = Color(0xFF1F2C37);
   static const Color textColor = Color(0xFF161922);
+  static const Color textColor7085 = Color(0xFF667085);
+
+
+
   static const Color secondryTextColor = Color(0xFF161922);
   static const Color geryColor = Color(0xFFA9A9A9);
   static const Color lightCream = Color(0xFFFDFCF9);
