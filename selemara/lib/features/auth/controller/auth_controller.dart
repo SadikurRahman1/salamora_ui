@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:selemara/core/services/network_caller.dart';
 
 class AuthController extends GetxController {
@@ -9,20 +8,22 @@ class AuthController extends GetxController {
   final TextEditingController phoneNumberTEController = TextEditingController();
   final TextEditingController passwordTEController = TextEditingController();
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   RxBool isLoading = false.obs;
   RxBool rememberMe = false.obs;
+  RxBool agree = false.obs;
 
- 
+  RxnString selectedUserType = RxnString();
+
   void toggleRememberMe() {
     rememberMe.value = !rememberMe.value;
   }
 
+  void toggleAgree() {
+    agree.value = !agree.value;
+  }
+
   /// Login Method
   Future<void> login() async {
-    if (!formKey.currentState!.validate()) return;
-
     isLoading.value = true;
     try {
       final Map<String, dynamic> loginBody = {

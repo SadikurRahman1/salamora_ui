@@ -77,13 +77,21 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Checkbox(
-                              side: BorderSide(color: AppColors.primaryColor),
-                              activeColor: AppColors.primaryColor,
-                              // focusColor:AppColors.primaryColor ,
-                              // overlayColor: MaterialStateProperty.all(AppColors.primaryColor),
-                              value: false,
-                              onChanged: (value) {},
+                            Obx(
+                              ()=> Checkbox(
+                                side: BorderSide(color: AppColors.primaryColor),
+                                activeColor: AppColors.primaryColor,
+                                checkColor: AppColors.primaryColor,
+                                fillColor: WidgetStateProperty.all<Color>(
+                                  Colors.white,
+                                ),
+                                // focusColor:AppColors.primaryColor ,
+                                // overlayColor: MaterialStateProperty.all(AppColors.primaryColor),
+                                value: authController.rememberMe.value,
+                                onChanged: (value) {
+                                  authController.toggleRememberMe();
+                                },
+                              ),
                             ),
                             AppText(
                               "Remember me",
@@ -107,7 +115,12 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: res.hp(80)),
-                    CustomButton(text: "Log In", onTap: () {}),
+                    CustomButton(
+                      text: "Log In",
+                      onTap: () {
+                        authController.login();
+                      },
+                    ),
                     SizedBox(height: res.hp(20)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -118,11 +131,16 @@ class LoginScreen extends StatelessWidget {
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
-                        AppText(
-                          "Sign Up",
-                          color: AppColors.primaryColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.register);
+                          },
+                          child: AppText(
+                            "Sign Up",
+                            color: AppColors.primaryColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ],
                     ),

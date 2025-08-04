@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/features/auth/binding/auth_binding.dart';
 import 'package:selemara/features/auth/view/login_screen.dart';
+import 'package:selemara/features/auth/view/register_screen.dart';
 import 'package:selemara/features/onboarding/views/onboarding_screen.dart';
 import 'package:selemara/features/profile/binding/profile_binding.dart';
 import 'package:selemara/features/profile/view/profile_screen.dart';
@@ -48,11 +49,7 @@ class AppPages {
       page: () =>  UpdatePasswordScreen(),
       binding: ProfileBinding(),
     ),
-    // GetPage(
-    //   name: AppRoutes.register,
-    //   page: () => const RegisterPage(),
-    //   binding: AuthBinding(),
-    // ),
+    GetPage(name: AppRoutes.register, page: () => const RegisterScreen()),
     // GetPage(
     //   name: AppRoutes.home,
     //   page: () => const HomePage(),
