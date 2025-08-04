@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:selemara/core/constants/app_responsive.dart';
 
 class AppText extends StatelessWidget {
   final String text;
@@ -23,6 +24,7 @@ class AppText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final res = AppResponsive();
     return Text(
       text,
       textAlign: textAlign,
@@ -30,7 +32,7 @@ class AppText extends StatelessWidget {
       overflow: overflow,
       style: GoogleFonts.inter(
         color: color,
-        fontSize: fontSize,
+        fontSize: res.sp(fontSize),
         fontWeight: fontWeight,
       ),
     );

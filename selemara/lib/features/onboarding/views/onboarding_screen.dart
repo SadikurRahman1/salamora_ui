@@ -6,7 +6,7 @@ import 'package:selemara/core/widgets/app_text_inter.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 import 'package:selemara/features/onboarding/controller/onboarding_controller.dart';
 import 'package:selemara/features/onboarding/model/onboarding_item.dart';
-import 'package:selemara/features/onboarding/widgets/background_gradient.dart';
+import 'package:selemara/core/widgets/background_gradient.dart';
 
 class OnboardingScreen extends StatelessWidget {
   final OnboardingController controller = Get.put(OnboardingController());

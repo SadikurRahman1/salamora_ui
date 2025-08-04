@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:selemara/core/routes/app_routes.dart';
 
 class OnboardingController extends GetxController {
   final PageController pageController = PageController();
@@ -9,7 +10,7 @@ class OnboardingController extends GetxController {
     if (currentPage.value < 3) {
       pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
     } else {
-      // Navigate to login or home
+      Get.offAllNamed(AppRoutes.login);
     }
   }
 

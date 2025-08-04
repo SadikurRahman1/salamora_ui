@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
-import 'package:selemara/features/onboarding/widgets/background_gradient.dart';
+import 'package:selemara/core/widgets/background_gradient.dart';
 import 'package:selemara/features/splash/controller/spash_controller.dart';
 
 class SplashScreen extends StatelessWidget {
