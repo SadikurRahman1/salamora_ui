@@ -101,11 +101,16 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        AppText(
-                          "Forgot password",
-                          color: AppColors.primaryColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.profile);
+                          },
+                          child: AppText(
+                            "Forgot password",
+                            color: AppColors.primaryColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ],
                     ),
