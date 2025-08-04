@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color primaryColor = Color(0xFF116FEE);
+  static const Color whitColor = Color(0xFFFFFFFF);
   static const Color backGroundColor = Color(0xFFFCFCFC);
   static const skipBtnColor = Color(0xFF1F2C37);
   static const Color textColor = Color(0xFF161922);
@@ -12,4 +13,5 @@ class AppColors {
   static const Color darkBlueGrey = Color(0xFF1F2C37);
   static const Color graphite = Color(0xFF45474E);
   static const Color slateGray = Color(0xFF667085);
+  static const Color lightGray = Color(0xFFAEAEB2);
 }

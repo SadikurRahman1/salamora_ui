@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:selemara/core/constants/app_colors.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final TextEditingController? controller;
@@ -50,6 +52,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         filled: true,
         fillColor: Colors.white,
         hintText: widget.hintText,
+        hintStyle: GoogleFonts.inter(
+          color: AppColors.textColor.withValues(alpha: 0.5),
+        ),
         prefixIcon: widget.prefixIcon,
         suffixIcon:
             widget.isPassword
@@ -66,7 +71,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 : widget.suffixIcon,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,
-          vertical: 16,
+          vertical: 10,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24),
