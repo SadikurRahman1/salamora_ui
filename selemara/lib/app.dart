@@ -5,7 +5,6 @@ import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/routes/app_pages.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         return child!;
       },
       theme: ThemeData(
-        scaffoldBackgroundColor:AppColors.lightCream,
+        scaffoldBackgroundColor: AppColors.lightCream,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:selemara/core/constants/app_colors.dart';
+import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/utils/validators.dart';
@@ -9,12 +11,14 @@ import 'package:selemara/core/widgets/background_gradient.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 import 'package:selemara/core/widgets/custom_text_form_field.dart';
 import 'package:selemara/features/auth/controller/auth_controller.dart';
+import 'package:selemara/features/auth/widgets/user_type_drop_down.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String? selectedUserType;
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     final AuthController authController = Get.find<AuthController>();
     final res = AppResponsive();
@@ -26,7 +30,7 @@ class RegisterScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // SizedBox(height: res.hp(50)),
+              SizedBox(height: res.hp(30)),
               AppText(
                 "Create Your Account",
                 color: AppColors.textColor,
@@ -40,12 +44,22 @@ class RegisterScreen extends StatelessWidget {
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
-              SizedBox(height: res.hp(80)),
+              SizedBox(height: res.hp(40)),
               Form(
                 key: _formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    UserTypeDropdown(
+                      value: authController.selectedUserType.value,
+                      onChanged: (val) {
+                        authController.selectedUserType.value = val!;
+                        // setState(() {
+                        //   selectedUserType = val;
+                        // });
+                      },
+                    ),
+                    SizedBox(height: res.hp(10)),
                     AppText(
                       "Full Name",
                       color: AppColors.textColor,
@@ -55,7 +69,21 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
                       hintText: "Enter your full name",
-                      validator: Validators.email,
+                      validator: Validators.required,
+                      prefixIcon: AppImages.userIcon,
+                    ),
+                    SizedBox(height: res.hp(10)),
+                    AppText(
+                      "Email addresss",
+                      color: AppColors.textColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    SizedBox(height: res.hp(8)),
+                    CustomTextFormField(
+                      hintText: "Enter your email address",
+                      validator: Validators.required,
+                      prefixIcon: AppImages.emailIcon,
                     ),
 
                     SizedBox(height: res.hp(10)),
@@ -67,8 +95,9 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Enter your phone",
-                      validator: Validators.email,
+                      hintText: "Enter your phone number",
+                      validator: Validators.required,
+                      prefixIcon: AppImages.phoneIcon,
                     ),
 
                     SizedBox(height: res.hp(10)),
@@ -80,9 +109,25 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
-                      hintText: "Password",
+                      hintText: "Enter your password",
                       isPassword: true,
                       validator: Validators.password,
+                      prefixIcon: AppImages.lockIcon,
+                    ),
+                    // SizedBox(height: res.hp(5)),
+                    SizedBox(height: res.hp(10)),
+                    AppText(
+                      "Confirm Password",
+                      color: AppColors.textColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    SizedBox(height: res.hp(8)),
+                    CustomTextFormField(
+                      hintText: "Enter your confirm password",
+                      isPassword: true,
+                      validator: Validators.password,
+                      prefixIcon: AppImages.lockIcon,
                     ),
                     SizedBox(height: res.hp(5)),
                     Row(
@@ -90,17 +135,44 @@ class RegisterScreen extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Checkbox(
-                              side: BorderSide(color: AppColors.primaryColor),
-                              activeColor: AppColors.primaryColor,
-                              fillColor:  WidgetStateProperty.all<Color>(Colors.white),
-                              // focusColor:AppColors.primaryColor ,
-                              // overlayColor: MaterialStateProperty.all(AppColors.primaryColor),
-                              value: false,
-                              onChanged: (value) {},
+                            Obx(
+                              () => Checkbox(
+                                side: BorderSide(color: AppColors.primaryColor),
+                                activeColor: AppColors.primaryColor,
+                                checkColor: AppColors.primaryColor,
+                                fillColor: WidgetStateProperty.all<Color>(
+                                  Colors.white,
+                                ),
+                                value: authController.agree.value,
+                                onChanged: (value) {
+                                  authController.toggleAgree();
+                                },
+                              ),
                             ),
-                            
-                            RichText(text:TextSpan(text: "I agree to the") )
+
+                            RichText(
+                              text: TextSpan(
+                                text: "I agree to the ",
+                                style: GoogleFonts.inter(
+                                  color: AppColors.graphite,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: "Terms of Service ",
+                                    style: GoogleFonts.inter(
+                                      color: AppColors.primaryColor,
+                                    ),
+                                  ),
+                                  TextSpan(text: "and "),
+                                  TextSpan(
+                                    text: "\nPrivacy Policy",
+                                    style: GoogleFonts.inter(
+                                      color: AppColors.primaryColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                             // AppText(
                             //   "Remember me",
                             //   color: AppColors.graphite,
@@ -109,10 +181,9 @@ class RegisterScreen extends StatelessWidget {
                             // ),
                           ],
                         ),
-                       
                       ],
                     ),
-                    SizedBox(height: res.hp(80)),
+                    SizedBox(height: res.hp(50)),
                     CustomButton(
                       text: "Create Account",
                       onTap: () {
@@ -134,7 +205,7 @@ class RegisterScreen extends StatelessWidget {
                             Get.toNamed(AppRoutes.login);
                           },
                           child: AppText(
-                            "Sign In",
+                            "Log In",
                             color: AppColors.primaryColor,
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
