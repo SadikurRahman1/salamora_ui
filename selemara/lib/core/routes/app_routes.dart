@@ -7,4 +7,8 @@ class AppRoutes {
   static const register = '/register';
   static const home = '/home';
   static const profile = '/profile';
+  static const editProfileScreen = '/editProfileScreen';
+
+
+  static const updatePasswordScreen = '/updatePasswordScreen';
 }

@@ -3,8 +3,13 @@ import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/features/auth/binding/auth_binding.dart';
 import 'package:selemara/features/auth/view/login_screen.dart';
 import 'package:selemara/features/onboarding/views/onboarding_screen.dart';
+import 'package:selemara/features/profile/binding/profile_binding.dart';
+import 'package:selemara/features/profile/view/profile_screen.dart';
 import 'package:selemara/features/splash/bindings/splash_binding.dart';
 import 'package:selemara/features/splash/screen/splash_screen.dart';
+
+import '../../features/profile/view/edit_profile_screen.dart';
+import '../../features/profile/view/update_password_screen.dart';
 
 class AppPages {
   static final pages = [
@@ -22,6 +27,26 @@ class AppPages {
       name: AppRoutes.login,
       page: () => const LoginScreen(),
       binding: AuthBinding(),
+
+
+    ),
+
+    GetPage(
+      name: AppRoutes.profile,
+      page: () =>  ProfileScreen(),
+      binding: ProfileBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.editProfileScreen,
+      page: () =>  EditProfileScreen(),
+      binding: ProfileBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.updatePasswordScreen,
+      page: () =>  UpdatePasswordScreen(),
+      binding: ProfileBinding(),
     ),
     // GetPage(
     //   name: AppRoutes.register,

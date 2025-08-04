@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/utils/validators.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/background_gradient.dart';
@@ -92,11 +93,16 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        AppText(
-                          "Forgot password",
-                          color: AppColors.primaryColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.profile);
+                          },
+                          child: AppText(
+                            "Forgot password",
+                            color: AppColors.primaryColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ],
                     ),
