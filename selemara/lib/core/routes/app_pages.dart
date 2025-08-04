@@ -10,6 +10,7 @@ import 'package:selemara/features/splash/bindings/splash_binding.dart';
 import 'package:selemara/features/splash/screen/splash_screen.dart';
 
 import '../../features/profile/view/edit_profile_screen.dart';
+import '../../features/profile/view/privacy_policy_screen.dart';
 import '../../features/profile/view/update_password_screen.dart';
 
 class AppPages {
@@ -49,7 +50,16 @@ class AppPages {
       page: () =>  UpdatePasswordScreen(),
       binding: ProfileBinding(),
     ),
+
+
+
     GetPage(name: AppRoutes.register, page: () => const RegisterScreen()),
+
+        GetPage(name: AppRoutes.privacyPolicyScreen, page: () =>  PrivacyPolicyScreen()),
+
+
+
+
     // GetPage(
     //   name: AppRoutes.home,
     //   page: () => const HomePage(),

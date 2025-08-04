@@ -191,18 +191,23 @@ class ProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(color: Color(0xFFEAECF0)),
             ),
 
-            ProfileOptionTile(
-              iconPath: AppImages.privacy,
-              title: 'Privacy Policy',
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.privacyPolicyScreen);
+              },
+              child: ProfileOptionTile(
+                iconPath: AppImages.privacy,
+                title: 'Privacy Policy',
 
-              textSize: 12,
-              bottomMargin: 0,
-              padding: EdgeInsets.all(0),
+                textSize: 12,
+                bottomMargin: 0,
+                padding: EdgeInsets.all(0),
 
-              // optional
-              boxDecoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(15),
+                // optional
+                boxDecoration: BoxDecoration(
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(15),
+                ),
               ),
             ),
 
@@ -213,26 +218,39 @@ class ProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(color: Color(0xFFEAECF0)),
             ),
 
-            ProfileOptionTile(
-              iconPath: AppImages.logout,
-              title: 'Logout',
+            GestureDetector(
+              onTap: () {
 
-              textSize: 12,
-              bottomMargin: 0,
-              padding: EdgeInsets.all(0),
+                Get.toNamed(AppRoutes.updatePasswordScreen);
 
-              // optional
-              boxDecoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(15),
+
+
+              },
+              child: Column(
+                children: [
+                  ProfileOptionTile(
+                    iconPath: AppImages.logout,
+                    title: 'Logout',
+
+                    textSize: 12,
+                    bottomMargin: 0,
+                    padding: EdgeInsets.all(0),
+
+                    // optional
+                    boxDecoration: BoxDecoration(
+                      color: Colors.blue.shade50,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15, top: 16),
+                    width: double.infinity,
+                    height: 1,
+                    decoration: BoxDecoration(color: Color(0xFFEAECF0)),
+                  ),
+                ],
               ),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(bottom: 15, top: 16),
-              width: double.infinity,
-              height: 1,
-              decoration: BoxDecoration(color: Color(0xFFEAECF0)),
             ),
           ],
         ),

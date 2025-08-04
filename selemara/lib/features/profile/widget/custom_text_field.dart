@@ -24,6 +24,9 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: const TextStyle(
+          color: Color(0xFF667085), // Set hint text color
+        ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
@@ -35,9 +38,6 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
             color: AppColors.borderEditText,
-
-
-
             width: 1,
           ),
         ),
@@ -45,6 +45,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
       ),
-    );
+    )
+    ;
   }
 }
