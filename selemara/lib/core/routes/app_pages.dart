@@ -4,14 +4,14 @@ import 'package:selemara/features/auth/binding/auth_binding.dart';
 import 'package:selemara/features/auth/view/login_screen.dart';
 import 'package:selemara/features/auth/view/register_screen.dart';
 import 'package:selemara/features/onboarding/views/onboarding_screen.dart';
-import 'package:selemara/features/profile/binding/profile_binding.dart';
-import 'package:selemara/features/profile/view/profile_screen.dart';
 import 'package:selemara/features/splash/bindings/splash_binding.dart';
 import 'package:selemara/features/splash/screen/splash_screen.dart';
-
-import '../../features/profile/view/edit_profile_screen.dart';
+import '../../features/car_owner_flow/car_owner_nevbar/view/owner_navbar_screen.dart';
+import '../../features/car_owner_flow/profile/binding/profile_binding.dart';
+import '../../features/car_owner_flow/profile/view/edit_profile_screen.dart';
+import '../../features/car_owner_flow/profile/view/profile_screen.dart';
+import '../../features/car_owner_flow/profile/view/update_password_screen.dart';
 import '../../features/privacy_policy/privacy_policy_screen.dart';
-import '../../features/profile/view/update_password_screen.dart';
 
 class AppPages {
   static final pages = [
@@ -56,6 +56,8 @@ class AppPages {
     GetPage(name: AppRoutes.register, page: () => const RegisterScreen()),
 
         GetPage(name: AppRoutes.privacyPolicyScreen, page: () =>  PrivacyPolicyScreen()),
+
+        GetPage(name: AppRoutes.ownerNavbarScreen, page: () =>  OwnerNavbarScreen()),
 
 
 
