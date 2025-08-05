@@ -21,7 +21,7 @@ class UpdatePasswordScreen extends StatelessWidget {
 
      return Scaffold(
        appBar: CustomAppBar(
-         title: 'Password',
+         title: 'password'.tr,
          leading: Image.asset(AppImages.beckButton),
        ),
        body: Container(
@@ -36,7 +36,7 @@ class UpdatePasswordScreen extends StatelessWidget {
                      SizedBox(height: res.hp(28)),
 
                      AppText(
-                       "Existing Password",
+                       "existing_password".tr,
                        color: AppColors.textColor2939,
                        fontWeight: FontWeight.w500,
                        fontSize: 16,
@@ -45,12 +45,12 @@ class UpdatePasswordScreen extends StatelessWidget {
 
                      CustomTextField(
                        controller: controller.oldController,
-                       hintText: 'Old password',
+                       hintText: 'existing_password_hunt'.tr,
                      ),
                      SizedBox(height: res.hp(20)),
 
                      AppText(
-                       "New Password",
+                       "new_password".tr,
                        color: AppColors.textColor2939,
                        fontWeight: FontWeight.w500,
                        fontSize: 16,
@@ -59,12 +59,12 @@ class UpdatePasswordScreen extends StatelessWidget {
 
                      CustomTextField(
                        controller: controller.newController,
-                       hintText: 'New password',
+                       hintText: 'new_password'.tr,
                      ),
                      SizedBox(height: res.hp(20)),
 
                      AppText(
-                       "Confirm Password",
+                       "confirm_password".tr,
                        color: AppColors.textColor2939,
                        fontWeight: FontWeight.w500,
                        fontSize: 16,
@@ -73,13 +73,14 @@ class UpdatePasswordScreen extends StatelessWidget {
 
                      CustomTextField(
                        controller: controller.confirmController,
-                       hintText: 'Confirm password',
+                       hintText:"confirm_password".tr,
+
                      ),
                      SizedBox(height: res.hp(24)),
 
 
 
-                     CustomButton(text: "Update Password", onTap: () {}),
+                     CustomButton(text: "update_password".tr, onTap: () {}),
 
 
                    ],

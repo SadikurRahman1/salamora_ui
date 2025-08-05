@@ -56,4 +56,64 @@ final Map<String, String> enUS = {
   'onboard_title_4': 'Grow Your Garage Business',
   'onboard_desc_4':
       'Garages can log services done, dealerships can sell cars with verified history — all synced with our platform.',
+
+
+/// Profile screen add by Arif
+
+  'profile': 'Profile',
+  'notification': 'Notification',
+  'logout': 'Logout',
+  'are_you_sure_you': 'Are you sure you want to log out?',
+  'no': 'No',
+  'yes': 'Yes',
+
+  /// edit profile
+  'name': 'Name',
+  'my_profile': 'My Profile',
+
+  'name_hint': 'Enter your name',
+  'phone_number_hint': 'Enter your phone number',
+  'gender': 'Gender',
+  'date_of_birth': 'Date Of Birth',
+  'date_of_birth_hint': '01/01/2000',
+
+
+
+  /// change password
+
+  'existing_password': 'Existing Password',
+  'existing_password_hunt': 'Old Password',
+  'new_password': 'New Password',
+  'update_password': 'Update Password',
+
+
+
+  /// privacy policy screen   add by Arif
+  'introduction': 'Introduction',
+  'we_value_your_privacy': 'We value your privacy and are committed to protecting your personal information. By using [App Name], you agree to the collection and use of your data as described in this policy.',
+
+  'information_we_collect': 'Information We Collect',
+  'we_may_collect:': 'We may collect:',
+  'personal_information': 'Personal Information: Name, email, phone number, and payment details.',
+  'location_data': 'Location Data: To show nearby car wash services.',
+
+  'usage_data_app': 'Usage Data: App interactions and preferences',
+  'how_we_use_your': 'How We Use Your Data',
+  'your_information_is': 'Your information is used to:',
+  'facilitate_bookings_and': 'Facilitate bookings and payments.',
+  'improve_app_functionality.': 'Improve app functionality.',
+  'send_updates_and_offers.': 'Send updates and offers.',
+  'sharing_your_ata': 'Sharing Your Data',
+  'we_only_share_data': 'We only share data with trusted service providers, car wash partners, or legal authorities when required.',
+
+  'security': 'Security',
+  'we_use_secure_methods': 'We use secure methods to protect your data but cannot guarantee complete security.',
+  'your_rights': 'Your Rights',
+  'you_can_access_update': 'You can access, update, or delete your data and opt-out of communications at any time.',
+  'contact_us': 'Contact Us',
+  'for_questions_or': 'For questions or concerns, email us at [Insert Email].',
+
+
+
+
 };

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_images.dart';
-import '../../../core/constants/app_responsive.dart';
-import '../../../core/widgets/custom_appbar.dart';
+import '../../core/constants/app_colors.dart';
+import '../../core/constants/app_images.dart';
+import '../../core/constants/app_responsive.dart';
+import '../../core/widgets/custom_appbar.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
   PrivacyPolicyScreen({super.key});
@@ -29,7 +30,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(28)),
 
               AppText(
-                "Introduction",
+                "introduction".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: res.sp(16),
                 color: AppColors.textColor2939,
@@ -37,7 +38,8 @@ class PrivacyPolicyScreen extends StatelessWidget {
 
               SizedBox(height: res.hp(8)),
               AppText(
-                "We value your privacy and are committed to protecting your personal information. By using [App Name], you agree to the collection and use of your data as described in this policy.",
+
+                "we_value_your_privacy".tr,
                 fontWeight: FontWeight.w400,
                 color: AppColors.textColor7085,
                 fontSize: res.sp(14),
@@ -45,7 +47,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(24)),
 
               AppText(
-                "Information We Collect",
+                "information_we_collect".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: res.sp(16),
                 color: AppColors.textColor2939,
@@ -53,26 +55,26 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(8)),
 
               AppText(
-                "We may collect:",
+                "we_may_collect".tr,
                 fontWeight: FontWeight.w400,
                 fontSize: res.sp(14),
                 color: AppColors.textColor7085,
               ),
 
               buildDotSeparatedText(
-                "Personal Information: Name, email, phone number, and payment details.",
+                "personal_information".tr,
               ),
               buildDotSeparatedText(
-                "Location Data: To show nearby car wash services.",
+                "location_data".tr,
               ),
               buildDotSeparatedText(
-                "Usage Data: App interactions and preferences",
+                "usage_data_app".tr,
               ),
 
               SizedBox(height: res.hp(24)),
 
               AppText(
-                "How We Use Your Data",
+                "how_we_use_your".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: res.sp(16),
                 color: AppColors.textColor2939,
@@ -80,21 +82,21 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(8)),
 
               AppText(
-                "Your information is used to:",
+                "your_information_is".tr,
                 fontWeight: FontWeight.w400,
                 fontSize: res.sp(14),
                 color: AppColors.textColor7085,
               ),
 
-              buildDotSeparatedText("Facilitate bookings and payments."),
-              buildDotSeparatedText("Improve app functionality."),
+              buildDotSeparatedText("facilitate_bookings_and".tr),
+              buildDotSeparatedText("improve_app_functionality".tr),
 
-              buildDotSeparatedText("Send updates and offers."),
+              buildDotSeparatedText("send_updates_and_offers".tr),
 
               SizedBox(height: res.hp(24)),
 
               AppText(
-                "Sharing Your Data",
+                "sharing_your_ata".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: res.sp(16),
                 color: AppColors.textColor2939,
@@ -102,24 +104,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(10)),
 
               AppText(
-                "We only share data with trusted service providers, car wash partners, or legal authorities when required.",
-                fontWeight: FontWeight.w400,
-                color: AppColors.textColor7085,
-                fontSize: res.sp(14),
-              ),
-
-              SizedBox(height: res.hp(24)),
-
-              AppText(
-                " Security",
-                fontWeight: FontWeight.w500,
-                fontSize: res.sp(16),
-                color: AppColors.textColor2939,
-              ),
-              SizedBox(height: res.hp(10)),
-
-              AppText(
-                "We use secure methods to protect your data but cannot guarantee complete security.",
+                "we_only_share_data".tr,
                 fontWeight: FontWeight.w400,
                 color: AppColors.textColor7085,
                 fontSize: res.sp(14),
@@ -128,7 +113,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(24)),
 
               AppText(
-                " Your Rights",
+                "security".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: res.sp(16),
                 color: AppColors.textColor2939,
@@ -136,7 +121,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(10)),
 
               AppText(
-                "You can access, update, or delete your data and opt-out of communications at any time.",
+                "we_use_secure_methods".tr,
                 fontWeight: FontWeight.w400,
                 color: AppColors.textColor7085,
                 fontSize: res.sp(14),
@@ -145,7 +130,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(24)),
 
               AppText(
-                " Contact Us",
+                "your_rights".tr,
                 fontWeight: FontWeight.w500,
                 fontSize: res.sp(16),
                 color: AppColors.textColor2939,
@@ -153,7 +138,24 @@ class PrivacyPolicyScreen extends StatelessWidget {
               SizedBox(height: res.hp(10)),
 
               AppText(
-                "For questions or concerns, email us at [Insert Email].",
+                "you_can_access_update".tr,
+                fontWeight: FontWeight.w400,
+                color: AppColors.textColor7085,
+                fontSize: res.sp(14),
+              ),
+
+              SizedBox(height: res.hp(24)),
+
+              AppText(
+                "contact_us".tr,
+                fontWeight: FontWeight.w500,
+                fontSize: res.sp(16),
+                color: AppColors.textColor2939,
+              ),
+              SizedBox(height: res.hp(10)),
+
+              AppText(
+                "for_questions_or".tr,
                 fontWeight: FontWeight.w400,
                 color: AppColors.textColor7085,
                 fontSize: res.sp(14),

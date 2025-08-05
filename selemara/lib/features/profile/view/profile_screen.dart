@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Profile', centerTitle: true),
+      appBar: CustomAppBar(title: 'profile'.tr, centerTitle: true),
 
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: res.wp(20)),
@@ -93,7 +93,7 @@ class ProfileScreen extends StatelessWidget {
                 Get.toNamed(AppRoutes.editProfileScreen);
               },
               iconPath: AppImages.profileIcon,
-              title: 'Profile',
+              title: 'profile'.tr,
 
               textSize: 16,
               bottomMargin: 0,
@@ -127,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(width: res.wp(12)),
 
                     AppText(
-                      "Notification",
+                      "notification".tr,
                       color: const Color(0xFF262626),
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
@@ -165,7 +165,7 @@ class ProfileScreen extends StatelessWidget {
 
             ProfileOptionTile(
               iconPath: AppImages.lock,
-              title: 'Password',
+              title: 'password'.tr,
               onTap: () {
                 Get.toNamed(AppRoutes.updatePasswordScreen);
               },
@@ -189,7 +189,7 @@ class ProfileScreen extends StatelessWidget {
 
             ProfileOptionTile(
               iconPath: AppImages.privacy,
-              title: 'Privacy Policy',
+              title: 'privacy_policy'.tr,
               onTap: () {
                 Get.toNamed(AppRoutes.privacyPolicyScreen);
               },
@@ -213,7 +213,7 @@ class ProfileScreen extends StatelessWidget {
 
             ProfileOptionTile(
               iconPath: AppImages.logout,
-              title: 'Logout',
+              title: 'logout'.tr,
               onTap: () {
                 showBeautifulBottomSheet(context);
               },
@@ -269,14 +269,14 @@ class ProfileScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               AppText(
-                "Logout",
+                "logout".tr,
                 color: AppColors.textColor2939,
                 fontWeight: FontWeight.w500,
                 fontSize: 20,
               ),
               SizedBox(height: res.hp(40)),
               AppText(
-                "Are you sure you want to log out?",
+                "are_you_sure_you".tr,
                 color: Color(0xFF344054),
                 fontWeight: FontWeight.w400,
                 fontSize: 16,
@@ -290,32 +290,30 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: CustomButton(
-                        text: "No",
+                        text: "no".tr,
                         onTap: () {},
                         btnColor: AppColors.backGroundColor,
                         borderColor: AppColors.primaryColor,
                         isBorder: true,
                         textColor: AppColors.primaryColor,
                         borderRadius: 8,
-
                       ),
                     ),
 
                     SizedBox(width: res.wp(16)),
 
                     Expanded(
-                      child: CustomButton(text: "Yes", onTap: () {},
+                      child: CustomButton(
+                        text: "yes".tr,
+                        onTap: () {},
                         borderRadius: 8,
-
                       ),
                     ),
-
-
-
-
                   ],
                 ),
               ),
+
+              SizedBox(height: res.hp(20)),
             ],
           ),
         );

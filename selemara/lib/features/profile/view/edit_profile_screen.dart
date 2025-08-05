@@ -22,7 +22,7 @@ class EditProfileScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'My Profile',
+        title: 'my_profile'.tr,
         leading: Container(
           height: res.hp(10),
           width: res.wp(10),
@@ -60,13 +60,13 @@ class EditProfileScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(80),
                                   border: Border.all(
                                     width: 7,
-                
+
                                     color: AppColors.profileBorderColor,
                                   ),
                                 ),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(res.wp(40)),
-                
+
                                   // half-width for a perfect circle
                                   child: Image.asset(
                                     AppImages.manIcon,
@@ -76,7 +76,7 @@ class EditProfileScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                
+
                               Positioned(
                                 bottom: 10,
                                 right: 20,
@@ -94,63 +94,63 @@ class EditProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                
+
                     SizedBox(height: res.hp(20)),
-                
+
                     AppText(
-                      "Name",
+                      "name".tr,
                       color: AppColors.textColor2939,
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
                     ),
                     SizedBox(height: res.hp(8)),
-                
+
                     CustomTextField(
                       controller: controller.nameController,
-                      hintText: 'Enter your name',
+                      hintText: 'name_hint'.tr,
                     ),
-                
+
                     SizedBox(height: res.hp(20)),
-                
+
                     AppText(
-                      "Phone Number",
+                      "phone_number".tr,
                       color: AppColors.textColor2939,
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
                     ),
                     SizedBox(height: res.hp(8)),
-                
+
                     CustomTextField(
                       controller: controller.phoneController,
-                      hintText: '652 452 124',
+                      hintText: 'phone_number_hint'.tr,
                     ),
-                
+
                     SizedBox(height: res.hp(20)),
-                
+
                     AppText(
-                      "Email",
+                      "email".tr,
                       color: AppColors.textColor2939,
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
                     ),
                     SizedBox(height: res.hp(8)),
-                
+
                     CustomTextField(
                       controller: controller.emailController,
-                      hintText: 'example@gmail.com',
+                      hintText: 'enter_email'.tr,
                     ),
-                
+
                     SizedBox(height: res.hp(20)),
-                
+
                     AppText(
-                      "Gender",
+                      "gender".tr,
                       color: AppColors.textColor2939,
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
                     ),
-                
+
                     SizedBox(height: res.hp(8)),
-                
+
                     Obx(
                       () => DropdownButtonFormField<String>(
                         value:
@@ -198,27 +198,27 @@ class EditProfileScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                
+
                     SizedBox(height: res.hp(20)),
-                
+
                     AppText(
-                      "Date Of Birth",
+                      "date_of_birth".tr,
                       color: AppColors.textColor2939,
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
                     ),
                     SizedBox(height: res.hp(8)),
-                
+
                     CustomTextField(
                       controller: controller.dateBirthController,
-                      hintText: '01/01/2000',
+                      hintText: 'date_of_birth_hint'.tr,
                     ),
                   ],
                 ),
               ),
             ),
 
-            CustomButton(text: "Update Change", onTap: () {}),
+            CustomButton(text: "update_password".tr, onTap: () {}),
             SizedBox(height: res.hp(24)),
           ],
         ),
