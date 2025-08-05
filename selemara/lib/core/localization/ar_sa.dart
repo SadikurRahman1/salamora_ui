@@ -78,6 +78,7 @@ final Map<String, String> arSA = {
     'date_of_birth_hint': '01/01/2000',
 
     /// change password
+  /// //
     'existing_password': 'كلمة المرور الحالية',
     'existing_password_hunt': 'كلمة المرور القديمة',
     'new_password': 'كلمة المرور الجديدة',
