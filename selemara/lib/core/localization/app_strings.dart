@@ -18,7 +18,8 @@ class AppStrings {
 
   // Onboarding
   static const String onboardingTitle1 = "Welcome to Selemara";
-  static const String onboardingDesc1 = "Find the perfect car, service, or buyer for your needs.";
+  static const String onboardingDesc1 =
+      "Find the perfect car, service, or buyer for your needs.";
   static const String next = "Next";
   static const String skip = "Skip";
   static const String getStarted = "Get Started";

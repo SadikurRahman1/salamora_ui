@@ -4,6 +4,8 @@ import 'package:selemara/features/auth/binding/auth_binding.dart';
 import 'package:selemara/features/auth/views/forgot_password_screen.dart';
 import 'package:selemara/features/auth/views/reset_password_screen.dart';
 import 'package:selemara/features/auth/views/verify_code_screen.dart';
+import 'package:selemara/features/garage/garage_nav_bar/bindings/garage_binding.dart';
+import 'package:selemara/features/garage/garage_nav_bar/view/garage_nav_bar_screen.dart';
 import 'package:selemara/features/onboarding/views/onboarding_screen.dart';
 import 'package:selemara/features/splash/bindings/splash_binding.dart';
 import 'package:selemara/features/splash/screen/splash_screen.dart';
@@ -33,60 +35,61 @@ class AppPages {
       name: AppRoutes.login,
       page: () => const LoginScreen(),
       binding: AuthBinding(),
-
-
     ),
 
     GetPage(
       name: AppRoutes.profile,
-      page: () =>  ProfileScreen(),
+      page: () => ProfileScreen(),
       binding: ProfileBinding(),
     ),
 
     GetPage(
       name: AppRoutes.resetPassword,
-      page: () =>  ResetPasswordScreen(),
+      page: () => ResetPasswordScreen(),
       binding: ProfileBinding(),
     ),
 
     GetPage(
       name: AppRoutes.forgot,
-      page: () =>  ForgotPasswordScreen(),
+      page: () => ForgotPasswordScreen(),
       binding: ProfileBinding(),
     ),
 
     GetPage(
       name: AppRoutes.verify,
-      page: () =>  VerifyCodeScreen(),
+      page: () => VerifyCodeScreen(),
       binding: ProfileBinding(),
     ),
 
     GetPage(
       name: AppRoutes.editProfileScreen,
-      page: () =>  EditProfileScreen(),
+      page: () => EditProfileScreen(),
       binding: ProfileBinding(),
     ),
 
     GetPage(
       name: AppRoutes.updatePasswordScreen,
-      page: () =>  UpdatePasswordScreen(),
+      page: () => UpdatePasswordScreen(),
       binding: ProfileBinding(),
     ),
 
     GetPage(
       name: AppRoutes.ownerNavbarScreen,
-      page: () =>  OwnerNavbarScreen(),
+      page: () => OwnerNavbarScreen(),
       binding: ProfileBinding(),
     ),
-
-
+    GetPage(
+      name: AppRoutes.garageNavScreen,
+      page: () => GarageNavBarScreen(),
+      binding: GarageBinding(),
+    ),
 
     GetPage(name: AppRoutes.register, page: () => const RegisterScreen()),
 
-        GetPage(name: AppRoutes.privacyPolicyScreen, page: () =>  PrivacyPolicyScreen()),
-
-
-
+    GetPage(
+      name: AppRoutes.privacyPolicyScreen,
+      page: () => PrivacyPolicyScreen(),
+    ),
 
     // GetPage(
     //   name: AppRoutes.home,
