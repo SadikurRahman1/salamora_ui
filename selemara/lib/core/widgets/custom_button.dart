@@ -11,6 +11,8 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool isBorder;
   final Color? textColor;
+  final Color? borderColor;
+  final double? borderRadius;
 
   const CustomButton({
     super.key,
@@ -21,6 +23,7 @@ class CustomButton extends StatelessWidget {
     this.isBorder = false,
     this.btnColor = AppColors.primaryColor,
     this.textColor,
+    this.borderColor, this.borderRadius,
   });
 
   @override
@@ -34,8 +37,8 @@ class CustomButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: btnColor,
-          border: isBorder ? Border.all(color: AppColors.borderColor) : null,
-          borderRadius: BorderRadius.circular(responsive.wp(20)),
+          border: isBorder ? Border.all(color:borderColor?? AppColors.borderColor) : null,
+          borderRadius: BorderRadius.circular(responsive.wp(borderRadius??20)),
         ),
         child: AppText(text, color: textColor ?? Color(0xFFFFFFFF)),
       ),

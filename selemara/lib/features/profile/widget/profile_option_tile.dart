@@ -13,61 +13,70 @@ class ProfileOptionTile extends StatelessWidget {
   final EdgeInsets? padding;
   final String? backArrow;
   final BoxDecoration? boxDecoration;
-
+  final VoidCallback? onTap;
 
   const ProfileOptionTile({
     super.key,
     required this.iconPath,
     required this.title,
-
     this.bottomMargin,
     this.boxDecoration,
     this.padding,
     this.backArrow,
     this.textSize,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final res = AppResponsive();
+
     return Container(
-      padding:
-          padding ??
-          EdgeInsets.only(
-
-            top: res.hp(12),
-            left: res.wp(12),
-            right: res.wp(12),
-          ),
-
+      decoration: boxDecoration,
       margin: EdgeInsets.only(bottom: bottomMargin ?? 12),
-      child: Row(
-        children: [
-          Expanded(
+      child: Material(
+        color: AppColors.backGroundColor,
+        child: InkWell(
+          borderRadius: boxDecoration?.borderRadius as BorderRadius? ?? BorderRadius.circular(0),
+          onTap: onTap, // Tap handler here
+          splashColor: Colors.transparent,    // no ripple color
+          highlightColor: Colors.transparent, // optional highlight
+          child: Padding(
+            padding: padding ??
+                EdgeInsets.only(
+                  top: res.hp(12),
+                  left: res.wp(12),
+                  right: res.wp(12),
+                ),
             child: Row(
               children: [
-                Image.asset(iconPath, height: res.hp(24), width: res.wp(24)),
-                SizedBox(width: res.wp(12)),
-                Flexible(
-                  child: AppText(
-                    title,
-
-                    color: AppColors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
+                Expanded(
+                  child: Row(
+                    children: [
+                      Image.asset(iconPath, height: res.hp(24), width: res.wp(24)),
+                      SizedBox(width: res.wp(12)),
+                      Flexible(
+                        child: AppText(
+                          title,
+                          color: AppColors.black,
+                          fontSize: textSize ?? 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+                backArrow == null
+                    ? Image.asset(
+                  AppImages.backArrow,
+                  height: res.hp(24),
+                  width: res.wp(24),
+                )
+                    : SizedBox.shrink(),
               ],
             ),
           ),
-          backArrow == null
-              ? Image.asset(
-                AppImages.backArrow,
-                height: res.hp(24),
-                width: res.wp(24),
-              )
-              : SizedBox.shrink(),
-        ],
+        ),
       ),
     );
   }
