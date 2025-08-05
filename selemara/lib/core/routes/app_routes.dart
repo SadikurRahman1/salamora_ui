@@ -9,7 +9,6 @@ class AppRoutes {
   static const profile = '/profile';
   static const editProfileScreen = '/editProfileScreen';
   static const privacyPolicyScreen = '/privacyPolicyScreen';
-  static const ownerNavbarScreen = '/ownerNavbarScreen';
 
 
   static const updatePasswordScreen = '/updatePasswordScreen';

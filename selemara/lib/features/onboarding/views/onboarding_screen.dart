@@ -60,7 +60,7 @@ class OnboardingScreen extends StatelessWidget {
                         AppTextInter(
                           item.description,
                           textAlign: TextAlign.center,
-                          color: AppColors.secondryTextColor.withValues(
+                          color: AppColors.textColor.withValues(
                             alpha: 0.8,
                           ),
                           fontSize: res.sp(14),
@@ -80,8 +80,8 @@ class OnboardingScreen extends StatelessWidget {
                   return AnimatedContainer(
                     duration: 300.milliseconds,
                     margin: EdgeInsets.symmetric(horizontal: res.wp(4)),
-                    height: res.hp(16),
-                    width: res.wp(16),
+                    height: res.wp(12),
+                    width: res.wp(12),
                     decoration: BoxDecoration(
                       color:
                           selected ? AppColors.lightCream : AppColors.geryColor,

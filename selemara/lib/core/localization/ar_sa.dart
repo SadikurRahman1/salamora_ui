@@ -58,6 +58,19 @@ final Map<String, String> arSA = {
   'onboard_desc_4':
       'يمكن للكراجات تسجيل الخدمات، والوكلاء بيع السيارات بسجلات موثقة — كل ذلك متزامن مع منصتنا.',
 
+  'email_verification_info': 'أدخل رقم هاتفك، سنرسل رمز التحقق إلى رقم الهاتف',
+  'forgot_password_title': 'نسيت كلمة المرور',
+  'continue': 'متابعة',
+
+  'verify_code': 'تحقق من الرمز',
+  'enter_sent_code': 'يرجى إدخال الرمز الذي أرسلناه للتو إلى',
+
+  'submit': 'إرسال',
+  'reset_password': 'إعادة تعيين كلمة المرور',
+  'password_requirement':
+      'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وتحتوي على مزيج من الحروف والأرقام',
+
+
 
     /// Profile screen add by Arif
     'profile': 'الملف الشخصي',
@@ -108,6 +121,7 @@ final Map<String, String> arSA = {
     'you_can_access_update': 'يمكنك الوصول إلى بياناتك أو تحديثها أو حذفها، والانسحاب من الاتصالات في أي وقت.',
     'contact_us': 'اتصل بنا',
     'for_questions_or': 'لأي أسئلة أو استفسارات، راسلنا عبر البريد الإلكتروني [Insert Email].',
+
 
 
 
