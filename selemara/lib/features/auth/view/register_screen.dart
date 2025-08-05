@@ -21,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // String? selectedUserType;
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     final AuthController authController = Get.find<AuthController>();
     final res = AppResponsive();
     return Scaffold(
@@ -48,7 +48,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               SizedBox(height: res.hp(40)),
               Form(
-                key: _formKey,
+                key: formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

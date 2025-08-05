@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     final AuthController authController = Get.find<AuthController>();
     final res = AppResponsive();
     return Scaffold(
@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: res.hp(80)),
               Form(
-                key: _formKey,
+                key: formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
