@@ -56,6 +56,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         hintText: widget.hintText,
         hintStyle: GoogleFonts.inter(
           color: AppColors.textColor.withValues(alpha: 0.5),
+          fontSize: res.sp(14),
+          fontWeight: FontWeight.w400
         ),
         prefixIcon:
             widget.prefixIcon != null

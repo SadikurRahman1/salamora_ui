@@ -2,6 +2,7 @@ final Map<String, String> enUS = {
   // Auth
   'login': 'Login',
   'sign_up': 'Sign Up',
+  'register': 'Register',
   'remember_me': 'Remember me',
   'forgot_password': 'Forgot password?',
   'already_have_account': 'Already have an account?',
@@ -56,4 +57,14 @@ final Map<String, String> enUS = {
   'onboard_title_4': 'Grow Your Garage Business',
   'onboard_desc_4':
       'Garages can log services done, dealerships can sell cars with verified history — all synced with our platform.',
+  'email_verification_info':
+      'Enter your phone number, we will send a verification code to the phone number',
+  'forgot_password_title': 'Forgot Password',
+  'continue': 'Continue',
+  'verify_code': 'Verify Code',
+  'enter_sent_code': 'Please enter the code we just sent to',
+  'submit': 'Submit',
+  'reset_password': 'Reset Password',
+  'password_requirement':
+      'Your password must be at least 8 characters long and include a combination of letters, numbers',
 };
