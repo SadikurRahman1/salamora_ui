@@ -57,4 +57,58 @@ final Map<String, String> arSA = {
   'onboard_title_4': 'نمِّ أعمال كراجك',
   'onboard_desc_4':
       'يمكن للكراجات تسجيل الخدمات، والوكلاء بيع السيارات بسجلات موثقة — كل ذلك متزامن مع منصتنا.',
+
+
+    /// Profile screen add by Arif
+    'profile': 'الملف الشخصي',
+    'notification': 'الإشعارات',
+    'logout': 'تسجيل الخروج',
+    'are_you_sure_you': 'هل أنت متأكد أنك تريد تسجيل الخروج؟',
+    'no': 'لا',
+    'yes': 'نعم',
+
+    /// edit profile
+    'name': 'الاسم',
+    'my_profile': 'ملفي الشخصي',
+
+    'name_hint': 'أدخل اسمك',
+    'phone_number_hint': 'أدخل رقم هاتفك',
+    'gender': 'الجنس',
+    'date_of_birth': 'تاريخ الميلاد',
+    'date_of_birth_hint': '01/01/2000',
+
+    /// change password
+  /// //
+    'existing_password': 'كلمة المرور الحالية',
+    'existing_password_hunt': 'كلمة المرور القديمة',
+    'new_password': 'كلمة المرور الجديدة',
+    'update_password': 'تحديث كلمة المرور',
+
+    /// privacy policy screen add by Arif
+    'introduction': 'مقدمة',
+    'we_value_your_privacy': 'نحن نقدر خصوصيتك ونلتزم بحماية معلوماتك الشخصية. باستخدامك لتطبيق [App Name]، فإنك توافق على جمع واستخدام بياناتك كما هو موضح في هذه السياسة.',
+
+    'information_we_collect': 'المعلومات التي نجمعها',
+    'we_may_collect:': 'قد نقوم بجمع:',
+    'personal_information': 'المعلومات الشخصية: الاسم، البريد الإلكتروني، رقم الهاتف، وتفاصيل الدفع.',
+    'location_data': 'بيانات الموقع: لعرض خدمات غسيل السيارات القريبة.',
+
+    'usage_data_app': 'بيانات الاستخدام: تفاعلات التطبيق والتفضيلات',
+    'how_we_use_your': 'كيف نستخدم بياناتك',
+    'your_information_is': 'تُستخدم معلوماتك لـ:',
+    'facilitate_bookings_and': 'تسهيل الحجوزات والمدفوعات.',
+    'improve_app_functionality.': 'تحسين وظائف التطبيق.',
+    'send_updates_and_offers.': 'إرسال التحديثات والعروض.',
+    'sharing_your_ata': 'مشاركة بياناتك',
+    'we_only_share_data': 'نشارك البيانات فقط مع مزودي الخدمة الموثوقين، شركاء غسيل السيارات، أو السلطات القانونية عند الحاجة.',
+
+    'security': 'الأمان',
+    'we_use_secure_methods': 'نستخدم طرقًا آمنة لحماية بياناتك ولكن لا يمكننا ضمان الأمان الكامل.',
+    'your_rights': 'حقوقك',
+    'you_can_access_update': 'يمكنك الوصول إلى بياناتك أو تحديثها أو حذفها، والانسحاب من الاتصالات في أي وقت.',
+    'contact_us': 'اتصل بنا',
+    'for_questions_or': 'لأي أسئلة أو استفسارات، راسلنا عبر البريد الإلكتروني [Insert Email].',
+
+
+
 };
