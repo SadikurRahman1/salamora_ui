@@ -16,4 +16,5 @@ class AppRoutes {
 
 
   static const updatePasswordScreen = '/updatePasswordScreen';
+  static const garageNavScreen = "/garageNavBarScreen";
 }
