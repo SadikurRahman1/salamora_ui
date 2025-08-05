@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:selemara/features/profile/controller/update_password_controller.dart';
-
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_images.dart';
-import '../../../core/constants/app_responsive.dart';
-import '../../../core/widgets/app_text.dart';
-import '../../../core/widgets/custom_appbar.dart';
-import '../../../core/widgets/custom_button.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_images.dart';
+import '../../../../core/constants/app_responsive.dart';
+import '../../../../core/widgets/app_text.dart';
+import '../../../../core/widgets/custom_appbar.dart';
+import '../../../../core/widgets/custom_button.dart';
+import '../controller/update_password_controller.dart';
 import '../widget/custom_text_field.dart';
 import 'package:get/get.dart';
 class UpdatePasswordScreen extends StatelessWidget {

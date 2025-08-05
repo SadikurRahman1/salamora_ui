@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/routes/app_routes.dart';
-import 'package:selemara/features/profile/controller/profile_controller.dart';
 
-import '../../../core/constants/app_images.dart';
-import '../../../core/constants/app_responsive.dart';
-import '../../../core/widgets/app_text.dart';
-import '../../../core/widgets/custom_appbar.dart';
-import '../../../core/widgets/custom_button.dart';
+import '../../../../core/constants/app_images.dart';
+import '../../../../core/constants/app_responsive.dart';
+import '../../../../core/widgets/app_text.dart';
+import '../../../../core/widgets/custom_appbar.dart';
+import '../../../../core/widgets/custom_button.dart';
+
+import '../controller/profile_controller.dart';
 import '../widget/profile_option_tile.dart';
 import 'package:get/get.dart';
 

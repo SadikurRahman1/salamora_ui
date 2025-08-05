@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/widgets/app_text.dart';
-import 'package:selemara/features/profile/controller/edit_profile_controller.dart';
 
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_responsive.dart';
-import '../../../core/widgets/custom_appbar.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_responsive.dart';
 import 'package:get/get.dart';
 
-import '../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/custom_appbar.dart';
+import '../../../../core/widgets/custom_button.dart';
+import '../controller/edit_profile_controller.dart';
 import '../widget/custom_text_field.dart';
 
 class EditProfileScreen extends StatelessWidget {

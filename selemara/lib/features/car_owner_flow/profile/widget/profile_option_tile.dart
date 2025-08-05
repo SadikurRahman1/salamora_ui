@@ -3,7 +3,8 @@ import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
-import '../../../core/constants/app_responsive.dart';
+import '../../../../core/constants/app_responsive.dart';
+
 
 class ProfileOptionTile extends StatelessWidget {
   final String iconPath;
