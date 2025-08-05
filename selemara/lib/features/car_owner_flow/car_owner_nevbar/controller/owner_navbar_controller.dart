@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
-import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/features/car_owner_flow/profile/view/profile_screen.dart';
-
 import '../../../../core/constants/app_responsive.dart';
 
 
