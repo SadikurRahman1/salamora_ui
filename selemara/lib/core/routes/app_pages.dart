@@ -1,8 +1,11 @@
 import 'package:get/get.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/features/auth/binding/auth_binding.dart';
-import 'package:selemara/features/auth/view/login_screen.dart';
-import 'package:selemara/features/auth/view/register_screen.dart';
+import 'package:selemara/features/auth/views/forgot_password_screen.dart';
+import 'package:selemara/features/auth/views/login_screen.dart';
+import 'package:selemara/features/auth/views/register_screen.dart';
+import 'package:selemara/features/auth/views/reset_password_screen.dart';
+import 'package:selemara/features/auth/views/verify_code_screen.dart';
 import 'package:selemara/features/onboarding/views/onboarding_screen.dart';
 import 'package:selemara/features/profile/binding/profile_binding.dart';
 import 'package:selemara/features/profile/view/profile_screen.dart';
@@ -29,47 +32,40 @@ class AppPages {
       name: AppRoutes.login,
       page: () => const LoginScreen(),
       binding: AuthBinding(),
-
-
     ),
+
+    GetPage(name: AppRoutes.forgot, page: () => const ForgotPasswordScreen()),
 
     GetPage(
       name: AppRoutes.profile,
-      page: () =>  ProfileScreen(),
+      page: () => ProfileScreen(),
       binding: ProfileBinding(),
     ),
 
     GetPage(
       name: AppRoutes.editProfileScreen,
-      page: () =>  EditProfileScreen(),
+      page: () => EditProfileScreen(),
       binding: ProfileBinding(),
     ),
 
     GetPage(
       name: AppRoutes.updatePasswordScreen,
-      page: () =>  UpdatePasswordScreen(),
+      page: () => UpdatePasswordScreen(),
       binding: ProfileBinding(),
     ),
 
-
-
     GetPage(name: AppRoutes.register, page: () => const RegisterScreen()),
 
-        GetPage(name: AppRoutes.privacyPolicyScreen, page: () =>  PrivacyPolicyScreen()),
+    GetPage(
+      name: AppRoutes.privacyPolicyScreen,
+      page: () => PrivacyPolicyScreen(),
+    ),
 
-
-
-
-    // GetPage(
-    //   name: AppRoutes.home,
-    //   page: () => const HomePage(),
-    //   // You can create a HomeBinding() if needed
-    // ),
-    // GetPage(
-    //   name: AppRoutes.profile,
-    //   page: () => const ProfilePage(),
-    //   binding: ProfileBinding(),
-    // ),
+    GetPage(name: AppRoutes.verify, page: () => const VerifyCodeScreen()),
+    GetPage(
+      name: AppRoutes.resetPassword,
+      page: () => const ResetPasswordScreen(),
+    ),
   ];
 
   static final initialBinding = SplashBinding();

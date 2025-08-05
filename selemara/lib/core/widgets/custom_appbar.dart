@@ -5,7 +5,6 @@ import 'package:selemara/core/widgets/app_text.dart';
 
 import '../constants/app_responsive.dart';
 
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget>? actions;
@@ -39,7 +38,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       forceMaterialTransparency: true,
       leading: GestureDetector(
         onTap: () {
-          
           Get.back();
         },
         child: Padding(padding: EdgeInsets.only(left: 10), child: leading),
