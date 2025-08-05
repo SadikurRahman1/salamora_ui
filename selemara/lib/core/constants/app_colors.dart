@@ -5,6 +5,7 @@ class AppColors {
 
   static const Color primaryTextColor = Color(0xFF101828);
   static const Color textColor2939 = Color(0xFF1D2939);
+  static const Color textColor626 = Color(0xFF262626);
 
 
   static const Color whitColor = Color(0xFFFFFFFF);
@@ -12,7 +13,8 @@ class AppColors {
   static const Color backGroundColor = Color(0xFFFCFCFC);
   static const skipBtnColor = Color(0xFF1F2C37);
   static const Color textColor = Color(0xFF161922);
-  static const Color textColor7085 = Color(0xFF667085);
+    static const Color textColor7085 = Color(0xFF667085);
+    static const Color textColor2A2A = Color(0xFF2A2A2A);
 
 
 
@@ -24,6 +26,8 @@ class AppColors {
   static const Color darkBlueGrey = Color(0xFF1F2C37);
   static const Color graphite = Color(0xFF45474E);
   static const Color slateGray = Color(0xFF667085);
+  static const Color greenColor = Color(0xFF00A16E);
+  static const Color orange = Color(0xFFFF5722);
 
   static const Color black = Color(0xFF000000);
   static const Color borderEditText = Color(0xFFD0D5DD);

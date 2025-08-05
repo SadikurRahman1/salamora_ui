@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/features/car_owner_flow/profile/view/profile_screen.dart';
 import '../../../../core/constants/app_responsive.dart';
+import '../../home/view/home_screen_owner.dart';
 
 
 class OwnerNavbarController extends GetxController {
@@ -19,7 +20,7 @@ class OwnerNavbarController extends GetxController {
   }
 
   final List<Widget> screens = [
-    ProfileScreen(),
+    HomeScreenOwner(),
     ProfileScreen(),
     ProfileScreen(),
 

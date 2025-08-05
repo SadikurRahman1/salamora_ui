@@ -8,6 +8,13 @@ class AppIcons {
   static const reminderActive = "assets/icons/reminder_active.png";
   static const profileInactive = "assets/icons/profile_inactive.png";
   static const profileActive = "assets/icons/profile_active.png";
+  static const profileHome = "assets/icons/profile_home.png";
+  static const notificationIcon = "assets/icons/notification_icon.png";
+  static const car = "assets/icons/car.png";
+  static const check = "assets/icons/check.png";
+  static const check1 = "assets/icons/check1.png";
+  static const notificationHome = "assets/icons/notification_home.png";
+  static const dueSoon = "assets/icons/due_soon.png";
 
 
 
