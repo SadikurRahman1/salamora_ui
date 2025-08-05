@@ -103,7 +103,6 @@ class LoginScreen extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.toNamed(AppRoutes.profile);
                           },
                           child: AppText(
                             'forgot_password'.tr,
@@ -115,7 +114,12 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: res.hp(80)),
-                    CustomButton(text: 'login'.tr, onTap: () {}),
+                    CustomButton(text: 'login'.tr, onTap: () {
+
+                      Get.toNamed(AppRoutes.ownerNavbarScreen);
+
+
+                    }),
                     SizedBox(height: res.hp(20)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

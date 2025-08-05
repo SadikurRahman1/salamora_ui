@@ -10,6 +10,7 @@ import 'package:selemara/features/splash/screen/splash_screen.dart';
 
 import '../../features/auth/views/login_screen.dart';
 import '../../features/auth/views/register_screen.dart';
+import '../../features/car_owner_flow/car_owner_nevbar/view/owner_navbar_screen.dart';
 import '../../features/car_owner_flow/profile/binding/profile_binding.dart';
 import '../../features/car_owner_flow/profile/view/edit_profile_screen.dart';
 import '../../features/car_owner_flow/profile/view/profile_screen.dart';
@@ -69,6 +70,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.updatePasswordScreen,
       page: () =>  UpdatePasswordScreen(),
+      binding: ProfileBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.ownerNavbarScreen,
+      page: () =>  OwnerNavbarScreen(),
       binding: ProfileBinding(),
     ),
 

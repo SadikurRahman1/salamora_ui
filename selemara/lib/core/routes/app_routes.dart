@@ -12,6 +12,7 @@ class AppRoutes {
   static const privacyPolicyScreen = '/privacyPolicyScreen';
   static const forgot = '/forgot';
   static const verify = '/verify';
+  static const ownerNavbarScreen = '/ownerNavbarScreen';
 
 
   static const updatePasswordScreen = '/updatePasswordScreen';
