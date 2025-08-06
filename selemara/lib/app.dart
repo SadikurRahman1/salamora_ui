@@ -20,8 +20,13 @@ class MyApp extends StatelessWidget {
       getPages: AppPages.pages,
       initialBinding: AppPages.initialBinding,
       builder: (context, child) {
-        AppResponsive().init(context);
-        return child!;
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            // Initialize after layout constraints are available
+            AppResponsive().init(context);
+            return child!;
+          },
+        );
       },
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.lightCream,

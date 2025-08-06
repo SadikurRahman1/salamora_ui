@@ -25,7 +25,10 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       body: BackgroundGradient(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
+          padding: EdgeInsets.symmetric(
+            horizontal: res.wp(16),
+            vertical: res.hp(20),
+          ),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,6 +62,7 @@ class RegisterScreen extends StatelessWidget {
                           //   selectedUserType = val;
                           // });
                         },
+                        res: res,
                       ),
                       SizedBox(height: res.hp(10)),
                       AppText(
@@ -130,38 +134,46 @@ class RegisterScreen extends StatelessWidget {
                         validator: Validators.password,
                         prefixIcon: AppImages.lockIcon,
                       ),
-                      SizedBox(height: res.hp(5)),
+                      SizedBox(height: res.hp(15)),
                       Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
                               Obx(
-                                () => Checkbox(
-                                  side: BorderSide(
-                                    color: AppColors.primaryColor,
+                                () => Transform.scale(
+                                  scale:
+                                    res.isTablet?  2.0:1.0, // Increase/decrease size (1.0 = default)
+                                  child: Checkbox(
+                                    side: BorderSide(
+                                      color: AppColors.primaryColor,
+                                    ),
+                                    activeColor: AppColors.primaryColor,
+                                    checkColor: AppColors.primaryColor,
+                                    fillColor: WidgetStateProperty.all<Color>(
+                                      Colors.white,
+                                    ),
+                                    value: authController.agree.value,
+                                    onChanged: (value) {
+                                      authController.toggleAgree();
+                                    },
                                   ),
-                                  activeColor: AppColors.primaryColor,
-                                  checkColor: AppColors.primaryColor,
-                                  fillColor: WidgetStateProperty.all<Color>(
-                                    Colors.white,
-                                  ),
-                                  value: authController.agree.value,
-                                  onChanged: (value) {
-                                    authController.toggleAgree();
-                                  },
                                 ),
                               ),
 
                               RichText(
+                                textAlign: TextAlign.start,
                                 text: TextSpan(
                                   text: 'agree_prefix'.tr,
                                   style: GoogleFonts.inter(
                                     color: AppColors.graphite,
+                                    fontSize: res.sp(14),
                                   ),
                                   children: [
                                     TextSpan(
                                       text: 'terms_of_service'.tr,
+
                                       style: GoogleFonts.inter(
                                         color: AppColors.primaryColor,
                                       ),
@@ -190,8 +202,8 @@ class RegisterScreen extends StatelessWidget {
                       CustomButton(
                         text: 'register_account'.tr,
                         onTap: () {
-                          Get.offAllNamed(AppRoutes.garageNavScreen);
-                          // if (formKey.currentState!.validate()) {}
+                          // Get.offAllNamed(AppRoutes.garageNavScreen);
+                          if (formKey.currentState!.validate()) {}
                         },
                       ),
                       SizedBox(height: res.hp(10)),

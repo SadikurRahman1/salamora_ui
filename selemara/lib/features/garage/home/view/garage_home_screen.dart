@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
+import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
+import 'package:selemara/features/garage/home/widget/banner_card.dart';
 
 class GarageHomeScreen extends StatelessWidget {
   const GarageHomeScreen({super.key});
@@ -21,7 +23,7 @@ class GarageHomeScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Image.asset("assets/images/user_profile.png"),
+                    Image.asset(AppImages.userProfile),
                     SizedBox(width: res.wp(5)),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,48 +44,19 @@ class GarageHomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.primaryColor.withValues(alpha: 0.2),
-                  ),
-                  child: Image.asset(AppIcons.notificationIcon),
+                Image.asset(
+                  AppIcons.notificationIconImage,
+                  width: res.wp(30),
+                  height: res.hp(30),
                 ),
               ],
             ),
-            Container(
-              width: res.screenWidth,
-              height: res.hp(130),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(res.sp(16)),
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF00A16E).withValues(alpha: 0.5),
-                    Color(0xFF2563EB),
-                  ],
-                ),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      AppText(
-                        "Elite Auto Service Center",
-                        color: AppColors.textColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      
-                      Image.asset(AppIcons.cardTrust),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            SizedBox(height: res.hp(50)),
+            BannerCard(res: res),
           ],
         ),
       ),
     );
   }
 }
+

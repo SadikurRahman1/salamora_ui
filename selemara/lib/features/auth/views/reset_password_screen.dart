@@ -78,7 +78,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     CustomButton(
                       text: 'submit'.tr,
                       onTap: () {
-                        Get.toNamed(AppRoutes.forgot);
+                        Get.toNamed(AppRoutes.login);
                       },
                     ),
                     SizedBox(height: res.hp(20)),
