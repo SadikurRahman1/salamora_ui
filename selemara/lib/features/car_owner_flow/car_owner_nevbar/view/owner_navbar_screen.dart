@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:selemara/features/car_owner_flow/car_owner_nevbar/controller/owner_navbar_controller.dart';
 
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_responsive.dart';
 class OwnerNavbarScreen extends StatelessWidget {
   OwnerNavbarScreen({super.key}) {
 
@@ -10,6 +11,8 @@ class OwnerNavbarScreen extends StatelessWidget {
 
     Get.put(OwnerNavbarController());
   }
+  final res=AppResponsive();
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,24 +25,23 @@ class OwnerNavbarScreen extends StatelessWidget {
         builder: (navController) {
           return Container(
             padding: const EdgeInsets.only(
-              left: 18,
-              right: 1,
+              left: 10,
+              right: 10,
               top: 12,
               bottom: 1,
             ),
             decoration: BoxDecoration(
-              color: AppColors.backGroundColor,
+              color: AppColors.whitColor, // Container color
               boxShadow: [
-                // BoxShadow(
-                //   color: AppColors.navbarShadow,
-                //   spreadRadius: 4,
-                //   blurRadius: 4,
-                //   offset: Offset(0, 0),
-                // ),
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1), // Light shadow for separation
+                  blurRadius: 8,
+                  // Shadow will appear upwards
+                ),
               ],
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
               ),
             ),
             child: Theme(
@@ -80,7 +82,7 @@ class OwnerNavbarScreen extends StatelessWidget {
                                 : '',
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: 14,
+                              fontSize: res.sp(14),
                               color: isActive
                                   ? AppColors.primaryColor
                                   : AppColors.primaryTextColor,
