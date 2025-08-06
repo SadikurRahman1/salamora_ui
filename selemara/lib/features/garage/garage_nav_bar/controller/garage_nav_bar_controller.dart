@@ -8,13 +8,11 @@ class GarageNavBarController extends GetxController {
 
   final RxInt _selectedIndex = 0.obs;
 
-  int get currentIndex => _selectedIndex.value;
+  RxInt get currentIndex => _selectedIndex;
 
   void changeIndex(int index) {
     if (index >= 0 && index < OwnerNavbarItems.screens.length) {
       _selectedIndex.value = index;
     }
   }
-
-  
 }
