@@ -7,7 +7,6 @@ class AppColors {
   static const Color textColor2939 = Color(0xFF1D2939);
   static const Color textColor626 = Color(0xFF262626);
 
-
   static const Color whitColor = Color(0xFFFFFFFF);
 
   static const Color backGroundColor = Color(0xFFFCFCFC);
@@ -15,8 +14,6 @@ class AppColors {
   static const Color textColor = Color(0xFF161922);
     static const Color textColor7085 = Color(0xFF667085);
     static const Color textColor2A2A = Color(0xFF2A2A2A);
-
-
 
   static const Color secondryTextColor = Color(0xFF161922);
   static const Color geryColor = Color(0xFFA9A9A9);
@@ -33,5 +30,4 @@ class AppColors {
   static const Color borderEditText = Color(0xFFD0D5DD);
 
   static const Color lightGray = Color(0xFFAEAEB2);
-
 }

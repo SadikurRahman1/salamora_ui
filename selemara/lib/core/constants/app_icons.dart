@@ -8,6 +8,7 @@ class AppIcons {
   static const reminderActive = "assets/icons/reminder_active.png";
   static const profileInactive = "assets/icons/profile_inactive.png";
   static const profileActive = "assets/icons/profile_active.png";
+
   static const profileHome = "assets/icons/profile_home.png";
   static const notificationIcon = "assets/icons/notification_icon.png";
   static const car = "assets/icons/car.png";
@@ -20,4 +21,12 @@ class AppIcons {
 
 
 
+
+  static const genearteInActive = "assets/icons/generate.png";
+  static const genearteActive = "assets/icons/generateactive.png";
+  static const notificationIcon = "assets/icons/notification.png";
+  static const markersIcon = "assets/icons/marker.png";
+  static const cardSide = "assets/images/car_side.png";
+  static const cardTrust = "assets/icons/shield_trust.png";
 }
+

@@ -190,7 +190,8 @@ class RegisterScreen extends StatelessWidget {
                       CustomButton(
                         text: 'register_account'.tr,
                         onTap: () {
-                          if (formKey.currentState!.validate()) {}
+                          Get.offAllNamed(AppRoutes.garageNavScreen);
+                          // if (formKey.currentState!.validate()) {}
                         },
                       ),
                       SizedBox(height: res.hp(10)),

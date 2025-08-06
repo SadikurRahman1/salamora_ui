@@ -126,7 +126,10 @@ final Map<String, String> enUS = {
   'contact_us': 'Contact Us',
   'for_questions_or': 'For questions or concerns, email us at [Insert Email].',
 
-
+  'home': 'Home',
+  'services': 'Services',
+  'generate': 'Generate',
+  
 
 
 
