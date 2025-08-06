@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 
@@ -18,10 +19,10 @@ class OwnerNavbarItems {
   ];
 
   static final List<String> labels = [
-    'Home',
-    'Services',
-    'Generate',
-    'Profile',
+    'home'.tr,
+    'services'.tr,
+    'generate'.tr,
+    'profile'.tr,
   ];
 
   static List<Image> get activeIcons => [
