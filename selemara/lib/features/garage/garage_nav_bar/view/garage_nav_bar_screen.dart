@@ -14,6 +14,9 @@ class GarageNavBarScreen extends StatelessWidget {
         Get.find<GarageNavBarController>();
 
     return Scaffold(
+      body: Obx(
+        () => OwnerNavbarItems.screens[navController.currentIndex.value],
+      ),
       bottomNavigationBar: Obx(
         () => Container(
           decoration: BoxDecoration(
@@ -24,7 +27,7 @@ class GarageNavBarScreen extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha:0.1), 
+                color: Colors.black.withValues(alpha: 0.1),
                 blurRadius: 10,
                 spreadRadius: 1,
                 offset: const Offset(0, -2),
@@ -39,7 +42,7 @@ class GarageNavBarScreen extends StatelessWidget {
             child: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               backgroundColor: AppColors.backGroundColor,
-              currentIndex: navController.currentIndex,
+              currentIndex: navController.currentIndex.value,
               selectedItemColor: AppColors.primaryColor,
               unselectedItemColor: AppColors.whitColor,
               onTap: navController.changeIndex,
@@ -51,7 +54,9 @@ class GarageNavBarScreen extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
               ),
-              items: List.generate(OwnerNavbarItems.activeIcons.length, (index) {
+              items: List.generate(OwnerNavbarItems.activeIcons.length, (
+                index,
+              ) {
                 final isActive = navController.currentIndex == index;
 
                 return BottomNavigationBarItem(
@@ -70,9 +75,10 @@ class GarageNavBarScreen extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 14,
-                          color: isActive
-                              ? AppColors.primaryColor
-                              : AppColors.primaryTextColor,
+                          color:
+                              isActive
+                                  ? AppColors.primaryColor
+                                  : AppColors.primaryTextColor,
                         ),
                       ),
                     ],

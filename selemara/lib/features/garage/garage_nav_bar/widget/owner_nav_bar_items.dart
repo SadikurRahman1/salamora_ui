@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/features/garage/home/view/garage_home_screen.dart';
 
 class OwnerNavbarItems {
   static final res = AppResponsive();
 
   static final List<Widget> screens = const [
-    Text("Home"),
-    Text("Home"),
+    GarageHomeScreen(),
+    GarageHomeScreen(),
     Text("Home"),
     Text("Home"),
 
