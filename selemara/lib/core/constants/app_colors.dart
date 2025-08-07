@@ -20,6 +20,7 @@ class AppColors {
   static const Color geryColor = Color(0xFFA9A9A9);
   static const Color lightCream = Color(0xFFFDFCF9);
   static const Color borderColor = Color(0xFFD2DAE3);
+  static const Color borderColor3f3 = Color(0xFFf3f3f3);
   static const Color profileBorderColor = Color(0xFFF2F4F7);
   static const Color darkBlueGrey = Color(0xFF1F2C37);
   static const Color graphite = Color(0xFF45474E);

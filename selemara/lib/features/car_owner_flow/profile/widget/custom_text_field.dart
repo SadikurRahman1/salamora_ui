@@ -8,13 +8,15 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final Color? bordarColor;
+  final double? borderRadius;
 
   const CustomTextField({
     super.key,
     required this.controller,
     required this.hintText,
     this.keyboardType,
-    this.obscureText = false,
+    this.obscureText = false, this.bordarColor, this.borderRadius,
   });
 
   @override
@@ -30,23 +32,27 @@ class CustomTextField extends StatelessWidget {
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(
-            color: Color(0xFFD0D5DD),
+          borderRadius: BorderRadius.circular(borderRadius??8),
+          borderSide: BorderSide(
+            color: bordarColor?? AppColors.borderEditText,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(
-            color: AppColors.borderEditText,
+          borderRadius: BorderRadius.circular(borderRadius??8),
+          borderSide: BorderSide(
+            color:bordarColor?? AppColors.borderEditText,
             width: 1,
           ),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+            borderRadius: BorderRadius.circular(borderRadius??8),
+            borderSide: BorderSide(
+              color:bordarColor?? AppColors.borderEditText,
+              width: 1,
+            ),
+
       ),
     )
-    ;
+    );
   }
 }

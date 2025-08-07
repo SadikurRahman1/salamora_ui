@@ -30,4 +30,5 @@ class AppIcons {
   static const backArrow = "assets/icons/back_arrow.png";
   static const plus1 = "assets/icons/plus1.png";
   static const model = "assets/icons/model.png";
+  static const upload = "assets/icons/upload.png";
 }

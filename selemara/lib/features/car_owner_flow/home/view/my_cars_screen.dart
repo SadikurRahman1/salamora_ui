@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
+import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
-
+import 'package:get/get.dart';
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/app_text.dart';
@@ -43,7 +44,9 @@ class MyCarsScreen extends StatelessWidget {
                     width: res.wp(128),
                     child: CustomButton(
                       text: "Add Vehicle ",
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoutes.addVehicleScreen);
+                      },
 
                       iconPath: AppIcons.plus1,
                     ),
