@@ -61,7 +61,7 @@ class GarageHomeScreen extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
             SliverToBoxAdapter(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   GarageFeatureCard(
                     res: res,
@@ -78,29 +78,26 @@ class GarageHomeScreen extends StatelessWidget {
             ),
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
             SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: res.hp(0)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomButton(
-                      width: res.wp(160),
-                      height: res.hp(60),
-                      iconPath: AppIcons.plus,
-                      borderRadius: res.sp(30),
-                      text: "Add Vehicle",
-                      onTap: () {},
-                    ),
-                    CustomButton(
-                      width: res.wp(160),
-                      height: res.hp(60),
-                      btnColor: AppColors.orange,
-                      borderRadius: res.sp(30),
-                      text: "Request Service",
-                      onTap: () {},
-                    ),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomButton(
+                    width: res.wp(160),
+                    height: res.hp(60),
+                    iconPath: AppIcons.plus,
+                    borderRadius: res.sp(30),
+                    text: "Add Vehicle",
+                    onTap: () {},
+                  ),
+                  CustomButton(
+                    width: res.wp(160),
+                    height: res.hp(60),
+                    btnColor: AppColors.orange,
+                    borderRadius: res.sp(30),
+                    text: "Request Service",
+                    onTap: () {},
+                  ),
+                ],
               ),
             ),
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
