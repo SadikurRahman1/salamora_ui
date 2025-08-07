@@ -22,7 +22,6 @@ class GarageFeatureCard extends StatelessWidget {
       width: res.wp(160),
       child: Stack(
         children: [
-          
           Positioned(
             left: 0,
             top: 0,
@@ -38,7 +37,7 @@ class GarageFeatureCard extends StatelessWidget {
               ),
             ),
           ),
-          
+
           Container(
             margin: EdgeInsets.only(left: res.wp(5)),
             padding: EdgeInsets.symmetric(
@@ -60,7 +59,6 @@ class GarageFeatureCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min, // Let it wrap content
@@ -69,18 +67,18 @@ class GarageFeatureCard extends StatelessWidget {
                       cardText,
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.textColor.withValues(alpha:0.8),
+                      color: AppColors.textColor.withValues(alpha: 0.8),
                     ),
                     SizedBox(height: res.hp(5)),
                     AppText(
                       "2",
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.textColor.withValues(alpha:0.8),
+                      color: AppColors.textColor.withValues(alpha: 0.8),
                     ),
                   ],
                 ),
-                
+
                 Image.asset(
                   AppIcons.car,
                   width: res.wp(35),
