@@ -15,6 +15,7 @@ class AppRoutes {
   static const ownerNavbarScreen = '/ownerNavbarScreen';
   static const myCarsScreen = '/myCarsScreen';
   static const addVehicleScreen = '/addVehicleScreen';
+  static const carDetailsScreen = '/carDetailsScreen';
 
 
   static const updatePasswordScreen = '/updatePasswordScreen';
