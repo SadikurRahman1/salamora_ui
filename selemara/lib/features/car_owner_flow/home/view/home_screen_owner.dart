@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
+import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/app_text.dart';
-import 'package:selemara/core/widgets/custom_appbar.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_images.dart';
@@ -21,7 +21,6 @@ class HomeScreenOwner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
         child: CustomScrollView(
@@ -145,11 +144,16 @@ class HomeScreenOwner extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                   ),
-                  AppText(
-                    "View All",
-                    color: AppColors.primaryColor,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.myCarsScreen);
+                    },
+                    child: AppText(
+                      "View All",
+                      color: AppColors.primaryColor,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),

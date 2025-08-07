@@ -13,6 +13,7 @@ class AppRoutes {
   static const forgot = '/forgot';
   static const verify = '/verify';
   static const ownerNavbarScreen = '/ownerNavbarScreen';
+  static const myCarsScreen = '/myCarsScreen';
 
 
   static const updatePasswordScreen = '/updatePasswordScreen';
