@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
+import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
@@ -13,6 +14,7 @@ class CustomButton extends StatelessWidget {
   final Color? textColor;
   final Color? borderColor;
   final double? borderRadius;
+  final String? iconPath;
 
   const CustomButton({
     super.key,
@@ -23,7 +25,9 @@ class CustomButton extends StatelessWidget {
     this.isBorder = false,
     this.btnColor = AppColors.primaryColor,
     this.textColor,
-    this.borderColor, this.borderRadius,
+    this.borderColor,
+    this.borderRadius,
+    this.iconPath,
   });
 
   @override
@@ -32,15 +36,27 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: height ?? responsive.wp(327),
-        height: width ?? responsive.hp(46),
+        width: width ?? responsive.wp(327),
+        height: height?? responsive.hp(46),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: btnColor,
-          border: isBorder ? Border.all(color:borderColor?? AppColors.borderColor) : null,
-          borderRadius: BorderRadius.circular(responsive.wp(borderRadius??20)),
+          border:
+              isBorder
+                  ? Border.all(color: borderColor ?? AppColors.borderColor)
+                  : null,
+          borderRadius: BorderRadius.circular(
+            responsive.wp(borderRadius ?? responsive.sp(20)),
+          ),
         ),
-        child: AppText(text, color: textColor ?? Color(0xFFFFFFFF)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            iconPath != null ? Image.asset(AppIcons.plus) : SizedBox.shrink(),
+            SizedBox(width: responsive.wp(10)),
+            AppText(text, color: textColor ?? Color(0xFFFFFFFF)),
+          ],
+        ),
       ),
     );
   }

@@ -144,7 +144,9 @@ class RegisterScreen extends StatelessWidget {
                               Obx(
                                 () => Transform.scale(
                                   scale:
-                                    res.isTablet?  2.0:1.0, // Increase/decrease size (1.0 = default)
+                                      res.isTablet
+                                          ? 2.0
+                                          : 1.0, // Increase/decrease size (1.0 = default)
                                   child: Checkbox(
                                     side: BorderSide(
                                       color: AppColors.primaryColor,
@@ -202,8 +204,8 @@ class RegisterScreen extends StatelessWidget {
                       CustomButton(
                         text: 'register_account'.tr,
                         onTap: () {
-                          // Get.offAllNamed(AppRoutes.garageNavScreen);
-                          if (formKey.currentState!.validate()) {}
+                          Get.offAllNamed(AppRoutes.garageNavScreen);
+                          // if (formKey.currentState!.validate()) {}
                         },
                       ),
                       SizedBox(height: res.hp(10)),

@@ -17,11 +17,6 @@ class AppIcons {
   static const notificationHome = "assets/icons/notification_home.png";
   static const dueSoon = "assets/icons/due_soon.png";
 
-
-
-
-
-
   static const genearteInActive = "assets/icons/generate.png";
   static const genearteActive = "assets/icons/generateactive.png";
   static const notificationIcon = "assets/icons/notification.png";
@@ -29,5 +24,5 @@ class AppIcons {
   static const cardSide = "assets/images/car_side.png";
   static const cardTrust = "assets/icons/shield_trust.png";
   static const car1 = "assets/icons/car_1.png";
+  static const plus = "assets/icons/plus.png";
 }
-
