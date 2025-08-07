@@ -14,7 +14,7 @@ class AppImages {
   static const edit = "assets/images/edit.png";
   static const backArrow = "assets/images/back_arrow.png";
   static const beckButton = "assets/images/beck_button.png";
-  static const userProfile = "assets/images/beck_button.png";
+  static const userProfile = "assets/images/user_profile.png";
 
 
 
