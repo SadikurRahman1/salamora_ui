@@ -10,7 +10,7 @@ class AppIcons {
   static const profileActive = "assets/icons/profile_active.png";
 
   static const profileHome = "assets/icons/profile_home.png";
-  static const notificationIcon = "assets/icons/notification_icon.png";
+  static const notificationIcon1 = "assets/icons/notification_icon.png";
   static const car = "assets/icons/car.png";
   static const check = "assets/icons/check.png";
   static const check1 = "assets/icons/check1.png";
