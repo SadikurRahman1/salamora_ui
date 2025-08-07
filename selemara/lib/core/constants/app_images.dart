@@ -15,6 +15,7 @@ class AppImages {
   static const backArrow = "assets/images/back_arrow.png";
   static const beckButton = "assets/images/beck_button.png";
   static const userProfile = "assets/images/user_profile.png";
+  static const carImage = "assets/images/car_image.png";
 
 
 

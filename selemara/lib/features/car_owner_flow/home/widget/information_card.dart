@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:selemara/core/widgets/app_text.dart';
 
 class InformationCard extends StatelessWidget {
   final Color backgroundColor;
@@ -60,21 +61,21 @@ class InformationCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  AppText(
                     title,
-                    style: const TextStyle(
+
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
                       color: Color(0xFF626262),
-                    ),
+
                   ),
-                  Text(
+                  AppText(
                     value,
-                    style: const TextStyle(
+
                       fontWeight: FontWeight.w600,
                       fontSize: 20,
                       color: Color(0xFF626262),
-                    ),
+
                   ),
                 ],
               ),
