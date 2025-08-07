@@ -12,6 +12,7 @@ class AppColors {
   static const Color backGroundColor = Color(0xFFFCFCFC);
   static const skipBtnColor = Color(0xFF1F2C37);
   static const Color textColor = Color(0xFF161922);
+  static const Color textColor2B2B = Color(0xFF2B2B2B);
     static const Color textColor7085 = Color(0xFF667085);
     static const Color textColor2A2A = Color(0xFF2A2A2A);
 
@@ -27,8 +28,10 @@ class AppColors {
   static const Color orange = Color(0xFFFF5722);
   static const Color yallowColor = Color(0xFFFACC15);
 
+
   static const Color black = Color(0xFF000000);
   static const Color borderEditText = Color(0xFFD0D5DD);
 
   static const Color lightGray = Color(0xFFAEAEB2);
+  static const Color bordarColor = Color(0xFF888888);
 }
