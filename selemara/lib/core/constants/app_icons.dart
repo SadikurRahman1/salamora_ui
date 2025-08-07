@@ -10,17 +10,12 @@ class AppIcons {
   static const profileActive = "assets/icons/profile_active.png";
 
   static const profileHome = "assets/icons/profile_home.png";
-  static const notificationIcon = "assets/icons/notification_icon.png";
+  static const notificationIconImage = "assets/icons/notification_icon.png";
   static const car = "assets/icons/car.png";
   static const check = "assets/icons/check.png";
   static const check1 = "assets/icons/check1.png";
   static const notificationHome = "assets/icons/notification_home.png";
   static const dueSoon = "assets/icons/due_soon.png";
-
-
-
-
-
 
   static const genearteInActive = "assets/icons/generate.png";
   static const genearteActive = "assets/icons/generateactive.png";
@@ -28,5 +23,6 @@ class AppIcons {
   static const markersIcon = "assets/icons/marker.png";
   static const cardSide = "assets/images/car_side.png";
   static const cardTrust = "assets/icons/shield_trust.png";
+  static const car1 = "assets/icons/car_1.png";
+  static const plus = "assets/icons/plus.png";
 }
-

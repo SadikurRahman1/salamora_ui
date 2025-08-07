@@ -25,6 +25,7 @@ class AppColors {
   static const Color slateGray = Color(0xFF667085);
   static const Color greenColor = Color(0xFF00A16E);
   static const Color orange = Color(0xFFFF5722);
+  static const Color yallowColor = Color(0xFFFACC15);
 
   static const Color black = Color(0xFF000000);
   static const Color borderEditText = Color(0xFFD0D5DD);

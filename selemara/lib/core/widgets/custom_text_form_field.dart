@@ -50,44 +50,50 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       keyboardType: widget.keyboardType,
       readOnly: widget.readOnly,
       onTap: widget.onTap,
+
+      style: GoogleFonts.inter(
+        color: AppColors.textColor,
+        fontSize: res.sp(14),
+        fontWeight: FontWeight.w400,
+      ),
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
         hintText: widget.hintText,
+
         hintStyle: GoogleFonts.inter(
           color: AppColors.textColor.withValues(alpha: 0.5),
           fontSize: res.sp(14),
-          fontWeight: FontWeight.w400
+          fontWeight: FontWeight.w400,
         ),
         prefixIcon:
             widget.prefixIcon != null
                 ? Padding(
-                  padding: EdgeInsets.only(left: res.wp(16)),
-                  child: SizedBox(
+                  padding: EdgeInsets.only(
+                    left: res.wp(16),
+                  ), // Left padding added here
+                  child: Image.asset(
+                    widget.prefixIcon!,
+                    width: res.wp(16),
                     height: res.hp(10),
-                    width: res.wp(10),
-                    child: Padding(
-                      padding: EdgeInsets.all(res.wp(7)),
-                      child: Image.asset(
-                        widget.prefixIcon!,
-                        // fit: BoxFit.contain,
-                        height: res.hp(10),
-                        width: res.wp(10),
-                      ),
-                    ),
+                    fit: BoxFit.contain,
                   ),
                 )
                 : null,
-        // prefixIconConstraints:  BoxConstraints(
-        //   minHeight:res.hp(20),
-        //   minWidth: res.wp(30),
-        // ),
+        prefixIconConstraints: BoxConstraints(
+          minWidth:
+              res.isTablet
+                  ? res.wp(20)
+                  : res.wp(35), // Adjusted to fit the icon + padding
+          minHeight: res.hp(40),
+        ),
         suffixIcon:
             widget.isPassword
                 ? IconButton(
                   icon: Icon(
                     _obscureText ? Icons.visibility_off : Icons.visibility,
                     color: Colors.grey,
+                    size: res.sp(20),
                   ),
                   onPressed:
                       () => setState(() {
@@ -96,7 +102,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 )
                 : widget.suffixIcon,
         contentPadding: EdgeInsets.symmetric(
-          horizontal: res.wp(16),
+          horizontal: res.wp(30),
           vertical: res.hp(12),
         ),
         border: OutlineInputBorder(

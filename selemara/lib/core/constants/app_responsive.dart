@@ -22,6 +22,12 @@ class AppResponsive {
     screenHeight = size.height;
     _designWidth = designWidth;
     _designHeight = designHeight;
+
+    // Optional: Debug print
+    debugPrint(
+      '📱 Screen: ${screenWidth.toStringAsFixed(2)} x ${screenHeight.toStringAsFixed(2)}',
+    );
+    debugPrint('📱 Device Type: ${deviceType.toUpperCase()}');
   }
 
   double wp(double designWidthValue) =>
@@ -32,5 +38,13 @@ class AppResponsive {
 
   double sp(double fontSize) => wp(fontSize);
 
-  bool get isTablet => screenWidth >= 600;
+  bool get isTablet => screenWidth >= 600 && screenWidth < 1024;
+  bool get isDesktop => screenWidth >= 1024;
+  bool get isMobile => screenWidth < 600;
+
+  String get deviceType {
+    if (isDesktop) return 'desktop';
+    if (isTablet) return 'tablet';
+    return 'mobile';
+  }
 }
