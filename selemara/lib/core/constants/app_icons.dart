@@ -25,4 +25,6 @@ class AppIcons {
   static const cardTrust = "assets/icons/shield_trust.png";
   static const car1 = "assets/icons/car_1.png";
   static const plus = "assets/icons/plus.png";
+  static const qrCode = "assets/icons/qr_code.png";
+  static const verified = "assets/icons/verified.png";
 }

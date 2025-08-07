@@ -7,13 +7,14 @@ import 'package:selemara/core/widgets/app_text.dart';
 class GarageFeatureCard extends StatelessWidget {
   final Color sideColor;
   final String cardText;
+  final String ? icon;
   final AppResponsive res;
 
   const GarageFeatureCard({
     super.key,
     required this.res,
     required this.sideColor,
-    required this.cardText,
+    required this.cardText, this.icon,
   });
 
   @override
@@ -82,7 +83,7 @@ class GarageFeatureCard extends StatelessWidget {
                 ),
                 
                 Image.asset(
-                  AppIcons.car,
+                 icon?? AppIcons.car,
                   width: res.wp(35),
                   height: res.hp(35),
                   fit: BoxFit.contain,

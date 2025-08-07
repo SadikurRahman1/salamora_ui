@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/widgets/app_text.dart';
-import 'package:selemara/features/car_owner_flow/home/widget/information_card.dart';
+import 'package:selemara/core/widgets/custom_appbar.dart';
 
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
-import '../widget/custom_home_appbar.dart';
+import '../../../../core/widgets/custom_button.dart';
+import '../../../garage/home/widget/banner_card.dart';
+import '../../../garage/home/widget/garage_feature_card.dart';
+import '../widget/car_info_card.dart';
+import '../widget/profile_card.dart';
 
 class HomeScreenOwner extends StatelessWidget {
   HomeScreenOwner({super.key});
@@ -15,123 +21,204 @@ class HomeScreenOwner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomHomeAppbar(),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 24),
 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: res.hp(32)),
-
-            Container(
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                gradient: const LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    Color(0xFFbce5da), // Green
-                    Color(0xFF93b2f4), // Light Blue
-                  ],
-                ),
-              ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(70))),
+            SliverToBoxAdapter(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Text Column
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        AppText(
-                          'Welcome back. !',
-
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          color: AppColors.secondryTextColor,
-                        ),
-                        SizedBox(height: 4),
-                        AppText(
-                          "Track your car's service history and stay on top of maintenance",
-                          fontSize: 14,
-                          color: AppColors.textColor2939,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Image.asset(AppImages.userProfile),
+                      SizedBox(width: res.wp(5)),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(
+                            "John Doe",
+                            color: AppColors.textColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          AppText(
+                            "Garage",
+                            color: AppColors.textColor.withValues(alpha: 0.8),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-
-                  // Icon
                   Image.asset(
-                    AppIcons.check,
-                    height: res.hp(24),
-                    width: res.wp(24),
+                    AppIcons.notificationIconImage,
+                    width: res.wp(30),
+                    height: res.hp(30),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: res.hp(24)),
-            Row(
-              children: [
-                // Left Card
-                Expanded(
-                  child: InformationCard(
-                    backgroundColor: AppColors.primaryColor,
-                    iconPath: AppIcons.car,
-                    title: 'My Vehicles',
-                    value: '2',
-                    height: res.hp(67),
-                    iconSize: res.hp(32),
-                  ),
-                ),
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(30))),
+            SliverToBoxAdapter(child: BannerCard(res: res)),
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GarageFeatureCard(
+                    res: res,
 
-                SizedBox(width: res.wp(20)),
-                Expanded(
-                  child: InformationCard(
-                    backgroundColor: AppColors.greenColor,
-                    iconPath: AppIcons.check1,
-                    title: 'Service Records',
-                    value: '23',
-                    height: res.hp(67),
-                    iconSize: res.hp(32),
+                    sideColor: AppColors.primaryColor,
+                    cardText: "My Vehicles",
                   ),
-                ),
-              ],
+                  GarageFeatureCard(
+                    res: res,
+                    sideColor: AppColors.greenColor,
+                    icon: AppIcons.check1,
+                    cardText: "Service Records",
+                  ),
+                ],
+              ),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
+
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GarageFeatureCard(
+                    res: res,
+                    sideColor: AppColors.orange,
+                    cardText: "Alerts",
+                    icon: AppIcons.notificationHome,
+                  ),
+                  GarageFeatureCard(
+                    res: res,
+                    sideColor: AppColors.orange,
+                    cardText: "Due Soon",
+                    icon: AppIcons.dueSoon,
+                  ),
+                ],
+              ),
             ),
 
-            SizedBox(height: res.hp(16)),
-            Row(
-              children: [
-                // Left Card
-                Expanded(
-                  child: InformationCard(
-                    backgroundColor: AppColors.orange,
-                    iconPath: AppIcons.notificationHome,
-                    title: 'Alerts',
-                    value: '5',
-                    height: res.hp(67),
-                    iconSize: res.hp(32),
-                  ),
-                ),
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
 
-                SizedBox(width: res.wp(20)),
-                Expanded(
-                  child: InformationCard(
-                    backgroundColor: AppColors.orange,
-                    iconPath: AppIcons.dueSoon,
-                    title: 'Due Soon',
-                    value: '3',
-                    height: res.hp(67),
-                    iconSize: res.hp(32),
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomButton(
+                    width: res.wp(160),
+                    height: res.hp(60),
+                    iconPath: AppIcons.plus,
+                    borderRadius: res.sp(30),
+                    text: "Add Vehicle",
+                    onTap: () {},
                   ),
-                ),
-              ],
+                  CustomButton(
+                    width: res.wp(160),
+                    height: res.hp(60),
+                    btnColor: AppColors.orange,
+                    borderRadius: res.sp(30),
+                    text: "Request Service",
+                    onTap: () {},
+                  ),
+                ],
+              ),
             ),
+
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(32))),
+
+            SliverToBoxAdapter(
+              child: Row(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppText(
+                    "My Cars",
+                    color: AppColors.textColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  AppText(
+                    "View All",
+                    color: AppColors.primaryColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ],
+              ),
+            ),
+
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: res.hp(212),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder:
+                      (context, index) => Padding(
+                        padding: EdgeInsets.only(right: res.wp(16)),
+                        child: CarInfoCard(
+                          title: "2018 Honda Civic2018",
+                          subTitle: "VIN: IHGCV2F6JLOOOOOO",
+                          carImage: AppImages.carImage,
+                        ),
+                      ),
+                ),
+              ),
+            ),
+
+            SliverToBoxAdapter(
+              child: Row(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppText(
+                    "Recent Service",
+                    color: AppColors.textColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  AppText(
+                    "View All",
+                    color: AppColors.primaryColor,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ],
+              ),
+            ),
+
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(10))),
+
+            SliverToBoxAdapter(
+              child: ListView.builder(
+                itemCount: 10,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: ProfileCard(
+                      title: "'Ahmed Al Mansouri",
+
+                      subTitle: "Toyota Camry - Al Futtaim Service",
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
           ],
         ),
       ),
