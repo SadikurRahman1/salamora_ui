@@ -31,4 +31,10 @@ class AppIcons {
   static const plus1 = "assets/icons/plus1.png";
   static const model = "assets/icons/model.png";
   static const upload = "assets/icons/upload.png";
+  static const activeWarr = "assets/icons/active_warr.png";
+  static const honda = "assets/icons/honda.png";
+  static const delete = "assets/icons/delete.png";
+  static const calendar = "assets/icons/calendar.png";
+  static const eye = "assets/icons/eye.png";
+  static const download = "assets/icons/download.png";
 }
