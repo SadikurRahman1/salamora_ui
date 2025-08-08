@@ -14,7 +14,11 @@ import '../../features/auth/views/login_screen.dart';
 import '../../features/auth/views/register_screen.dart';
 import '../../features/car_owner_flow/car_owner_nevbar/view/owner_navbar_screen.dart';
 import '../../features/car_owner_flow/home/view/add_vehicle_screen.dart';
+import '../../features/car_owner_flow/home/car_details/view/car_details_screen.dart';
 import '../../features/car_owner_flow/home/view/my_cars_screen.dart';
+import '../../features/car_owner_flow/home/car_details/view/request_service_screen.dart';
+import '../../features/car_owner_flow/home/car_details/view/service_history_screen.dart';
+import '../../features/car_owner_flow/home/view/warranty_details_screen.dart';
 import '../../features/car_owner_flow/profile/binding/profile_binding.dart';
 import '../../features/car_owner_flow/profile/view/edit_profile_screen.dart';
 import '../../features/car_owner_flow/profile/view/profile_screen.dart';
@@ -102,6 +106,27 @@ class AppPages {
     GetPage(
       name: AppRoutes.addVehicleScreen,
       page: () => AddVehicleScreen(),
+    ),
+
+    GetPage(
+      name: AppRoutes.carDetailsScreen,
+      page: () => CarDetailsScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.requestServiceScreen,
+      page: () => RequestServiceScreen(),
+    ),
+
+    GetPage(
+      name: AppRoutes.serviceHistoryScreen,
+      page: () => ServiceHistoryScreen(),
+    ),
+
+
+
+    GetPage(
+      name: AppRoutes.warrantyDetailsScreen,
+      page: () => WarrantyDetailsScreen(),
     ),
 
     // GetPage(

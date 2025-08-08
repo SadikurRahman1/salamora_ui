@@ -171,10 +171,17 @@ class HomeScreenOwner extends StatelessWidget {
                   itemBuilder:
                       (context, index) => Padding(
                         padding: EdgeInsets.only(right: res.wp(16)),
-                        child: CarInfoCard(
-                          title: "2018 Honda Civic2018",
-                          subTitle: "VIN: IHGCV2F6JLOOOOOO",
-                          carImage: AppImages.carImage,
+                        child: GestureDetector(
+                          onTap: (){
+                            Get.toNamed(AppRoutes.carDetailsScreen);
+
+
+                          },
+                          child: CarInfoCard(
+                            title: "2018 Honda Civic2018",
+                            subTitle: "VIN: IHGCV2F6JLOOOOOO",
+                            carImage: AppImages.carImage,
+                          ),
                         ),
                       ),
                 ),

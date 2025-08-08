@@ -15,6 +15,8 @@ class AppColors {
   static const Color textColor2B2B = Color(0xFF2B2B2B);
     static const Color textColor7085 = Color(0xFF667085);
     static const Color textColor2A2A = Color(0xFF2A2A2A);
+    static const Color textColorB88 = Color(0xFF002B88);
+    static const Color boxColor = Color(0xFFe6f6f1);
 
   static const Color secondryTextColor = Color(0xFF161922);
   static const Color geryColor = Color(0xFFA9A9A9);
@@ -27,6 +29,8 @@ class AppColors {
   static const Color slateGray = Color(0xFF667085);
   static const Color greenColor = Color(0xFF00A16E);
   static const Color orange = Color(0xFFFF5722);
+  static const Color orangeE6 = Color(0xFFf8eae6);
+  static const Color orangeDeep = Color(0xFFAF2A00);
   static const Color yallowColor = Color(0xFFFACC15);
 
 

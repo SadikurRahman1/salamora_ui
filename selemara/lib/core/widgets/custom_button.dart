@@ -7,12 +7,18 @@ import 'package:selemara/core/widgets/app_text.dart';
 class CustomButton extends StatelessWidget {
   final double? height;
   final double? width;
+  final double? iconHeight;
+  final double? iconWidth;
+  final double? fontSize;
   final Color btnColor;
+  final double? textIconWidth;
   final String text;
   final VoidCallback onTap;
   final bool isBorder;
   final Color? textColor;
   final Color? borderColor;
+  final Color? iconColor;
+
   final double? borderRadius;
   final String? iconPath;
 
@@ -27,7 +33,7 @@ class CustomButton extends StatelessWidget {
     this.textColor,
     this.borderColor,
     this.borderRadius,
-    this.iconPath,
+    this.iconPath, this.iconHeight, this.iconWidth, this.iconColor, this.fontSize, this.textIconWidth,
   });
 
   @override
@@ -37,7 +43,7 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: width ?? responsive.wp(327),
-        height: height?? responsive.hp(46),
+        height: height ?? responsive.hp(46),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: btnColor,
@@ -52,9 +58,20 @@ class CustomButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            iconPath != null ? Image.asset(AppIcons.plus) : SizedBox.shrink(),
-            SizedBox(width: responsive.wp(10)),
-            AppText(text, color: textColor ?? Color(0xFFFFFFFF)),
+            iconPath != null
+                ? Image.asset(
+                  iconPath ?? AppIcons.plus,
+                  color:iconColor?? AppColors.whitColor,
+                
+            height: responsive.hp(iconHeight??20,),
+              width: responsive.wp(iconWidth??20),
+            )
+                : SizedBox.shrink(),
+            SizedBox(width: responsive.wp(textIconWidth??10)),
+            AppText(text, color: textColor ?? Color(0xFFFFFFFF),
+
+            fontSize:fontSize?? 14,
+            ),
           ],
         ),
       ),
