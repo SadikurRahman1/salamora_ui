@@ -12,16 +12,19 @@ class ServiceCard extends StatelessWidget {
   final String companyName;
   final bool color;
   final String invoiceLabel;
+  final VoidCallback? onTapOilChange;
+  final VoidCallback? onTapWarranty;
+  final VoidCallback? onTapInvoice;
 
   const ServiceCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.date,
     required this.serviceCenter,
     required this.companyName,
     required this.invoiceLabel,
-    required this.color,
-  }) : super(key: key);
+    required this.color, this.onTapOilChange, this.onTapWarranty, this.onTapInvoice,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +69,14 @@ class ServiceCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Expanded(
-                                child: AppText(
-                                  title,
-                                  color: AppColors.textColor2A2A,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
+                                child: GestureDetector(
+                          onTap: onTapOilChange,
+                                  child: AppText(
+                                    title,
+                                    color: AppColors.textColor2A2A,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                               Container(
@@ -109,43 +115,49 @@ class ServiceCard extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                children: [
-                                  Image.asset(
-                                    AppIcons.eye,
-                                    height: res.hp(16),
-                                    width: res.wp(16),
-                                    color:
-                                        color == true
-                                            ? AppColors.greenColor
-                                            : AppColors.primaryColor,
-                                  ),
-                                  SizedBox(width: res.wp(8)),
-                                  AppText(
-                                    companyName,
-                                    color:
-                                        color == true
-                                            ? AppColors.greenColor
-                                            : AppColors.primaryColor,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ],
+                              GestureDetector(
+                                onTap: onTapWarranty,
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      AppIcons.eye,
+                                      height: res.hp(16),
+                                      width: res.wp(16),
+                                      color:
+                                          color == true
+                                              ? AppColors.greenColor
+                                              : AppColors.primaryColor,
+                                    ),
+                                    SizedBox(width: res.wp(8)),
+                                    AppText(
+                                      companyName,
+                                      color:
+                                          color == true
+                                              ? AppColors.greenColor
+                                              : AppColors.primaryColor,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Row(
-                                children: [
-                                  Image.asset(
-                                    AppIcons.download,
-                                    height: res.hp(16),
-                                    width: res.wp(16),
-                                  ),
-                                  AppText(
-                                    invoiceLabel,
-                                    color: AppColors.primaryColor,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ],
+                              GestureDetector(
+                                onTap: onTapInvoice,
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      AppIcons.download,
+                                      height: res.hp(16),
+                                      width: res.wp(16),
+                                    ),
+                                    AppText(
+                                      invoiceLabel,
+                                      color: AppColors.primaryColor,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),

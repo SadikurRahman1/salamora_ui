@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/constants/app_responsive.dart';
-import '../../../../core/widgets/app_text.dart';
-import '../../../../core/widgets/custom_appbar.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/app_responsive.dart';
+import '../../../../../core/widgets/app_text.dart';
+import '../../../../../core/widgets/custom_appbar.dart';
 
 class WarrantyDetailsScreen extends StatelessWidget {
   WarrantyDetailsScreen({super.key});
@@ -133,64 +133,77 @@ class WarrantyDetailsScreen extends StatelessWidget {
               child: Wrap(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(bottom: 12),
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFeaf0fd),
 
-                    child: CustomButton(
-                      textIconWidth: 0,
+                      borderRadius: BorderRadius.circular(24),
+                    ),
 
-                      width: 110,
-                      height: 24,
+                    child: AppText(
+                      "Engine Checkup",
 
-                      text: "Engine Checkup",
-                      onTap: () {},
-                      textColor: AppColors.primaryColor,
-                      btnColor: Color(0xFFeaf0fd),
+                      color: AppColors.primaryColor,
+
                       fontSize: 12,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   SizedBox(width: res.wp(17)),
-
                   Container(
-                    padding: EdgeInsets.only(bottom: 12),
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFeaf0fd),
 
-                    child: CustomButton(
-                      textIconWidth: 0,
-                      width: 79,
-                      height: 30,
-                      text: "Oil Change",
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+
+                    child: AppText(
+                      "Oil Change",
+
+                      color: AppColors.primaryColor,
+
                       fontSize: 12,
-                      onTap: () {},
-                      textColor: AppColors.primaryColor,
-                      btnColor: Color(0xFFeaf0fd),
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
+
                   SizedBox(width: res.wp(17)),
 
                   Container(
-                    padding: EdgeInsets.only(bottom: 12),
-                    child: CustomButton(
-                      textIconWidth: 0,
-                      width: 80,
-                      height: 24,
-                      text: "AC Service",
-                      onTap: () {},
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFeaf0fd),
+
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+
+                    child: AppText(
+                      "AC Service",
+
+                      color: AppColors.primaryColor,
+
                       fontSize: 12,
-                      textColor: AppColors.primaryColor,
-                      btnColor: Color(0xFFeaf0fd),
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
 
                   Container(
-                    padding: EdgeInsets.only(bottom: 12),
-                    child: CustomButton(
-                      textIconWidth: 0,
-                      width: 110,
-                      height: 24,
-                      text: "Brake Inspection",
-                      onTap: () {},
+                    margin: EdgeInsets.only(top: 16),
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFeaf0fd),
+
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+
+                    child: AppText(
+                      "Brake Inspection",
+
+                      color: AppColors.primaryColor,
+
                       fontSize: 12,
-                      textColor: AppColors.primaryColor,
-                      btnColor: Color(0xFFeaf0fd),
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ],

@@ -235,6 +235,7 @@ class AddVehicleScreen extends StatelessWidget {
                   Expanded(
                     child: CustomButton(
                       btnColor: Color(0xFFF5F5F5),
+                      textIconWidth: 0,
                       text: "Cancel",
                       onTap: () {},
                       textColor: Color(0xFFACACAC),

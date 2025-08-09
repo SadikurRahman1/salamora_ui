@@ -5,6 +5,7 @@ import 'package:selemara/features/car_owner_flow/profile/view/profile_screen.dar
 
 import '../../../../core/constants/app_responsive.dart';
 import '../../home/view/home_screen_owner.dart';
+import '../../reminders/view/reminders_screen.dart';
 
 
 class OwnerNavbarController extends GetxController {
@@ -23,7 +24,7 @@ class OwnerNavbarController extends GetxController {
   final List<Widget> screens = [
     HomeScreenOwner(),
     ProfileScreen(),
-    ProfileScreen(),
+    RemindersScreen(),
 
     ProfileScreen(),
   ];

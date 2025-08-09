@@ -44,8 +44,11 @@ class MyCarsScreen extends StatelessWidget {
 
                   SizedBox(
                     width: res.wp(128),
+
                     child: CustomButton(
                       text: "Add Vehicle ",
+                      iconHeight: 16,
+                      iconWidth: 16,
                       onTap: () {
                         Get.toNamed(AppRoutes.addVehicleScreen);
                       },

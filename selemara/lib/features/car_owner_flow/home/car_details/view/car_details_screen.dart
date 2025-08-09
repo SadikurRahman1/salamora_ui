@@ -159,7 +159,6 @@ class CarDetailsScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(AppRoutes.warrantyDetailsScreen);
                 },
 
                 child: Container(
