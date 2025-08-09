@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RequestServiceController extends GetxController{
+class RemindersController extends GetxController {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController subTitleController = TextEditingController();
+  TextEditingController statusController = TextEditingController();
 
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
 
   var selected = RxnString();
 
@@ -16,6 +16,7 @@ class RequestServiceController extends GetxController{
 
 
 
+  final List<String> serviceStatuses = ["Overdue", "Soon", "Upcoming"];
 
   var selectedDate = Rxn<DateTime>();
 
@@ -31,5 +32,4 @@ class RequestServiceController extends GetxController{
       selectedDate.value = picked;
     }
   }
-
 }

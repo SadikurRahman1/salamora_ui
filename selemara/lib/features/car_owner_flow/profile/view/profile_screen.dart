@@ -26,216 +26,218 @@ class ProfileScreen extends StatelessWidget {
 
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: res.wp(20)),
-        child: Column(
-          children: [
-            SizedBox(height: res.hp(0)),
-            Align(
-              alignment: Alignment.center,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: res.hp(0)),
+              Align(
+                alignment: Alignment.center,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(20),
+                          alignment: Alignment.topCenter,
+                          height: res.wp(80),
+                          width: res.wp(80),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(80),
+                            border: Border.all(
+                              width: 7,
+          
+                              color: AppColors.profileBorderColor,
+                            ),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(res.wp(40)),
+          
+                            // half-width for a perfect circle
+                            child: Image.asset(
+                              AppImages.manIcon,
+                              height: res.hp(80),
+                              width: res.wp(80),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+          
+                        Positioned(
+                          bottom: 10,
+                          right: 20,
+                          child: GestureDetector(
+                            child: Image.asset(
+                              AppImages.edit,
+                              height: res.hp(32),
+                              width: res.wp(32),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+          
+                    AppText(
+                      "Abdur Rahim",
+                      fontSize: res.sp(20),
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primaryTextColor,
+                    ),
+                  ],
+                ),
+              ),
+          
+              SizedBox(height: res.hp(20)),
+          
+              ProfileOptionTile(
+                onTap: () {
+                  Get.toNamed(AppRoutes.editProfileScreen);
+                },
+                iconPath: AppImages.profileIcon,
+                title: 'profile'.tr,
+          
+                textSize: 16,
+                bottomMargin: 0,
+                padding: EdgeInsets.all(0),
+          
+                // optional
+                boxDecoration: BoxDecoration(
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+          
+              Container(
+                margin: EdgeInsets.only(bottom: 15, top: 16),
+                width: double.infinity,
+                height: 1,
+                decoration: BoxDecoration(color: Color(0xFFEAECF0)),
+              ),
+          
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          
                 children: [
-                  Stack(
+                  Row(
                     children: [
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        alignment: Alignment.topCenter,
-                        height: res.hp(80),
-                        width: res.wp(80),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(80),
-                          border: Border.all(
-                            width: 7,
-
-                            color: AppColors.profileBorderColor,
-                          ),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(res.wp(40)),
-
-                          // half-width for a perfect circle
-                          child: Image.asset(
-                            AppImages.manIcon,
-                            height: res.hp(80),
-                            width: res.wp(80),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                      Image.asset(
+                        AppImages.notification,
+                        height: res.hp(24),
+                        width: res.wp(24),
                       ),
-
-                      Positioned(
-                        bottom: 10,
-                        right: 20,
-                        child: GestureDetector(
-                          child: Image.asset(
-                            AppImages.edit,
-                            height: res.hp(32),
-                            width: res.wp(32),
-                            fit: BoxFit.cover,
-                          ),
+                      SizedBox(width: res.wp(12)),
+          
+                      AppText(
+                        "notification".tr,
+                        color: const Color(0xFF262626),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
+                    ],
+                  ),
+          
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Static icon + "Dark Mode" label
+          
+                      // ✅ Only the Switch wrapped in Obx — thanks to .value reference
+                      Obx(
+                        () => Switch(
+                          value: controller.isDarkMode.value,
+                          onChanged: (val) => controller.toggleTheme(),
+                          inactiveThumbColor: Color(0xFF888888),
+                          inactiveTrackColor: Colors.transparent,
+                          activeColor: AppColors.primaryColor,
+                          activeTrackColor: const Color(0xFFd8d8d8),
                         ),
                       ),
                     ],
                   ),
-
-                  AppText(
-                    "Abdur Rahim",
-                    fontSize: res.sp(20),
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primaryTextColor,
-                  ),
                 ],
               ),
-            ),
-
-            SizedBox(height: res.hp(20)),
-
-            ProfileOptionTile(
-              onTap: () {
-                Get.toNamed(AppRoutes.editProfileScreen);
-              },
-              iconPath: AppImages.profileIcon,
-              title: 'profile'.tr,
-
-              textSize: 16,
-              bottomMargin: 0,
-              padding: EdgeInsets.all(0),
-
-              // optional
-              boxDecoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(15),
+          
+              Container(
+                margin: EdgeInsets.only(bottom: 15, top: 10),
+                width: double.infinity,
+                height: 1,
+                decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(bottom: 15, top: 16),
-              width: double.infinity,
-              height: 1,
-              decoration: BoxDecoration(color: Color(0xFFEAECF0)),
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-              children: [
-                Row(
-                  children: [
-                    Image.asset(
-                      AppImages.notification,
-                      height: res.hp(24),
-                      width: res.wp(24),
-                    ),
-                    SizedBox(width: res.wp(12)),
-
-                    AppText(
-                      "notification".tr,
-                      color: const Color(0xFF262626),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                    ),
-                  ],
+          
+              ProfileOptionTile(
+                iconPath: AppImages.lock,
+                title: 'password'.tr,
+                onTap: () {
+                  Get.toNamed(AppRoutes.updatePasswordScreen);
+                },
+                textSize: 16,
+                bottomMargin: 0,
+                padding: EdgeInsets.all(0),
+          
+                // optional
+                boxDecoration: BoxDecoration(
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(15),
                 ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Static icon + "Dark Mode" label
-
-                    // ✅ Only the Switch wrapped in Obx — thanks to .value reference
-                    Obx(
-                      () => Switch(
-                        value: controller.isDarkMode.value,
-                        onChanged: (val) => controller.toggleTheme(),
-                        inactiveThumbColor: Color(0xFF888888),
-                        inactiveTrackColor: Colors.transparent,
-                        activeColor: AppColors.primaryColor,
-                        activeTrackColor: const Color(0xFFd8d8d8),
-                      ),
-                    ),
-                  ],
+              ),
+          
+              Container(
+                margin: EdgeInsets.only(bottom: 15, top: 16),
+                width: double.infinity,
+                height: 1,
+                decoration: BoxDecoration(color: Color(0xFFEAECF0)),
+              ),
+          
+              ProfileOptionTile(
+                iconPath: AppImages.privacy,
+                title: 'privacy_policy'.tr,
+                onTap: () {
+                  Get.toNamed(AppRoutes.privacyPolicyScreen);
+                },
+                textSize: 16,
+                bottomMargin: 0,
+                padding: EdgeInsets.all(0),
+          
+                // optional
+                boxDecoration: BoxDecoration(
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(15),
                 ),
-              ],
-            ),
-
-            Container(
-              margin: EdgeInsets.only(bottom: 15, top: 10),
-              width: double.infinity,
-              height: 1,
-              decoration: BoxDecoration(color: Color(0xFFEAECF0)),
-            ),
-
-            ProfileOptionTile(
-              iconPath: AppImages.lock,
-              title: 'password'.tr,
-              onTap: () {
-                Get.toNamed(AppRoutes.updatePasswordScreen);
-              },
-              textSize: 16,
-              bottomMargin: 0,
-              padding: EdgeInsets.all(0),
-
-              // optional
-              boxDecoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(15),
               ),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(bottom: 15, top: 16),
-              width: double.infinity,
-              height: 1,
-              decoration: BoxDecoration(color: Color(0xFFEAECF0)),
-            ),
-
-            ProfileOptionTile(
-              iconPath: AppImages.privacy,
-              title: 'privacy_policy'.tr,
-              onTap: () {
-                Get.toNamed(AppRoutes.privacyPolicyScreen);
-              },
-              textSize: 16,
-              bottomMargin: 0,
-              padding: EdgeInsets.all(0),
-
-              // optional
-              boxDecoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(15),
+          
+              Container(
+                margin: EdgeInsets.only(bottom: 15, top: 16),
+                width: double.infinity,
+                height: 1,
+                decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(bottom: 15, top: 16),
-              width: double.infinity,
-              height: 1,
-              decoration: BoxDecoration(color: Color(0xFFEAECF0)),
-            ),
-
-            ProfileOptionTile(
-              iconPath: AppImages.logout,
-              title: 'logout'.tr,
-              onTap: () {
-                showBeautifulBottomSheet(context);
-              },
-              textSize: 16,
-              bottomMargin: 0,
-              padding: EdgeInsets.all(0),
-
-              // optional
-              boxDecoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(15),
+          
+              ProfileOptionTile(
+                iconPath: AppImages.logout,
+                title: 'logout'.tr,
+                onTap: () {
+                  showBeautifulBottomSheet(context);
+                },
+                textSize: 16,
+                bottomMargin: 0,
+                padding: EdgeInsets.all(0),
+          
+                // optional
+                boxDecoration: BoxDecoration(
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(15),
+                ),
               ),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(bottom: 15, top: 16),
-              width: double.infinity,
-              height: 1,
-              decoration: BoxDecoration(color: Color(0xFFEAECF0)),
-            ),
-          ],
+          
+              Container(
+                margin: EdgeInsets.only(bottom: 15, top: 16),
+                width: double.infinity,
+                height: 1,
+                decoration: BoxDecoration(color: Color(0xFFEAECF0)),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:selemara/features/car_owner_flow/home/car_details/controller/service_history_controller.dart';
 
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_icons.dart';
@@ -14,6 +16,7 @@ class ServiceHistoryScreen extends StatelessWidget {
   ServiceHistoryScreen({super.key});
 
   final res = AppResponsive();
+  final controller = Get.put(ServiceHistoryController());
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +52,28 @@ class ServiceHistoryScreen extends StatelessWidget {
                       return Padding(
                         padding: EdgeInsets.only(bottom: res.hp(16)),
                         child: ServiceCard(
+                          onTapInvoice: ()
+                          {
+
+                            Get.toNamed(AppRoutes.invoiceDetailsScreen);
+
+
+
+                          },
+                          onTapOilChange: (){
+                            _showBeautifulBottomSheet( context);
+                          },
+                          onTapWarranty: (){
+                            Get.toNamed(AppRoutes.warrantyDetailsScreen);
+
+
+
+                          },
                           color: (index % 2 == 0) ? false : true,
                           title: "Oil Change & Fitter",
                           date: "6/15/2025",
                           serviceCenter: "Al Futtaim Service Center",
-                          companyName: "Honda UAE",
+                          companyName: "Warranty",
                           invoiceLabel: "Invoice",
                         ),
                       );
@@ -73,7 +93,7 @@ class ServiceHistoryScreen extends StatelessWidget {
                 textIconWidth: 4,
                 text: "Request Service",
                 onTap: () {
-                  Get.toNamed(AppRoutes.addVehicleScreen);
+                  // Get.toNamed(AppRoutes.addVehicleScreen);
                 },
                 fontSize: 12,
                 iconWidth: 16,
@@ -85,6 +105,201 @@ class ServiceHistoryScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _showBeautifulBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder:
+          (context) => Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min, // Only takes necessary height
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Close icon aligned to top right
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: GestureDetector(
+                        onTap: () => Navigator.of(context).pop(),
+                        child: Image.asset(
+                          AppIcons.cross,
+                          height: res.hp(24),
+                          width: res.wp(24),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: res.hp(24)),
+
+                    // Title and date row
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AppText(
+                          "Oil Change & Fitter",
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          color: AppColors.textColor2A2A,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.greenColor,
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: AppText(
+                            "6/15/2025",
+                            color: AppColors.whitColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: res.hp(17)),
+
+                    // Description text
+                    AppText(
+                      "Full synthetic oil change and filter replacement. Checked all fluid levels and tire pressure.",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      color: const Color(0xFF375d82),
+                    ),
+
+                    SizedBox(height: res.hp(10)),
+
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppIcons.calendar,
+                          height: res.hp(16),
+                          width: res.wp(24),
+                          color: AppColors.primaryColor,
+                        ),
+
+                        SizedBox(width: res.wp(3)),
+                        AppText(
+                          "1/15/2024",
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: const Color(0xFF515151),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: res.hp(12)),
+
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppIcons.map,
+                          height: res.hp(16),
+                          width: res.wp(24),
+                          color: AppColors.primaryColor,
+                        ),
+
+                        SizedBox(width: res.wp(3)),
+                        AppText(
+                          "Al Futtaim Service Center",
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: const Color(0xFF515151),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: res.hp(12)),
+
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppIcons.download,
+                          height: res.hp(16),
+                          width: res.wp(24),
+                          color: AppColors.primaryColor,
+                        ),
+
+                        SizedBox(width: res.wp(3)),
+                        AppText(
+                          "Download invoice",
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: AppColors.primaryColor,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: res.hp(12)),
+
+                    AppText(
+                      '\$65.99',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20,
+                      color: AppColors.primaryColor,
+                    ),
+
+                    SizedBox(height: res.hp(12)),
+
+                    Row(
+                      children: [
+                        AppText(
+                          'Your Rating:',
+                          color: AppColors.textColor2A2A,
+
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+
+                        SizedBox(width: res.wp(8)),
+                        Obx(
+                          () => RatingBar.builder(
+                            initialRating: controller.rating.value,
+                            minRating: 1,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            itemCount: 5,
+                            itemSize: res.wp(20),
+                            itemBuilder:
+                                (_, __) =>
+                                    Icon(Icons.star, color: Colors.amber),
+                            onRatingUpdate: (newRating) {
+                              controller.rating.value = newRating;
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: res.hp(43)),
+
+                    CustomButton(text: "Re-service", onTap: () {
+
+
+
+
+                    }),
+                    SizedBox(height: res.hp(43)),
+                  ],
+                ),
+              ),
+            ),
+          ),
     );
   }
 }

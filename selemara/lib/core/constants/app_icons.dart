@@ -37,4 +37,6 @@ class AppIcons {
   static const calendar = "assets/icons/calendar.png";
   static const eye = "assets/icons/eye.png";
   static const download = "assets/icons/download.png";
+  static const cross = "assets/icons/cross.png";
+  static const map = "assets/icons/map.png";
 }
