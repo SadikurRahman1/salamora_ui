@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 
 import '../../../../core/constants/app_colors.dart';
@@ -34,10 +35,10 @@ class CarDetailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final res = AppResponsive(); // Replace with your actual responsive util
-    return  Container(
-      padding: EdgeInsets.all(16),
+    final res = AppResponsive();
 
+    return Container(
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.whitColor,
         borderRadius: BorderRadius.circular(12),
@@ -56,46 +57,41 @@ class CarDetailCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(AppImages.carImage, fit: BoxFit.cover),
           ),
-
           Padding(padding: EdgeInsets.only(top: 20)),
-
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText(
-                      "2020 Honda Civic",
+                      "car_2020_honda_civic".tr,
                       color: AppColors.textColor2A2A,
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                     ),
                     Padding(padding: EdgeInsets.only(top: 4)),
-
                     Row(
                       children: [
                         AppText(
-                          "Silver",
+                          "color_silver".tr,
                           color: AppColors.textColor626,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
-
                         Padding(padding: EdgeInsets.only(left: 8)),
                         Container(
                           height: res.wp(8),
                           width: res.wp(8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-
                             color: AppColors.bordarColor,
                           ),
                         ),
                         Padding(padding: EdgeInsets.only(left: 8)),
-
                         AppText(
-                          "45,000 miles",
+                          "mileage_45000_miles".tr,
                           color: AppColors.textColor626,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -136,18 +132,15 @@ class CarDetailCard extends StatelessWidget {
             ],
           ),
           Padding(padding: EdgeInsets.only(top: 16)),
-
-          _labelValueRow("VIN:", "CV2F6JLOOOOOO"),
+          _labelValueRow("vin".tr, "CV2F6JLOOOOOO"),
           Padding(padding: EdgeInsets.only(top: 8)),
-          _labelValueRow("Last Service:", "1/15/2024"),
+          _labelValueRow("last_service".tr, "1/15/2024"),
           Padding(padding: EdgeInsets.only(top: 8)),
-
-          _labelValueRow("Next Service:", "4/15/2024"),
+          _labelValueRow("next_service".tr, "4/15/2024"),
           Padding(padding: EdgeInsets.only(top: 8)),
-          _labelValueRow("Service Records:", "8"),
-
+          _labelValueRow("service_records".tr, "8"),
           Padding(padding: EdgeInsets.only(top: 8)),
-          _labelValueRow("Documents:", "2 uploaded"),
+          _labelValueRow("documents".tr, "2 " + "uploaded".tr),
         ],
       ),
     );

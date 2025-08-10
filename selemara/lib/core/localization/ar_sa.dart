@@ -77,6 +77,7 @@ final Map<String, String> arSA = {
   'are_you_sure_you': 'هل أنت متأكد أنك تريد تسجيل الخروج؟',
   'no': 'لا',
   'yes': 'نعم',
+  'help_support': 'المساعدة والدعم',
 
   /// edit profile
   'name': 'الاسم',
@@ -85,15 +86,138 @@ final Map<String, String> arSA = {
   'name_hint': 'أدخل اسمك',
   'phone_number_hint': 'أدخل رقم هاتفك',
   'gender': 'الجنس',
-  'date_of_birth': 'تاريخ الميلاد',
-  'date_of_birth_hint': '01/01/2000',
-
+  'enter_your_details': 'أدخل بياناتك',
+  'bio': 'السيرة الذاتية',
+  'update_profile': 'تحديث الملف الشخصي',
   /// change password
   /// //
   'existing_password': 'كلمة المرور الحالية',
   'existing_password_hunt': 'كلمة المرور القديمة',
   'new_password': 'كلمة المرور الجديدة',
   'update_password': 'تحديث كلمة المرور',
+
+
+  ///    help & support added by arif
+  "support_type": "نوع الدعم",
+  "support_title_hint": "عنوان الدعم",
+  "description": "الوصف",
+  "description_hint": "صف دعمك",
+  "upload_image": "رفع صورة",
+  "upload_click_text": "اضغط لرفع الصور (بحد أقصى 6)",
+  "upload_format_text": "PNG، JPG حتى 10 ميجابايت لكل ملف",
+
+
+
+  ///    home owner added by arif
+
+  "user_name": "جون دو",
+  "user_role": "المرآب",
+  "my_vehicles": "مركباتي",
+  "service_records": "سجلات الخدمة",
+  "alerts": "التنبيهات",
+  "due_soon": "مستحق قريباً",
+  "add_vehicle": "إضافة مركبة",
+  "request_service": "طلب خدمة",
+  "my_cars": "سياراتي",
+  "view_all": "عرض الكل",
+  "car_title": "هوندا سيفيك 2018",
+  "car_vin": "رقم الهيكل: IHGCV2F6JLOOOOOO",
+  "recent_service": "الخدمة الأخيرة",
+  "service_user_name": "أحمد المنصوري",
+  "service_subtitle": "تويوتا كامري - خدمة الفطيم",
+
+
+//// car details addad by arif
+  "car_details": "تفاصيل السيارة",
+  "2020_car_title": "هوندا سيفيك 2020",
+  "color_silver": "فضي",
+  "mileage_45000": "45,000 ميل",
+  "vin_label": "رقم الهيكل:",
+  "last_service": "آخر خدمة:",
+  "next_service": "الخدمة القادمة:",
+  "documents": "الوثائق:",
+  "active_warranty": "الضمان النشط",
+  "view": "عرض",
+  "honda_uae": "هوندا الإمارات",
+  "warranty_expiry": "15/6/2025",
+  "vehicle_documents": "وثائق المركبة",
+  "auto_insurance_policy": "وثيقة تأمين السيارات",
+  "insurance": "تأمين",
+  "extended_warranty": "الضمان الممتد",
+  "upload_document": "رفع وثيقة",
+  "service_history": "تاريخ الخدمة",
+
+///   Request service added by arif
+  "garage_service_center_name": "اسم المرآب / مركز الخدمة",
+  "enter_garage_name": "أدخل اسم المرآب",
+  "service_type": "نوع الخدمة",
+  "enter_service_type": "أدخل نوع الخدمة",
+  "option_1": "الخيار 1",
+  "option_2": "الخيار 2",
+  "option_3": "الخيار 3",
+  "urgency_level": "مستوى الإلحاح",
+  "medium_within_a_week": "متوسط - خلال أسبوع",
+  "preferred_date": "التاريخ المفضل",
+  "select_date": "اختر التاريخ",
+  "service_description": "وصف الخدمة",
+  "describe_service_hint": "وصف الخدمة المطلوبة، أي أعراض، أو متطلبات محددة",
+  "cancel": "إلغاء",
+
+  /// service history added by arif
+  "honda_civic_2020_service_history": "تاريخ خدمة هوندا سيفيك 2020",
+  "oil_change_filter": "تغيير الزيت والفلتر",
+  "al_futtaim_service_center": "مركز خدمة الفطيم",
+  "warranty": "الضمان",
+  "invoice": "الفاتورة",
+
+  "oil_change_description": "تغيير زيت صناعي كامل واستبدال الفلتر. تم فحص جميع مستويات السوائل وضغط الإطارات.",
+  "service_date_example": "15/1/2024",
+  "download_invoice": "تحميل الفاتورة",
+  "your_rating": "تقييمك:",
+  "re_service": "إعادة الخدمة",
+
+
+
+  ///     My Car  added by Arif
+
+    "car_2020_honda_civic": "هوندا سيفيك 2020",
+    "mileage_45000_miles": "45000 ميل",
+    "vin": "رقم الهيكل:",
+    "uploaded": "تم الرفع",
+  "my_all_cars": "كل سياراتي",
+
+
+
+
+
+
+
+
+
+
+
+  ///  Warranty details added by Arif
+  "warranty_details": "تفاصيل الضمان",
+  "car_garage_info": "معلومات السيارة وورشة الصيانة",
+  "car_toyota_axio_2017": "السيارة: تويوتا أكسيو 2017",
+  "serviced_by_autocare_garage": "تمت الصيانة بواسطة: أوتو كير ورشة",
+  "location_gulshan_dhaka": "الموقع: 123، جُلشن، دكا",
+  "service_date_15_july_2025": "تاريخ الخدمة: 15 يوليو 2025",
+  "warranty_information": "معلومات الضمان",
+  "warranty_provider_honda_uae": "مزود الضمان: هوندا الإمارات",
+  "covered_services": "الخدمات المغطاة:",
+  "engine_checkup": "فحص المحرك",
+  "oil_change": "تغيير الزيت",
+  "ac_service": "خدمة التكييف",
+  "brake_inspection": "فحص المكابح",
+  "terms_conditions": "الشروط والأحكام",
+  "warranty_valid_services_only": "هذا الضمان صالح فقط للخدمات المدرجة.",
+  "accident_damage_not_covered": "لا يغطي أي ضرر ناتج عن الحوادث.",
+  "show_warranty_before_service": "يجب عرض شاشة الضمان قبل الخدمة.",
+  "one_time_use_per_service": "استخدام لمرة واحدة لكل نوع خدمة.",
+  "download": "تحميل",
+
+
 
   /// privacy policy screen add by Arif
   'introduction': 'مقدمة',
@@ -129,4 +253,22 @@ final Map<String, String> arSA = {
   'home': 'الرئيسية',
   'services': 'الخدمات',
   'generate': 'إنشاء',
+
+
+  ///     Add Vehicle  added by Arif
+
+  "vehicle_information": "معلومات السيارة",
+  "car_name": "اسم السيارة",
+  "car_make": "صنع السيارة",
+  "car_model": "طراز السيارة",
+  "year": "السنة",
+  "color": "اللون",
+  "expires_date": "تاريخ الانتهاء",
+  "terms": "الشروط",
+  "current_mileage": "المسافة الحالية",
+  "upload_vehicle_image": "تحميل صورة المركبة",
+  "click_to_upload_images_max_6": "انقر لتحميل الصور (بحد أقصى 6)",
+  "png_jpg_up_to_10mb_each": "PNG، JPG حتى 10 ميغابايت لكل منها",
+
+
 };

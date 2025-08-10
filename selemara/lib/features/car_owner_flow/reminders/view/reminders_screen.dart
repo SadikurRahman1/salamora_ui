@@ -50,10 +50,10 @@ class RemindersScreen extends StatelessWidget {
                     child: ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: 10,
+                      itemCount: controller.serviceStatuses.length,
                       itemBuilder: (context, index) {
                         // Example usage of statuses
-                        final status = controller.serviceStatuses[1]; // "Soon"
+                        final status = controller.serviceStatuses[index]; // "Soon"
 
                         // Determine colors based on status
                         Color statusBgColor;

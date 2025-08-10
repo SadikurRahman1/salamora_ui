@@ -54,7 +54,7 @@ class EditProfileScreen extends StatelessWidget {
                               Container(
                                 margin: EdgeInsets.all(20),
                                 alignment: Alignment.topCenter,
-                                height: res.hp(80),
+                                height: res.wp(80),
                                 width: res.wp(80),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(80),
@@ -65,7 +65,9 @@ class EditProfileScreen extends StatelessWidget {
                                   ),
                                 ),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(res.wp(40)),
+                                  borderRadius: BorderRadius.circular(
+                                    res.wp(40),
+                                  ),
 
                                   // half-width for a perfect circle
                                   child: Image.asset(
@@ -143,66 +145,7 @@ class EditProfileScreen extends StatelessWidget {
                     SizedBox(height: res.hp(20)),
 
                     AppText(
-                      "gender".tr,
-                      color: AppColors.textColor2939,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
-
-                    SizedBox(height: res.hp(8)),
-
-                    Obx(
-                      () => DropdownButtonFormField<String>(
-                        value:
-                            controller.selectedOption.value.isEmpty
-                                ? null
-                                : controller.genders.contains(
-                                  controller.selectedOption.value,
-                                )
-                                ? controller.selectedOption.value
-                                : null,
-                        hint: const Text('Select an option'),
-                        items:
-                            controller.genders.map((item) {
-                              return DropdownMenuItem<String>(
-                                value: item,
-                                child: Text(item),
-                              );
-                            }).toList(),
-                        onChanged: (value) {
-                          if (value != null) {
-                            controller.selectedOption.value = value;
-                          }
-                        },
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 12,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: const BorderSide(
-                              color: Color(0xFFD0D5DD),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: const BorderSide(
-                              color: Color(0xFFD0D5DD),
-                              width: 1,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: res.hp(20)),
-
-                    AppText(
-                      "date_of_birth".tr,
+                      "bio".tr,
                       color: AppColors.textColor2939,
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
@@ -210,15 +153,23 @@ class EditProfileScreen extends StatelessWidget {
                     SizedBox(height: res.hp(8)),
 
                     CustomTextField(
+                      minLine: 2,
+                      maxLine: 5,
                       controller: controller.dateBirthController,
-                      hintText: 'date_of_birth_hint'.tr,
+                      hintText: 'enter_your_details'.tr,
                     ),
+
+
+                    SizedBox(height: res.hp(38)),
+
+
+
                   ],
                 ),
               ),
             ),
 
-            CustomButton(text: "update_password".tr, onTap: () {}),
+            CustomButton(text: "update_profile".tr, onTap: () {}),
             SizedBox(height: res.hp(24)),
           ],
         ),

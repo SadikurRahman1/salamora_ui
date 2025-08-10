@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
+import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 
 import '../../../../core/constants/app_images.dart';
@@ -46,13 +47,13 @@ class ProfileScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(80),
                             border: Border.all(
                               width: 7,
-          
+
                               color: AppColors.profileBorderColor,
                             ),
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(res.wp(40)),
-          
+
                             // half-width for a perfect circle
                             child: Image.asset(
                               AppImages.manIcon,
@@ -62,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-          
+
                         Positioned(
                           bottom: 10,
                           right: 20,
@@ -77,7 +78,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-          
+
                     AppText(
                       "Abdur Rahim",
                       fontSize: res.sp(20),
@@ -87,37 +88,37 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-          
+
               SizedBox(height: res.hp(20)),
-          
+
               ProfileOptionTile(
                 onTap: () {
                   Get.toNamed(AppRoutes.editProfileScreen);
                 },
                 iconPath: AppImages.profileIcon,
                 title: 'profile'.tr,
-          
+
                 textSize: 16,
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
-          
+
                 // optional
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-          
+
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 16),
                 width: double.infinity,
                 height: 1,
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
-          
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          
+
                 children: [
                   Row(
                     children: [
@@ -127,7 +128,7 @@ class ProfileScreen extends StatelessWidget {
                         width: res.wp(24),
                       ),
                       SizedBox(width: res.wp(12)),
-          
+
                       AppText(
                         "notification".tr,
                         color: const Color(0xFF262626),
@@ -136,12 +137,12 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-          
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Static icon + "Dark Mode" label
-          
+
                       // ✅ Only the Switch wrapped in Obx — thanks to .value reference
                       Obx(
                         () => Switch(
@@ -157,14 +158,14 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-          
+
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 10),
                 width: double.infinity,
                 height: 1,
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
-          
+
               ProfileOptionTile(
                 iconPath: AppImages.lock,
                 title: 'password'.tr,
@@ -174,21 +175,21 @@ class ProfileScreen extends StatelessWidget {
                 textSize: 16,
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
-          
+
                 // optional
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-          
+
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 16),
                 width: double.infinity,
                 height: 1,
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
-          
+
               ProfileOptionTile(
                 iconPath: AppImages.privacy,
                 title: 'privacy_policy'.tr,
@@ -198,21 +199,45 @@ class ProfileScreen extends StatelessWidget {
                 textSize: 16,
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
-          
+
                 // optional
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-          
+
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 16),
                 width: double.infinity,
                 height: 1,
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
-          
+
+              ProfileOptionTile(
+                iconPath: AppIcons.customerSupport,
+                title: 'help_support'.tr,
+                onTap: () {
+                  Get.toNamed(AppRoutes.helpSupportScreen);
+                },
+                textSize: 16,
+                bottomMargin: 0,
+                padding: EdgeInsets.all(0),
+
+                // optional
+                boxDecoration: BoxDecoration(
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+
+              Container(
+                margin: EdgeInsets.only(bottom: 15, top: 16),
+                width: double.infinity,
+                height: 1,
+                decoration: BoxDecoration(color: Color(0xFFEAECF0)),
+              ),
+
               ProfileOptionTile(
                 iconPath: AppImages.logout,
                 title: 'logout'.tr,
@@ -222,14 +247,14 @@ class ProfileScreen extends StatelessWidget {
                 textSize: 16,
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
-          
+
                 // optional
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-          
+
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 16),
                 width: double.infinity,
@@ -255,8 +280,8 @@ class ProfileScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(70),
-              topRight: Radius.circular(70),
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
             boxShadow: [
               BoxShadow(
@@ -277,7 +302,21 @@ class ProfileScreen extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontSize: 20,
               ),
-              SizedBox(height: res.hp(40)),
+
+              SizedBox(height: res.hp(20)),
+
+              Container(
+              height: 1
+              ,decoration: BoxDecoration(
+
+                  color: Color(0xFFf2f4f7))
+
+
+
+
+
+              ),
+              SizedBox(height: res.hp(20)),
               AppText(
                 "are_you_sure_you".tr,
                 color: Color(0xFF344054),

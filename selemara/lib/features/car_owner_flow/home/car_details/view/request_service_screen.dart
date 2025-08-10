@@ -19,16 +19,16 @@ class RequestServiceScreen extends StatelessWidget {
     return "${date.day}/${date.month}/${date.year}";
   }
 
-  final controller = Get.put(RequestServiceController());
+  final RequestServiceController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
     final res = AppResponsive();
-    final List<String> items = ['Option 1', 'Option 2', 'Option 3'];
+    final List<String> items = ['option_1'.tr, 'option_2'.tr, 'option_3'.tr];
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Request Service",
+        title: "request_service".tr,
         leading: Icon(Icons.arrow_back_ios, size: res.wp(24)),
       ),
       body: Padding(
@@ -41,7 +41,7 @@ class RequestServiceScreen extends StatelessWidget {
               child: Row(
                 children: [
                   AppText(
-                    "Garage/Service Center Name ",
+                    "garage_service_center_name".tr,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textColor,
                     fontSize: 14,
@@ -59,7 +59,7 @@ class RequestServiceScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: Obx(
-                () => DropdownButtonFormField<String>(
+                    () => DropdownButtonFormField<String>(
                   value: controller.selected.value,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(
@@ -78,26 +78,25 @@ class RequestServiceScreen extends StatelessWidget {
                   dropdownColor: Colors.white,
                   iconEnabledColor: Colors.grey,
                   style: TextStyle(
-                    color: Colors.grey, // Selected text color gray
+                    color: Colors.grey,
                     fontSize: 16,
                   ),
                   hint: Text(
-                    "Enter garage name",
+                    "enter_garage_name".tr,
                     style: TextStyle(color: Colors.grey),
                   ),
-                  items:
-                      items
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: AppText(
-                                e,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textColor,
-                              ),
-                            ),
-                          )
-                          .toList(),
+                  items: items
+                      .map(
+                        (e) => DropdownMenuItem(
+                      value: e,
+                      child: AppText(
+                        e,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textColor,
+                      ),
+                    ),
+                  )
+                      .toList(),
                   onChanged: (val) {
                     controller.changeSelection(val);
                   },
@@ -111,7 +110,7 @@ class RequestServiceScreen extends StatelessWidget {
               child: Row(
                 children: [
                   AppText(
-                    "Service Type ",
+                    "service_type".tr,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textColor,
                     fontSize: 14,
@@ -129,7 +128,7 @@ class RequestServiceScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: Obx(
-                () => DropdownButtonFormField<String>(
+                    () => DropdownButtonFormField<String>(
                   value: controller.selected.value,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(
@@ -148,26 +147,25 @@ class RequestServiceScreen extends StatelessWidget {
                   dropdownColor: Colors.white,
                   iconEnabledColor: Colors.grey,
                   style: TextStyle(
-                    color: Colors.grey, // Selected text color gray
+                    color: Colors.grey,
                     fontSize: 16,
                   ),
                   hint: Text(
-                    "Enter garage name",
+                    "enter_service_type".tr,
                     style: TextStyle(color: Colors.grey),
                   ),
-                  items:
-                      items
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: AppText(
-                                e,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textColor,
-                              ),
-                            ),
-                          )
-                          .toList(),
+                  items: items
+                      .map(
+                        (e) => DropdownMenuItem(
+                      value: e,
+                      child: AppText(
+                        e,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textColor,
+                      ),
+                    ),
+                  )
+                      .toList(),
                   onChanged: (val) {
                     controller.changeSelection(val);
                   },
@@ -180,16 +178,17 @@ class RequestServiceScreen extends StatelessWidget {
             CarInfoSection(
               controllerA: controller.phoneController,
               controllerB: controller.emailController,
-              label1: "Phone Number",
-              label2: "Email",
+              label1: "phone_number".tr,
+              label2: "email".tr,
               hint1: "2024",
               hint2: "Silver",
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
 
             SliverToBoxAdapter(
               child: AppText(
-                "Urgency Level ",
+                "urgency_level".tr,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textColor,
                 fontSize: 14,
@@ -199,7 +198,7 @@ class RequestServiceScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: Obx(
-                () => DropdownButtonFormField<String>(
+                    () => DropdownButtonFormField<String>(
                   value: controller.selected.value,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(
@@ -218,26 +217,25 @@ class RequestServiceScreen extends StatelessWidget {
                   dropdownColor: Colors.white,
                   iconEnabledColor: Colors.grey,
                   style: TextStyle(
-                    color: Colors.grey, // Selected text color gray
+                    color: Colors.grey,
                     fontSize: 16,
                   ),
                   hint: Text(
-                    "Medium - Within a week",
+                    "medium_within_a_week".tr,
                     style: TextStyle(color: Colors.grey),
                   ),
-                  items:
-                      items
-                          .map(
-                            (e) => DropdownMenuItem(
-                              value: e,
-                              child: AppText(
-                                e,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textColor,
-                              ),
-                            ),
-                          )
-                          .toList(),
+                  items: items
+                      .map(
+                        (e) => DropdownMenuItem(
+                      value: e,
+                      child: AppText(
+                        e,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textColor,
+                      ),
+                    ),
+                  )
+                      .toList(),
                   onChanged: (val) {
                     controller.changeSelection(val);
                   },
@@ -249,7 +247,7 @@ class RequestServiceScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "Preferred Date ",
+                "preferred_date".tr,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textColor,
                 fontSize: 14,
@@ -261,7 +259,7 @@ class RequestServiceScreen extends StatelessWidget {
               child: Obx(() {
                 final date = controller.selectedDate.value;
                 final displayText =
-                    date != null ? _formatDate(date) : "Select Date";
+                date != null ? _formatDate(date) : "select_date".tr;
 
                 return InkWell(
                   borderRadius: BorderRadius.circular(24),
@@ -309,7 +307,7 @@ class RequestServiceScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "Service Description",
+                "service_description".tr,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textColor,
                 fontSize: 14,
@@ -323,16 +321,12 @@ class RequestServiceScreen extends StatelessWidget {
                 minLine: 1,
                 borderRadius: 4,
                 bordarColor: AppColors.borderColor3f3,
-
                 controller: controller.descriptionController,
-                hintText:
-                    "Describe the service needed, any symptoms, or specific requirements„-",
+                hintText: "describe_service_hint".tr,
               ),
             ),
 
-
             SliverToBoxAdapter(child: SizedBox(height: res.hp(48))),
-
 
             SliverToBoxAdapter(
               child: Row(
@@ -340,27 +334,29 @@ class RequestServiceScreen extends StatelessWidget {
                   Expanded(
                     child: CustomButton(
                       btnColor: Color(0xFFF5F5F5),
-                      text: "Cancel",
+                      text: "cancel".tr,
                       onTap: () {},
                       textColor: Color(0xFFACACAC),
                     ),
                   ),
 
                   SizedBox(width: res.wp(20)),
+
                   Expanded(
-                    child: CustomButton(text: "Submit", onTap: () {}),
+                    child: CustomButton(
+                      text: "submit".tr,
+                      onTap: () {},
+                    ),
                   ),
                 ],
               ),
             ),
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(48))),
-
-
-
           ],
         ),
       ),
     );
   }
+
 }

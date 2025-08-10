@@ -5,11 +5,11 @@ import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 
-import '../../../../core/constants/app_images.dart';
-import '../../../../core/constants/app_responsive.dart';
-import '../../../../core/widgets/app_text.dart';
-import '../../../../core/widgets/custom_appbar.dart';
-import '../widget/car_detail_card.dart';
+import '../../../../../core/constants/app_images.dart';
+import '../../../../../core/constants/app_responsive.dart';
+import '../../../../../core/widgets/app_text.dart';
+import '../../../../../core/widgets/custom_appbar.dart';
+import '../../widget/car_detail_card.dart';
 
 class MyCarsScreen extends StatelessWidget {
   MyCarsScreen({super.key});
@@ -20,7 +20,7 @@ class MyCarsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "My Cars",
+        title: "my_cars".tr,
         centerTitle: true,
         leading: Icon(Icons.arrow_back_ios, size: res.wp(24)),
       ),
@@ -33,26 +33,22 @@ class MyCarsScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                 children: [
                   AppText(
-                    "My All Cars",
+                    "my_all_cars".tr,
                     color: AppColors.textColor2B2B,
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
                   ),
-
                   SizedBox(
                     width: res.wp(128),
-
                     child: CustomButton(
-                      text: "Add Vehicle ",
-                      iconHeight: 16,
-                      iconWidth: 16,
+                      text: "add_vehicle".tr,
+                      iconHeight: 14,
+                      iconWidth: 14,
                       onTap: () {
                         Get.toNamed(AppRoutes.addVehicleScreen);
                       },
-
                       iconPath: AppIcons.plus1,
                     ),
                   ),
@@ -62,12 +58,9 @@ class MyCarsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
 
-            SliverToBoxAdapter(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(), // important
-                itemCount: 10,
-                itemBuilder: (context, index) {
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (context, index) {
                   return Padding(
                     padding: EdgeInsets.only(bottom: res.hp(16)),
                     child: CarDetailCard(
@@ -84,14 +77,15 @@ class MyCarsScreen extends StatelessWidget {
                     ),
                   );
                 },
+                childCount: 10,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
 
             SliverToBoxAdapter(
               child: Container(
                 padding: EdgeInsets.all(16),
-
                 decoration: BoxDecoration(
                   color: AppColors.whitColor,
                   borderRadius: BorderRadius.circular(12),
@@ -112,7 +106,6 @@ class MyCarsScreen extends StatelessWidget {
             ),
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
-            // Your slivers go here
           ],
         ),
       ),
