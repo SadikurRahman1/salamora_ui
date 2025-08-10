@@ -20,7 +20,7 @@ class CarDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Car Details",
+        title: "car_details".tr,
         centerTitle: true,
         leading: Icon(Icons.arrow_back_ios, size: res.wp(24)),
       ),
@@ -60,13 +60,15 @@ class CarDetailsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               AppText(
-                                "2020 Honda Civic",
+                                "2020_car_title".tr,  // "2020 Honda Civic"
                                 color: AppColors.textColor2A2A,
                                 fontSize: 24,
                                 fontWeight: FontWeight.w600,
@@ -76,7 +78,7 @@ class CarDetailsScreen extends StatelessWidget {
                               Row(
                                 children: [
                                   AppText(
-                                    "Silver",
+                                    "color_silver".tr, // "Silver"
                                     color: AppColors.textColor626,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
@@ -88,14 +90,13 @@ class CarDetailsScreen extends StatelessWidget {
                                     width: res.wp(8),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-
                                       color: AppColors.bordarColor,
                                     ),
                                   ),
                                   Padding(padding: EdgeInsets.only(left: 8)),
 
                                   AppText(
-                                    "45,000 miles",
+                                    "mileage_45000".tr, // "45,000 miles"
                                     color: AppColors.textColor626,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
@@ -105,6 +106,8 @@ class CarDetailsScreen extends StatelessWidget {
                             ],
                           ),
                         ),
+
+
                         GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: () {},
@@ -138,17 +141,17 @@ class CarDetailsScreen extends StatelessWidget {
 
                     Padding(padding: EdgeInsets.only(top: 16)),
 
-                    _labelValueRow("VIN:", "CV2F6JLOOOOOO"),
+                    _labelValueRow("vin_label".tr, "CV2F6JLOOOOOO"),
                     Padding(padding: EdgeInsets.only(top: 8)),
-                    _labelValueRow("Last Service:", "1/15/2024"),
+                    _labelValueRow("last_service".tr, "1/15/2024"),
                     Padding(padding: EdgeInsets.only(top: 8)),
 
-                    _labelValueRow("Next Service:", "4/15/2024"),
+                    _labelValueRow("next_service".tr, "4/15/2024"),
                     Padding(padding: EdgeInsets.only(top: 8)),
-                    _labelValueRow("Service Records:", "8"),
+                    _labelValueRow("service_records".tr, "8"),
 
                     Padding(padding: EdgeInsets.only(top: 8)),
-                    _labelValueRow("Documents:", "2 uploaded"),
+                    _labelValueRow("documents".tr, "2 uploaded"),
                   ],
                 ),
               ),
@@ -159,6 +162,7 @@ class CarDetailsScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: GestureDetector(
                 onTap: () {
+                  Get.toNamed(AppRoutes.warrantyDetailsScreen);
                 },
 
                 child: Container(
@@ -184,7 +188,7 @@ class CarDetailsScreen extends StatelessWidget {
 
                               SizedBox(width: res.wp(3)),
                               AppText(
-                                "Active Warranty",
+                                "active_warranty".tr,
                                 color: AppColors.textColor2A2A,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -193,7 +197,7 @@ class CarDetailsScreen extends StatelessWidget {
                           ),
 
                           AppText(
-                            "View",
+                            "view".tr,
                             color: AppColors.primaryColor,
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
@@ -215,7 +219,7 @@ class CarDetailsScreen extends StatelessWidget {
 
                               SizedBox(width: res.wp(3)),
                               AppText(
-                                "Honda UAE",
+                                "honda_uae".tr,
                                 color: AppColors.greenColor,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -233,7 +237,7 @@ class CarDetailsScreen extends StatelessWidget {
                             ),
 
                             child: AppText(
-                              "6/15/2025",
+                              "warranty_expiry".tr,  // "6/15/2025"
                               color: AppColors.whitColor,
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -270,15 +274,15 @@ class CarDetailsScreen extends StatelessWidget {
 
                   children: [
                     AppText(
-                      "Vehicle Documents",
+                      "vehicle_documents".tr,
                       color: AppColors.textColor626,
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
 
                     VehicleDocumentCard(
-                      policyTitle: "Auto Insurance Policy",
-                      insuranceType: "Insurance",
+                      policyTitle: "auto_insurance_policy".tr,
+                      insuranceType: "insurance".tr,
                       startDate: "1/1/2024",
                       expiryDate: "12/31/2024",
                       onDelete: () {},
@@ -287,8 +291,8 @@ class CarDetailsScreen extends StatelessWidget {
                     SizedBox(height: res.hp(8)),
 
                     VehicleDocumentCard(
-                      policyTitle: "Extended Warranty",
-                      insuranceType: "Insurance",
+                      policyTitle: "extended_warranty".tr,
+                      insuranceType: "insurance".tr,
                       startDate: "1/1/2024",
                       expiryDate: "12/31/2024",
                       onDelete: () {},
@@ -297,7 +301,7 @@ class CarDetailsScreen extends StatelessWidget {
                     SizedBox(height: res.hp(16)),
 
                     CustomButton(
-                      text: 'Upload Document',
+                      text: 'upload_document'.tr,
                       onTap: () {},
                       iconPath: AppIcons.upload,
                       iconColor: AppColors.whitColor,
@@ -315,7 +319,7 @@ class CarDetailsScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: CustomButton(
-                      text: "Service History",
+                      text: "service_history".tr,
                       onTap: () {
                         Get.toNamed(AppRoutes.serviceHistoryScreen);
                       },
@@ -326,7 +330,7 @@ class CarDetailsScreen extends StatelessWidget {
                   SizedBox(width: res.wp(20)),
                   Expanded(
                     child: CustomButton(
-                      text: "Request Service",
+                      text: "request_service".tr,
                       onTap: () {
                         Get.toNamed(AppRoutes.requestServiceScreen);
                       },
@@ -344,6 +348,7 @@ class CarDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
 
   Row _labelValueRow(String kye, String value) {
     return Row(

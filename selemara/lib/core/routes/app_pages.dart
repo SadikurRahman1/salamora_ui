@@ -13,15 +13,17 @@ import 'package:selemara/features/splash/screen/splash_screen.dart';
 import '../../features/auth/views/login_screen.dart';
 import '../../features/auth/views/register_screen.dart';
 import '../../features/car_owner_flow/car_owner_nevbar/view/owner_navbar_screen.dart';
-import '../../features/car_owner_flow/home/view/add_vehicle_screen.dart';
+import '../../features/car_owner_flow/home/binding/home_binding.dart';
+import '../../features/car_owner_flow/home/my_car_add_vehicle/view/add_vehicle_screen.dart';
 import '../../features/car_owner_flow/home/car_details/view/car_details_screen.dart';
 import '../../features/car_owner_flow/home/view/invoice_details_screen.dart';
-import '../../features/car_owner_flow/home/view/my_cars_screen.dart';
+import '../../features/car_owner_flow/home/my_car_add_vehicle/view/my_cars_screen.dart';
 import '../../features/car_owner_flow/home/car_details/view/request_service_screen.dart';
 import '../../features/car_owner_flow/home/car_details/view/service_history_screen.dart';
 import '../../features/car_owner_flow/home/car_details/view/warranty_details_screen.dart';
 import '../../features/car_owner_flow/profile/binding/profile_binding.dart';
 import '../../features/car_owner_flow/profile/view/edit_profile_screen.dart';
+import '../../features/car_owner_flow/profile/view/help_support_screen.dart';
 import '../../features/car_owner_flow/profile/view/profile_screen.dart';
 import '../../features/car_owner_flow/profile/view/update_password_screen.dart';
 import '../../features/car_owner_flow/reminders/view/add_reminder_screen.dart';
@@ -84,7 +86,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.ownerNavbarScreen,
       page: () => OwnerNavbarScreen(),
-      binding: ProfileBinding(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutes.garageNavScreen,
@@ -138,6 +140,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.addReminderScreen,
       page: () => AddReminderScreen(),
+    ),
+
+    GetPage(
+      name: AppRoutes.helpSupportScreen,
+      page: () => HelpSupportScreen(),
     ),
 
     // GetPage(

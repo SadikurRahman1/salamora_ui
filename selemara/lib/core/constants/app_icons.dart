@@ -39,4 +39,5 @@ class AppIcons {
   static const download = "assets/icons/download.png";
   static const cross = "assets/icons/cross.png";
   static const map = "assets/icons/map.png";
+  static const customerSupport = "assets/icons/customer_support.png";
 }

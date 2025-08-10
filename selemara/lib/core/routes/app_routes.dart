@@ -21,6 +21,7 @@ class AppRoutes {
   static const warrantyDetailsScreen = '/warrantyDetailsScreen';
   static const invoiceDetailsScreen = '/invoiceDetailsScreen';
   static const addReminderScreen = '/addReminderScreen';
+  static const helpSupportScreen = '/helpSupportScreen';
 
 
   static const updatePasswordScreen = '/updatePasswordScreen';

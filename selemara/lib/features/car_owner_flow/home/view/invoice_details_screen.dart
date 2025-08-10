@@ -21,12 +21,6 @@ class InvoiceDetailsScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [SliverToBoxAdapter(child: SizedBox(height: res.hp(32))),
 
-
-
-
-          
-
-
           ],
         ),
       ),
