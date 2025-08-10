@@ -5,10 +5,7 @@ import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
 class BannerCard extends StatelessWidget {
-  const BannerCard({
-    super.key,
-    required this.res,
-  });
+  const BannerCard({super.key, required this.res});
 
   final AppResponsive res;
 
@@ -16,7 +13,7 @@ class BannerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: res.screenWidth,
-    
+
       padding: EdgeInsets.symmetric(
         horizontal: res.wp(16),
         vertical: res.hp(20),

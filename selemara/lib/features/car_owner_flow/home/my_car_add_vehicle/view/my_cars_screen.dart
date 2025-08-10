@@ -59,26 +59,23 @@ class MyCarsScreen extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
 
             SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(bottom: res.hp(16)),
-                    child: CarDetailCard(
-                      imagePath: AppImages.carImage,
-                      carName: "2020 Honda Civic",
-                      colorName: "Silver",
-                      mileage: "45,000 miles",
-                      vin: "CV2F6JLOOOOOO",
-                      lastService: "1/15/2024",
-                      nextService: "4/15/2024",
-                      serviceRecords: "8",
-                      documents: "2 uploaded",
-                      onIconTap: () {},
-                    ),
-                  );
-                },
-                childCount: 10,
-              ),
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(bottom: res.hp(16)),
+                  child: CarDetailCard(
+                    imagePath: AppImages.carImage,
+                    carName: "2020 Honda Civic",
+                    colorName: "Silver",
+                    mileage: "45,000 miles",
+                    vin: "CV2F6JLOOOOOO",
+                    lastService: "1/15/2024",
+                    nextService: "4/15/2024",
+                    serviceRecords: "8",
+                    documents: "2 uploaded",
+                    onIconTap: () {},
+                  ),
+                );
+              }, childCount: 10),
             ),
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),

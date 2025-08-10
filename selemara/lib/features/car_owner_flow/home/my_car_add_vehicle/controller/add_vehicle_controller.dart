@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class AddVehicleController extends GetxController{
-
+class AddVehicleController extends GetxController {
   TextEditingController vinController = TextEditingController();
   TextEditingController carNameController = TextEditingController();
   TextEditingController makeController = TextEditingController();
