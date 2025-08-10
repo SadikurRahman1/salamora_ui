@@ -99,31 +99,37 @@ class AppPages {
     GetPage(
       name: AppRoutes.privacyPolicyScreen,
       page: () => PrivacyPolicyScreen(),
+      binding: HomeBinding(),
     ),
 
     GetPage(
       name: AppRoutes.myCarsScreen,
       page: () => MyCarsScreen(),
+      binding: HomeBinding(),
     ),
 
 
     GetPage(
       name: AppRoutes.addVehicleScreen,
       page: () => AddVehicleScreen(),
+      binding: HomeBinding(),
     ),
 
     GetPage(
       name: AppRoutes.carDetailsScreen,
       page: () => CarDetailsScreen(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutes.requestServiceScreen,
       page: () => RequestServiceScreen(),
+      binding: HomeBinding(),
     ),
 
     GetPage(
       name: AppRoutes.serviceHistoryScreen,
       page: () => ServiceHistoryScreen(),
+      binding: HomeBinding(),
     ),
 
 
@@ -131,20 +137,24 @@ class AppPages {
     GetPage(
       name: AppRoutes.warrantyDetailsScreen,
       page: () => WarrantyDetailsScreen(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutes.invoiceDetailsScreen,
-      page: () => InvoiceDetailsScreen(),
+      page: () => InvoiceDetailsScreen(), binding: HomeBinding(),
+
     ),
 
     GetPage(
       name: AppRoutes.addReminderScreen,
       page: () => AddReminderScreen(),
+      binding: HomeBinding(),
     ),
 
     GetPage(
       name: AppRoutes.helpSupportScreen,
       page: () => HelpSupportScreen(),
+      binding: HomeBinding(),
     ),
 
     // GetPage(
