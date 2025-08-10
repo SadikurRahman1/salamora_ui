@@ -271,4 +271,11 @@ final Map<String, String> arSA = {
   "png_jpg_up_to_10mb_each": "PNG، JPG حتى 10 ميغابايت لكل منها",
 
 
+  // buyer section
+
+  "search_car" :"بحث عن سيارة",
+  "save_car" :"سيارة محفوظة",
+  "qr_scans" :"عمليات مسح",
+  "find_verified_carsAr" : "اعثر على سيارات موثوقة مع سجلات صيانة كاملة",
+  "featured_cars": "السيارات المميز",
 };

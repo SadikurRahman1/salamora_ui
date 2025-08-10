@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_responsive.dart';
-import '../../../core/widgets/app_text.dart';
+import 'package:selemara/core/constants/app_colors.dart';
+import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/core/widgets/app_text.dart';
+
 
 class FeaturedCard extends StatelessWidget {
   const FeaturedCard({

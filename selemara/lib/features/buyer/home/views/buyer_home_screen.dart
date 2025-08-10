@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_icons.dart';
-import '../../../core/constants/app_images.dart';
-import '../../../core/constants/app_responsive.dart';
-import '../../../core/widgets/app_text.dart';
+import 'package:get/get.dart';
+import 'package:selemara/core/constants/app_colors.dart';
+import 'package:selemara/core/constants/app_icons.dart';
+import 'package:selemara/core/constants/app_images.dart';
+import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/core/widgets/app_text.dart';
 import '../widgets/buyer_banner.dart';
 import '../widgets/featured_card_widget.dart';
 import '../widgets/recent_activity_card_widget.dart';
@@ -39,7 +40,7 @@ class BuyerHomeScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                           AppText(
-                            "Buyer",
+                            "buyer".tr,
                             color: AppColors.textColor.withValues(alpha: 0.8),
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
@@ -63,17 +64,16 @@ class BuyerHomeScreen extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
             SliverToBoxAdapter(
               child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(
-                    "Featured Cars",
+                    "featured_cars".tr,
                     color: AppColors.textColor,
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                   ),
                   AppText(
-                    "View All",
+                    "view_all".tr,
                     color: AppColors.primaryColor,
                     fontSize: 12,
                     fontWeight: FontWeight.w600,

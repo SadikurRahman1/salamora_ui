@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
@@ -38,7 +39,7 @@ class BuyerBanner extends StatelessWidget {
           ),
           SizedBox(height: res.hp(5)),
           AppText(
-            "Find verified cars with complete service histories",
+            "find_verified_cars".tr,
             fontSize: 14,
             fontWeight: FontWeight.w400,
             color: AppColors.textColor626.withValues(alpha: 0.8),
@@ -56,7 +57,7 @@ class BuyerBanner extends StatelessWidget {
                     color: AppColors.textColor626,
                   ),
                   AppText(
-                    "Search Car",
+                    "search_car".tr,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: AppColors.textColor626,
@@ -72,7 +73,7 @@ class BuyerBanner extends StatelessWidget {
                     color: AppColors.textColor626,
                   ),
                   AppText(
-                    "Saved Car",
+                    "qr_scans".tr,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: AppColors.textColor626,
@@ -88,7 +89,7 @@ class BuyerBanner extends StatelessWidget {
                     color: AppColors.textColor626,
                   ),
                   AppText(
-                    "QR Scans",
+                    "qr_scans".tr,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: AppColors.textColor626,
