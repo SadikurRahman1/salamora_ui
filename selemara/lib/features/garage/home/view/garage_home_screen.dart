@@ -7,6 +7,8 @@ import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/home_header.dart';
 import 'package:selemara/features/garage/home/widget/banner_card.dart';
 import 'package:selemara/features/garage/home/widget/garage_feature_card.dart';
+import 'package:selemara/features/garage/home/widget/recent_service_card.dart';
+import 'package:selemara/features/garage/home/widget/service_request_card.dart';
 
 class GarageHomeScreen extends StatelessWidget {
   const GarageHomeScreen({super.key});
@@ -58,7 +60,6 @@ class GarageHomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: res.hp(20)),
 
-                SizedBox(height: res.hp(20)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -77,7 +78,7 @@ class GarageHomeScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: res.hp(10)),
-                _serviceRequestCard(res),
+                _serviceRequest(res),
                 SizedBox(height: res.hp(16)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,7 +98,7 @@ class GarageHomeScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: res.hp(10)),
-                _recentServiceCard(res),
+                _recentService(res),
                 SizedBox(height: res.hp(16)),
               ]),
             ),
@@ -107,155 +108,34 @@ class GarageHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _serviceRequestCard(AppResponsive res) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: res.hp(10),
-        vertical: res.wp(10),
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.whitColor,
-        borderRadius: BorderRadius.circular(res.sp(15)),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primaryColor.withValues(alpha: 0.2),
-            offset: Offset(0, 2),
-            blurRadius: 4,
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.5),
-                  offset: Offset(0, 4),
-                  blurRadius: 8,
-                ),
-              ],
-            ),
-            child: ClipOval(
-              child: Image.asset(
-                "assets/icons/profile_home.png",
-                width: res.wp(40),
-                height: res.wp(40),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          SizedBox(width: res.wp(5)),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppText(
-                "Ahmed Al Mansouri",
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textColor,
-              ),
-              SizedBox(height: res.hp(5)),
-              Row(
-                children: [
-                  AppText(
-                    "Oil Change",
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textColor.withValues(alpha: 0.8),
-                  ),
-                  SizedBox(width: res.wp(5)),
-                  Container(
-                    width: res.wp(8),
-                    height: res.wp(8),
-                    decoration: BoxDecoration(
-                      color: AppColors.textColor.withValues(alpha: 0.5),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  SizedBox(width: res.wp(5)),
-                  AppText(
-                    "Date: 1/20/2024",
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textColor.withValues(alpha: 0.8),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
+  Widget _serviceRequest(AppResponsive res) {
+    return ListView.separated(
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (BuildContext context, int index) {
+        return ServiceRequestCard(res: res);
+      },
+      itemCount: 2,
+      separatorBuilder: (__, ___) => SizedBox(height: res.hp(10)),
     );
   }
 
-  Widget _recentServiceCard(AppResponsive res) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: res.hp(10),
-        vertical: res.wp(10),
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.whitColor,
-        borderRadius: BorderRadius.circular(res.sp(15)),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primaryColor.withValues(alpha: 0.2),
-            offset: Offset(0, 2),
-            blurRadius: 4,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: res.wp(8),
-                height: res.wp(8),
-                decoration: BoxDecoration(
-                  color: AppColors.greenColor,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              SizedBox(width: res.wp(5)),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppText(
-                    "Ahmed Al Mansouri",
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textColor,
-                  ),
-                  SizedBox(height: res.hp(5)),
-                  AppText(
-                    "Toyota Camry - Al Futtaim Service",
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textColor.withValues(alpha: 0.8),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              color: AppColors.yallowColor.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(res.sp(20)),
-            ),
-            child: AppText(
-              "Pending",
-              color: AppColors.yallowColor,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
+  Widget _recentService(AppResponsive res) {
+    return ListView.separated(
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (BuildContext context, int index) {
+        return RecentServiceCard(
+          res: res,
+          titleText: "Oil Change",
+          subTitleText: "Toyota Camry - Al Futtaim Service",
+          currentStatus: 'Pending',
+        );
+      },
+      itemCount: 2,
+      separatorBuilder: (__, ___) => SizedBox(height: res.hp(10)),
     );
   }
 }
