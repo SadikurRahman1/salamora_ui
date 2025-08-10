@@ -7,9 +7,9 @@ import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/app_text.dart';
 
 class CarInfoCard extends StatelessWidget {
-  String? title;
-  String? subTitle;
-  String? carImage;
+ final String? title;
+ final String? subTitle;
+ final String? carImage;
 
   CarInfoCard({super.key, this.title, this.subTitle, this.carImage});
 
