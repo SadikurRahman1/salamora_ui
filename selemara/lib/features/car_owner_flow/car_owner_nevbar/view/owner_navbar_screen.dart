@@ -34,9 +34,7 @@ class OwnerNavbarScreen extends StatelessWidget {
               color: AppColors.whitColor, // Container color
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1), // Light shadow for separation
-                  blurRadius: 8,
-                  // Shadow will appear upwards
+                  color: Colors.black.withValues(alpha: 0.1),                  blurRadius: 8,
                 ),
               ],
               borderRadius: const BorderRadius.only(
