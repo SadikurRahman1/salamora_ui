@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 
@@ -11,16 +12,15 @@ class WarrantyDetailsScreen extends StatelessWidget {
   WarrantyDetailsScreen({super.key});
 
   final res = AppResponsive();
-
   @override
   Widget build(BuildContext context) {
+    final res = AppResponsive();
+
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Warranty Details",
-
+        title: "warranty_details".tr,
         leading: Icon(Icons.arrow_back_ios, size: res.wp(24)),
       ),
-
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: res.wp(24)),
         child: CustomScrollView(
@@ -29,7 +29,7 @@ class WarrantyDetailsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "Car & Garage Info",
+                "car_garage_info".tr,
                 color: AppColors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -40,7 +40,7 @@ class WarrantyDetailsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "Car: Toyota Axio 2017",
+                "car_toyota_axio_2017".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -51,27 +51,29 @@ class WarrantyDetailsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "Serviced By: AutoCare Garage",
+                "serviced_by_autocare_garage".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
 
             SliverToBoxAdapter(
               child: AppText(
-                "Location: 123, Gulshan, Dhaka",
+                "location_gulshan_dhaka".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
 
             SliverToBoxAdapter(
               child: AppText(
-                "Service Date: 15 July 2025",
+                "service_date_15_july_2025".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -79,54 +81,60 @@ class WarrantyDetailsScreen extends StatelessWidget {
             ),
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
+
             SliverToBoxAdapter(
               child: AppText(
-                "Warranty Information",
+                "warranty_information".tr,
                 color: AppColors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(12))),
 
             SliverToBoxAdapter(
               child: AppText(
-                "Warranty Information",
+                "warranty_information".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
 
             SliverToBoxAdapter(
               child: AppText(
-                "Warranty Provider: Honda UAE",
+                "warranty_provider_honda_uae".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
 
             SliverToBoxAdapter(
               child: AppText(
-                "Location: 123, Gulshan, Dhaka",
+                "location_gulshan_dhaka".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
 
             SliverToBoxAdapter(
               child: AppText(
-                "Covered Services:",
+                "covered_services".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(12))),
 
             SliverToBoxAdapter(
@@ -136,33 +144,11 @@ class WarrantyDetailsScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Color(0xFFeaf0fd),
-
                       borderRadius: BorderRadius.circular(24),
                     ),
-
                     child: AppText(
-                      "Engine Checkup",
-
+                      "engine_checkup".tr,
                       color: AppColors.primaryColor,
-
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  SizedBox(width: res.wp(17)),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFeaf0fd),
-
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-
-                    child: AppText(
-                      "Oil Change",
-
-                      color: AppColors.primaryColor,
-
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
@@ -174,15 +160,27 @@ class WarrantyDetailsScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Color(0xFFeaf0fd),
-
                       borderRadius: BorderRadius.circular(24),
                     ),
-
                     child: AppText(
-                      "AC Service",
-
+                      "oil_change".tr,
                       color: AppColors.primaryColor,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
 
+                  SizedBox(width: res.wp(17)),
+
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Color(0xFFeaf0fd),
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    child: AppText(
+                      "ac_service".tr,
+                      color: AppColors.primaryColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
@@ -193,15 +191,11 @@ class WarrantyDetailsScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Color(0xFFeaf0fd),
-
                       borderRadius: BorderRadius.circular(24),
                     ),
-
                     child: AppText(
-                      "Brake Inspection",
-
+                      "brake_inspection".tr,
                       color: AppColors.primaryColor,
-
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
@@ -209,11 +203,12 @@ class WarrantyDetailsScreen extends StatelessWidget {
                 ],
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
 
             SliverToBoxAdapter(
               child: AppText(
-                "Terms & Conditions",
+                "terms_conditions".tr,
                 color: AppColors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -224,7 +219,7 @@ class WarrantyDetailsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "This warranty is only valid for the listed services.",
+                "warranty_valid_services_only".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -235,7 +230,7 @@ class WarrantyDetailsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "Any damage due to accidents is not covered.",
+                "accident_damage_not_covered".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -246,7 +241,7 @@ class WarrantyDetailsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "You must show this warranty screen before service.",
+                "show_warranty_before_service".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -257,28 +252,29 @@ class WarrantyDetailsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: AppText(
-                "One-time use per service type.",
+                "one_time_use_per_service".tr,
                 color: AppColors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(32))),
 
             SliverToBoxAdapter(
               child: CustomButton(
                 textIconWidth: 5,
-
-                text: "Download",
+                text: "download".tr,
                 iconPath: AppIcons.download,
-
                 onTap: () {},
               ),
             ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(28))),
           ],
         ),
       ),
     );
   }
+
 }

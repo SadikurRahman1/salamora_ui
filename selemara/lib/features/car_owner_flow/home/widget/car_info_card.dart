@@ -11,18 +11,9 @@ class CarInfoCard extends StatelessWidget {
   String? subTitle;
   String? carImage;
 
-
-   CarInfoCard({
-    super.key,
-     this.title,
-     this.subTitle,
-     this.carImage
-
-  });
+  CarInfoCard({super.key, this.title, this.subTitle, this.carImage});
 
   final res = AppResponsive();
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +25,7 @@ class CarInfoCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                carImage??  AppImages.carImage,
+                carImage ?? AppImages.carImage,
                 height: res.hp(112),
                 width: res.wp(213),
                 fit: BoxFit.cover,
@@ -43,7 +34,7 @@ class CarInfoCard extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.only(top: 8),
+                padding: const EdgeInsets.only(top: 8, left: 8),
                 child: Image.asset(
                   AppIcons.verified,
                   height: res.hp(20),
@@ -65,14 +56,14 @@ class CarInfoCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText(
-                      title?? "2018 Honda Civic2018",
+                      title ?? "2018 Honda Civic2018",
                       color: AppColors.textColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
                     const SizedBox(height: 4),
                     AppText(
-                     subTitle?? "VIN: IHGCV2F6JLOOOOOO",
+                      subTitle ?? "VIN: IHGCV2F6JLOOOOOO",
                       color: AppColors.textColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,

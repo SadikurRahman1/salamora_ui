@@ -10,11 +10,14 @@ import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../garage/home/widget/banner_card.dart';
 import '../../../garage/home/widget/garage_feature_card.dart';
+import '../controller/home_controller_owner.dart';
 import '../widget/car_info_card.dart';
 import '../widget/profile_card.dart';
 
 class HomeScreenOwner extends StatelessWidget {
   HomeScreenOwner({super.key});
+
+  final HomeControllerOwner controller = Get.find();
 
   final res = AppResponsive();
 
@@ -38,13 +41,13 @@ class HomeScreenOwner extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppText(
-                            "John Doe",
+                            "user_name".tr,
                             color: AppColors.textColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
                           AppText(
-                            "Garage",
+                            "user_role".tr,
                             color: AppColors.textColor.withValues(alpha: 0.8),
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
@@ -70,21 +73,19 @@ class HomeScreenOwner extends StatelessWidget {
                 children: [
                   GarageFeatureCard(
                     res: res,
-
                     sideColor: AppColors.primaryColor,
-                    cardText: "My Vehicles",
+                    cardText: "my_vehicles".tr,
                   ),
                   GarageFeatureCard(
                     res: res,
                     sideColor: AppColors.greenColor,
                     icon: AppIcons.check1,
-                    cardText: "Service Records",
+                    cardText: "service_records".tr,
                   ),
                 ],
               ),
             ),
             SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
-
             SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -92,21 +93,19 @@ class HomeScreenOwner extends StatelessWidget {
                   GarageFeatureCard(
                     res: res,
                     sideColor: AppColors.orange,
-                    cardText: "Alerts",
+                    cardText: "alerts".tr,
                     icon: AppIcons.notificationHome,
                   ),
                   GarageFeatureCard(
                     res: res,
                     sideColor: AppColors.orange,
-                    cardText: "Due Soon",
+                    cardText: "due_soon".tr,
                     icon: AppIcons.dueSoon,
                   ),
                 ],
               ),
             ),
-
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
-
             SliverToBoxAdapter(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,7 +115,7 @@ class HomeScreenOwner extends StatelessWidget {
                     height: res.hp(60),
                     iconPath: AppIcons.plus,
                     borderRadius: res.sp(30),
-                    text: "Add Vehicle",
+                    text: "add_vehicle".tr,
                     onTap: () {},
                   ),
                   CustomButton(
@@ -124,22 +123,19 @@ class HomeScreenOwner extends StatelessWidget {
                     height: res.hp(60),
                     btnColor: AppColors.orange,
                     borderRadius: res.sp(30),
-                    text: "Request Service",
+                    text: "request_service".tr,
                     onTap: () {},
                   ),
                 ],
               ),
             ),
-
             SliverToBoxAdapter(child: SizedBox(height: res.hp(32))),
-
             SliverToBoxAdapter(
               child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(
-                    "My Cars",
+                    "my_cars".tr,
                     color: AppColors.textColor,
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
@@ -149,7 +145,7 @@ class HomeScreenOwner extends StatelessWidget {
                       Get.toNamed(AppRoutes.myCarsScreen);
                     },
                     child: AppText(
-                      "View All",
+                      "view_all".tr,
                       color: AppColors.primaryColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -158,9 +154,7 @@ class HomeScreenOwner extends StatelessWidget {
                 ],
               ),
             ),
-
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
-
             SliverToBoxAdapter(
               child: SizedBox(
                 height: res.hp(212),
@@ -172,14 +166,12 @@ class HomeScreenOwner extends StatelessWidget {
                       (context, index) => Padding(
                         padding: EdgeInsets.only(right: res.wp(16)),
                         child: GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             Get.toNamed(AppRoutes.carDetailsScreen);
-
-
                           },
                           child: CarInfoCard(
-                            title: "2018 Honda Civic2018",
-                            subTitle: "VIN: IHGCV2F6JLOOOOOO",
+                            title: "car_title".tr,
+                            subTitle: "car_vin".tr,
                             carImage: AppImages.carImage,
                           ),
                         ),
@@ -187,20 +179,18 @@ class HomeScreenOwner extends StatelessWidget {
                 ),
               ),
             ),
-
             SliverToBoxAdapter(
               child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(
-                    "Recent Service",
+                    "recent_service".tr,
                     color: AppColors.textColor,
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                   ),
                   AppText(
-                    "View All",
+                    "view_all".tr,
                     color: AppColors.primaryColor,
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
@@ -208,9 +198,7 @@ class HomeScreenOwner extends StatelessWidget {
                 ],
               ),
             ),
-
             SliverToBoxAdapter(child: SizedBox(height: res.hp(10))),
-
             SliverToBoxAdapter(
               child: ListView.builder(
                 itemCount: 10,
@@ -220,15 +208,13 @@ class HomeScreenOwner extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: ProfileCard(
-                      title: "'Ahmed Al Mansouri",
-
-                      subTitle: "Toyota Camry - Al Futtaim Service",
+                      title: "service_user_name".tr,
+                      subTitle: "service_subtitle".tr,
                     ),
                   );
                 },
               ),
             ),
-
             SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
           ],
         ),
