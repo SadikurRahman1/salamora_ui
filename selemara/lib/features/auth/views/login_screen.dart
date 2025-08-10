@@ -27,6 +27,13 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // SizedBox(height: res.hp(50)),
+              CustomButton(
+                text: 'go to buyer screen'.tr,
+                onTap: () {
+                  Get.toNamed(AppRoutes.buyerHomeScreen);
+                },
+              ),
+
               AppText(
                 'welcome_back'.tr,
                 color: AppColors.textColor,

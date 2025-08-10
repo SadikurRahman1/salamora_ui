@@ -4,6 +4,7 @@ import 'package:selemara/features/auth/binding/auth_binding.dart';
 import 'package:selemara/features/auth/views/forgot_password_screen.dart';
 import 'package:selemara/features/auth/views/reset_password_screen.dart';
 import 'package:selemara/features/auth/views/verify_code_screen.dart';
+import 'package:selemara/features/buyer/views/buyer_home_screen.dart';
 import 'package:selemara/features/garage/garage_nav_bar/bindings/garage_binding.dart';
 import 'package:selemara/features/garage/garage_nav_bar/view/garage_nav_bar_screen.dart';
 import 'package:selemara/features/onboarding/views/onboarding_screen.dart';
@@ -167,6 +168,13 @@ class AppPages {
     //   page: () => const ProfilePage(),
     //   binding: ProfileBinding(),
     // ),
+
+    GetPage(
+      name: AppRoutes.buyerHomeScreen,
+      page: () => BuyerHomeScreen(),
+      binding: HomeBinding(),
+    ),
+
   ];
 
   static final initialBinding = SplashBinding();
