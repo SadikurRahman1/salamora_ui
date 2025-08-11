@@ -44,19 +44,21 @@ final Map<String, String> enUS = {
 
   'onboard_title_1': 'Smart AutoCare',
   'onboard_desc_1':
-      'Track your car’s full service history, book garage appointments, and verify any vehicle by VIN number — all in one app.',
+        'Register your car, maintain complete service history, get reminders, and share verified records with confidence.',
 
   'onboard_title_2': 'Service & History',
   'onboard_desc_2':
-      'Car owners can easily book services, track maintenance history, and access service records anytime.',
+  'Complete digital service management system with multi-branch support, invoice generation, and customer relationship tools.',
 
   'onboard_title_3': 'Check Before You Buy',
   'onboard_desc_3':
-      'Enter the VIN number to verify how many times a car was serviced and where — transparency before you.',
+        'Scan QR codes to verify complete service history. Check maintenance records and buy cars with full transparency.'
+,
 
   'onboard_title_4': 'Grow Your Garage Business',
   'onboard_desc_4':
-      'Garages can log services done, dealerships can sell cars with verified history — all synced with our platform.',
+        'List cars with verified service history, build trust with buyers, and use professional tools for premium sales.'
+,
 
   'email_verification_info':
       'Enter your phone number, we will send a verification code to the phone number',
