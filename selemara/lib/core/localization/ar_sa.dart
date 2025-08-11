@@ -42,21 +42,17 @@ final Map<String, String> arSA = {
   'privacy_policy': 'سياسة الخصوصية',
   'register_account': 'إنشاء حساب',
 
-  'onboard_title_1': 'العناية الذكية بالسيارة',
   'onboard_desc_1':
-      'تتبع سجل صيانة سيارتك الكامل، واحجز المواعيد مع الكراج، وحقق من أي مركبة باستخدام رقم الهيكل — كل ذلك في تطبيق واحد.',
+      'سجّل سيارتك، احفظ سجل الصيانة الكامل، احصل على تذكيرات، وشارك السجلات الموثوقة بثقة.',
 
-  'onboard_title_2': 'الخدمة والتاريخ',
   'onboard_desc_2':
-      'يمكن لمالكي السيارات حجز الخدمات بسهولة، وتتبع الصيانة، والوصول إلى سجلات الخدمة في أي وقت.',
+      'نظام إدارة صيانة رقمي متكامل يدعم الفروع المتعددة، إنشاء الفواتير، وأدوات إدارة علاقات العملاء.',
 
-  'onboard_title_3': 'تحقق قبل الشراء',
   'onboard_desc_3':
-      'أدخل رقم الهيكل لمعرفة عدد مرات صيانة السيارة وأين تمت — الشفافية قبل الشراء.',
+      'امسح رموز QR للتحقق من سجل الصيانة الكامل. تحقق من سجلات الصيانة واشتري السيارات بشفافية كاملة.',
 
-  'onboard_title_4': 'نمِّ أعمال كراجك',
   'onboard_desc_4':
-      'يمكن للكراجات تسجيل الخدمات، والوكلاء بيع السيارات بسجلات موثقة — كل ذلك متزامن مع منصتنا.',
+      'قم بإدراج السيارات ذات سجل الصيانة الموثق، وابنِ ثقة المشترين، واستخدم أدوات احترافية لبيع متميز.',
 
   'email_verification_info': 'أدخل رقم هاتفك، سنرسل رمز التحقق إلى رقم الهاتف',
   'forgot_password_title': 'نسيت كلمة المرور',
@@ -89,13 +85,13 @@ final Map<String, String> arSA = {
   'enter_your_details': 'أدخل بياناتك',
   'bio': 'السيرة الذاتية',
   'update_profile': 'تحديث الملف الشخصي',
+
   /// change password
   /// //
   'existing_password': 'كلمة المرور الحالية',
   'existing_password_hunt': 'كلمة المرور القديمة',
   'new_password': 'كلمة المرور الجديدة',
   'update_password': 'تحديث كلمة المرور',
-
 
   ///    help & support added by arif
   "support_type": "نوع الدعم",
@@ -106,10 +102,7 @@ final Map<String, String> arSA = {
   "upload_click_text": "اضغط لرفع الصور (بحد أقصى 6)",
   "upload_format_text": "PNG، JPG حتى 10 ميجابايت لكل ملف",
 
-
-
   ///    home owner added by arif
-
   "user_name": "جون دو",
   "user_role": "المرآب",
   "my_vehicles": "مركباتي",
@@ -126,8 +119,7 @@ final Map<String, String> arSA = {
   "service_user_name": "أحمد المنصوري",
   "service_subtitle": "تويوتا كامري - خدمة الفطيم",
 
-
-//// car details addad by arif
+  //// car details addad by arif
   "car_details": "تفاصيل السيارة",
   "2020_car_title": "هوندا سيفيك 2020",
   "color_silver": "فضي",
@@ -147,7 +139,7 @@ final Map<String, String> arSA = {
   "upload_document": "رفع وثيقة",
   "service_history": "تاريخ الخدمة",
 
-///   Request service added by arif
+  ///   Request service added by arif
   "garage_service_center_name": "اسم المرآب / مركز الخدمة",
   "enter_garage_name": "أدخل اسم المرآب",
   "service_type": "نوع الخدمة",
@@ -170,31 +162,19 @@ final Map<String, String> arSA = {
   "warranty": "الضمان",
   "invoice": "الفاتورة",
 
-  "oil_change_description": "تغيير زيت صناعي كامل واستبدال الفلتر. تم فحص جميع مستويات السوائل وضغط الإطارات.",
+  "oil_change_description":
+      "تغيير زيت صناعي كامل واستبدال الفلتر. تم فحص جميع مستويات السوائل وضغط الإطارات.",
   "service_date_example": "15/1/2024",
   "download_invoice": "تحميل الفاتورة",
   "your_rating": "تقييمك:",
   "re_service": "إعادة الخدمة",
 
-
-
   ///     My Car  added by Arif
-
-    "car_2020_honda_civic": "هوندا سيفيك 2020",
-    "mileage_45000_miles": "45000 ميل",
-    "vin": "رقم الهيكل:",
-    "uploaded": "تم الرفع",
+  "car_2020_honda_civic": "هوندا سيفيك 2020",
+  "mileage_45000_miles": "45000 ميل",
+  "vin": "رقم الهيكل:",
+  "uploaded": "تم الرفع",
   "my_all_cars": "كل سياراتي",
-
-
-
-
-
-
-
-
-
-
 
   ///  Warranty details added by Arif
   "warranty_details": "تفاصيل الضمان",
@@ -216,8 +196,6 @@ final Map<String, String> arSA = {
   "show_warranty_before_service": "يجب عرض شاشة الضمان قبل الخدمة.",
   "one_time_use_per_service": "استخدام لمرة واحدة لكل نوع خدمة.",
   "download": "تحميل",
-
-
 
   /// privacy policy screen add by Arif
   'introduction': 'مقدمة',
@@ -254,9 +232,7 @@ final Map<String, String> arSA = {
   'services': 'الخدمات',
   'generate': 'إنشاء',
 
-
   ///     Add Vehicle  added by Arif
-
   "vehicle_information": "معلومات السيارة",
   "car_name": "اسم السيارة",
   "car_make": "صنع السيارة",
@@ -269,6 +245,4 @@ final Map<String, String> arSA = {
   "upload_vehicle_image": "تحميل صورة المركبة",
   "click_to_upload_images_max_6": "انقر لتحميل الصور (بحد أقصى 6)",
   "png_jpg_up_to_10mb_each": "PNG، JPG حتى 10 ميغابايت لكل منها",
-
-
 };

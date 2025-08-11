@@ -5,7 +5,7 @@ import 'package:selemara/core/helper/shared_preferences_helper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SharedPreferencesHelper.init();
+  await SharedPreferencesHelper().init();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

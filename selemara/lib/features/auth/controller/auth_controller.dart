@@ -1,49 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:selemara/core/constants/api_urls.dart';
+import 'package:selemara/core/constants/token_key.dart';
+import 'package:selemara/core/helper/shared_preferences_helper.dart';
 import 'package:selemara/core/services/network_caller.dart';
 
 class AuthController extends GetxController {
-  final NetworkCaller _networkCaller = NetworkCaller();
+  final NetworkCaller networkCaller;
+  final SharedPreferencesHelper _prefsHelper;
 
-  final TextEditingController phoneNumberTEController = TextEditingController();
-  final TextEditingController passwordTEController = TextEditingController();
+  AuthController({
+    required this.networkCaller,
+    SharedPreferencesHelper? prefsHelper,
+  }) : _prefsHelper = prefsHelper ?? SharedPreferencesHelper();
 
-  RxBool isLoading = false.obs;
-  RxBool rememberMe = false.obs;
-  RxBool agree = false.obs;
+  final phoneNumberTEController = TextEditingController();
+  final passwordTEController = TextEditingController();
 
-  RxnString selectedUserType = RxnString();
+  final isLoading = false.obs;
+  final rememberMe = false.obs;
+  final agree = false.obs;
+  final selectedUserType = RxnString();
 
-  void toggleRememberMe() {
-    rememberMe.value = !rememberMe.value;
+  @override
+  void onInit() {
+    super.onInit();
+    loadSavedCredentials();
   }
 
-  void toggleAgree() {
-    agree.value = !agree.value;
-  }
+  void toggleRememberMe() => rememberMe.toggle();
+  void toggleAgree() => agree.toggle();
 
-  /// Login Method
   Future<void> login() async {
     isLoading.value = true;
     try {
-      final Map<String, dynamic> loginBody = {
+      final loginBody = {
         "phoneNumber": phoneNumberTEController.text.trim(),
         "password": passwordTEController.text.trim(),
       };
 
-      final response = await _networkCaller.postRequest(
-        url: "/auth/login",
+      final response = await networkCaller.postRequest(
+        url: ApiUrls.loginUrl,
         body: loginBody,
       );
 
-      if (response.isSuccess) {
-        Get.offAllNamed('/home');
-      } else {}
-    } catch (e) {
-      Get.snackbar("Error", "An error occurred during login.");
+      if (response.isSuccess && response.data != null) {
+        final data = response.data['data'];
+
+        await _saveLoginData(data);
+
+        if (rememberMe.value) {
+          await _prefsHelper.setString(
+            TokenKey.savedPhoneNumber,
+            phoneNumberTEController.text.trim(),
+          );
+          await _prefsHelper.setString(
+            TokenKey.savedPassword,
+            passwordTEController.text.trim(),
+          );
+        } else {
+          await _prefsHelper.remove(TokenKey.savedPhoneNumber);
+          await _prefsHelper.remove(TokenKey.savedPassword);
+        }
+
+        _navigateByRole(data['role']);
+      } else {
+        Get.snackbar("Login Failed", response.message ?? "Invalid credentials");
+      }
     } finally {
       isLoading.value = false;
     }
+  }
+
+  Future<void> _saveLoginData(Map<String, dynamic> data) async {
+    await _prefsHelper.setString(TokenKey.accessToken, data['accessToken']);
+    await _prefsHelper.setString(TokenKey.userId, data['id']);
+    await _prefsHelper.setString(TokenKey.name, data['name']);
+    await _prefsHelper.setString(TokenKey.email, data['email'] ?? '');
+    await _prefsHelper.setString(TokenKey.phoneNumber, data['phoneNumber']);
+    await _prefsHelper.setString(TokenKey.role, data['role']);
   }
 
   Future<void> signUp({
@@ -52,30 +87,65 @@ class AuthController extends GetxController {
     required String name,
   }) async {
     isLoading.value = true;
+
     try {
-      final Map<String, dynamic> signUpBody = {
-        "name": name,
+      final signUpBody = {
+        "name": name.trim(),
         "phoneNumber": phoneNumber.trim(),
         "password": password.trim(),
       };
 
-      final response = await _networkCaller.postRequest(
-        url: "/auth/signup",
+      final response = await networkCaller.postRequest(
+        url: ApiUrls.registerUrl,
         body: signUpBody,
       );
 
       if (response.isSuccess) {
         Get.snackbar("Success", "Account created successfully");
         Get.offNamed('/login');
-      } else {}
-    } catch (e) {
+      } else {
+        Get.snackbar(
+          "Sign Up Failed",
+          response.message ?? "Unable to create account",
+        );
+      }
+    } catch (_) {
       Get.snackbar("Error", "Something went wrong. Try again.");
     } finally {
       isLoading.value = false;
     }
   }
 
-  /// Dispose controllers
+  void _navigateByRole(String role) {
+    switch (role) {
+      case 'CAR_OWNER':
+        Get.offAllNamed('/carOwnerHome');
+        break;
+      case 'GARAGE':
+        Get.offAllNamed('/garageHome');
+        break;
+      case 'DEALERSHIP':
+        Get.offAllNamed('/dealershipHome');
+        break;
+      case 'USER':
+        Get.offAllNamed('/userHome');
+        break;
+      default:
+        Get.offAllNamed('/home');
+    }
+  }
+
+  void loadSavedCredentials() {
+    final savedPhone = _prefsHelper.getString(TokenKey.savedPhoneNumber);
+    final savedPass = _prefsHelper.getString(TokenKey.savedPassword);
+
+    if (savedPhone != null && savedPass != null) {
+      phoneNumberTEController.text = savedPhone;
+      passwordTEController.text = savedPass;
+      rememberMe.value = true;
+    }
+  }
+
   @override
   void onClose() {
     phoneNumberTEController.dispose();
