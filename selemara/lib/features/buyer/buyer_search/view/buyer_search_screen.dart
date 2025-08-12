@@ -101,11 +101,16 @@ class BuyerSearchScreen extends StatelessWidget {
                 borderRadius: 8,
                 hintText:   "enter_vin_manually".tr,
                 controller: controller.searchTEController,
+                onChanged: (value){
+
+                  controller.setVinInput(value);
+                },
+
 
               ),
               SizedBox(height: res.hp(12)),
               Obx(() {
-                bool isEmpty = controller.searchTEController.text.isEmpty;
+                bool isEmpty = controller.vinInput.isEmpty;
 
                   return CustomButton(
                     text: "search".tr,
