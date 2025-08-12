@@ -142,6 +142,7 @@ final Map<String, String> arSA = {
   "extended_warranty": "الضمان الممتد",
   "upload_document": "رفع وثيقة",
   "service_history": "تاريخ الخدمة",
+  "service_record": "سجلات الخدمة:",
 
 ///   Request service added by arif
   "garage_service_center_name": "اسم المرآب / مركز الخدمة",
