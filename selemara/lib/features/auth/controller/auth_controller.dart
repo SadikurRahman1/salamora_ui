@@ -183,9 +183,9 @@ class AuthController extends GetxController {
       // case 'DEALERSHIP':
       //   Get.offAllNamed('/dealershipHome');
       //   break;
-      // case 'USER':
-      //   Get.offAllNamed('/userHome');
-      //   break;
+      case 'BUYER':
+        Get.offAllNamed('/userHome');
+        break;
       // default:
       //   Get.offAllNamed('/home');
     }
