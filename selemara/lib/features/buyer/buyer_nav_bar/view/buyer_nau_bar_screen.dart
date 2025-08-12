@@ -10,14 +10,14 @@ class BuyerNauBarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final BuyerNavBarController navController =
-    Get.find<BuyerNavBarController>();
+        Get.find<BuyerNavBarController>();
 
     return Scaffold(
       body: Obx(
-            () => BuyerNavBarItems.screens[navController.currentIndex.value],
+        () => BuyerNavBarItems.screens[navController.currentIndex.value],
       ),
       bottomNavigationBar: Obx(
-            () => Container(
+        () => Container(
           decoration: BoxDecoration(
             color: AppColors.backGroundColor,
             borderRadius: const BorderRadius.only(
@@ -54,8 +54,8 @@ class BuyerNauBarScreen extends StatelessWidget {
                 fontSize: 14,
               ),
               items: List.generate(BuyerNavBarItems.activeIcons.length, (
-                  index,
-                  ) {
+                index,
+              ) {
                 final isActive = navController.currentIndex == index;
 
                 return BottomNavigationBarItem(
@@ -75,9 +75,9 @@ class BuyerNauBarScreen extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           fontSize: 14,
                           color:
-                          isActive
-                              ? AppColors.primaryColor
-                              : AppColors.primaryTextColor,
+                              isActive
+                                  ? AppColors.primaryColor
+                                  : AppColors.primaryTextColor,
                         ),
                       ),
                     ],
