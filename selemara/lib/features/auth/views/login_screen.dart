@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
               CustomButton(
                 text: 'go to buyer screen'.tr,
                 onTap: () {
-                  Get.toNamed(AppRoutes.buyerHomeScreen);
+                  Get.toNamed(AppRoutes.buyerNavScreen);
                 },
               ),
 

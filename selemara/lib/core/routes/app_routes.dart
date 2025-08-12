@@ -30,5 +30,6 @@ class AppRoutes {
   static const garageNavScreen = "/garageNavBarScreen";
 
 
+  static const buyerNavScreen = '/buyerNavBarScreen';
   static const buyerHomeScreen = '/buyerHomeScreen';
 }

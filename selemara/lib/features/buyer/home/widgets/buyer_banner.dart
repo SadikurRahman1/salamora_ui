@@ -6,10 +6,10 @@ import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
 class BuyerBanner extends StatelessWidget {
-  const BuyerBanner({super.key, required this.res});
+  BuyerBanner({super.key, });
 
-  final AppResponsive res;
 
+  final res = AppResponsive();
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -40,4 +40,16 @@ class AppIcons {
   static const cross = "assets/icons/cross.png";
   static const map = "assets/icons/map.png";
   static const customerSupport = "assets/icons/customer_support.png";
+
+
+
+
+
+
+  static const saveActive = "assets/icons/save_active.png";
+  static const saveInActive = "assets/icons/save_in_active.png";
+  static const searchActive = "assets/icons/search_active.png";
+  static const searchInActive = "assets/icons/search_in_active.png";
+
+
 }

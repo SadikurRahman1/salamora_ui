@@ -5,9 +5,9 @@ import 'package:selemara/core/widgets/app_text.dart';
 
 
 class FeaturedCard extends StatelessWidget {
-  const FeaturedCard({
+  FeaturedCard({
     super.key,
-    required this.res,
+
     required this.imagePath,
     required this.title,
     required this.mileage,
@@ -19,7 +19,7 @@ class FeaturedCard extends StatelessWidget {
     this.imageBorderRadius = 8,
   });
 
-  final AppResponsive res;
+
   final String imagePath;
   final String title;
   final String mileage;
@@ -30,115 +30,115 @@ class FeaturedCard extends StatelessWidget {
   final double imageBorderRadius;
   final VoidCallback? onTap;
 
+
+  final res = AppResponsive();
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          width: res.wp(90),
-          height: res.hp(90),
-          padding: EdgeInsets.symmetric(
-            horizontal: res.hp(10),
-            vertical: res.wp(10),
-          ),
-          decoration: BoxDecoration(
-            color: AppColors.whitColor,
-            borderRadius: BorderRadius.circular(res.sp(15)),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.primaryColor.withValues(alpha: 0.2),
-                offset: const Offset(0, 2),
-                blurRadius: 4,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: res.wp(90),
+        height: res.hp(90),
+        padding: EdgeInsets.symmetric(
+          horizontal: res.hp(10),
+          vertical: res.wp(10),
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.whitColor,
+          borderRadius: BorderRadius.circular(res.sp(15)),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.primaryColor.withValues(alpha: 0.2),
+              offset: const Offset(0, 2),
+              blurRadius: 4,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            // Left image
+            ClipRRect(
+              borderRadius: BorderRadius.circular(imageBorderRadius),
+              child: Image.asset(
+                imagePath,
+                width: res.wp(90),
+                height: res.wp(90),
+                fit: BoxFit.cover,
               ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              // Left image
-              ClipRRect(
-                borderRadius: BorderRadius.circular(imageBorderRadius),
-                child: Image.asset(
-                  imagePath,
-                  width: res.wp(90),
-                  height: res.wp(90),
-                  fit: BoxFit.cover,
-                ),
-              ),
+            ),
 
-              SizedBox(width: res.wp(10)),
+            SizedBox(width: res.wp(10)),
 
-              // Middle text section
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    AppText(
-                      title,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textColor,
-                    ),
-                    Row(
-                      children: [
-                        AppText(
-                          mileage,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textColor.withValues(alpha: 0.8),
-                        ),
-                        SizedBox(width: res.wp(5)),
-                        Container(
-                          width: res.wp(8),
-                          height: res.wp(8),
-                          decoration: BoxDecoration(
-                            color: AppColors.textColor.withValues(alpha: 0.5),
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        SizedBox(width: res.wp(5)),
-                        AppText(
-                          date,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textColor.withValues(alpha: 0.8),
-                        ),
-                      ],
-                    ),
-                    AppText(
-                      "VIN: $vin",
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textColor.withValues(alpha: 0.8),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Right side icon + price
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // Middle text section
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ClipOval(
-                    child: Image.asset(
-                      sideIconPath,
-                      width: res.wp(30),
-                      height: res.wp(30),
-                      fit: BoxFit.cover,
-                    ),
+                  AppText(
+                    title,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textColor,
+                  ),
+                  Row(
+                    children: [
+                      AppText(
+                        mileage,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.textColor.withValues(alpha: 0.8),
+                      ),
+                      SizedBox(width: res.wp(5)),
+                      Container(
+                        width: res.wp(8),
+                        height: res.wp(8),
+                        decoration: BoxDecoration(
+                          color: AppColors.textColor.withValues(alpha: 0.5),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      SizedBox(width: res.wp(5)),
+                      AppText(
+                        date,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.textColor.withValues(alpha: 0.8),
+                      ),
+                    ],
                   ),
                   AppText(
-                    price,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.primaryColor,
+                    "VIN: $vin",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textColor.withValues(alpha: 0.8),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+
+            // Right side icon + price
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ClipOval(
+                  child: Image.asset(
+                    sideIconPath,
+                    width: res.wp(30),
+                    height: res.wp(30),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                AppText(
+                  price,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primaryColor,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
