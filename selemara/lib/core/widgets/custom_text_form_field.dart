@@ -14,6 +14,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool readOnly;
   final VoidCallback? onTap;
   final double borderRadius;
+  final ValueChanged<String>? onChanged;
 
   const CustomTextFormField({
     super.key,
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatefulWidget {
     this.readOnly = false,
     this.onTap,
     this.borderRadius = 24,
+    this.onChanged,
   });
 
   @override
@@ -52,6 +54,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       keyboardType: widget.keyboardType,
       readOnly: widget.readOnly,
       onTap: widget.onTap,
+      onChanged: widget.onChanged,
 
       style: GoogleFonts.inter(
         color: AppColors.textColor,
