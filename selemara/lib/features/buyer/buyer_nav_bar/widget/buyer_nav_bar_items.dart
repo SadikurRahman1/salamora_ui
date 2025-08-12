@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
-
 import '../../buyer_search/view/buyer_search_screen.dart';
 import '../../home/views/buyer_home_screen.dart';
 
@@ -19,8 +18,8 @@ class BuyerNavBarItems {
 
   static final List<String> labels = [
     'home'.tr,
-    'Search'.tr,
-    'Saved'.tr,
+    'search'.tr,
+    'saved'.tr,
     'profile'.tr,
   ];
 

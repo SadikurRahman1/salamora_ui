@@ -8,7 +8,7 @@ import 'package:selemara/core/widgets/app_text.dart';
 import '../../../../core/widgets/home_header.dart';
 import '../widgets/buyer_banner.dart';
 import '../widgets/featured_card_widget.dart';
-import '../widgets/recent_activity_card_widget.dart';
+import '../../common/widgets/activity_card_widget.dart';
 
 class BuyerHomeScreen extends StatelessWidget {
   BuyerHomeScreen({super.key});
@@ -85,31 +85,31 @@ class BuyerHomeScreen extends StatelessWidget {
                       },
                     ),
 
-                  SizedBox(height: res.hp(16)),
+                  SizedBox(height: res.hp(32)),
                   AppText(
-                      "Recent Activity",
+                      "recent_activity".tr,
                       color: AppColors.textColor,
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
 
-                 SizedBox(height: res.hp(10)),
-                  RecentActiveCard(
-                    imagePath: "assets/images/qr_code_red.png",
-                    title: "Scanned Toyota Camry 2020",
-                    subtitle: "4 Service History Verified",
-                    borderRadius: 5,
-                    onTap: () {},
+                 // SizedBox(height: res.hp(20)),
+
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: 2,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: res.hp(12)),
+                        child: ActiveCard(
+                          imagePath: AppIcons.qrCodeRed,
+                          title: "Scanned Toyota Camry 2020",
+                          subtitle:  "Added to your saved card",
+                        ),
+                      );
+                    },
                   ),
-                  SizedBox(height: res.hp(10)),
-                  RecentActiveCard(
-                    imagePath: "assets/images/save.png",
-                    title: "Saved Honda Accord 2019",
-                    subtitle: "Added to your saved card",
-                    borderRadius: 5,
-                    onTap: () {},
-                  ),
-                 SizedBox(height: res.hp(16)),
                 ]),
               ),
             ),
