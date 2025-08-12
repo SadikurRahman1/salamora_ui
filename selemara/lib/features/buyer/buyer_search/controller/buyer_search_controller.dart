@@ -6,6 +6,8 @@ class BuyerSearchController extends GetxController{
   var vinInput = ''.obs;
 
   void setVinInput(String val) {
+
     vinInput.value = val.trim();
+    debugPrint(vinInput.value.toString());
   }
 }
