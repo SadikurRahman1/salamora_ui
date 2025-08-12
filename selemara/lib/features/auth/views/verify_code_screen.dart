@@ -3,14 +3,19 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
-import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/background_gradient.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 import 'package:selemara/features/auth/controller/auth_controller.dart';
 
 class VerifyCodeScreen extends StatelessWidget {
-  const VerifyCodeScreen({super.key});
+  final String phoneNumber;
+  final bool isPasswordReset;
+  const VerifyCodeScreen({
+    super.key,
+    required this.phoneNumber,
+    this.isPasswordReset = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +32,13 @@ class VerifyCodeScreen extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: AppColors.whitColor,
-        border: Border.all(color: AppColors.whitColor),
+        border: Border.all(color: AppColors.pinInputBorderColor),
         borderRadius: BorderRadius.circular(8),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: AppColors.whitColor),
+      border: Border.all(color: AppColors.pinInputBorderColor),
       borderRadius: BorderRadius.circular(8),
     );
 
@@ -76,7 +81,7 @@ class VerifyCodeScreen extends StatelessWidget {
                     fontWeight: FontWeight.w300,
                   ),
                   AppText(
-                    "+4735789357834",
+                    phoneNumber,
                     color: AppColors.textColor,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
@@ -92,6 +97,7 @@ class VerifyCodeScreen extends StatelessWidget {
                     SizedBox(height: res.hp(8)),
                     Pinput(
                       length: 6,
+                      controller: authController.otpTEController,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       defaultPinTheme: defaultPinTheme,
                       focusedPinTheme: focusedPinTheme,
@@ -123,8 +129,14 @@ class VerifyCodeScreen extends StatelessWidget {
                     SizedBox(height: res.hp(25)),
                     CustomButton(
                       text: 'submit'.tr,
-                      onTap: () {
-                        Get.toNamed(AppRoutes.resetPassword);
+                      onTap: () async {
+                        if (formKey.currentState!.validate()) {
+                          await authController.verifyPhone(
+                            otp: authController.otpTEController.text,
+                            isPasswordReset: isPasswordReset,
+                          );
+                        }
+                        // Get.toNamed(AppRoutes.resetPassword);
                       },
                     ),
                     SizedBox(height: res.hp(20)),
