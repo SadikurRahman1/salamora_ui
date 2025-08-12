@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/api_urls.dart';
@@ -21,11 +23,15 @@ class AuthController extends GetxController {
   final fullNameTEController = TextEditingController();
   final emailTEController = TextEditingController();
   final confirmPTEController = TextEditingController();
+  final otpTEController = TextEditingController();
 
   final isLoading = false.obs;
   final rememberMe = false.obs;
   final agree = false.obs;
   final selectedUserType = RxnString();
+
+  var resendCountdown = 45.obs;
+  var canResend = false.obs;
 
   @override
   void onInit() {
@@ -35,6 +41,35 @@ class AuthController extends GetxController {
 
   void toggleRememberMe() => rememberMe.toggle();
   void toggleAgree() => agree.toggle();
+
+  void startResendTimer() {
+    resendCountdown.value = 30;
+    canResend.value = false;
+
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (resendCountdown.value > 0) {
+        resendCountdown.value--;
+      } else {
+        canResend.value = true;
+        timer.cancel();
+      }
+    });
+  }
+
+  // Future<void> resendOtp(String phoneNumber) async {
+  //   // Call your API here to resend OTP
+  //   final response = await networkCaller.postRequest(
+  //     url: ApiUrls.resendOtpUrl, // <-- your endpoint
+  //     body: {"phoneNumber": phoneNumber},
+  //   );
+
+  //   if (response.isSuccess) {
+  //     Get.snackbar("OTP Sent", "A new code has been sent to your phone.");
+  //     startResendTimer();
+  //   } else {
+  //     Get.snackbar("Error", response.message ?? "Failed to resend OTP.");
+  //   }
+  // }
 
   Future<void> login() async {
     isLoading.value = true;
@@ -100,6 +135,7 @@ class AuthController extends GetxController {
     }
 
     try {
+      // debugPrint(selectedUserType.value);
       final signUpBody = {
         "name": fullNameTEController.text,
         "email": emailTEController.text,
@@ -115,9 +151,14 @@ class AuthController extends GetxController {
         body: signUpBody,
       );
 
+      debugPrint(response.data.toString());
+
       if (response.isSuccess) {
         Get.snackbar("Success", "Account created successfully");
-        Get.offNamed(AppRoutes.login);
+        Get.offNamed(
+          AppRoutes.verify,
+          arguments: {'phoneNumber': phoneNumberTEController.text},
+        );
       } else {
         Get.snackbar(
           "Sign Up Failed",
@@ -147,6 +188,77 @@ class AuthController extends GetxController {
       //   break;
       // default:
       //   Get.offAllNamed('/home');
+    }
+  }
+
+  Future<void> verifyPhone({
+    required String otp,
+    bool isPasswordReset = false,
+  }) async {
+    isLoading.value = true;
+    try {
+      final body = {
+        "otp": otp,
+        "phoneNumber": phoneNumberTEController.text.trim(),
+      };
+
+      final response = await networkCaller.postRequest(
+        url: ApiUrls.verifyPhoneUrl,
+        body: body,
+      );
+
+      if (response.isSuccess) {
+        Get.snackbar("Success", "Phone verification successful");
+
+        if (isPasswordReset) {
+          Get.offAllNamed(
+            AppRoutes.resetPassword,
+            arguments: {'phoneNumber': phoneNumberTEController.text.trim()},
+          );
+        } else {
+          Get.offNamed(AppRoutes.login);
+        }
+      } else {
+        Get.snackbar(
+          "Verification Failed",
+          response.message ?? "Invalid OTP. Please try again.",
+        );
+      }
+    } catch (_) {
+      Get.snackbar("Error", "Something went wrong. Please try again.");
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> resetPassword(String email, String newPassword) async {
+    isLoading.value = true;
+    try {
+      final body = {
+        "phoneNumber": email.trim(),
+        "newPassword": newPassword.trim(),
+      };
+
+      final response = await networkCaller.postRequest(
+        url: ApiUrls.resetPasswordUrl,
+        body: body,
+      );
+
+      if (response.isSuccess) {
+        Get.snackbar("Success", "Password reset successfully");
+        confirmPTEController.clear();
+        passwordTEController.clear();
+        Get.offAllNamed(AppRoutes.login);
+      } else {
+        Get.snackbar(
+          "Reset Failed",
+          response.message ?? "Unable to reset password",
+        );
+      }
+    } catch (_) {
+      Get.snackbar("Error", "Something went wrong. Please try again.");
+    } finally {
+      isLoading.value = false;
     }
   }
 

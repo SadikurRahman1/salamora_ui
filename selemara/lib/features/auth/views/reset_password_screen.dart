@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
-import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/utils/validators.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/background_gradient.dart';
@@ -11,7 +10,8 @@ import 'package:selemara/core/widgets/custom_text_form_field.dart';
 import 'package:selemara/features/auth/controller/auth_controller.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({super.key});
+  final String phoneNumber;
+  const ResetPasswordScreen({super.key, required this.phoneNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,8 @@ class ResetPasswordScreen extends StatelessWidget {
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
                       hintText: 'password_hint'.tr,
-                      validator: Validators.email,
+                      validator: Validators.password,
+                      controller: authController.passwordTEController,
                     ),
 
                     SizedBox(height: res.hp(10)),
@@ -71,14 +72,32 @@ class ResetPasswordScreen extends StatelessWidget {
                       hintText: 'enter_confirm_password'.tr,
                       isPassword: true,
                       validator: Validators.password,
+                      controller: authController.confirmPTEController,
                     ),
                     SizedBox(height: res.hp(5)),
 
                     SizedBox(height: res.hp(80)),
                     CustomButton(
                       text: 'submit'.tr,
-                      onTap: () {
-                        Get.toNamed(AppRoutes.login);
+                      onTap: () async {
+                        if (formKey.currentState!.validate()) {
+                          if (authController.passwordTEController.text !=
+                              authController.confirmPTEController.text) {
+                            Get.snackbar(
+                              "Password Mismatch",
+                              "New password and confirm password do not match.",
+                              snackPosition: SnackPosition.BOTTOM,
+                            );
+
+                            return;
+                          }
+                          await authController.resetPassword(
+                            phoneNumber,
+                            authController.passwordTEController.text,
+                          );
+
+                          // Get.toNamed(AppRoutes.login);
+                        }
                       },
                     ),
                     SizedBox(height: res.hp(20)),

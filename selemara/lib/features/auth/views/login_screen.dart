@@ -27,6 +27,13 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // SizedBox(height: res.hp(50)),
+              CustomButton(
+                text: 'go to buyer screen'.tr,
+                onTap: () {
+                  Get.toNamed(AppRoutes.buyerNavScreen);
+                },
+              ),
+
               AppText(
                 'welcome_back'.tr,
                 color: AppColors.textColor,
@@ -55,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
                       hintText: 'enter_phone'.tr,
-                      // validator: Validators.email,
+                      validator: Validators.required,
                       controller: authController.phoneNumberTEController,
                     ),
 

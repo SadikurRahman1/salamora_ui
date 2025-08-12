@@ -4,6 +4,7 @@ import 'package:selemara/features/auth/binding/auth_binding.dart';
 import 'package:selemara/features/auth/views/forgot_password_screen.dart';
 import 'package:selemara/features/auth/views/reset_password_screen.dart';
 import 'package:selemara/features/auth/views/verify_code_screen.dart';
+import 'package:selemara/features/buyer/home/views/buyer_home_screen.dart';
 import 'package:selemara/features/garage/garage_nav_bar/bindings/garage_binding.dart';
 import 'package:selemara/features/garage/garage_nav_bar/view/garage_nav_bar_screen.dart';
 import 'package:selemara/features/onboarding/views/onboarding_screen.dart';
@@ -12,15 +13,17 @@ import 'package:selemara/features/splash/screen/splash_screen.dart';
 
 import '../../features/auth/views/login_screen.dart';
 import '../../features/auth/views/register_screen.dart';
+import '../../features/buyer/buyer_nav_bar/bindings/buyer_binding.dart';
+import '../../features/buyer/buyer_nav_bar/view/buyer_nau_bar_screen.dart';
 import '../../features/car_owner_flow/car_owner_nevbar/view/owner_navbar_screen.dart';
 import '../../features/car_owner_flow/home/binding/home_binding.dart';
-import '../../features/car_owner_flow/home/my_car_add_vehicle/view/add_vehicle_screen.dart';
 import '../../features/car_owner_flow/home/car_details/view/car_details_screen.dart';
-import '../../features/car_owner_flow/home/view/invoice_details_screen.dart';
-import '../../features/car_owner_flow/home/my_car_add_vehicle/view/my_cars_screen.dart';
 import '../../features/car_owner_flow/home/car_details/view/request_service_screen.dart';
 import '../../features/car_owner_flow/home/car_details/view/service_history_screen.dart';
 import '../../features/car_owner_flow/home/car_details/view/warranty_details_screen.dart';
+import '../../features/car_owner_flow/home/my_car_add_vehicle/view/add_vehicle_screen.dart';
+import '../../features/car_owner_flow/home/my_car_add_vehicle/view/my_cars_screen.dart';
+import '../../features/car_owner_flow/home/view/invoice_details_screen.dart';
 import '../../features/car_owner_flow/profile/binding/profile_binding.dart';
 import '../../features/car_owner_flow/profile/view/edit_profile_screen.dart';
 import '../../features/car_owner_flow/profile/view/help_support_screen.dart';
@@ -55,7 +58,8 @@ class AppPages {
 
     GetPage(
       name: AppRoutes.resetPassword,
-      page: () => ResetPasswordScreen(),
+      page:
+          () => ResetPasswordScreen(phoneNumber: Get.arguments["phoneNumber"]),
       binding: ProfileBinding(),
     ),
 
@@ -67,7 +71,13 @@ class AppPages {
 
     GetPage(
       name: AppRoutes.verify,
-      page: () => VerifyCodeScreen(),
+      page: () {
+        final args = Get.arguments as Map<String, dynamic>? ?? {};
+        return VerifyCodeScreen(
+          phoneNumber: args['phoneNumber'] ?? '',
+          isPasswordReset: args['isPasswordReset'] ?? false,
+        );
+      },
       binding: ProfileBinding(),
     ),
 
@@ -108,7 +118,6 @@ class AppPages {
       binding: HomeBinding(),
     ),
 
-
     GetPage(
       name: AppRoutes.addVehicleScreen,
       page: () => AddVehicleScreen(),
@@ -132,8 +141,6 @@ class AppPages {
       binding: HomeBinding(),
     ),
 
-
-
     GetPage(
       name: AppRoutes.warrantyDetailsScreen,
       page: () => WarrantyDetailsScreen(),
@@ -141,8 +148,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.invoiceDetailsScreen,
-      page: () => InvoiceDetailsScreen(), binding: HomeBinding(),
-
+      page: () => InvoiceDetailsScreen(),
+      binding: HomeBinding(),
     ),
 
     GetPage(
@@ -167,6 +174,20 @@ class AppPages {
     //   page: () => const ProfilePage(),
     //   binding: ProfileBinding(),
     // ),
+
+
+    GetPage(
+      name: AppRoutes.buyerNavScreen,
+      page: () => BuyerNauBarScreen(),
+      binding: BuyerBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.buyerHomeScreen,
+      page: () => BuyerHomeScreen(),
+      binding: HomeBinding(),
+    ),
+
   ];
 
   static final initialBinding = SplashBinding();

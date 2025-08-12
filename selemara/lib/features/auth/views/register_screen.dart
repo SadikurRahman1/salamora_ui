@@ -77,6 +77,7 @@ class RegisterScreen extends StatelessWidget {
                         hintText: 'enter_name'.tr,
                         validator: Validators.required,
                         prefixIcon: AppImages.userIcon,
+                        controller: authController.fullNameTEController,
                       ),
                       SizedBox(height: res.hp(10)),
                       AppText(
@@ -90,6 +91,7 @@ class RegisterScreen extends StatelessWidget {
                         hintText: 'enter_email'.tr,
                         validator: Validators.required,
                         prefixIcon: AppImages.emailIcon,
+                        controller: authController.emailTEController,
                       ),
 
                       SizedBox(height: res.hp(10)),
@@ -104,6 +106,7 @@ class RegisterScreen extends StatelessWidget {
                         hintText: 'enter_phone'.tr,
                         validator: Validators.required,
                         prefixIcon: AppImages.phoneIcon,
+                        controller: authController.phoneNumberTEController,
                       ),
 
                       SizedBox(height: res.hp(10)),
@@ -119,6 +122,7 @@ class RegisterScreen extends StatelessWidget {
                         isPassword: true,
                         validator: Validators.password,
                         prefixIcon: AppImages.lockIcon,
+                        controller: authController.passwordTEController,
                       ),
                       // SizedBox(height: res.hp(5)),
                       SizedBox(height: res.hp(10)),
@@ -134,6 +138,7 @@ class RegisterScreen extends StatelessWidget {
                         isPassword: true,
                         validator: Validators.password,
                         prefixIcon: AppImages.lockIcon,
+                        controller: authController.confirmPTEController,
                       ),
                       SizedBox(height: res.hp(15)),
                       Row(
@@ -202,6 +207,16 @@ class RegisterScreen extends StatelessWidget {
                         onTap: () {
                           // Get.offAllNamed(AppRoutes.garageNavScreen);
                           if (formKey.currentState!.validate()) {
+                            if (authController.passwordTEController.text !=
+                                authController.confirmPTEController.text) {
+                              Get.snackbar(
+                                "Password Mismatch",
+                                "New password and confirm password do not match.",
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+
+                              return;
+                            }
                             authController.signUp();
                           }
                         },
