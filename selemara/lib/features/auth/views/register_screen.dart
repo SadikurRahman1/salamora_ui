@@ -143,19 +143,14 @@ class RegisterScreen extends StatelessWidget {
                             children: [
                               Obx(
                                 () => Transform.scale(
-                                  scale:
-                                      res.isTablet
-                                          ? 2.0
-                                          : 1.0, // Increase/decrease size (1.0 = default)
+                                  scale: res.isTablet ? 2.0 : 1.0,
                                   child: Checkbox(
                                     side: BorderSide(
                                       color: AppColors.primaryColor,
                                     ),
+                                    checkColor: AppColors.whitColor,
                                     activeColor: AppColors.primaryColor,
-                                    checkColor: AppColors.primaryColor,
-                                    fillColor: WidgetStateProperty.all<Color>(
-                                      Colors.white,
-                                    ),
+
                                     value: authController.agree.value,
                                     onChanged: (value) {
                                       authController.toggleAgree();

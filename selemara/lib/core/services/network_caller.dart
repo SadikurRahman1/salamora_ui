@@ -2,12 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
+import 'package:mime/mime.dart';
 import 'package:selemara/core/constants/token_key.dart';
 import 'package:selemara/core/helper/shared_preferences_helper.dart';
 import 'package:selemara/core/services/response_data.dart';
 
 class NetworkCaller {
   final http.Client _client = http.Client();
+  final SharedPreferencesHelper _preferencesHelper = SharedPreferencesHelper();
 
   Future<ResponseData> getRequest(
     String url, {
@@ -60,7 +63,6 @@ class NetworkCaller {
 
   Future<ResponseData> postMultipartRequest(
     String url, {
-
     Map<String, String>? fields,
     Map<String, File>? files,
   }) async {
@@ -68,12 +70,10 @@ class NetworkCaller {
       final uri = Uri.parse(url);
       final request = http.MultipartRequest('POST', uri);
 
-      final token = SharedPreferencesHelper.readString(TokenKey.accessToken);
+      final token = _preferencesHelper.getString(TokenKey.accessToken);
       if (token != null) {
         request.headers['Authorization'] = token;
       }
-
-      request.headers['Content-Type'] = 'multipart/form-data';
 
       if (fields != null) {
         request.fields.addAll(fields);
@@ -81,9 +81,12 @@ class NetworkCaller {
 
       if (files != null) {
         for (final entry in files.entries) {
+          final mimeType =
+              lookupMimeType(entry.value.path) ?? 'application/octet-stream';
           final file = await http.MultipartFile.fromPath(
             entry.key,
             entry.value.path,
+            contentType: MediaType.parse(mimeType),
           );
           request.files.add(file);
         }
@@ -100,7 +103,7 @@ class NetworkCaller {
   Future<Map<String, String>> _buildHeaders({bool withToken = true}) async {
     final headers = <String, String>{'Content-Type': 'application/json'};
     if (withToken) {
-      final token = SharedPreferencesHelper.readString(TokenKey.accessToken);
+      final token = _preferencesHelper.getString(TokenKey.accessToken);
       if (token != null && token.isNotEmpty) {
         headers['Authorization'] = token;
       }

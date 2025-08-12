@@ -88,10 +88,10 @@ class LoginScreen extends StatelessWidget {
                               () => Checkbox(
                                 side: BorderSide(color: AppColors.primaryColor),
                                 activeColor: AppColors.primaryColor,
-                                checkColor: AppColors.primaryColor,
-                                fillColor: WidgetStateProperty.all<Color>(
-                                  Colors.white,
-                                ),
+                                checkColor: AppColors.whitColor,
+                                // fillColor: WidgetStateProperty.all<Color>(
+                                //   Colors.white,
+                                // ),
                                 // focusColor:AppColors.primaryColor ,
                                 // overlayColor: MaterialStateProperty.all(AppColors.primaryColor),
                                 value: authController.rememberMe.value,

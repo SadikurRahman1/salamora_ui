@@ -8,6 +8,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/home_header.dart';
 import '../../../garage/home/widget/banner_card.dart';
 import '../../../garage/home/widget/garage_feature_card.dart';
 import '../controller/home_controller_owner.dart';
@@ -28,42 +29,25 @@ class HomeScreenOwner extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: SizedBox(height: res.hp(70))),
-            SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset(AppImages.userProfile),
-                      SizedBox(width: res.wp(5)),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppText(
-                            "user_name".tr,
-                            color: AppColors.textColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          AppText(
-                            "user_role".tr,
-                            color: AppColors.textColor.withValues(alpha: 0.8),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Image.asset(
-                    AppIcons.notificationIconImage,
-                    width: res.wp(30),
-                    height: res.hp(30),
-                  ),
-                ],
+
+            SliverAppBar(
+              pinned: true,
+              backgroundColor: Colors.white,
+              elevation: 0,
+              automaticallyImplyLeading: false,
+              toolbarHeight: res.hp(50),
+              title: HomeHeader(
+                name: "John Doe",
+                type: "Garage",
+                imagePath: AppImages.userProfile,
+                notificationIconPath: AppIcons.notificationIconImage,
+                imageSize: res.wp(40),
+                iconSize: res.wp(30),
               ),
             ),
+
+
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(30))),
             SliverToBoxAdapter(child: BannerCard(res: res)),
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),

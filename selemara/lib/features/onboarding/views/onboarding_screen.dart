@@ -40,30 +40,28 @@ class OnboardingScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(res.wp(16)),
                             child: Image.asset(
                               item.imagePath,
-                              width: res.wp(350),
+                              width: double.infinity,
                               height: res.hp(250),
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                             ),
                           ),
                           SizedBox(height: res.hp(20)),
-                          AppTextInter(
-                            item.title,
-                            textAlign: TextAlign.center,
-                            fontSize: res.sp(24),
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.textColor,
-                            // style: TextStyle(
-                            //   fontSize: res.sp(20),
-                            //   fontWeight: FontWeight.bold,
-                            // ),
-                          ),
+                          // AppTextInter(
+                          //   item.title,
+                          //   textAlign: TextAlign.center,
+                          //   fontSize: res.sp(24),
+                          //   fontWeight: FontWeight.w600,
+                          //   color: AppColors.textColor,
+                          //   // style: TextStyle(
+                          //   //   fontSize: res.sp(20),
+                          //   //   fontWeight: FontWeight.bold,
+                          //   // ),
+                          // ),
                           SizedBox(height: res.hp(10)),
                           AppTextInter(
                             item.description,
                             textAlign: TextAlign.center,
-                            color: AppColors.textColor.withValues(
-                              alpha: 0.8,
-                            ),
+                            color: AppColors.textColor.withValues(alpha: 0.8),
                             fontSize: res.sp(14),
                           ),
                           SizedBox(height: res.hp(10)),
@@ -82,17 +80,19 @@ class OnboardingScreen extends StatelessWidget {
                       duration: 300.milliseconds,
                       margin: EdgeInsets.symmetric(horizontal: res.wp(4)),
                       height: res.wp(12),
-                      width: res.wp(12),
+                      width: res.wp(20),
                       decoration: BoxDecoration(
                         color:
-                            selected ? AppColors.lightCream : AppColors.geryColor,
-                        borderRadius: BorderRadius.circular(res.wp(8)),
+                            selected
+                                ? AppColors.primaryColor
+                                : AppColors.geryColor,
+                        borderRadius: BorderRadius.circular(res.wp(5)),
                       ),
                     );
                   }),
                 ),
               ),
-          
+
               SizedBox(height: res.hp(100)),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: res.wp(20)),
