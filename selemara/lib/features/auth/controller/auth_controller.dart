@@ -115,9 +115,9 @@ class AuthController extends GetxController {
   Future<void> _saveLoginData(Map<String, dynamic> data) async {
     await _prefsHelper.setString(TokenKey.accessToken, data['accessToken']);
     await _prefsHelper.setString(TokenKey.userId, data['id']);
-    await _prefsHelper.setString(TokenKey.name, data['name']);
-    await _prefsHelper.setString(TokenKey.email, data['email'] ?? '');
-    await _prefsHelper.setString(TokenKey.phoneNumber, data['phoneNumber']);
+    // await _prefsHelper.setString(TokenKey.name, data['name']);
+    // await _prefsHelper.setString(TokenKey.email, data['email'] ?? '');
+    // await _prefsHelper.setString(TokenKey.phoneNumber, data['phoneNumber']);
     await _prefsHelper.setString(TokenKey.role, data['role']);
   }
 
@@ -183,9 +183,9 @@ class AuthController extends GetxController {
       // case 'DEALERSHIP':
       //   Get.offAllNamed('/dealershipHome');
       //   break;
-      // case 'USER':
-      //   Get.offAllNamed('/userHome');
-      //   break;
+      case 'BUYER':
+        Get.offAllNamed('/userHome');
+        break;
       // default:
       //   Get.offAllNamed('/home');
     }
