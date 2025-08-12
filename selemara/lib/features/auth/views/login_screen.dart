@@ -56,6 +56,7 @@ class LoginScreen extends StatelessWidget {
                     CustomTextFormField(
                       hintText: 'enter_phone'.tr,
                       validator: Validators.email,
+                      controller: authController.phoneNumberTEController,
                     ),
 
                     SizedBox(height: res.hp(10)),
@@ -70,6 +71,7 @@ class LoginScreen extends StatelessWidget {
                       hintText: 'password_hint'.tr,
                       isPassword: true,
                       validator: Validators.password,
+                      controller: authController.passwordTEController,
                     ),
                     SizedBox(height: res.hp(5)),
                     Row(
@@ -117,8 +119,10 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: res.hp(80)),
                     CustomButton(
                       text: 'login'.tr,
-                      onTap: () {
-                        Get.toNamed(AppRoutes.ownerNavbarScreen);
+                      onTap: () async {
+                        if (_formKey.currentState!.validate()) {
+                          await authController.login();
+                        }
                       },
                     ),
                     SizedBox(height: res.hp(20)),
@@ -133,6 +137,8 @@ class LoginScreen extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
+                            authController.emailTEController.clear();
+                            authController.passwordTEController.clear();
                             Get.toNamed(AppRoutes.register);
                           },
                           child: AppText(
