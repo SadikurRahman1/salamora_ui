@@ -7,8 +7,8 @@ import '../../../../core/widgets/app_text.dart';
 class ProfileCard extends StatelessWidget {
   final res = AppResponsive();
 
-  String? title;
-  String? subTitle;
+ final String? title;
+ final String? subTitle;
 
   ProfileCard({super.key, this.title, this.subTitle});
 

@@ -231,6 +231,8 @@ final Map<String, String> arSA = {
   'home': 'الرئيسية',
   'services': 'الخدمات',
   'generate': 'إنشاء',
+  "track_service_history": "تتبع سجل صيانة سيارتك وابقَ على اطلاع دائم",
+
 
   ///     Add Vehicle  added by Arif
   "vehicle_information": "معلومات السيارة",

@@ -14,14 +14,14 @@ class CarInfoSection extends StatelessWidget {
   final TextEditingController controllerB;
 
   const CarInfoSection({
-    Key? key,
+    super.key,
     required this.label1,
     required this.label2,
     required this.hint1,
     required this.hint2,
     required this.controllerA,
     required this.controllerB,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

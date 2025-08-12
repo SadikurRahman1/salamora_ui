@@ -20,7 +20,7 @@ class CarDetailCard extends StatelessWidget {
   final VoidCallback? onIconTap;
 
   const CarDetailCard({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.carName,
     required this.colorName,
@@ -31,7 +31,7 @@ class CarDetailCard extends StatelessWidget {
     required this.serviceRecords,
     required this.documents,
     this.onIconTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,7 @@ class CarDetailCard extends StatelessWidget {
           Padding(padding: EdgeInsets.only(top: 8)),
           _labelValueRow("service_records".tr, "8"),
           Padding(padding: EdgeInsets.only(top: 8)),
-          _labelValueRow("documents".tr, "2 " + "uploaded".tr),
+          _labelValueRow("documents".tr, "2 ${"uploaded".tr}"),
         ],
       ),
     );
