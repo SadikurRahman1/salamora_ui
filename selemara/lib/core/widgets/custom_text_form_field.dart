@@ -13,6 +13,7 @@ class CustomTextFormField extends StatefulWidget {
   final Widget? suffixIcon;
   final bool readOnly;
   final VoidCallback? onTap;
+  final double borderRadius;
 
   const CustomTextFormField({
     super.key,
@@ -25,6 +26,7 @@ class CustomTextFormField extends StatefulWidget {
     this.suffixIcon,
     this.readOnly = false,
     this.onTap,
+    this.borderRadius = 24,
   });
 
   @override
@@ -106,15 +108,15 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           vertical: res.hp(12),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: const BorderSide(color: Color(0xFFF5F5F5)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: const BorderSide(color: Color(0xFFF5F5F5)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: const BorderSide(color: Color(0xFFF5F5F5)),
         ),
       ),
