@@ -54,9 +54,15 @@ class BuyerNauBarScreen extends StatelessWidget {
                 fontSize: 14,
               ),
               items: List.generate(BuyerNavBarItems.activeIcons.length, (
+
+                  index,
+                  ) {
+                final isActive = navController.currentIndex.value == index;
+
                 index,
               ) {
                 final isActive = navController.currentIndex == index;
+
 
                 return BottomNavigationBarItem(
                   label: '',

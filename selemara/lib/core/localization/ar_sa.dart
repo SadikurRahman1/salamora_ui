@@ -269,4 +269,22 @@ final Map<String, String> arSA = {
   "png_jpg_up_to_10mb_each": "PNG، JPG حتى 10 ميغابايت لكل منها",
 
 
+  /// buyer section
+  "search_car": "بحث عن سيارة",
+  "save_car": "سيارة محفوظة",
+  "qr_scans": "عمليات مسح QR",
+  "find_verified_cars": "اعثر على سيارات موثوقة مع سجلات صيانة كاملة",
+  "featured_cars": "سيارات مميزة",
+  "recent_activity": "النشاط الأخير",
+  "search_cars": "بحث عن السيارات",
+  "scan_car_qr_code" : "مسح رمز الاستجابة السريعة للسيارة",
+  "scan_now": "امسح الآن",
+  "point_camera_qr": "وجه الكاميرا نحو رمز الاستجابة السريعة للسيارة لعرض سجل الصيانة الكامل",
+  "or": "أو",
+  "enter_vin_manually": "أدخل رقم الهيكل (VIN) يدويًا",
+  "search": "بحث",
+  "recent_search": "البحث الأخير",
+  "saved": "المحفوظة",
+
+
 };

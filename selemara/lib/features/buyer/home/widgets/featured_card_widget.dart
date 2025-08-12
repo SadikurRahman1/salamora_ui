@@ -39,6 +39,7 @@ class FeaturedCard extends StatelessWidget {
       child: Container(
         width: res.wp(90),
         height: res.hp(90),
+        margin: EdgeInsets.symmetric(vertical: 8),
         padding: EdgeInsets.symmetric(
           horizontal: res.hp(10),
           vertical: res.wp(10),

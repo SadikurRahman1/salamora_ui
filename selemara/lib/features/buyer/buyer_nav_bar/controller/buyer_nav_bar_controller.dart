@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:selemara/features/garage/garage_nav_bar/widget/owner_nav_bar_items.dart';
-
 import '../../../../core/constants/app_responsive.dart';
 
 class BuyerNavBarController extends GetxController {

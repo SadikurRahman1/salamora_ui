@@ -44,21 +44,19 @@ final Map<String, String> enUS = {
 
   'onboard_title_1': 'Smart AutoCare',
   'onboard_desc_1':
-        'Register your car, maintain complete service history, get reminders, and share verified records with confidence.',
+      'Register your car, maintain complete service history, get reminders, and share verified records with confidence.',
 
   'onboard_title_2': 'Service & History',
   'onboard_desc_2':
-  'Complete digital service management system with multi-branch support, invoice generation, and customer relationship tools.',
+      'Complete digital service management system with multi-branch support, invoice generation, and customer relationship tools.',
 
   'onboard_title_3': 'Check Before You Buy',
   'onboard_desc_3':
-        'Scan QR codes to verify complete service history. Check maintenance records and buy cars with full transparency.'
-,
+      'Scan QR codes to verify complete service history. Check maintenance records and buy cars with full transparency.',
 
   'onboard_title_4': 'Grow Your Garage Business',
   'onboard_desc_4':
-        'List cars with verified service history, build trust with buyers, and use professional tools for premium sales.'
-,
+      'List cars with verified service history, build trust with buyers, and use professional tools for premium sales.',
 
   'email_verification_info':
       'Enter your phone number, we will send a verification code to the phone number',
@@ -207,9 +205,6 @@ final Map<String, String> enUS = {
   "your_rating": "Your Rating:",
   "re_service": "Re-service",
 
-
-
-
   ///  Warranty details added by Arif
   "warranty_details": "Warranty Details",
   "car_garage_info": "Car & Garage Info",
@@ -233,24 +228,19 @@ final Map<String, String> enUS = {
   "one_time_use_per_service": "One-time use per service type.",
   "download": "Download",
 
-
-
-
- ///     My Car  added by Arif
-
+  ///     My Car  added by Arif
   "car_2020_honda_civic": "2020 Honda Civic",
   "mileage_45000_miles": "45,000 miles",
   "vin": "VIN:",
   "uploaded": "uploaded",
   "my_all_cars": "My All Cars",
 
+
+
   "track_service_history": "Track your car's service history and stay on top",
 
+
   ///     Add Vehicle  added by Arif
-
-
-
-
   "vehicle_information": "Vehicle Information",
   "car_name": "Car Name",
   "car_make": "Car Make",
@@ -264,17 +254,22 @@ final Map<String, String> enUS = {
   "click_to_upload_images_max_6": "Click to upload images (Max 6)",
   "png_jpg_up_to_10mb_each": "PNG, JPG up to 10MB each",
 
-
-
-  //buyer
-
-
+  /// buyer section
 
   "search_car": "Search Car",
   "save_car": "Saved Car",
   "qr_scans": "QR Scans",
   "find_verified_cars": "Find verified cars with full maintenance records",
-"featured_cars": "Featured Cars",
-
+  "featured_cars": "Featured Cars",
+  "recent_activity": "Recent Activity",
+  "search_cars": "Search Cars",
+  "scan_car_qr_code" :  "Scan Car QR Code",
+  "scan_now": "Scan Now",
+  "point_camera_qr": "Point your camera at the car's QR code to view its complete service history",
+  "or": "OR",
+  "enter_vin_manually":  "Enter VIN Manually",
+  "search": "Search",
+  "recent_search": "Recent Search",
+  "saved": "Saved",
 
 };

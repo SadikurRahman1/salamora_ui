@@ -32,7 +32,7 @@ class BuyerBanner extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(
-            "welcome back. !",
+            "${"welcome_back".tr} !",
             color: AppColors.textColor,
             fontSize: 16,
             fontWeight: FontWeight.w600,

@@ -3,8 +3,8 @@ import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
-class RecentActiveCard extends StatelessWidget {
-  RecentActiveCard({
+class ActiveCard extends StatelessWidget {
+  ActiveCard({
     super.key,
     required this.imagePath,
     required this.title,
@@ -36,7 +36,6 @@ class RecentActiveCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: AppColors.primaryColor.withValues(alpha: 0.2),
-              // offset: const Offset(0, 2),
               blurRadius: 1,
             ),
           ],
@@ -47,9 +46,9 @@ class RecentActiveCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(borderRadius),
               child: Image.asset(
                 imagePath,
-                width: res.wp(25),
-                height: res.wp(25),
-                fit: BoxFit.cover,
+                width: res.wp(32),
+                height: res.wp(32),
+                // fit: BoxFit.cover,
               ),
             ),
             SizedBox(width: res.wp(16)),
