@@ -4,6 +4,7 @@ import 'package:selemara/features/auth/binding/auth_binding.dart';
 import 'package:selemara/features/auth/views/forgot_password_screen.dart';
 import 'package:selemara/features/auth/views/reset_password_screen.dart';
 import 'package:selemara/features/auth/views/verify_code_screen.dart';
+import 'package:selemara/features/buyer/home/views/buyer_home_screen.dart';
 import 'package:selemara/features/garage/garage_nav_bar/bindings/garage_binding.dart';
 import 'package:selemara/features/garage/garage_nav_bar/view/garage_nav_bar_screen.dart';
 import 'package:selemara/features/onboarding/views/onboarding_screen.dart';
@@ -12,6 +13,8 @@ import 'package:selemara/features/splash/screen/splash_screen.dart';
 
 import '../../features/auth/views/login_screen.dart';
 import '../../features/auth/views/register_screen.dart';
+import '../../features/buyer/buyer_nav_bar/bindings/buyer_binding.dart';
+import '../../features/buyer/buyer_nav_bar/view/buyer_nau_bar_screen.dart';
 import '../../features/car_owner_flow/car_owner_nevbar/view/owner_navbar_screen.dart';
 import '../../features/car_owner_flow/home/binding/home_binding.dart';
 import '../../features/car_owner_flow/home/car_details/view/car_details_screen.dart';
@@ -171,6 +174,20 @@ class AppPages {
     //   page: () => const ProfilePage(),
     //   binding: ProfileBinding(),
     // ),
+
+
+    GetPage(
+      name: AppRoutes.buyerNavScreen,
+      page: () => BuyerNauBarScreen(),
+      binding: BuyerBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.buyerHomeScreen,
+      page: () => BuyerHomeScreen(),
+      binding: HomeBinding(),
+    ),
+
   ];
 
   static final initialBinding = SplashBinding();

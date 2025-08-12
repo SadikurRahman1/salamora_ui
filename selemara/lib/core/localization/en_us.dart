@@ -266,8 +266,15 @@ final Map<String, String> enUS = {
 
 
 
+  //buyer
 
 
+
+  "search_car": "Search Car",
+  "save_car": "Saved Car",
+  "qr_scans": "QR Scans",
+  "find_verified_cars": "Find verified cars with full maintenance records",
+"featured_cars": "Featured Cars",
 
 
 };
