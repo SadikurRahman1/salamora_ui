@@ -23,6 +23,50 @@ class CarDetailsScreen extends StatelessWidget {
         title: "car_details".tr,
         centerTitle: true,
         leading: Icon(Icons.arrow_back_ios, size: res.wp(24)),
+
+          // actions: [
+          //   Theme(
+          //     data: Theme.of(context).copyWith(
+          //       popupMenuTheme: PopupMenuThemeData(
+          //         color: Colors.white, // ✅ background white
+          //       ),
+          //     ),
+          //     child: PopupMenuButton<String>(
+          //       icon: Icon(Icons.more_vert, color: AppColors.primaryTextColor),
+          //       onSelected: (value) {
+          //         if (value == 'edit') {
+          //           // Handle Edit
+          //         } else if (value == 'delete') {
+          //           // Handle Delete
+          //         }
+          //       },
+          //       itemBuilder: (context) => [
+          //         PopupMenuItem(
+          //           value: 'edit',
+          //           child: Row(
+          //             children: [
+          //               Icon(Icons.edit, color: Colors.black54),
+          //               SizedBox(width: 8),
+          //               Text("Edit"),
+          //             ],
+          //           ),
+          //         ),
+          //         PopupMenuItem(
+          //           value: 'delete',
+          //           child: Row(
+          //             children: [
+          //               Icon(Icons.delete, color: Colors.redAccent),
+          //               SizedBox(width: 8),
+          //               Text("Delete"),
+          //             ],
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ]
+
+
       ),
 
       body: Padding(

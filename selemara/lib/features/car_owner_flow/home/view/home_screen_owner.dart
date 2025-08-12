@@ -29,7 +29,6 @@ class HomeScreenOwner extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
         child: CustomScrollView(
           slivers: [
-
             SliverAppBar(
               pinned: true,
               backgroundColor: Colors.white,
@@ -45,9 +44,6 @@ class HomeScreenOwner extends StatelessWidget {
                 iconSize: res.wp(30),
               ),
             ),
-
-
-
             SliverToBoxAdapter(child: SizedBox(height: res.hp(30))),
             SliverToBoxAdapter(child: BannerCard(res: res)),
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
@@ -100,7 +96,9 @@ class HomeScreenOwner extends StatelessWidget {
                     iconPath: AppIcons.plus,
                     borderRadius: res.sp(30),
                     text: "add_vehicle".tr,
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(AppRoutes.addVehicleScreen);
+                    },
                   ),
                   CustomButton(
                     width: res.wp(160),
@@ -108,7 +106,9 @@ class HomeScreenOwner extends StatelessWidget {
                     btnColor: AppColors.orange,
                     borderRadius: res.sp(30),
                     text: "request_service".tr,
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(AppRoutes.requestServiceScreen);
+                    },
                   ),
                 ],
               ),
