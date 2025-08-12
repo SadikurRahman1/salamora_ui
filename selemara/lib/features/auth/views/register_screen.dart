@@ -58,6 +58,7 @@ class RegisterScreen extends StatelessWidget {
                         value: authController.selectedUserType.value,
                         onChanged: (val) {
                           authController.selectedUserType.value = val!;
+                          debugPrint(authController.selectedUserType.value);
                           // setState(() {
                           //   selectedUserType = val;
                           // });
@@ -199,8 +200,10 @@ class RegisterScreen extends StatelessWidget {
                       CustomButton(
                         text: 'register_account'.tr,
                         onTap: () {
-                          Get.offAllNamed(AppRoutes.garageNavScreen);
-                          // if (formKey.currentState!.validate()) {}
+                          // Get.offAllNamed(AppRoutes.garageNavScreen);
+                          if (formKey.currentState!.validate()) {
+                            authController.signUp();
+                          }
                         },
                       ),
                       SizedBox(height: res.hp(10)),
@@ -215,6 +218,8 @@ class RegisterScreen extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
+                              authController.phoneNumberTEController.clear();
+                              authController.passwordTEController.clear();
                               Get.toNamed(AppRoutes.login);
                             },
                             child: AppText(

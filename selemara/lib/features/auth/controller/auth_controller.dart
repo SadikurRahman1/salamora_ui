@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:selemara/core/constants/api_urls.dart';
 import 'package:selemara/core/constants/token_key.dart';
 import 'package:selemara/core/helper/shared_preferences_helper.dart';
+import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/services/network_caller.dart';
 
 class AuthController extends GetxController {
@@ -16,6 +17,10 @@ class AuthController extends GetxController {
 
   final phoneNumberTEController = TextEditingController();
   final passwordTEController = TextEditingController();
+
+  final fullNameTEController = TextEditingController();
+  final emailTEController = TextEditingController();
+  final confirmPTEController = TextEditingController();
 
   final isLoading = false.obs;
   final rememberMe = false.obs;
@@ -81,19 +86,29 @@ class AuthController extends GetxController {
     await _prefsHelper.setString(TokenKey.role, data['role']);
   }
 
-  Future<void> signUp({
-    required String phoneNumber,
-    required String password,
-    required String name,
-  }) async {
+  Future<void> signUp() async {
     isLoading.value = true;
+
+    if (!agree.value) {
+      Get.snackbar(
+        "Agreement Required",
+        "You must agree to the Terms of Service and Privacy Policy before signing up.",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      isLoading.value = false;
+      return;
+    }
 
     try {
       final signUpBody = {
-        "name": name.trim(),
-        "phoneNumber": phoneNumber.trim(),
-        "password": password.trim(),
+        "name": fullNameTEController.text,
+        "email": emailTEController.text,
+        "password": passwordTEController.text,
+        "role": selectedUserType.value,
+        "phoneNumber": phoneNumberTEController.text,
       };
+
+      debugPrint(signUpBody.values.toString());
 
       final response = await networkCaller.postRequest(
         url: ApiUrls.registerUrl,
@@ -102,7 +117,7 @@ class AuthController extends GetxController {
 
       if (response.isSuccess) {
         Get.snackbar("Success", "Account created successfully");
-        Get.offNamed('/login');
+        Get.offNamed(AppRoutes.login);
       } else {
         Get.snackbar(
           "Sign Up Failed",
@@ -119,19 +134,19 @@ class AuthController extends GetxController {
   void _navigateByRole(String role) {
     switch (role) {
       case 'CAR_OWNER':
-        Get.offAllNamed('/carOwnerHome');
+        Get.offAllNamed(AppRoutes.ownerNavbarScreen);
         break;
       case 'GARAGE':
-        Get.offAllNamed('/garageHome');
+        Get.offAllNamed(AppRoutes.garageNavScreen);
         break;
-      case 'DEALERSHIP':
-        Get.offAllNamed('/dealershipHome');
-        break;
-      case 'USER':
-        Get.offAllNamed('/userHome');
-        break;
-      default:
-        Get.offAllNamed('/home');
+      // case 'DEALERSHIP':
+      //   Get.offAllNamed('/dealershipHome');
+      //   break;
+      // case 'USER':
+      //   Get.offAllNamed('/userHome');
+      //   break;
+      // default:
+      //   Get.offAllNamed('/home');
     }
   }
 
@@ -150,6 +165,9 @@ class AuthController extends GetxController {
   void onClose() {
     phoneNumberTEController.dispose();
     passwordTEController.dispose();
+    fullNameTEController.dispose();
+    emailTEController.dispose();
+    confirmPTEController.dispose();
     super.onClose();
   }
 }

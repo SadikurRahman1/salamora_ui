@@ -1,19 +1,46 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:selemara/core/constants/token_key.dart';
+import 'package:selemara/core/helper/shared_preferences_helper.dart';
 import 'package:selemara/core/routes/app_routes.dart';
- // Update this path
 
 class SplashController extends GetxController {
+  final SharedPreferencesHelper _prefsHelper = SharedPreferencesHelper();
+
   @override
   void onInit() {
     super.onInit();
     _goToNextPage();
   }
 
-  void _goToNextPage() {
-    Timer(const Duration(seconds: 2), () {
-      Get.offAllNamed(AppRoutes.onBoarding); // Replace with your next route
+  Future<void> _goToNextPage() async {
+    Timer(const Duration(seconds: 2), () async {
+      final role = _prefsHelper.getString(TokenKey.role);
+
+      if (role != null && role.isNotEmpty) {
+        switch (role) {
+          // case 'SUPERADMIN':
+          //   Get.offAllNamed(AppRoutes.superAdminHome);
+          //   break;
+          case 'CAR_OWNER':
+            Get.offAllNamed(AppRoutes.ownerNavbarScreen);
+            break;
+          // case 'DEALERSHIP':
+          //   Get.offAllNamed(AppRoutes.);
+          //   break;
+          case 'GARAGE':
+            Get.offAllNamed(AppRoutes.garageNavScreen);
+            break;
+          // case 'BUYER':
+          //   Get.offAllNamed(AppRoutes.buyerHome);
+          //   break;
+          default:
+            Get.offAllNamed(AppRoutes.onBoarding);
+        }
+      } else {
+        Get.offAllNamed(AppRoutes.onBoarding);
+      }
     });
   }
 }

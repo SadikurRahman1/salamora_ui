@@ -23,7 +23,7 @@ class UserTypeDropdown extends StatelessWidget {
       onChanged: onChanged,
       isDense: false,
       itemHeight: res.hp(48),
-      alignment:AlignmentDirectional.centerStart, 
+      alignment: AlignmentDirectional.centerStart,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
@@ -53,7 +53,7 @@ class UserTypeDropdown extends StatelessWidget {
       ),
       items: [
         DropdownMenuItem(
-          value: 'car_owner',
+          value: 'CAR_OWNER',
           child: AppText(
             'Car Owner',
             color: AppColors.textColor.withValues(alpha: 0.5),
@@ -61,7 +61,7 @@ class UserTypeDropdown extends StatelessWidget {
           ),
         ),
         DropdownMenuItem(
-          value: 'garage',
+          value: 'GARAGE',
           child: AppText(
             'Garage',
             color: AppColors.textColor.withValues(alpha: 0.5),
@@ -69,7 +69,7 @@ class UserTypeDropdown extends StatelessWidget {
           ),
         ),
         DropdownMenuItem(
-          value: 'dealership',
+          value: 'DEALERSHIP',
           child: AppText(
             'Dealership',
             color: AppColors.textColor.withValues(alpha: 0.5),
@@ -77,7 +77,7 @@ class UserTypeDropdown extends StatelessWidget {
           ),
         ),
         DropdownMenuItem(
-          value: 'buyer',
+          value: 'BUYER',
           child: AppText(
             'Buyer',
             color: AppColors.textColor.withValues(alpha: 0.5),
