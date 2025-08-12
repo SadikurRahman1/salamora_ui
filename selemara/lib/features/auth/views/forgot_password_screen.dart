@@ -57,7 +57,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
                       hintText: 'enter_phone'.tr,
-                      validator: Validators.email,
+                      validator: Validators.required,
+                      controller: authController.phoneNumberTEController,
                     ),
 
                     SizedBox(height: res.hp(30)),
@@ -65,7 +66,17 @@ class ForgotPasswordScreen extends StatelessWidget {
                     CustomButton(
                       text: 'continue'.tr,
                       onTap: () {
-                        Get.toNamed(AppRoutes.verify);
+                        if (formKey.currentState!.validate()) {
+                          Get.toNamed(
+                            AppRoutes.verify,
+                            arguments: {
+                              'phoneNumber':
+                                  authController.phoneNumberTEController.text
+                                      .trim(),
+                              'isPasswordReset': true,
+                            },
+                          );
+                        }
                       },
                     ),
                     SizedBox(height: res.hp(20)),

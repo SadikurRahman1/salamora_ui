@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: res.hp(8)),
                     CustomTextFormField(
                       hintText: 'enter_phone'.tr,
-                      validator: Validators.email,
+                      validator: Validators.required,
                       controller: authController.phoneNumberTEController,
                     ),
 
