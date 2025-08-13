@@ -40,6 +40,9 @@ class HomeScreenOwner extends StatelessWidget {
                       SliverAppBar(
                         pinned: true,
                         backgroundColor: Colors.white,
+                        surfaceTintColor: Colors.transparent,
+                        // disable Material tint
+                        forceElevated: true,
                         elevation: 0,
                         automaticallyImplyLeading: false,
                         toolbarHeight: res.hp(50),
@@ -52,12 +55,15 @@ class HomeScreenOwner extends StatelessWidget {
                           iconSize: res.wp(30),
                         ),
                       ),
+
                       SliverToBoxAdapter(child: SizedBox(height: res.hp(30))),
-                      SliverToBoxAdapter(child: Padding(
+                      SliverToBoxAdapter(
+                        child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
 
-                        child: CarOwnerBannerCard(res: res),
-                      )),
+                          child: CarOwnerBannerCard(res: res),
+                        ),
+                      ),
                       SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
                       SliverToBoxAdapter(
                         child: Row(
@@ -158,7 +164,6 @@ class HomeScreenOwner extends StatelessWidget {
                       ),
                       SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
                       SliverToBoxAdapter(
-
                         child: Padding(
                           padding: EdgeInsets.only(left: res.wp(16)),
                           child: SizedBox(
@@ -188,7 +193,8 @@ class HomeScreenOwner extends StatelessWidget {
                                               );
                                             },
                                             child: CarInfoCard(
-                                              title: dataList?[index].name ?? "",
+                                              title:
+                                                  dataList?[index].name ?? "",
                                               subTitle:
                                                   dataList?[index].vin ?? "",
                                               carImage:
@@ -227,20 +233,61 @@ class HomeScreenOwner extends StatelessWidget {
                       SliverToBoxAdapter(
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
-                          child: ListView.builder(
-                            itemCount: 10,
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 12),
-                                child: ProfileCard(
-                                  title: "service_user_name".tr,
-                                  subTitle: "service_subtitle".tr,
-                                ),
-                              );
-                            },
-                          ),
+                          child: Obx(() {
+                            var serviceData =
+                                controller.allServicesList.value?.data;
+                            return serviceData == null || serviceData.isEmpty
+                                ? const SizedBox(
+                                  width: 30,
+                                  height: 30,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 3,
+                                  ),
+                                )
+                                : ListView.builder(
+                                  itemCount: serviceData.length,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                        bottom: 12,
+                                      ),
+                                      child: ProfileCard(
+                                        title: "service_user_name".tr,
+                                        subTitle: "service_subtitle".tr,
+                                        textStatus:
+                                            serviceData[index]
+                                                        .garageSideStatus ==
+                                                    "ACCEPTED"
+                                                ? "Completed"
+                                                : serviceData[index]
+                                                    .garageSideStatus,
+
+                                        textColor:
+                                            serviceData[index]
+                                                        .garageSideStatus ==
+                                                    "ACCEPTED"
+                                                ? AppColors.greenColor
+                                                : serviceData[index]
+                                                        .garageSideStatus ==
+                                                    "DECLINED"
+                                                ? AppColors.red
+                                                : null,
+
+                                        boxColor:
+                                            serviceData[index]
+                                                        .garageSideStatus ==
+                                                    "ACCEPTED"
+                                                ? AppColors.greenLight
+                                                : serviceData[index]
+                                                .garageSideStatus ==
+                                                "DECLINED"? AppColors.redLight:null,
+                                      ),
+                                    );
+                                  },
+                                );
+                          }),
                         ),
                       ),
                       SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
