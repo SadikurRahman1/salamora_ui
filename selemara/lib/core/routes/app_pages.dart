@@ -13,7 +13,7 @@ import 'package:selemara/features/splash/screen/splash_screen.dart';
 
 import '../../features/auth/views/login_screen.dart';
 import '../../features/auth/views/register_screen.dart';
-import '../../features/buyer/buyer_nav_bar/bindings/buyer_binding.dart';
+import '../../features/buyer/buyer_nav_bar/bindings/nav_bar_buyer_binding.dart';
 import '../../features/buyer/buyer_nav_bar/view/buyer_nau_bar_screen.dart';
 import '../../features/car_owner_flow/car_owner_nevbar/view/owner_navbar_screen.dart';
 import '../../features/car_owner_flow/home/binding/home_binding.dart';
@@ -179,13 +179,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.buyerNavScreen,
       page: () => BuyerNauBarScreen(),
-      binding: BuyerBinding(),
+      binding: BuyerNavBarBinding(),
     ),
 
     GetPage(
       name: AppRoutes.buyerHomeScreen,
       page: () => BuyerHomeScreen(),
-      binding: HomeBinding(),
     ),
 
   ];

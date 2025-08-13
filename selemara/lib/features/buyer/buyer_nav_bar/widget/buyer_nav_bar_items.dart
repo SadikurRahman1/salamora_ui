@@ -11,9 +11,8 @@ class BuyerNavBarItems {
   static final List<Widget> screens = [
     BuyerHomeScreen(),
     BuyerSearchScreen(),
-    const Text("Home"),
+    const Text("saved"),
     const Text("profile"),
-
   ];
 
   static final List<String> labels = [
@@ -37,11 +36,7 @@ class BuyerNavBarItems {
       height: res.hp(24),
       width: res.wp(24),
     ),
-    Image.asset(
-      AppIcons.saveInActive,
-      height: res.hp(24),
-      width: res.wp(24),
-    ),
+    Image.asset(AppIcons.saveInActive, height: res.hp(24), width: res.wp(24)),
     Image.asset(
       AppIcons.profileInactive,
       height: res.hp(24),
