@@ -9,6 +9,7 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import 'buyer_car_details_screen.dart';
 
 class BuyerSearchScreen extends StatelessWidget {
   BuyerSearchScreen({super.key});
@@ -119,6 +120,7 @@ class BuyerSearchScreen extends StatelessWidget {
                     fontSize: 16,
                     onTap: () {
                       if(!isEmpty){
+                        Get.to(()=>BuyerCarDetailsScreen());
                       }
                     },
                   );
