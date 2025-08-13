@@ -27,8 +27,11 @@ class AppColors {
   static const Color profileBorderColor = Color(0xFFF2F4F7);
   static const Color darkBlueGrey = Color(0xFF1F2C37);
   static const Color graphite = Color(0xFF45474E);
+  static const Color red = Color(0xFFFF0000);
+  static const Color redLight = Color(0xFFFFE6E6);
   static const Color slateGray = Color(0xFF667085);
   static const Color greenColor = Color(0xFF00A16E);
+  static const Color greenLight = Color(0xFFe6f6f1);
   static const Color orange = Color(0xFFFF5722);
   static const Color orangeE6 = Color(0xFFf8eae6);
   static const Color orangeDeep = Color(0xFFAF2A00);

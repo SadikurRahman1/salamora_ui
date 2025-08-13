@@ -24,10 +24,15 @@ class HomeControllerOwner extends GetxController {
       if (responseData.isSuccess) {
         var data = ProfileResponse.fromJson(responseData.data);
         profileResponse.value = data.data;
-        // log('..............................${profileResponse.value?.email}');
+        log('..............................${profileResponse.value?.email}');
 
 
-      } else {}
+      } else {
+
+        log("..................${responseData.message}....");
+
+
+      }
     } catch (e) {
       log("error : $e");
     }
@@ -49,7 +54,12 @@ class HomeControllerOwner extends GetxController {
          log('..............................${allCarList.value?.data[0].name}');
 
 
-      } else {}
+      } else {
+        log("......................");
+
+
+
+      }
     } catch (e) {
       log("error : $e");
     }

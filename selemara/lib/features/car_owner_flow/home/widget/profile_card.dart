@@ -9,8 +9,12 @@ class ProfileCard extends StatelessWidget {
 
  final String? title;
  final String? subTitle;
+ final String? textStatus;
+ final Color? textColor;
+ final Color? boxColor;
 
-  ProfileCard({super.key, this.title, this.subTitle});
+
+  ProfileCard({super.key, this.title, this.subTitle, this.textColor, this.boxColor, this.textStatus});
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +84,12 @@ class ProfileCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(5.0),
             decoration: BoxDecoration(
-              color: AppColors.yallowColor.withValues(alpha: 0.1),
+              color:boxColor?? AppColors.yallowColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(res.sp(20)),
             ),
             child: AppText(
-              "Pending",
-              color: AppColors.yallowColor,
+             textStatus?? "Pending",
+              color:textColor?? AppColors.yallowColor,
               fontSize: 12,
               fontWeight: FontWeight.w600,
             ),
