@@ -9,6 +9,7 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import 'buyer_car_details_screen.dart';
 
 class BuyerSearchScreen extends StatelessWidget {
   BuyerSearchScreen({super.key});
@@ -102,7 +103,6 @@ class BuyerSearchScreen extends StatelessWidget {
                 hintText:   "enter_vin_manually".tr,
                 controller: controller.searchTEController,
                 onChanged: (value){
-
                   controller.setVinInput(value);
                 },
 
@@ -111,18 +111,16 @@ class BuyerSearchScreen extends StatelessWidget {
               SizedBox(height: res.hp(12)),
               Obx(() {
                 bool isEmpty = controller.vinInput.isEmpty;
-
                   return CustomButton(
                     text: "search".tr,
-                    textColor: AppColors.textColor.withValues(alpha: 0.4),
-                    iconPath:isEmpty?AppIcons.searchInActive:AppIcons.searchActive,
-                    iconColor: AppColors.textColor.withValues(alpha: 0.4),
+                    textColor: isEmpty ? AppColors.textColor.withValues(alpha: 0.4) : AppColors.whitColor,
+                    iconPath: isEmpty ? AppIcons.searchInActive:AppIcons.searchActive,
+                    iconColor: isEmpty ? AppColors.textColor.withValues(alpha: 0.4) : AppColors.whitColor,
                     btnColor:isEmpty? AppColors.primaryColor.withValues(alpha: 0.1):AppColors.primaryColor,
                     fontSize: 16,
                     onTap: () {
                       if(!isEmpty){
-
-
+                        Get.to(()=>BuyerCarDetailsScreen());
                       }
                     },
                   );

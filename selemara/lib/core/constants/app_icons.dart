@@ -45,7 +45,6 @@ class AppIcons {
 
 
 
-
   static const saveActive = "assets/icons/save_active.png";
   static const saveInActive = "assets/icons/save_in_active.png";
   static const searchActive = "assets/icons/search_active.png";

@@ -286,6 +286,9 @@ final Map<String, String> arSA = {
   "search": "بحث",
   "recent_search": "البحث الأخير",
   "saved": "المحفوظة",
+  "saved_cars" : "السيارات المحفوظة",
+  "clear_all": "مسح الكل",
+  "contact_now": "اتصل الآن",
 
 
 };

@@ -272,5 +272,7 @@ final Map<String, String> enUS = {
   "search": "Search",
   "recent_search": "Recent Search",
   "saved": "Saved",
-
+  "saved_cars" : "Saved Cars",
+  "clear_all": "Clear All",
+  "contact_now":  "Contact Now",
 };

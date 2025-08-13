@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/features/car_owner_flow/profile/view/profile_screen.dart';
+import '../../buyer_saved/view/buyer_saved_car_screen.dart';
+import '../../buyer_search/view/buyer_car_details_screen.dart';
 import '../../buyer_search/view/buyer_search_screen.dart';
 import '../../home/views/buyer_home_screen.dart';
 
@@ -11,8 +14,8 @@ class BuyerNavBarItems {
   static final List<Widget> screens = [
     BuyerHomeScreen(),
     BuyerSearchScreen(),
-    const Text("Home"),
-    const Text("profile"),
+    BuyerSavedCarScreen(),
+    ProfileScreen(),
 
   ];
 
@@ -37,11 +40,7 @@ class BuyerNavBarItems {
       height: res.hp(24),
       width: res.wp(24),
     ),
-    Image.asset(
-      AppIcons.saveInActive,
-      height: res.hp(24),
-      width: res.wp(24),
-    ),
+    Image.asset(AppIcons.saveInActive, height: res.hp(24), width: res.wp(24)),
     Image.asset(
       AppIcons.profileInactive,
       height: res.hp(24),
