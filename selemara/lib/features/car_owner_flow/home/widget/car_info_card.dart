@@ -17,6 +17,7 @@ class CarInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String baseUrl="http://172.252.13.78:5013";
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,8 +25,8 @@ class CarInfoCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                carImage ?? AppImages.carImage,
+              child: Image.network(
+                "$baseUrl$carImage" ?? AppImages.carImage,
                 height: res.hp(112),
                 width: res.wp(213),
                 fit: BoxFit.cover,

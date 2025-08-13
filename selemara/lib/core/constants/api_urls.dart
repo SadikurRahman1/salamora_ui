@@ -14,6 +14,8 @@ class ApiUrls {
   // car owner url
 
   static const String getProfile = "$_baseUrl/users/me";
+  static const String getAllCar = "$_baseUrl/vehicles/my";
+  static const String getRecentService = "$_baseUrl/services?sort=createdAt&limit=5";
 
 
 

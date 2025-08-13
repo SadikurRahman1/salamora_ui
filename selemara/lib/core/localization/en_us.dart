@@ -174,6 +174,7 @@ final Map<String, String> enUS = {
   "extended_warranty": "Extended Warranty",
   "upload_document": "Upload Document",
   "service_history": "Service History",
+  "service_record" : "Service Records:",
 
   ///   Request service added by arif
   "garage_service_center_name": "Garage/Service Center Name",
