@@ -172,16 +172,24 @@ class BuyerCarDetailsScreen extends StatelessWidget {
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(30))),
             SliverToBoxAdapter(
-              child:ListView.builder(
+              child: ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: 3,
                 itemBuilder: (context, index) {
                   return Container(
                     padding: EdgeInsets.all(16),
-
+                    margin: EdgeInsets.symmetric(vertical: 8),
                     decoration: BoxDecoration(
-                      color: AppColors.boxColor,
+                      color: AppColors.whitColor,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 4.0,
+                          spreadRadius: 0.5,
+                          offset: Offset(2, 2),
+                        ),
+                      ],
                       borderRadius: BorderRadius.circular(8),
                     ),
 
@@ -191,54 +199,62 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
-                                  AppIcons.cardTrust,
-                                  height: res.hp(16),
-                                  width: res.wp(16),
+                                  AppIcons.check1,
+                                  height: res.hp(20),
+                                  width: res.hp(20),
+                                  // color: AppColors.primaryColor,
                                 ),
 
-                                SizedBox(width: res.wp(3)),
+                                SizedBox(width: res.wp(5)),
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     AppText(
-                                      "active_warranty".tr,
-                                      color: AppColors.textColor2A2A,
-                                      fontSize: 16,
+                                      "Oil Change & Fitter".tr,
+                                      color: AppColors.textColor,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w600,
                                     ),
+                                    SizedBox(height: res.hp(6)),
                                     AppText(
-                                      "active_warranty".tr,
+                                      "Al Futtaim Service Center".tr,
                                       color: AppColors.textColor2A2A,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
                                     ),
+                                    SizedBox(height: res.hp(6)),
+
                                     Row(
                                       children: [
-                                        Icon(Icons.remove_red_eye_outlined),
-                                        SizedBox(width: 5,),
+                                        Icon(
+                                          Icons.remove_red_eye_outlined,
+                                          color: AppColors.primaryColor,
+                                        ),
+                                        SizedBox(width: 5),
                                         AppText(
                                           "warranty".tr,
-                                          color: AppColors.textColor2A2A,
+                                          color: AppColors.primaryColor,
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ],
                                     ),
-
-
                                   ],
                                 ),
                               ],
                             ),
 
-
-
                             Column(
                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 3,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: AppColors.greenColor,
                                     borderRadius: BorderRadius.circular(24),
@@ -264,47 +280,9 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-
                           ],
                         ),
                         SizedBox(height: res.hp(12)),
-
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     Row(
-                        //       children: [
-                        //         Image.asset(
-                        //           AppIcons.honda,
-                        //           height: res.hp(32),
-                        //           width: res.wp(32),
-                        //         ),
-                        //
-                        //         SizedBox(width: res.wp(3)),
-                        //         AppText(
-                        //           "honda_uae".tr,
-                        //           color: AppColors.greenColor,
-                        //           fontSize: 16,
-                        //           fontWeight: FontWeight.w600,
-                        //         ),
-                        //       ],
-                        //     ),
-                        //     Container(
-                        //       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                        //       decoration: BoxDecoration(
-                        //         color: AppColors.greenColor,
-                        //         borderRadius: BorderRadius.circular(24),
-                        //       ),
-                        //
-                        //       child: AppText(
-                        //         "warranty_expiry".tr,
-                        //         color: AppColors.whitColor,
-                        //         fontSize: 14,
-                        //         fontWeight: FontWeight.w400,
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
                       ],
                     ),
                   );
@@ -331,7 +309,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
       ),
     );
   }
-  
+
   /// method
 
   Widget _activeWarrantyCard(AppResponsive res) {
