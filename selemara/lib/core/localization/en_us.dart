@@ -275,4 +275,9 @@ final Map<String, String> enUS = {
   "saved_cars" : "Saved Cars",
   "clear_all": "Clear All",
   "contact_now":  "Contact Now",
+  "service_history_details": "Service History Details",
+  "service_info": "Service Info",
+  "oil_change_and_filter": "Oil Change & Filter",
+  "elitepolish_auto_care": "ElitePolish Auto Care",
+
 };

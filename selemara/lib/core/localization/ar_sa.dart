@@ -289,6 +289,11 @@ final Map<String, String> arSA = {
   "saved_cars" : "السيارات المحفوظة",
   "clear_all": "مسح الكل",
   "contact_now": "اتصل الآن",
+  "service_history_details": "تفاصيل سجل الخدمة",
+  "service_info": "معلومات الخدمة",
+  "oil_change_and_filter": "تغيير الزيت والفلتر",
+  "elitepolish_auto_care": "إيليت بوليش للعناية بالسيارات",
+
 
 
 };
