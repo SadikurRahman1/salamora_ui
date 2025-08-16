@@ -59,6 +59,7 @@ class BuyerNauBarScreen extends StatelessWidget {
                 final isActive = navController.currentIndex.value == index;
 
                 return BottomNavigationBarItem(
+                  
                   label: '',
                   icon: Column(
                     mainAxisSize: MainAxisSize.min,
