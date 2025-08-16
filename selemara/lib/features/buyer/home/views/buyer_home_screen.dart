@@ -9,6 +9,7 @@ import '../../../../core/widgets/home_header.dart';
 import '../widgets/buyer_banner.dart';
 import '../widgets/featured_card_widget.dart';
 import '../../common/widgets/activity_card_widget.dart';
+import 'buyer_car_details_screen.dart';
 
 class BuyerHomeScreen extends StatelessWidget {
   BuyerHomeScreen({super.key});
@@ -79,7 +80,7 @@ class BuyerHomeScreen extends StatelessWidget {
                           sideIconPath: AppIcons.model,
                           imageBorderRadius: 5,
                           onTap: () {
-                            print("Card tapped");
+                            Get.to(()=>BuyerCarDetailsScreen());
                           },
                         );
                       },
