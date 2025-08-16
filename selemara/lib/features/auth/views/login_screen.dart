@@ -26,13 +26,6 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // SizedBox(height: res.hp(50)),
-              CustomButton(
-                text: 'go to buyer screen'.tr,
-                onTap: () {
-                  Get.toNamed(AppRoutes.buyerNavScreen);
-                },
-              ),
 
               AppText(
                 'welcome_back'.tr,
