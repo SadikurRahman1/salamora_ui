@@ -10,6 +10,7 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 
+import '../../common/controller/buyer_user_data_controller.dart';
 import '../controller/buyer_profile_controller.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,7 @@ class BuyerProfileScreen extends StatelessWidget {
   final res = AppResponsive();
 
   final controller = Get.put(BuyerProfileController());
+  BuyerUserDataController buyerUserDataController = Get.put(BuyerUserDataController());
   final SharedPreferencesHelper _preferencesHelper = SharedPreferencesHelper();
   @override
   Widget build(BuildContext context) {
@@ -81,11 +83,13 @@ class BuyerProfileScreen extends StatelessWidget {
                       ],
                     ),
 
-                    AppText(
-                      "Sadik",
-                      fontSize: res.sp(20),
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryTextColor,
+                    Obx(
+                      ()=> AppText(
+                        buyerUserDataController.userData.value?.name ?? "No Name",
+                        fontSize: res.sp(20),
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryTextColor,
+                      ),
                     ),
                   ],
                 ),
