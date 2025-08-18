@@ -119,6 +119,7 @@ class NetworkCaller {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return ResponseData(isSuccess: true, data: decoded);
       } else if (response.statusCode == 401) {
+        //redirect to the login page
         Get.offAllNamed(AppRoutes.login);
         await _preferencesHelper.remove(TokenKey.accessToken);
         await _preferencesHelper.remove(TokenKey.userId);
