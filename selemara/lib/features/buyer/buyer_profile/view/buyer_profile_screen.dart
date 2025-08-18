@@ -4,6 +4,8 @@ import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
+import '../../../../core/constants/token_key.dart';
+import '../../../../core/helper/shared_preferences_helper.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -20,7 +22,7 @@ class BuyerProfileScreen extends StatelessWidget {
   final res = AppResponsive();
 
   final controller = Get.put(BuyerProfileController());
-
+  final SharedPreferencesHelper _preferencesHelper = SharedPreferencesHelper();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -323,7 +325,9 @@ class BuyerProfileScreen extends StatelessWidget {
                     Expanded(
                       child: CustomButton(
                         text: "no".tr,
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                        },
                         btnColor: AppColors.backGroundColor,
                         borderColor: AppColors.primaryColor,
                         isBorder: true,
@@ -337,7 +341,13 @@ class BuyerProfileScreen extends StatelessWidget {
                     Expanded(
                       child: CustomButton(
                         text: "yes".tr,
-                        onTap: () {},
+                        onTap: () async {
+                          await _preferencesHelper.remove(TokenKey.accessToken);
+                          await _preferencesHelper.remove(TokenKey.userId);
+                          await _preferencesHelper.remove(TokenKey.role);
+
+                          Get.offAllNamed(AppRoutes.login);
+                        },
                         borderRadius: 8,
                       ),
                     ),
