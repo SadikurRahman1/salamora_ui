@@ -12,6 +12,7 @@ import '../controller/buyer_profile_controller.dart';
 import 'package:get/get.dart';
 
 import '../widgets/buyer_profile_option_tile.dart';
+import 'buyer_change_password_screen.dart';
 
 class BuyerProfileScreen extends StatelessWidget {
   BuyerProfileScreen({super.key});
@@ -166,7 +167,7 @@ class BuyerProfileScreen extends StatelessWidget {
                 iconPath: AppImages.lock,
                 title: 'password'.tr,
                 onTap: () {
-                  Get.toNamed(AppRoutes.updatePasswordScreen);
+                  Get.toNamed(AppRoutes.buyerChangePasswordScreen);
                 },
                 textSize: 16,
                 bottomMargin: 0,
