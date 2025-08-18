@@ -102,6 +102,22 @@ class NetworkCaller {
     }
   }
 
+  Future<ResponseData> patchRequest({
+    required String url,
+    required Map<String, dynamic> body,
+  }) async {
+    try {
+      final headers = await _buildHeaders();
+      final response = await _client.patch(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonEncode(body),
+      );
+      return _handleResponse(response);
+    } catch (e) {
+      return ResponseData(isSuccess: false, message: e.toString());
+    }
+  }
   Future<Map<String, String>> _buildHeaders({bool withToken = true}) async {
     final headers = <String, String>{'Content-Type': 'application/json'};
     if (withToken) {
@@ -116,27 +132,24 @@ class NetworkCaller {
   Future<ResponseData> _handleResponse(http.Response response) async {
     try {
       final decoded = jsonDecode(response.body);
-      // if (response.statusCode >= 200 && response.statusCode < 300) {
-      //   return ResponseData(isSuccess: true, data: decoded);
-      // } else 
-      // if (response.statusCode == 401) {
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return ResponseData(isSuccess: true, data: decoded);
+      } else if (response.statusCode == 401) {
         //redirect to the login page
-
+        Get.offAllNamed(AppRoutes.login);
         await _preferencesHelper.remove(TokenKey.accessToken);
         await _preferencesHelper.remove(TokenKey.userId);
         await _preferencesHelper.remove(TokenKey.role);
-
-        Get.offAllNamed(AppRoutes.login);
         return ResponseData(
           isSuccess: false,
           message: 'Unauthorized access. Redirecting to login.',
         );
-      // } else {
-      //   return ResponseData(
-      //     isSuccess: false,
-      //     message: decoded['message'] ?? 'Unknown error',
-      //   );
-      // }
+      } else {
+        return ResponseData(
+          isSuccess: false,
+          message: decoded['message'] ?? 'Unknown error',
+        );
+      }
     } catch (e) {
       return ResponseData(
         isSuccess: false,
