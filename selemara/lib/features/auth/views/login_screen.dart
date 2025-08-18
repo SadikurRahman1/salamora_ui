@@ -26,7 +26,6 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
               AppText(
                 'welcome_back'.tr,
                 color: AppColors.textColor,
@@ -117,13 +116,16 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: res.hp(80)),
-                    CustomButton(
-                      text: 'login'.tr,
-                      onTap: () async {
-                        if (_formKey.currentState!.validate()) {
-                          await authController.login();
-                        }
-                      },
+                    Obx(
+                      () => CustomButton(
+                        isLoading: authController.isLoading.value,
+                        text: 'login'.tr,
+                        onTap: () async {
+                          if (_formKey.currentState!.validate()) {
+                            await authController.login();
+                          }
+                        },
+                      ),
                     ),
                     SizedBox(height: res.hp(20)),
                     Row(
