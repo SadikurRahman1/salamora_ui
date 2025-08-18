@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:mime/mime.dart';
 import 'package:selemara/core/constants/token_key.dart';
 import 'package:selemara/core/helper/shared_preferences_helper.dart';
+import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/services/response_data.dart';
 
 class NetworkCaller {
@@ -111,11 +113,20 @@ class NetworkCaller {
     return headers;
   }
 
-  ResponseData _handleResponse(http.Response response) {
+  Future<ResponseData> _handleResponse(http.Response response) async {
     try {
       final decoded = jsonDecode(response.body);
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return ResponseData(isSuccess: true, data: decoded);
+      } else if (response.statusCode == 401) {
+        Get.offAllNamed(AppRoutes.login);
+        await _preferencesHelper.remove(TokenKey.accessToken);
+        await _preferencesHelper.remove(TokenKey.userId);
+        await _preferencesHelper.remove(TokenKey.role);
+        return ResponseData(
+          isSuccess: false,
+          message: 'Unauthorized access. Redirecting to login.',
+        );
       } else {
         return ResponseData(
           isSuccess: false,
