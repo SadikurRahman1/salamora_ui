@@ -100,6 +100,22 @@ class NetworkCaller {
     }
   }
 
+  Future<ResponseData> patchRequest({
+    required String url,
+    required Map<String, dynamic> body,
+  }) async {
+    try {
+      final headers = await _buildHeaders();
+      final response = await _client.patch(
+        Uri.parse(url),
+        headers: headers,
+        body: jsonEncode(body),
+      );
+      return _handleResponse(response);
+    } catch (e) {
+      return ResponseData(isSuccess: false, message: e.toString());
+    }
+  }
   Future<Map<String, String>> _buildHeaders({bool withToken = true}) async {
     final headers = <String, String>{'Content-Type': 'application/json'};
     if (withToken) {
