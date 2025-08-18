@@ -136,19 +136,18 @@ class NetworkCaller {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return ResponseData(isSuccess: true, data: decoded);
       } else if (response.statusCode == 401) {
-      //redirect to the login page
-      
-      await _preferencesHelper.remove(TokenKey.accessToken);
-      await _preferencesHelper.remove(TokenKey.userId);
-      await _preferencesHelper.remove(TokenKey.role);
+        //redirect to the login page
 
-      Get.offAllNamed(AppRoutes.login);
-      return ResponseData(
-        isSuccess: false,
-        message: 'Unauthorized access. Redirecting to login.',
-      );
-      }
-      else {
+        await _preferencesHelper.remove(TokenKey.accessToken);
+        await _preferencesHelper.remove(TokenKey.userId);
+        await _preferencesHelper.remove(TokenKey.role);
+
+        Get.offAllNamed(AppRoutes.login);
+        return ResponseData(
+          isSuccess: false,
+          message: 'Unauthorized access. Redirecting to login.',
+        );
+      } else {
         return ResponseData(
           isSuccess: false,
           message: decoded['message'] ?? 'Unknown error',
