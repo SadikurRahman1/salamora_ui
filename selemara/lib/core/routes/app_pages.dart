@@ -174,19 +174,13 @@ class AppPages {
     //   page: () => const ProfilePage(),
     //   binding: ProfileBinding(),
     // ),
-
-
     GetPage(
       name: AppRoutes.buyerNavScreen,
       page: () => BuyerNauBarScreen(),
       binding: BuyerNavBarBinding(),
     ),
 
-    GetPage(
-      name: AppRoutes.buyerHomeScreen,
-      page: () => BuyerHomeScreen(),
-    ),
-
+    GetPage(name: AppRoutes.buyerHomeScreen, page: () => BuyerHomeScreen()),
   ];
 
   static final initialBinding = SplashBinding();
