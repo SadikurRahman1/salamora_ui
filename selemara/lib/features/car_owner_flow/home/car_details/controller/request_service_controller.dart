@@ -106,13 +106,13 @@ class RequestServiceController extends GetxController {
         selectedService.value != null &&
         descriptionController.text.isNotEmpty) {
       var url = ApiUrls.requestServicePost;
-      Map<String,String> body = {
+      Map<String, String> body = {
         "vehicleId": "astdfauedy",
-        "garageId": selectedGarage.value?.id??"" ,
-        "serviceType":selectedService.value??"" ,
+        "garageId": selectedGarage.value?.id ?? "",
+        "serviceType": selectedService.value ?? "",
         "description": descriptionController.text,
         "preferredDate": selectedDate.value?.toIso8601String() ?? "",
-        "urgencyLevel": "HIGH"
+        "urgencyLevel": "HIGH",
       };
 
       ResponseData responseData = await NetworkCaller().postRequest(
