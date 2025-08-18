@@ -24,25 +24,33 @@ class  BuyerUpdatePasswordController extends GetxController{
   Future<void> changePassword() async{
     isLoading.value = true;
 
-    final changePasswordBody = {
-      "oldPassword": oldController.text,
-      "newPassword": newController.text,
-    };
-  ResponseData responseData = await NetworkCaller().patchRequest(
-      url: ApiUrls.changePassword,
-      body: changePasswordBody
-  );
+    try{
+      final changePasswordBody = {
+        "oldPassword": oldController.text,
+        "newPassword": newController.text,
+      };
+      ResponseData responseData = await NetworkCaller().patchRequest(
+          url: ApiUrls.changePassword,
+          body: changePasswordBody
+      );
 
-  debugPrint("RESPONSE MASSAGE : ${responseData.message.toString()}");
 
-    if (responseData.isSuccess && responseData.data != null) {
-      Get.snackbar("Success", responseData.message ?? "");
-      clear();
+      if (responseData.isSuccess==true) {
 
-    } else {
-      Get.snackbar("change Password Failed", responseData.message ?? "Invalid credentials");
+        Get.snackbar("Success", "Password changed successfully!");
+        Get.back();
+        // clear();
+        // clear();
+      } else {
+        Get.snackbar("change Password Failed", responseData.message ?? "Invalid credentials");
+      }
+      isLoading.value = false;
+    }catch(e){
+      debugPrint(e.toString());
+
     }
-    isLoading.value = false;
+
+
   }
 
   @override
