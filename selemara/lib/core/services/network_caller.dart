@@ -118,6 +118,7 @@ class NetworkCaller {
       return ResponseData(isSuccess: false, message: e.toString());
     }
   }
+
   Future<Map<String, String>> _buildHeaders({bool withToken = true}) async {
     final headers = <String, String>{'Content-Type': 'application/json'};
     if (withToken) {
@@ -135,16 +136,19 @@ class NetworkCaller {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return ResponseData(isSuccess: true, data: decoded);
       } else if (response.statusCode == 401) {
-        //redirect to the login page
-        Get.offAllNamed(AppRoutes.login);
-        await _preferencesHelper.remove(TokenKey.accessToken);
-        await _preferencesHelper.remove(TokenKey.userId);
-        await _preferencesHelper.remove(TokenKey.role);
-        return ResponseData(
-          isSuccess: false,
-          message: 'Unauthorized access. Redirecting to login.',
-        );
-      } else {
+      //redirect to the login page
+      
+      await _preferencesHelper.remove(TokenKey.accessToken);
+      await _preferencesHelper.remove(TokenKey.userId);
+      await _preferencesHelper.remove(TokenKey.role);
+
+      Get.offAllNamed(AppRoutes.login);
+      return ResponseData(
+        isSuccess: false,
+        message: 'Unauthorized access. Redirecting to login.',
+      );
+      }
+      else {
         return ResponseData(
           isSuccess: false,
           message: decoded['message'] ?? 'Unknown error',
