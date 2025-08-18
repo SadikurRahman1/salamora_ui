@@ -76,18 +76,14 @@ class BuyerChangePasswordScreen extends StatelessWidget {
                       BuyerCustomTextField(
                         controller: controller.confirmController,
                         hintText:"confirm_password".tr,
-
                       ),
                       SizedBox(height: res.hp(24)),
-
 
 
                       CustomButton(text: "update_password".tr, onTap: () async {
                         if (_formKey.currentState!.validate()) {
                           await controller.matchPassword();
-
                         }
-                        print("--------------------click");
                       }),
 
 

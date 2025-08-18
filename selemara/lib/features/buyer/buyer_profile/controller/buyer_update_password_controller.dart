@@ -16,7 +16,7 @@ class  BuyerUpdatePasswordController extends GetxController{
     if(newController.text == confirmController.text){
       changePassword();
     } else{
-      Get.snackbar("change Password Failed", "New Password & Confirm Password do not match!");
+      Get.snackbar("Failed", "New Password & Confirm Password do not match!");
     }
   }
 
@@ -33,13 +33,30 @@ class  BuyerUpdatePasswordController extends GetxController{
       body: changePasswordBody
   );
 
-  debugPrint("response message  ${responseData.message.toString()}");
-    if (responseData.isSuccess && responseData.data != null) {
+  debugPrint("RESPONSE MASSAGE : ${responseData.message.toString()}");
 
+    if (responseData.isSuccess && responseData.data != null) {
       Get.snackbar("Success", responseData.message ?? "");
+      clear();
+
     } else {
       Get.snackbar("change Password Failed", responseData.message ?? "Invalid credentials");
     }
     isLoading.value = false;
   }
+
+  @override
+  void onClose() {
+    oldController.dispose();
+    newController.dispose();
+    confirmController.dispose();
+    super.onClose();
+  }
+  void clear(){
+    oldController.clear();
+    newController.clear();
+    confirmController.clear();
+  }
+
 }
+
