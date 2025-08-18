@@ -116,9 +116,10 @@ class NetworkCaller {
   Future<ResponseData> _handleResponse(http.Response response) async {
     try {
       final decoded = jsonDecode(response.body);
-      if (response.statusCode >= 200 && response.statusCode < 300) {
-        return ResponseData(isSuccess: true, data: decoded);
-      } else if (response.statusCode == 401) {
+      // if (response.statusCode >= 200 && response.statusCode < 300) {
+      //   return ResponseData(isSuccess: true, data: decoded);
+      // } else 
+      // if (response.statusCode == 401) {
         //redirect to the login page
 
         await _preferencesHelper.remove(TokenKey.accessToken);
@@ -130,12 +131,12 @@ class NetworkCaller {
           isSuccess: false,
           message: 'Unauthorized access. Redirecting to login.',
         );
-      } else {
-        return ResponseData(
-          isSuccess: false,
-          message: decoded['message'] ?? 'Unknown error',
-        );
-      }
+      // } else {
+      //   return ResponseData(
+      //     isSuccess: false,
+      //     message: decoded['message'] ?? 'Unknown error',
+      //   );
+      // }
     } catch (e) {
       return ResponseData(
         isSuccess: false,
