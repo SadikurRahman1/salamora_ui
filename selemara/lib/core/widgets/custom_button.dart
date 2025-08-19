@@ -19,6 +19,7 @@ class CustomButton extends StatelessWidget {
   final Color? textColor;
   final Color? borderColor;
   final Color? iconColor;
+  final bool isLoading;
 
   final double? borderRadius;
   final String? iconPath;
@@ -40,6 +41,7 @@ class CustomButton extends StatelessWidget {
     this.iconColor,
     this.fontSize,
     this.textIconWidth,
+    this.isLoading = false,
   });
 
   @override
@@ -59,27 +61,30 @@ class CustomButton extends StatelessWidget {
           responsive.wp(borderRadius ?? responsive.sp(20)),
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          iconPath != null
-              ? Image.asset(
-                iconPath ?? AppIcons.plus,
-                color: iconColor ?? AppColors.whitColor,
+      child:
+          isLoading
+              ? CircularProgressIndicator(color: AppColors.whitColor)
+              : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  iconPath != null
+                      ? Image.asset(
+                        iconPath ?? AppIcons.plus,
+                        color: iconColor ?? AppColors.whitColor,
 
-                height: responsive.hp(iconHeight ?? 20),
-                width: responsive.wp(iconWidth ?? 20),
-              )
-              : SizedBox.shrink(),
-          SizedBox(width: responsive.wp(textIconWidth ?? 10)),
-          AppText(
-            text,
-            color: textColor ?? Color(0xFFFFFFFF),
+                        height: responsive.hp(iconHeight ?? 20),
+                        width: responsive.wp(iconWidth ?? 20),
+                      )
+                      : SizedBox.shrink(),
+                  SizedBox(width: responsive.wp(textIconWidth ?? 10)),
+                  AppText(
+                    text,
+                    color: textColor ?? Color(0xFFFFFFFF),
 
-            fontSize: fontSize ?? 14,
-          ),
-        ],
-      ).onTap(onTap),
+                    fontSize: fontSize ?? 14,
+                  ),
+                ],
+              ).onTap(onTap),
     );
   }
 }

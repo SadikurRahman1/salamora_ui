@@ -9,7 +9,7 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
-import 'buyer_car_details_screen.dart';
+import 'buyer_scanner_screen.dart';
 
 class BuyerSearchScreen extends StatelessWidget {
   BuyerSearchScreen({super.key});
@@ -79,11 +79,11 @@ class BuyerSearchScreen extends StatelessWidget {
                 btnColor: AppColors.orange,
                 borderRadius: 8,
                 onTap: () {
-                  if (Get.locale?.languageCode == 'en') {
-                    Get.updateLocale(const Locale('ar', 'SA'));
-                  } else {
-                    Get.updateLocale(const Locale('en', 'US'));
-                  }
+
+                  Get.to(()=> ScannerScreen());
+
+
+
                 },
               ),
               SizedBox(height: res.hp(12)),
@@ -120,7 +120,11 @@ class BuyerSearchScreen extends StatelessWidget {
                     fontSize: 16,
                     onTap: () {
                       if(!isEmpty){
-                        Get.to(()=>BuyerCarDetailsScreen());
+                        if (Get.locale?.languageCode == 'en') {
+                          Get.updateLocale(const Locale('ar', 'SA'));
+                        } else {
+                          Get.updateLocale(const Locale('en', 'US'));
+                        }
                       }
                     },
                   );

@@ -20,7 +20,8 @@ class ApiUrls {
   static const String requestServicePost = "$_baseUrl/services";
 
 
-
+  //car buyer url
+  static const String changePassword = "$_baseUrl/auth/change-password";
 
 
 
