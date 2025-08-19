@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_icons.dart';
-import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/app_text.dart';
 
 class CarInfoCard extends StatelessWidget {
- final String? title;
- final String? subTitle;
- final String? carImage;
+  final String? title;
+  final String? subTitle;
+  final String? carImage;
 
   CarInfoCard({super.key, this.title, this.subTitle, this.carImage});
 
@@ -17,7 +17,7 @@ class CarInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String baseUrl="http://172.252.13.78:5013";
+    String baseUrl = "http://172.252.13.78:5013";
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,20 +26,40 @@ class CarInfoCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.network(
-                "$baseUrl$carImage" ?? AppImages.carImage,
+                "$baseUrl$carImage" ,
                 height: res.hp(112),
                 width: res.wp(213),
                 fit: BoxFit.cover,
               ),
             ),
+
+            /// Left top badge
             Align(
               alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 8, left: 8),
-                child: Image.asset(
-                  AppIcons.verified,
-                  height: res.hp(20),
-                  width: res.wp(77),
+              child: Container(
+                margin: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                decoration: BoxDecoration(
+                  color: AppColors.greenColor,
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      AppIcons.verified1,
+                      height: res.hp(12),
+                      width: res.wp(12),
+                    ),
+                    SizedBox(width: res.wp(2)),
+                    AppText(
+                      "verified".tr,
+
+                      fontSize: 10,
+
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ],
                 ),
               ),
             ),

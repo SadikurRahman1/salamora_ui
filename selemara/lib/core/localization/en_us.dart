@@ -174,7 +174,16 @@ final Map<String, String> enUS = {
   "extended_warranty": "Extended Warranty",
   "upload_document": "Upload Document",
   "service_history": "Service History",
-  "service_record" : "Service Records:",
+  "service_record": "Service Records:",
+  "language": "Language",
+  "arabic": "Arabic",
+
+  "reminders": "Reminders",
+  "verified": "Verified",
+  "completed": "Completed",
+  "declined": "Declined",
+  "pending": "Pending",
+  "full_service_history": "Full Service History",
 
   ///   Request service added by arif
   "garage_service_center_name": "Garage/Service Center Name",
@@ -236,10 +245,7 @@ final Map<String, String> enUS = {
   "uploaded": "uploaded",
   "my_all_cars": "My All Cars",
 
-
-
   "track_service_history": "Track your car's service history and stay on top",
-
 
   ///     Add Vehicle  added by Arif
   "vehicle_information": "Vehicle Information",
@@ -256,7 +262,6 @@ final Map<String, String> enUS = {
   "png_jpg_up_to_10mb_each": "PNG, JPG up to 10MB each",
 
   /// buyer section
-
   "search_car": "Search Car",
   "save_car": "Saved Car",
   "qr_scans": "QR Scans",
@@ -264,20 +269,23 @@ final Map<String, String> enUS = {
   "featured_cars": "Featured Cars",
   "recent_activity": "Recent Activity",
   "search_cars": "Search Cars",
-  "scan_car_qr_code" :  "Scan Car QR Code",
+  "scan_car_qr_code": "Scan Car QR Code",
   "scan_now": "Scan Now",
-  "point_camera_qr": "Point your camera at the car's QR code to view its complete service history",
+  "point_camera_qr":
+      "Point your camera at the car's QR code to view its complete service history",
   "or": "OR",
-  "enter_vin_manually":  "Enter VIN Manually",
+  "enter_vin_manually": "Enter VIN Manually",
   "search": "Search",
   "recent_search": "Recent Search",
   "saved": "Saved",
-  "saved_cars" : "Saved Cars",
+  "saved_cars": "Saved Cars",
   "clear_all": "Clear All",
+  "contact_now": "Contact Now",
   "contact_now":  "Contact Now",
   "service_history_details": "Service History Details",
   "service_info": "Service Info",
   "oil_change_and_filter": "Oil Change & Filter",
   "elitepolish_auto_care": "ElitePolish Auto Care",
+
 
 };

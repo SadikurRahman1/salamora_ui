@@ -29,7 +29,7 @@ class OwnerNavbarController extends GetxController {
     ProfileScreen(),
   ];
 
-  final List<String> labels = const ['Home', 'Services', 'Reminders', "Profile"];
+  final List<String> labels =  ['home', 'services', 'reminders', 'profile'];
 
   final List<Image> activeIcons = [
     Image.asset(AppIcons.homeActive, height:res.hp(24) , width:res.wp(24)),

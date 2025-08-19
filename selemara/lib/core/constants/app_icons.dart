@@ -40,16 +40,13 @@ class AppIcons {
   static const cross = "assets/icons/cross.png";
   static const map = "assets/icons/map.png";
   static const customerSupport = "assets/icons/customer_support.png";
-
-
-
-
+  static const language = "assets/icons/language.png";
+  static const verified1 = "assets/icons/verified1.png";
+  static const carIcon2 = "assets/icons/car_icon2.png";
 
   static const saveActive = "assets/icons/save_active.png";
   static const saveInActive = "assets/icons/save_in_active.png";
   static const searchActive = "assets/icons/search_active.png";
   static const searchInActive = "assets/icons/search_in_active.png";
   static const qrCodeRed = "assets/icons/qr_code_red.png";
-
-
 }

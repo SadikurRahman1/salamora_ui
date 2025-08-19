@@ -82,7 +82,7 @@ class ProfileCard extends StatelessWidget {
 
           // SizedBox(width: res.hp(20)),
           Container(
-            padding: EdgeInsets.all(5.0),
+            padding: EdgeInsets.symmetric(vertical: 5.0,horizontal: 13),
             decoration: BoxDecoration(
               color:boxColor?? AppColors.yallowColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(res.sp(20)),

@@ -132,29 +132,31 @@ class CarDetailCard extends StatelessWidget {
             ],
           ),
           Padding(padding: EdgeInsets.only(top: 16)),
-          _labelValueRow("vin".tr, "CV2F6JLOOOOOO"),
+          _labelValueRow("vin".tr, "CV2F6JLOOOOOO",context),
           Padding(padding: EdgeInsets.only(top: 8)),
-          _labelValueRow("last_service".tr, "1/15/2024"),
+          _labelValueRow("last_service".tr, "1/15/2024",context),
           Padding(padding: EdgeInsets.only(top: 8)),
-          _labelValueRow("next_service".tr, "4/15/2024"),
+          _labelValueRow("next_service".tr, "4/15/2024",context),
           Padding(padding: EdgeInsets.only(top: 8)),
-          _labelValueRow("service_records".tr, "8"),
+          _labelValueRow("service_records".tr, "8",context),
           Padding(padding: EdgeInsets.only(top: 8)),
-          _labelValueRow("documents".tr, "2 ${"uploaded".tr}"),
+          _labelValueRow("documents".tr, "2 ${"uploaded".tr}",context),
         ],
       ),
     );
   }
 
-  Row _labelValueRow(String kye, String value) {
+  Row _labelValueRow(String key, String value, BuildContext context) {
     return Row(
+      textDirection: Directionality.of(context), // ✅ Auto detect locale (LTR/RTL)
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
           child: Align(
-            alignment: Alignment.topLeft,
+            alignment: AlignmentDirectional.topStart, // ✅ RTL/LTR aware
             child: AppText(
-              kye,
+              key,
               color: AppColors.textColor626,
               fontSize: 16,
               fontWeight: FontWeight.w400,
@@ -164,7 +166,7 @@ class CarDetailCard extends StatelessWidget {
         const SizedBox(width: 8),
         Flexible(
           child: Align(
-            alignment: Alignment.topRight,
+            alignment: AlignmentDirectional.topEnd, // ✅ RTL/LTR aware
             child: AppText(
               value,
               color: AppColors.textColor626,

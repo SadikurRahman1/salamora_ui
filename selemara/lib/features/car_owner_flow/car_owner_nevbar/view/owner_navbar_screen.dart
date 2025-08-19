@@ -4,22 +4,21 @@ import 'package:selemara/features/car_owner_flow/car_owner_nevbar/controller/own
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_responsive.dart';
+
 class OwnerNavbarScreen extends StatelessWidget {
   OwnerNavbarScreen({super.key}) {
-
-
-
     Get.put(OwnerNavbarController());
   }
-  final res=AppResponsive();
 
+  final res = AppResponsive();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GetX<OwnerNavbarController>(
-        builder: (creatorNavController) =>
-        creatorNavController.screens[creatorNavController.currentIndex],
+        builder:
+            (creatorNavController) =>
+                creatorNavController.screens[creatorNavController.currentIndex],
       ),
       bottomNavigationBar: GetX<OwnerNavbarController>(
         builder: (navController) {
@@ -34,7 +33,8 @@ class OwnerNavbarScreen extends StatelessWidget {
               color: AppColors.whitColor, // Container color
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),                  blurRadius: 8,
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 8,
                 ),
               ],
               borderRadius: const BorderRadius.only(
@@ -61,8 +61,8 @@ class OwnerNavbarScreen extends StatelessWidget {
                   unselectedItemColor: AppColors.whitColor,
                   onTap: navController.changeIndex,
                   items: List.generate(navController.activeIcons.length, (
-                      index,
-                      ) {
+                    index,
+                  ) {
                     final isActive = navController.currentIndex == index;
 
                     return BottomNavigationBarItem(
@@ -76,14 +76,15 @@ class OwnerNavbarScreen extends StatelessWidget {
                           const SizedBox(height: 5), // Vertical space
                           Text(
                             navController.labels.length > index
-                                ? navController.labels[index]
+                                ? navController.labels[index].tr
                                 : '',
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: res.sp(14),
-                              color: isActive
-                                  ? AppColors.primaryColor
-                                  : AppColors.primaryTextColor,
+                              color:
+                                  isActive
+                                      ? AppColors.primaryColor
+                                      : AppColors.primaryTextColor,
                             ),
                           ),
                         ],

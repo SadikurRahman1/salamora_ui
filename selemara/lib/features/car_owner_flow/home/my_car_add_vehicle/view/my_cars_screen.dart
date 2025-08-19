@@ -38,12 +38,13 @@ class MyCarsScreen extends StatelessWidget {
                     "my_all_cars".tr,
                     color: AppColors.textColor2B2B,
                     fontSize: 20,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w700,
                   ),
                   SizedBox(
                     width: res.wp(128),
                     child: CustomButton(
                       text: "add_vehicle".tr,
+                      btnColor: AppColors.primaryColor1,
                       iconHeight: 14,
                       iconWidth: 14,
                       onTap: () {

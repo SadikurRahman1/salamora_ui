@@ -194,20 +194,18 @@ class CarDetailsScreen extends StatelessWidget {
 
                       Padding(padding: EdgeInsets.only(top: 16)),
 
-                      _labelValueRow("vin_label".tr, carDetails?.vin ?? ""),
+                      _labelValueRow("vin_label".tr, carDetails?.vin ?? "", context,),
                       Padding(padding: EdgeInsets.only(top: 8)),
                       _labelValueRow(
                         "last_service".tr,
-                        carDetails?.lastService ?? "0",
+                        carDetails?.lastService ?? "0", context,
                       ),
-                      // Padding(padding: EdgeInsets.only(top: 8)),
-                      //
-                      // _labelValueRow("next_service".tr, ""),
-                      Padding(padding: EdgeInsets.only(top: 8)),
-                      _labelValueRow("service_record".tr,carDetails?.totalService.toString()?? ""),
 
                       Padding(padding: EdgeInsets.only(top: 8)),
-                      _labelValueRow("documents".tr, carDetails?.documents.length.toString()??""),
+                      _labelValueRow("service_record".tr,carDetails?.totalService.toString()?? "", context,),
+
+                      Padding(padding: EdgeInsets.only(top: 8)),
+                      _labelValueRow("documents".tr,carDetails?.documents.length.toString()??"", context,),
                     ],
                   ),
                 ),
@@ -360,6 +358,8 @@ class CarDetailsScreen extends StatelessWidget {
                         text: 'upload_document'.tr,
                         onTap: () {},
                         iconPath: AppIcons.upload,
+                        btnColor: AppColors.primaryColor1,
+                        borderColor: AppColors.primaryColor1,
                         iconColor: AppColors.whitColor,
                         iconHeight: 20,
                         iconWidth: 20,
@@ -373,26 +373,14 @@ class CarDetailsScreen extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Row(
                   children: [
-                    Expanded(
-                      child: CustomButton(
-                        text: "service_history".tr,
-                        onTap: () {
-                          Get.toNamed(AppRoutes.serviceHistoryScreen);
-                        },
-                        btnColor: Color(0xFFe6f6f1),
-                        textColor: AppColors.greenColor,
-                      ),
-                    ),
-                    SizedBox(width: res.wp(20)),
-                    Expanded(
-                      child: CustomButton(
-                        text: "request_service".tr,
-                        onTap: () {
-                          Get.toNamed(AppRoutes.requestServiceScreen);
-                        },
-                        btnColor: Color(0xFFffefe9),
-                        textColor: AppColors.orange,
-                      ),
+                    CustomButton(
+                      btnColor: Color(0xFFF5F5F5),
+                      textIconWidth: 0,
+                      text: "full_service_history".tr,
+
+                      // Cancel
+                      onTap: () {},
+                      textColor: Color(0xFF2E3A49),
                     ),
                   ],
                 ),
@@ -406,14 +394,17 @@ class CarDetailsScreen extends StatelessWidget {
     );
   }
 
-  Row _labelValueRow(String kye, String value) {
+  Row _labelValueRow(String kye, String value, BuildContext context) {
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return Row(
+      textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr, // ✅ RTL/LTR aware
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           flex: 2,
           child: Align(
-            alignment: Alignment.topLeft,
+            alignment: isRTL ? Alignment.topRight : Alignment.topLeft, // ✅ RTL flip
             child: AppText(
               kye,
               color: AppColors.textColor626,
@@ -426,7 +417,7 @@ class CarDetailsScreen extends StatelessWidget {
         Expanded(
           flex: 3,
           child: Align(
-            alignment: Alignment.topRight,
+            alignment: isRTL ? Alignment.topLeft : Alignment.topRight, // ✅ RTL flip
             child: AppText(
               value,
               color: AppColors.textColor626,
@@ -437,5 +428,4 @@ class CarDetailsScreen extends StatelessWidget {
         ),
       ],
     );
-  }
-}
+  }}
