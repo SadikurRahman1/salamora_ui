@@ -126,7 +126,7 @@ class ServiceCard extends StatelessWidget {
                                       color:
                                           color == true
                                               ? AppColors.greenColor
-                                              : AppColors.primaryColor,
+                                              : AppColors.primaryColor1,
                                     ),
                                     SizedBox(width: res.wp(8)),
                                     AppText(
@@ -134,7 +134,7 @@ class ServiceCard extends StatelessWidget {
                                       color:
                                           color == true
                                               ? AppColors.greenColor
-                                              : AppColors.primaryColor,
+                                              : AppColors.primaryColor1,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -149,10 +149,16 @@ class ServiceCard extends StatelessWidget {
                                       AppIcons.download,
                                       height: res.hp(16),
                                       width: res.wp(16),
+                                      color: AppColors.primaryColor1,
                                     ),
+                                    SizedBox(
+                                      
+                                      width: res.wp(4),
+                                    ),
+                                    
                                     AppText(
                                       invoiceLabel,
-                                      color: AppColors.primaryColor,
+                                      color: AppColors.primaryColor1,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                     ),
