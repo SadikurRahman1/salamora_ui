@@ -9,7 +9,7 @@ class BuyerHistoryCardWidget extends StatelessWidget {
   final String title;
   final String date;
   final String serviceCenter;
-  final String companyName;
+  final String statusLabel;
   final bool color;
   final String invoiceLabel;
   final VoidCallback? onTapOilChange;
@@ -21,7 +21,7 @@ class BuyerHistoryCardWidget extends StatelessWidget {
     required this.title,
     required this.date,
     required this.serviceCenter,
-    required this.companyName,
+    required this.statusLabel,
     required this.invoiceLabel,
     required this.color, this.onTapOilChange, this.onTapWarranty, this.onTapInvoice,
   });
@@ -32,6 +32,7 @@ class BuyerHistoryCardWidget extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         color: AppColors.whitColor,
         borderRadius: BorderRadius.circular(12),
@@ -130,7 +131,7 @@ class BuyerHistoryCardWidget extends StatelessWidget {
                                     ),
                                     SizedBox(width: res.wp(8)),
                                     AppText(
-                                      companyName,
+                                      statusLabel,
                                       color:
                                       color == true
                                           ? AppColors.greenColor
@@ -150,6 +151,7 @@ class BuyerHistoryCardWidget extends StatelessWidget {
                                       height: res.hp(16),
                                       width: res.wp(16),
                                     ),
+                                    SizedBox(width: res.wp(8),),
                                     AppText(
                                       invoiceLabel,
                                       color: AppColors.primaryColor,

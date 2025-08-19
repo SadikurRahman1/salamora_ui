@@ -37,8 +37,8 @@ class FeaturedCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: res.wp(90),
-        height: res.hp(90),
+        width: res.screenWidth,
+        // height: res.hp(90),
         margin: EdgeInsets.symmetric(vertical: 8),
         padding: EdgeInsets.symmetric(
           horizontal: res.hp(10),
@@ -63,65 +63,65 @@ class FeaturedCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(imageBorderRadius),
               child: Image.asset(
                 imagePath,
-                width: res.wp(90),
-                height: res.wp(90),
+                width: res.wp(80),
+                height: res.wp(72),
                 fit: BoxFit.cover,
               ),
             ),
 
-            SizedBox(width: res.wp(10)),
+            // SizedBox(width: res.wp(8)),
 
             // Middle text section
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  AppText(
-                    title,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textColor,
-                  ),
-                  Row(
-                    children: [
-                      AppText(
-                        mileage,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.textColor.withValues(alpha: 0.8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppText(
+                  title,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textColor,
+                ),
+                SizedBox( height: res.hp(10),),
+                Row(
+                  children: [
+                    AppText(
+                      mileage,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textColor.withValues(alpha: 0.8),
+                    ),
+                    SizedBox(width: res.wp(5)),
+                    Container(
+                      width: res.wp(8),
+                      height: res.wp(8),
+                      decoration: BoxDecoration(
+                        color: AppColors.textColor.withValues(alpha: 0.5),
+                        shape: BoxShape.circle,
                       ),
-                      SizedBox(width: res.wp(5)),
-                      Container(
-                        width: res.wp(8),
-                        height: res.wp(8),
-                        decoration: BoxDecoration(
-                          color: AppColors.textColor.withValues(alpha: 0.5),
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      SizedBox(width: res.wp(5)),
-                      AppText(
-                        date,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.textColor.withValues(alpha: 0.8),
-                      ),
-                    ],
-                  ),
-                  AppText(
-                    "VIN: $vin",
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textColor.withValues(alpha: 0.8),
-                  ),
-                ],
-              ),
+                    ),
+                    SizedBox(width: res.wp(5)),
+                    AppText(
+                      date,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textColor.withValues(alpha: 0.8),
+                    ),
+                  ],
+                ),
+                SizedBox( height: res.hp(10),),
+                AppText(
+                  "VIN: $vin",
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textColor.withValues(alpha: 0.8),
+                ),
+              ],
             ),
 
             // Right side icon + price
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ClipOval(
                   child: Image.asset(
@@ -131,6 +131,7 @@ class FeaturedCard extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
+               SizedBox( height: res.hp(20),),
                 AppText(
                   price,
                   fontSize: 16,

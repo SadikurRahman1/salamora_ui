@@ -32,4 +32,5 @@ class AppRoutes {
 
   static const buyerNavScreen = '/buyerNavBarScreen';
   static const buyerHomeScreen = '/buyerHomeScreen';
+  static const buyerChangePasswordScreen = '/buyerChangePasswordScreen';
 }
