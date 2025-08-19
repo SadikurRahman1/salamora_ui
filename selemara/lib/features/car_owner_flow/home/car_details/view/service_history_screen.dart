@@ -45,6 +45,8 @@ class ServiceHistoryScreen extends StatelessWidget {
                   ),
                 ),
 
+                SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+
                 SliverToBoxAdapter(
                   child: ListView.builder(
                     shrinkWrap: true,
@@ -63,7 +65,7 @@ class ServiceHistoryScreen extends StatelessWidget {
                           onTapWarranty: () {
                             Get.toNamed(AppRoutes.warrantyDetailsScreen);
                           },
-                          color: (index % 2 == 0) ? false : true,
+                          color: (index % 2 == 0) ? true : false,
                           title: "oil_change_filter".tr,
                           date: "6/15/2025",
                           serviceCenter: "al_futtaim_service_center".tr,
@@ -79,19 +81,20 @@ class ServiceHistoryScreen extends StatelessWidget {
           ),
 
           Positioned(
-            bottom: 24,
+            bottom: res.hp(100),
             right: 30,
             child: SizedBox(
-              width: res.wp(142),
+              width: res.wp(152),
               child: CustomButton(
                 textIconWidth: 4,
                 text: "request_service".tr,
                 onTap: () {
                   // Get.toNamed(AppRoutes.addVehicleScreen);
                 },
-                fontSize: 12,
-                iconWidth: 16,
-                iconHeight: 16,
+                fontSize: 14,
+                iconWidth: res.wp(13),
+                iconHeight: res.wp(11),
+                btnColor: AppColors.primaryColor1,
                 iconPath: AppIcons.plus1,
                 iconColor: AppColors.whitColor,
               ),
@@ -113,186 +116,186 @@ class ServiceHistoryScreen extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
-      builder: (context) => Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () => Navigator.of(context).pop(),
-                    child: Image.asset(
-                      AppIcons.cross,
-                      height: res.hp(24),
-                      width: res.wp(24),
-                    ),
-                  ),
-                ),
-
-                SizedBox(height: res.hp(24)),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      builder:
+          (context) => Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: GestureDetector(
+                        onTap: () => Navigator.of(context).pop(),
+                        child: Image.asset(
+                          AppIcons.cross,
+                          height: res.hp(24),
+                          width: res.wp(24),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: res.hp(24)),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AppText(
+                          "oil_change_filter".tr,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          color: AppColors.textColor2A2A,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.greenColor,
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: AppText(
+                            "6/15/2025",
+                            color: AppColors.whitColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: res.hp(17)),
+
                     AppText(
-                      "oil_change_filter".tr,
+                      "oil_change_description".tr,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      color: const Color(0xFF375d82),
+                    ),
+
+                    SizedBox(height: res.hp(10)),
+
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppIcons.calendar,
+                          height: res.hp(16),
+                          width: res.wp(24),
+                          color: AppColors.primaryColor,
+                        ),
+
+                        SizedBox(width: res.wp(3)),
+
+                        AppText(
+                          "service_date_example".tr,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: const Color(0xFF515151),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: res.hp(12)),
+
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppIcons.map,
+                          height: res.hp(16),
+                          width: res.wp(24),
+                          color: AppColors.primaryColor,
+                        ),
+
+                        SizedBox(width: res.wp(3)),
+
+                        AppText(
+                          "al_futtaim_service_center".tr,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: const Color(0xFF515151),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: res.hp(12)),
+
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppIcons.download,
+                          height: res.hp(16),
+                          width: res.wp(24),
+                          color: AppColors.primaryColor,
+                        ),
+
+                        SizedBox(width: res.wp(3)),
+
+                        AppText(
+                          "download_invoice".tr,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: AppColors.primaryColor,
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: res.hp(12)),
+
+                    AppText(
+                      '\$65.99',
                       fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      color: AppColors.textColor2A2A,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                      decoration: BoxDecoration(
-                        color: AppColors.greenColor,
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      child: AppText(
-                        "6/15/2025",
-                        color: AppColors.whitColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: res.hp(17)),
-
-                AppText(
-                  "oil_change_description".tr,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                  color: const Color(0xFF375d82),
-                ),
-
-                SizedBox(height: res.hp(10)),
-
-                Row(
-                  children: [
-                    Image.asset(
-                      AppIcons.calendar,
-                      height: res.hp(16),
-                      width: res.wp(24),
+                      fontSize: 20,
                       color: AppColors.primaryColor,
                     ),
 
-                    SizedBox(width: res.wp(3)),
+                    SizedBox(height: res.hp(12)),
 
-                    AppText(
-                      "service_date_example".tr,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: const Color(0xFF515151),
-                    ),
-                  ],
-                ),
+                    Row(
+                      children: [
+                        AppText(
+                          "your_rating".tr,
+                          color: AppColors.textColor2A2A,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
 
-                SizedBox(height: res.hp(12)),
+                        SizedBox(width: res.wp(8)),
 
-                Row(
-                  children: [
-                    Image.asset(
-                      AppIcons.map,
-                      height: res.hp(16),
-                      width: res.wp(24),
-                      color: AppColors.primaryColor,
-                    ),
-
-                    SizedBox(width: res.wp(3)),
-
-                    AppText(
-                      "al_futtaim_service_center".tr,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: const Color(0xFF515151),
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: res.hp(12)),
-
-                Row(
-                  children: [
-                    Image.asset(
-                      AppIcons.download,
-                      height: res.hp(16),
-                      width: res.wp(24),
-                      color: AppColors.primaryColor,
-                    ),
-
-                    SizedBox(width: res.wp(3)),
-
-                    AppText(
-                      "download_invoice".tr,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: AppColors.primaryColor,
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: res.hp(12)),
-
-                AppText(
-                  '\$65.99',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20,
-                  color: AppColors.primaryColor,
-                ),
-
-                SizedBox(height: res.hp(12)),
-
-                Row(
-                  children: [
-                    AppText(
-                      "your_rating".tr,
-                      color: AppColors.textColor2A2A,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-
-                    SizedBox(width: res.wp(8)),
-
-                    Obx(
+                        Obx(
                           () => RatingBar.builder(
-                        initialRating: controller.rating.value,
-                        minRating: 1,
-                        direction: Axis.horizontal,
-                        allowHalfRating: true,
-                        itemCount: 5,
-                        itemSize: res.wp(20),
-                        itemBuilder: (_, __) => Icon(Icons.star, color: Colors.amber),
-                        onRatingUpdate: (newRating) {
-                          controller.rating.value = newRating;
-                        },
-                      ),
+                            initialRating: controller.rating.value,
+                            minRating: 1,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            itemCount: 5,
+                            itemSize: res.wp(20),
+                            itemBuilder:
+                                (_, __) =>
+                                    Icon(Icons.star, color: Colors.amber),
+                            onRatingUpdate: (newRating) {
+                              controller.rating.value = newRating;
+                            },
+                          ),
+                        ),
+                      ],
                     ),
+
+                    SizedBox(height: res.hp(43)),
+
+                    CustomButton(text: "re_service".tr, onTap: () {}),
+
+                    SizedBox(height: res.hp(43)),
                   ],
                 ),
-
-                SizedBox(height: res.hp(43)),
-
-                CustomButton(
-                  text: "re_service".tr,
-                  onTap: () {},
-                ),
-
-                SizedBox(height: res.hp(43)),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
     );
   }
-
-
-
 }
