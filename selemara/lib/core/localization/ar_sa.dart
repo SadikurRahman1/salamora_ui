@@ -172,7 +172,8 @@ final Map<String, String> arSA = {
   "download_invoice": "تحميل الفاتورة",
   "your_rating": "تقييمك:",
   "re_service": "إعادة الخدمة",
-
+  "language": "اللغة",
+  "arabic": "عربي",
 
 
   ///     My Car  added by Arif
@@ -182,11 +183,17 @@ final Map<String, String> arSA = {
     "vin": "رقم الهيكل:",
     "uploaded": "تم الرفع",
   "my_all_cars": "كل سياراتي",
+  "full_service_history": "سجل الخدمة الكامل",
 
 
+  "completed": "مكتمل",
+  "declined": "مرفوض",
+  "pending": "قيد الانتظار",
 
-
-
+  "home": "الصفحة الرئيسية",
+  "services": "الخدمات",
+  "reminders": "التذكيرات",
+  "verified": "تم التحقق",
 
 
 
