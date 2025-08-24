@@ -6,6 +6,7 @@ import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import '../../../../core/widgets/home_header.dart';
+import '../../buyer_profile/controller/buyer_profile_controller.dart';
 import '../widgets/buyer_banner.dart';
 import '../widgets/featured_card_widget.dart';
 import '../../common/widgets/activity_card_widget.dart';
@@ -18,6 +19,7 @@ class BuyerHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<BuyerProfileController>();
     return Scaffold(
       body:  CustomScrollView(
           slivers: [
@@ -27,13 +29,15 @@ class BuyerHomeScreen extends StatelessWidget {
               elevation: 0,
               automaticallyImplyLeading: false,
               toolbarHeight: res.hp(50),
-              title: HomeHeader(
-                name: "John Doe",
-                type: "buyer".tr,
-                imagePath: AppImages.userProfile,
-                notificationIconPath: AppIcons.notificationIconImage,
-                imageSize: res.wp(40),
-                iconSize: res.wp(30),
+              title: Obx(
+                ()=> HomeHeader(
+                  name: controller.userData.value?.name ?? "",
+                  type: "buyer".tr,
+                  imagePath: AppImages.userProfile,
+                  notificationIconPath: AppIcons.notificationIconImage,
+                  imageSize: res.wp(40),
+                  iconSize: res.wp(30),
+                ),
               ),
             ),
 

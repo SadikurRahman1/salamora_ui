@@ -16,6 +16,7 @@ import '../widgets/buyer_custom_text_field.dart';
 class BuyerEditProfileScreen extends StatelessWidget {
   BuyerEditProfileScreen({super.key});
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final controller = Get.put(BuyerEditProfileController());
 
   @override
@@ -42,136 +43,149 @@ class BuyerEditProfileScreen extends StatelessWidget {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: res.hp(0)),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Stack(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(20),
-                                alignment: Alignment.topCenter,
-                                height: res.wp(80),
-                                width: res.wp(80),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(80),
-                                  border: Border.all(
-                                    width: 7,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: res.hp(0)),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Stack(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(20),
+                                  alignment: Alignment.topCenter,
+                                  height: res.wp(80),
+                                  width: res.wp(80),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(80),
+                                    border: Border.all(
+                                      width: 7,
 
-                                    color: AppColors.profileBorderColor,
+                                      color: AppColors.profileBorderColor,
+                                    ),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                      res.wp(40),
+                                    ),
+
+                                    // half-width for a perfect circle
+                                    child: Image.asset(
+                                      AppImages.manIcon,
+                                      height: res.hp(80),
+                                      width: res.wp(80),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                    res.wp(40),
-                                  ),
 
-                                  // half-width for a perfect circle
-                                  child: Image.asset(
-                                    AppImages.manIcon,
-                                    height: res.hp(80),
-                                    width: res.wp(80),
-                                    fit: BoxFit.cover,
+                                Positioned(
+                                  bottom: 10,
+                                  right: 20,
+                                  child: GestureDetector(
+                                    child: Image.asset(
+                                      AppImages.edit,
+                                      height: res.hp(32),
+                                      width: res.wp(32),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                              ),
-
-                              Positioned(
-                                bottom: 10,
-                                right: 20,
-                                child: GestureDetector(
-                                  child: Image.asset(
-                                    AppImages.edit,
-                                    height: res.hp(32),
-                                    width: res.wp(32),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
 
-                    SizedBox(height: res.hp(20)),
+                      SizedBox(height: res.hp(20)),
 
-                    AppText(
-                      "name".tr,
-                      color: AppColors.textColor2939,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                    SizedBox(height: res.hp(8)),
+                      AppText(
+                        "name".tr,
+                        color: AppColors.textColor2939,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                      SizedBox(height: res.hp(8)),
 
-                    BuyerCustomTextField(
-                      controller: controller.nameController,
-                      hintText: 'name_hint'.tr,
-                    ),
+                      BuyerCustomTextField(
+                        controller: controller.nameController,
+                        hintText: 'name_hint'.tr,
+                      ),
 
-                    SizedBox(height: res.hp(20)),
+                      SizedBox(height: res.hp(20)),
 
-                    AppText(
-                      "phone_number".tr,
-                      color: AppColors.textColor2939,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                    SizedBox(height: res.hp(8)),
+                      // AppText(
+                      //   "phone_number".tr,
+                      //   color: AppColors.textColor2939,
+                      //   fontWeight: FontWeight.w500,
+                      //   fontSize: 16,
+                      // ),
+                      // SizedBox(height: res.hp(8)),
+                      //
+                      // BuyerCustomTextField(
+                      //   controller: controller.phoneController,
+                      //   hintText: 'phone_number_hint'.tr,
+                      // ),
+                      //
+                      // SizedBox(height: res.hp(20)),
 
-                    BuyerCustomTextField(
-                      controller: controller.phoneController,
-                      hintText: 'phone_number_hint'.tr,
-                    ),
+                      // AppText(
+                      //   "address".tr,
+                      //   color: AppColors.textColor2939,
+                      //   fontWeight: FontWeight.w500,
+                      //   fontSize: 16,
+                      // ),
+                      // SizedBox(height: res.hp(8)),
+                      //
+                      // BuyerCustomTextField(
+                      //   controller: controller.addressController,
+                      //   hintText: 'address'.tr,
+                      // ),
+                      //
+                      // SizedBox(height: res.hp(20)),
 
-                    SizedBox(height: res.hp(20)),
+                      AppText(
+                        "bio".tr,
+                        color: AppColors.textColor2939,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                      SizedBox(height: res.hp(8)),
 
-                    AppText(
-                      "email".tr,
-                      color: AppColors.textColor2939,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                    SizedBox(height: res.hp(8)),
-
-                    BuyerCustomTextField(
-                      controller: controller.emailController,
-                      hintText: 'enter_email'.tr,
-                    ),
-
-                    SizedBox(height: res.hp(20)),
-
-                    AppText(
-                      "bio".tr,
-                      color: AppColors.textColor2939,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                    SizedBox(height: res.hp(8)),
-
-                    BuyerCustomTextField(
-                      minLine: 2,
-                      maxLine: 5,
-                      controller: controller.dateBirthController,
-                      hintText: 'enter_your_details'.tr,
-                    ),
-
-
-                    SizedBox(height: res.hp(38)),
+                      BuyerCustomTextField(
+                        minLine: 2,
+                        maxLine: 5,
+                        controller: controller.bioController,
+                        hintText: 'enter_your_details'.tr,
+                      ),
 
 
+                      SizedBox(height: res.hp(38)),
 
-                  ],
+
+
+                    ],
+                  ),
                 ),
               ),
             ),
 
-            CustomButton(text: "update_profile".tr, onTap: () {}),
+            Obx(
+                  () => CustomButton(
+                isLoading: controller.isLoading.value,
+                text: "update_profile".tr,
+                onTap: () async {
+                  if (_formKey.currentState!.validate()) {
+                    await controller.updateProfile();
+                  }
+                },
+              ),
+            ),
             SizedBox(height: res.hp(24)),
           ],
         ),

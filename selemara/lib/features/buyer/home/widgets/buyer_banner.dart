@@ -73,7 +73,7 @@ class BuyerBanner extends StatelessWidget {
                     color: AppColors.textColor626,
                   ),
                   AppText(
-                    "qr_scans".tr,
+                    "save_car".tr,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: AppColors.textColor626,
