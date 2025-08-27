@@ -20,7 +20,6 @@ class  BuyerUpdatePasswordController extends GetxController{
     }
   }
 
-
   Future<void> changePassword() async{
     isLoading.value = true;
 
@@ -36,11 +35,10 @@ class  BuyerUpdatePasswordController extends GetxController{
 
 
       if (responseData.isSuccess==true) {
-
-        Get.snackbar("Success", "Password changed successfully!");
         Get.back();
-        // clear();
-        // clear();
+        Get.snackbar("Success", "Password changed successfully!");
+        clear();
+
       } else {
         Get.snackbar("change Password Failed", responseData.message ?? "Invalid credentials");
       }

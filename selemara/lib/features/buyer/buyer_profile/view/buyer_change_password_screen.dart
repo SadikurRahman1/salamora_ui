@@ -11,6 +11,7 @@ import '../widgets/buyer_custom_text_field.dart';
 
 class BuyerChangePasswordScreen extends StatelessWidget {
   BuyerChangePasswordScreen({super.key});
+
   final controller = Get.put(BuyerUpdatePasswordController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -75,22 +76,21 @@ class BuyerChangePasswordScreen extends StatelessWidget {
 
                       BuyerCustomTextField(
                         controller: controller.confirmController,
-                        hintText:"confirm_password".tr,
+                        hintText: "confirm_password".tr,
                       ),
                       SizedBox(height: res.hp(24)),
 
-
-                       Obx(
-                           ()=>CustomButton(
-
-                              text: "update_password".tr, onTap: () async {
+                      Obx(
+                        () => CustomButton(
+                          isLoading: controller.isLoading.value,
+                          text: "update_password".tr,
+                          onTap: () async {
                             if (_formKey.currentState!.validate()) {
                               await controller.matchPassword();
                             }
-                          }),
-                       ),
-
-
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -101,5 +101,4 @@ class BuyerChangePasswordScreen extends StatelessWidget {
       ),
     );
   }
-
 }

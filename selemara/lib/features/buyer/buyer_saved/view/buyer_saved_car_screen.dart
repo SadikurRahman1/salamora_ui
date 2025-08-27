@@ -21,7 +21,6 @@ class BuyerSavedCarScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "saved_cars".tr,
         centerTitle: true,
-        leading: Icon(Icons.arrow_back_outlined, size: res.wp(24)),
       ),
 
       body: Padding(

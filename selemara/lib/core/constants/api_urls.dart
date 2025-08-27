@@ -22,6 +22,7 @@ class ApiUrls {
 
   //car buyer url
   static const String changePassword = "$_baseUrl/auth/change-password";
+  static const String updateProfile = "$_baseUrl/users/update-profile";
 
 
 

@@ -9,25 +9,25 @@ import '../../../../core/helper/shared_preferences_helper.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
-
 import '../controller/buyer_profile_controller.dart';
 import 'package:get/get.dart';
 
 import '../widgets/buyer_profile_option_tile.dart';
-import 'buyer_change_password_screen.dart';
+import 'buyer_edit_profile_screen.dart';
+
 
 class BuyerProfileScreen extends StatelessWidget {
   BuyerProfileScreen({super.key});
 
   final res = AppResponsive();
-
-  final controller = Get.put(BuyerProfileController());
   final SharedPreferencesHelper _preferencesHelper = SharedPreferencesHelper();
+
   @override
   Widget build(BuildContext context) {
+    final controller =  Get.find<BuyerProfileController>();
+
     return Scaffold(
       appBar: CustomAppBar(title: 'profile'.tr, centerTitle: true),
-
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: res.wp(20)),
         child: SingleChildScrollView(
@@ -81,11 +81,13 @@ class BuyerProfileScreen extends StatelessWidget {
                       ],
                     ),
 
-                    AppText(
-                      "Sadik",
-                      fontSize: res.sp(20),
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryTextColor,
+                    Obx(
+                      ()=> AppText(
+                        controller.userData.value?.name ?? "No Name",
+                        fontSize: res.sp(20),
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primaryTextColor,
+                      ),
                     ),
                   ],
                 ),
@@ -95,7 +97,7 @@ class BuyerProfileScreen extends StatelessWidget {
 
               BuyerProfileOptionTile(
                 onTap: () {
-                  Get.toNamed(AppRoutes.editProfileScreen);
+                  Get.toNamed(AppRoutes.buyerEditProfileScreen);
                 },
                 iconPath: AppImages.profileIcon,
                 title: 'profile'.tr,
@@ -212,6 +214,55 @@ class BuyerProfileScreen extends StatelessWidget {
                 height: 1,
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  /// Left side: icon + text
+                  Row(
+                    children: [
+                      Image.asset(
+                        AppIcons.language,
+                        height: res.hp(24),
+                        width: res.wp(24),
+                      ),
+                      SizedBox(width: res.wp(16)),
+                      AppText(
+                        "language".tr,
+                        color: AppColors.black,
+                        fontSize: res.wp(15),
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ],
+                  ),
+
+                  /// Right side: dropdown
+                  Obx(
+                        () => DropdownButton<String>(
+                      value: controller.selectedLang.value,
+                      icon: const Icon(Icons.arrow_right, size: 26),
+                      underline: SizedBox(),
+                      onChanged: (value) {
+                        if (value != null) {
+                          controller.changeLang(value);
+                        }
+                      },
+                      items: ["English", "Arabic"].map((String lang) {
+                        return DropdownMenuItem<String>(
+                          value: lang,
+                          child: Text(lang),
+                        );
+                      }).toList(),
+                    ),
+                  ),                ],
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 15, top: 16),
+                width: double.infinity,
+                height: 1,
+                decoration: BoxDecoration(color: Color(0xFFEAECF0)),
+              ),
+
 
               BuyerProfileOptionTile(
                 iconPath: AppIcons.customerSupport,
