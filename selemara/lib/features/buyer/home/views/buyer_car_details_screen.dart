@@ -1,21 +1,26 @@
+
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_images.dart';
-import 'package:selemara/core/routes/app_routes.dart';
+import 'package:selemara/features/buyer/buyer_search/model/buyer_vin_search_model.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_icons.dart';
 import '../../../../../core/constants/app_responsive.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
 import 'package:get/get.dart';
+import '../../../../core/routes/app_routes.dart';
+import '../../buyer_search/controller/buyer_search_controller.dart';
 import '../widgets/buyer_history_card_widget.dart';
 import '../widgets/buyer_vehicle_document_card.dart';
-import 'buyer_service_history_details_screen.dart';
+
 
 class BuyerCarDetailsScreen extends StatelessWidget {
   const BuyerCarDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    BuyerSearchController controller = Get.find<BuyerSearchController>();
+
     final res = AppResponsive();
     return Scaffold(
       appBar: CustomAppBar(
@@ -24,70 +29,111 @@ class BuyerCarDetailsScreen extends StatelessWidget {
         leading: Icon(Icons.arrow_back_ios, size: res.wp(24)),
       ),
 
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: res.wp(24)),
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
+      body: Obx(() {
+        final vehicle = controller.vehicle.value;
+        if (vehicle == null) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-            _carImageCard(res),
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: res.wp(24)),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
 
-            SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
+              _carImageCard(res, vehicle.images),
 
-            _carDetailsCard(res),
+              SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
 
-            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+              _carDetailsCard(res, vehicle),
 
-            _activeWarrantyCard(res),
+              SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
 
-            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+              _activeWarrantyCard(res, vehicle),
 
-            _carDocumentsCard(res),
+              SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
 
-            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+              _carDocumentsCard(res, vehicle.documents),
 
-            SliverToBoxAdapter(
-              child: AppText(
-                "Service History",
-                color: AppColors.textColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+              SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+
+              SliverToBoxAdapter(
+                child: AppText(
+                  "Service History",
+                  color: AppColors.textColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
 
-            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+              SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
 
-            SliverToBoxAdapter(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return BuyerHistoryCardWidget(
-                    color: (index % 2 == 0) ? true : false,
-                    title: "Oil Change & Fitter",
-                    date: "6/15/2025",
-                    serviceCenter: "Al Futtaim Service Center",
-                    statusLabel: "Warranty",
-                    invoiceLabel: "Invoice",
-                    onTapOilChange: () {},
-                    onTapWarranty: () {
-                      Get.to(()=> BuyerServiceHistoryDetailsScreen());
-                    },
-                    onTapInvoice: () {},
-                  );
-                },
+              SliverToBoxAdapter(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: controller.serviceHistoryList.length,
+                  itemBuilder: (context, index) {
+                    final item = controller.serviceHistoryList[index];
+
+                    return BuyerHistoryCardWidget(
+                      color: true,
+                      title: item.serviceType,
+                      date: item.preferredDate != null
+                          ? item.preferredDate!.toLocal().toString().split(' ')[0]
+                          : "-",
+                      serviceCenter: item.garage?.business?.businessName ?? "-",
+                      statusLabel: "Warranty",
+                      invoiceLabel: "Invoice",
+                      onTapOilChange: () {},
+                      onTapWarranty: () {},
+                      onTapInvoice: () {},
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
+              // SliverToBoxAdapter(
+              //   child: Obx(() {
+              //     final controller = Get.put(BuyerServiceHistoryController());
+              //
+              //     if (controller.serviceHistoryList.isEmpty) {
+              //       return Center(child: Text("No service history found"));
+              //     }
+              //
+              //     return ListView.builder(
+              //       shrinkWrap: true,
+              //       physics: NeverScrollableScrollPhysics(),
+              //       itemCount: controller.serviceHistoryList.length,
+              //       itemBuilder: (context, index) {
+              //         final item = controller.serviceHistoryList[index];
+              //
+              //         return BuyerHistoryCardWidget(
+              //           color: true,
+              //           title: item.serviceType,
+              //           date: item.preferredDate != null
+              //               ? item.preferredDate!.toLocal().toString().split(' ')[0]
+              //               : "-",
+              //           serviceCenter: item.garage?.business?.businessName ?? "-",
+              //           statusLabel: "Warranty",
+              //           invoiceLabel: "Invoice",
+              //           onTapOilChange: () {},
+              //           onTapWarranty: () {},
+              //           onTapInvoice: () {},
+              //         );
+              //       },
+              //     );
+              //   }),
+              // ),
+
+            ],
+          ),
+        );
+      }),
+
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
         backgroundColor: AppColors.primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         label: Text(
           "contact_now".tr,
           style: const TextStyle(
@@ -100,21 +146,33 @@ class BuyerCarDetailsScreen extends StatelessWidget {
     );
   }
 
-
   /// method
 
-  Widget _carImageCard(AppResponsive res) {
+  Widget _carImageCard(AppResponsive res, List<String>? images) {
+    final imageUrl =
+        (images != null && images.isNotEmpty)
+            ? images.first
+            : AppImages.carImage;
+
     return SliverToBoxAdapter(
       child: Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              AppImages.carImage,
-              height: res.hp(198),
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+            child:
+                (imageUrl.startsWith(""))
+                    ? Image.network(
+                      "http://172.252.13.78:5013$imageUrl",
+                      height: res.hp(198),
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    )
+                    : Image.asset(
+                      imageUrl,
+                      height: res.hp(198),
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
           ),
 
           // Top-left button
@@ -161,7 +219,8 @@ class BuyerCarDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _carDetailsCard(AppResponsive res) {
+
+  Widget _carDetailsCard(AppResponsive res, VehicleModel vehicle) {
     return SliverToBoxAdapter(
       child: Container(
         padding: EdgeInsets.all(16),
@@ -190,23 +249,21 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppText(
-                        "2020 Honda Civic",
+                        "${vehicle.year} ${vehicle.brand} ${vehicle.model}",
                         color: AppColors.textColor2A2A,
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
                       ),
-                      Padding(padding: EdgeInsets.only(top: 4)),
+                      SizedBox(height: 4),
 
                       Row(
                         children: [
                           AppText(
-                            "Silver",
+                            vehicle.color ?? "Unknown",
                             color: AppColors.textColor626,
                             fontSize: 14,
-                            fontWeight: FontWeight.w400,
                           ),
-
-                          Padding(padding: EdgeInsets.only(left: 8)),
+                          SizedBox(width: 8),
                           Container(
                             height: res.wp(8),
                             width: res.wp(8),
@@ -215,13 +272,11 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                               color: AppColors.bordarColor,
                             ),
                           ),
-                          Padding(padding: EdgeInsets.only(left: 8)),
-
+                          SizedBox(width: 8),
                           AppText(
-                            "45,000 miles",
+                            "${vehicle.currentMileage ?? 0} miles",
                             color: AppColors.textColor626,
                             fontSize: 14,
-                            fontWeight: FontWeight.w400,
                           ),
                         ],
                       ),
@@ -229,7 +284,9 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 AppText(
-                  "\$254",
+                  vehicle.sellPrice != null
+                      ? "\$${vehicle.sellPrice}"
+                      : "N/A",
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primaryColor,
@@ -239,18 +296,18 @@ class BuyerCarDetailsScreen extends StatelessWidget {
 
             Padding(padding: EdgeInsets.only(top: 16)),
 
-            _labelValueRow("vin_label".tr, "CV2F6JLOOOOOO"),
+            _labelValueRow("VIN", vehicle.vin ?? ""),
             Padding(padding: EdgeInsets.only(top: 8)),
-            _labelValueRow("last_service".tr, "1/15/2024"),
+            _labelValueRow("last_service".tr, "1/15/2024"),/// Todo: api nai
 
             Padding(padding: EdgeInsets.only(top: 8)),
-            _labelValueRow("next_service".tr, "4/15/2024"),
+            _labelValueRow("next_service".tr, "4/15/2024"),/// Todo: api nai
 
             Padding(padding: EdgeInsets.only(top: 8)),
-            _labelValueRow("service_record".tr, "8"),
+            _labelValueRow("service_record".tr, "8"), /// Todo: api nai
 
             Padding(padding: EdgeInsets.only(top: 8)),
-            _labelValueRow("documents".tr, "2 uploaded"),
+            _labelValueRow("Documents", "${vehicle.documents?.length ?? 0} uploaded"),
           ],
         ),
       ),
@@ -259,30 +316,25 @@ class BuyerCarDetailsScreen extends StatelessWidget {
 
   Widget _labelValueRow(String kye, String value) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           flex: 3,
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: AppText(
-              kye,
-              color: AppColors.textColor626,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-            ),
+          child: AppText(
+            kye,
+            color: AppColors.textColor626,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(width: 8),
         Expanded(
-          flex: 3,
+          flex: 4,
           child: Align(
             alignment: Alignment.topRight,
             child: AppText(
               value,
               color: AppColors.textColor626,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -290,7 +342,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _activeWarrantyCard(AppResponsive res) {
+  Widget _activeWarrantyCard(AppResponsive res, vehicle) {
     return SliverToBoxAdapter(
       child: GestureDetector(
         onTap: () {
@@ -351,7 +403,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
 
                       SizedBox(width: res.wp(3)),
                       AppText(
-                        "honda_uae".tr,
+                        vehicle.name,
                         color: AppColors.greenColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -366,7 +418,11 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                     ),
 
                     child: AppText(
-                      "warranty_expiry".tr,
+                      vehicle.warrantyExpireAt != null
+                          ? "${vehicle.warrantyExpireAt!.toLocal()}".split(
+                            " ",
+                          )[0]
+                          : "N/A",
                       color: AppColors.whitColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -381,7 +437,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _carDocumentsCard(AppResponsive res) {
+  Widget _carDocumentsCard(AppResponsive res, List<String>? docs) {  /// Todo: api nai
     return SliverToBoxAdapter(
       child: Container(
         padding: EdgeInsets.all(16),
@@ -398,9 +454,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
           ],
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             AppText(
               "vehicle_documents".tr,
@@ -408,28 +462,27 @@ class BuyerCarDetailsScreen extends StatelessWidget {
               fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
-
             SizedBox(height: res.hp(16)),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: 2,
-              itemBuilder: (context, index) {
-                return BuyerVehicleDocumentCard(
+            if (docs != null && docs.isNotEmpty)
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: docs.length,
+                itemBuilder: (context, index) {
+                  return BuyerVehicleDocumentCard(    /// Todo: api nai
                   policyTitle: "auto_insurance_policy".tr,
                   insuranceType: "insurance".tr,
                   startDate: "1/1/2024",
                   expiryDate: "12/31/2024",
                   onDelete: () {},
                 );
-              },
-            ),
+                },
+              )
+            else
+              AppText("No documents uploaded"),
           ],
         ),
       ),
     );
   }
-
-
 }
-
