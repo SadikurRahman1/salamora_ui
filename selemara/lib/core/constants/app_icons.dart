@@ -27,6 +27,7 @@ class AppIcons {
   static const plus = "assets/icons/plus.png";
   static const qrCode = "assets/icons/qr_code.png";
   static const verified = "assets/icons/verified.png";
+  static const pending = "assets/icons/pending.png";
   static const backArrow = "assets/icons/back_arrow.png";
   static const plus1 = "assets/icons/plus1.png";
   static const model = "assets/icons/model.png";
@@ -49,4 +50,9 @@ class AppIcons {
   static const searchActive = "assets/icons/search_active.png";
   static const searchInActive = "assets/icons/search_in_active.png";
   static const qrCodeRed = "assets/icons/qr_code_red.png";
+
+  static const carActive = "assets/icons/car_active.png";
+  static const carInActive = "assets/icons/car_in_active.png";
+
+
 }

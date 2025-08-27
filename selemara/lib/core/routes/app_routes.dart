@@ -34,4 +34,10 @@ class AppRoutes {
   static const buyerHomeScreen = '/buyerHomeScreen';
   static const buyerChangePasswordScreen = '/buyerChangePasswordScreen';
   static const buyerEditProfileScreen = '/buyerEditProfileScreen';
+
+
+  static const dealerNauBarScreen = '/dealerNauBarScreen';
+  static const dealerHomeScreen = '/dealerHomeScreen';
+
+
 }

@@ -10,6 +10,8 @@ import 'package:selemara/core/widgets/custom_button.dart';
 import 'package:selemara/core/widgets/custom_text_form_field.dart';
 import 'package:selemara/features/auth/controller/auth_controller.dart';
 
+import '../../dealership/dealer_nav_bar/view/dealer_nau_bar_screen.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
@@ -26,6 +28,12 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              CustomButton(
+                text: 'got to dealership'.tr,
+                onTap: () {
+                  Get.toNamed(AppRoutes.dealerNauBarScreen);
+                },
+              ),
               AppText(
                 'welcome_back'.tr,
                 color: AppColors.textColor,

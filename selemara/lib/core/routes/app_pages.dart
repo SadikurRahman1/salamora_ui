@@ -32,6 +32,9 @@ import '../../features/car_owner_flow/profile/view/help_support_screen.dart';
 import '../../features/car_owner_flow/profile/view/profile_screen.dart';
 import '../../features/car_owner_flow/profile/view/update_password_screen.dart';
 import '../../features/car_owner_flow/reminders/view/add_reminder_screen.dart';
+import '../../features/dealership/dealer_home/views/dealer_home_screen.dart';
+import '../../features/dealership/dealer_nav_bar/bindings/dealer_nav_bar_binding.dart';
+import '../../features/dealership/dealer_nav_bar/view/dealer_nau_bar_screen.dart';
 import '../../features/privacy_policy/privacy_policy_screen.dart';
 
 class AppPages {
@@ -198,6 +201,19 @@ class AppPages {
       name: AppRoutes.buyerEditProfileScreen,
       page: () => BuyerEditProfileScreen(),
     ),
+
+    GetPage(
+      name: AppRoutes.dealerNauBarScreen,
+      page: () => DealerNauBarScreen(),
+      binding: DealerNavBarBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.dealerHomeScreen,
+      page: () => DealerHomeScreen(),
+      // binding: DealerNavBarBinding(),
+    ),
+
 
   ];
 
