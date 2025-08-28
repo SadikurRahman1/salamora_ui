@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/features/buyer/buyer_search/model/buyer_vin_search_model.dart';
@@ -12,7 +11,6 @@ import '../../../../core/routes/app_routes.dart';
 import '../../buyer_search/controller/buyer_search_controller.dart';
 import '../widgets/buyer_history_card_widget.dart';
 import '../widgets/buyer_vehicle_document_card.dart';
-
 
 class BuyerCarDetailsScreen extends StatelessWidget {
   const BuyerCarDetailsScreen({super.key});
@@ -79,9 +77,12 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                     return BuyerHistoryCardWidget(
                       color: true,
                       title: item.serviceType,
-                      date: item.preferredDate != null
-                          ? item.preferredDate!.toLocal().toString().split(' ')[0]
-                          : "-",
+                      date:
+                          item.preferredDate != null
+                              ? item.preferredDate!.toLocal().toString().split(
+                                ' ',
+                              )[0]
+                              : "-",
                       serviceCenter: item.garage?.business?.businessName ?? "-",
                       statusLabel: "Warranty",
                       invoiceLabel: "Invoice",
@@ -92,6 +93,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   },
                 ),
               ),
+
               // SliverToBoxAdapter(
               //   child: Obx(() {
               //     final controller = Get.put(BuyerServiceHistoryController());
@@ -124,7 +126,6 @@ class BuyerCarDetailsScreen extends StatelessWidget {
               //     );
               //   }),
               // ),
-
             ],
           ),
         );
@@ -219,7 +220,6 @@ class BuyerCarDetailsScreen extends StatelessWidget {
     );
   }
 
-
   Widget _carDetailsCard(AppResponsive res, VehicleModel vehicle) {
     return SliverToBoxAdapter(
       child: Container(
@@ -284,9 +284,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 AppText(
-                  vehicle.sellPrice != null
-                      ? "\$${vehicle.sellPrice}"
-                      : "N/A",
+                  vehicle.sellPrice != null ? "\$${vehicle.sellPrice}" : "0",
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: AppColors.primaryColor,
@@ -298,16 +296,22 @@ class BuyerCarDetailsScreen extends StatelessWidget {
 
             _labelValueRow("VIN", vehicle.vin ?? ""),
             Padding(padding: EdgeInsets.only(top: 8)),
-            _labelValueRow("last_service".tr, "1/15/2024"),/// Todo: api nai
+            _labelValueRow("last_service".tr, "1/15/2024"),
 
+            /// Todo: api nai
             Padding(padding: EdgeInsets.only(top: 8)),
-            _labelValueRow("next_service".tr, "4/15/2024"),/// Todo: api nai
+            _labelValueRow("next_service".tr, "4/15/2024"),
 
+            /// Todo: api nai
             Padding(padding: EdgeInsets.only(top: 8)),
-            _labelValueRow("service_record".tr, "8"), /// Todo: api nai
+            _labelValueRow("service_record".tr, "8"),
 
+            /// Todo: api nai
             Padding(padding: EdgeInsets.only(top: 8)),
-            _labelValueRow("Documents", "${vehicle.documents?.length ?? 0} uploaded"),
+            _labelValueRow(
+              "Documents",
+              "${vehicle.documents?.length ?? 0} uploaded",
+            ),
           ],
         ),
       ),
@@ -437,7 +441,8 @@ class BuyerCarDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _carDocumentsCard(AppResponsive res, List<String>? docs) {  /// Todo: api nai
+  Widget _carDocumentsCard(AppResponsive res, List<String>? docs) {
+    /// Todo: api nai
     return SliverToBoxAdapter(
       child: Container(
         padding: EdgeInsets.all(16),
@@ -469,13 +474,14 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: docs.length,
                 itemBuilder: (context, index) {
-                  return BuyerVehicleDocumentCard(    /// Todo: api nai
-                  policyTitle: "auto_insurance_policy".tr,
-                  insuranceType: "insurance".tr,
-                  startDate: "1/1/2024",
-                  expiryDate: "12/31/2024",
-                  onDelete: () {},
-                );
+                  return BuyerVehicleDocumentCard(
+                    /// Todo: api nai
+                    policyTitle: "auto_insurance_policy".tr,
+                    insuranceType: "insurance".tr,
+                    startDate: "1/1/2024",
+                    expiryDate: "12/31/2024",
+                    onDelete: () {},
+                  );
                 },
               )
             else

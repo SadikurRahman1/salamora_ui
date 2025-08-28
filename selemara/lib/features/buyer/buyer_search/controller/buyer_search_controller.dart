@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:selemara/features/buyer/home/views/buyer_car_details_screen.dart';
@@ -50,10 +51,9 @@ class BuyerSearchController extends GetxController {
 
 
   Future<void> fetchServiceHistory() async {
-
-    String? id = vehicle.value?.id;
-
+    String? id = vehicle.value?.uniqueId;
     if (id == null) return;
+
     isLoading.value = true;
     try {
       ResponseData responseData = await NetworkCaller().getRequest(
@@ -62,18 +62,20 @@ class BuyerSearchController extends GetxController {
 
       if (responseData.isSuccess && responseData.data != null) {
         try {
-          final List<dynamic> dataList = responseData.data["data"]["data"];
-          serviceHistoryList.value = dataList
-              .map((item) => ServiceHistoryItem.fromJson(item))
-              .toList();
 
-          debugPrint(
-              "✅ Service History fetched: ${serviceHistoryList.length} items");
+          final Map<String, dynamic> decoded = responseData.data is String
+              ? jsonDecode(responseData.data)
+              : responseData.data;
 
-          debugPrint(
-              "✅ ==================================");
+          final List<dynamic> dataList = decoded["data"]["data"];
 
-          // Get.to(() => BuyerServiceHistoryDetailsScreen());
+          serviceHistoryList.value =
+              dataList.map((e) => ServiceHistoryItem.fromJson(e)).toList();
+
+          debugPrint("🔍 Raw responseData.data: ${responseData.data}");
+
+          debugPrint("✅ Service History fetched: ${serviceHistoryList.length} items");
+          debugPrint("✅ ==================================");
         } catch (e) {
           debugPrint("❌ Data parsing error: $e");
           Get.snackbar("Error", "Failed to parse service history data");
@@ -89,7 +91,4 @@ class BuyerSearchController extends GetxController {
     }
   }
 
-  void clearServiceHistory() {
-    serviceHistoryList.clear();
-  }
 }
