@@ -34,11 +34,16 @@ class AppRoutes {
   static const buyerHomeScreen = '/buyerHomeScreen';
   static const buyerChangePasswordScreen = '/buyerChangePasswordScreen';
   static const buyerEditProfileScreen = '/buyerEditProfileScreen';
+  static const buyerServiceHistoryDetailsScreen = '/buyerServiceHistoryDetailsScreen';
 
 
   static const dealerNauBarScreen = '/dealerNauBarScreen';
   static const dealerHomeScreen = '/dealerHomeScreen';
-  static const buyerServiceHistoryDetailsScreen = '/buyerServiceHistoryDetailsScreen';
+  static const dealerAddVehicleScreen = '/dealerAddVehicleScreen';
+  static const dealerRequestServiceScreen = '/dealerRequestServiceScreen';
+  static const dealerCarServiceHistoryScreen = '/dealerCarServiceHistoryScreen';
+  static const dealerCreateVehicleWarranty = '/dealerCreateVehicleWarranty';
+  static const dealerCreateInvoiceVehicleWarranty = '/dealerCreateInvoiceVehicleWarranty';
 
 
 

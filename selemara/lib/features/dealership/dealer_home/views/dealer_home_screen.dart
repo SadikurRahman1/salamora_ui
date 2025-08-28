@@ -4,10 +4,11 @@ import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/home_header.dart';
-import '../widgets/car_info_card.dart';
+import '../widgets/dealer_my_cars_card.dart';
 import '../widgets/dealer_banner.dart';
 import '../widgets/dealer_feature_card.dart';
 import '../../common/widgets/recent_sales_widget.dart';
@@ -44,7 +45,7 @@ class DealerHomeScreen extends StatelessWidget {
               delegate: SliverChildListDelegate([
                 SizedBox(height: res.hp(30)),
 
-                dealerBanner(),
+                DealerBanner(),
 
                 SizedBox(height: res.hp(30)),
 
@@ -136,7 +137,7 @@ class DealerHomeScreen extends StatelessWidget {
               padding: EdgeInsets.only(right: res.wp(16)),
               child: GestureDetector(
                 onTap: () {},
-                child: CarInfoCard(
+                child: DealerMyCarsCard(
                   title: "2018 Honda Civic",
                   subTitle: "VIN: IHGCV2F6JLOOOOOO",
                   carImagePath: AppImages.carImage,
@@ -156,7 +157,9 @@ class DealerHomeScreen extends StatelessWidget {
             iconPath: AppIcons.plus,
             iconColor: AppColors.whitColor,
             btnColor: AppColors.primaryColor1,
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(AppRoutes.dealerAddVehicleScreen);
+            },
           ),
         ),
         SizedBox(width: res.wp(20)),
@@ -165,7 +168,9 @@ class DealerHomeScreen extends StatelessWidget {
             text: 'request_service'.tr,
             textColor: AppColors.textColor,
             btnColor: AppColors.primaryColor1.withAlpha(40),
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(AppRoutes.dealerRequestServiceScreen);
+              },
           ),
         ),
       ],

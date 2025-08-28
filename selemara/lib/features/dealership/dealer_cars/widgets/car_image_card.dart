@@ -35,19 +35,20 @@ class CarImageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         color: AppColors.whitColor,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         children: [
+          /// 🔹 Car Image + Status
           Stack(
             children: [
               ClipRRect(
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(8),
-                  topRight: Radius.circular(8),
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
                 ),
                 child: Image.asset(
                   imagePath,
@@ -56,20 +57,12 @@ class CarImageCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-
               Positioned(
                 top: 12,
                 left: 12,
-                child: Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.asset(
-                    isPending ? AppIcons.pending : AppIcons.verified,
-                    height: res.hp(24),
-                    width: res.wp(89),
-                  ),
+                child: Image.asset(
+                  isPending ? AppIcons.pending : AppIcons.verified,
+                  height: res.hp(28),
                 ),
               ),
             ],
@@ -79,6 +72,7 @@ class CarImageCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 /// Title & Price
                 Row(
@@ -91,7 +85,7 @@ class CarImageCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     AppText(
-                       price,
+                      price,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: AppColors.textColor2A2A,
@@ -99,87 +93,32 @@ class CarImageCard extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(height: res.hp(4)),
+                SizedBox(height: res.hp(6)),
 
                 /// Miles & Services
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Image.asset(AppIcons.searchInActive, height: 16),
-                        const SizedBox(width: 4),
-                        AppText(
-                          "$miles miles",
-                          color: AppColors.textColor626,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Image.asset(AppIcons.searchInActive, height: 16),
-                        const SizedBox(width: 4),
-                        AppText(
-                          "$services Services",
-                          color: AppColors.textColor626,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ],
-                    ),
+                    InfoRow(icon: AppIcons.searchInActive, text: "$miles miles"),
+                    InfoRow(icon: AppIcons.searchInActive, text: "$services Services"),
                   ],
                 ),
 
-                SizedBox(height: res.hp(4)),
+                SizedBox(height: res.hp(6)),
 
                 /// Color & Date
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Image.asset(AppIcons.searchInActive, height: 16),
-                        const SizedBox(width: 4),
-                        AppText(
-                          carColor,
-                          color: AppColors.textColor626,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Image.asset(AppIcons.searchInActive, height: 16),
-                        const SizedBox(width: 4),
-                        AppText(
-                           date,
-                          color: AppColors.textColor626,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ],
-                    ),
+                    InfoRow(icon: AppIcons.searchInActive, text: carColor),
+                    InfoRow(icon: AppIcons.searchInActive, text: date),
                   ],
                 ),
 
-                SizedBox(height: res.hp(4)),
+                SizedBox(height: res.hp(6)),
 
                 /// Model
-                Row(
-                  children: [
-                    Image.asset(AppIcons.searchInActive, height: 16),
-                    const SizedBox(width: 4),
-                    AppText(
-                       model,
-                      color: AppColors.textColor626,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ],
-                ),
+                InfoRow(icon: AppIcons.searchInActive, text: model),
 
                 const SizedBox(height: 24),
               ],
@@ -187,6 +126,29 @@ class CarImageCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// 🔹 Reusable Row Widget
+class InfoRow extends StatelessWidget {
+  final String icon;
+  final String text;
+  const InfoRow({super.key, required this.icon, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Image.asset(icon, height: 16),
+        const SizedBox(width: 4),
+        AppText(
+          text,
+          color: AppColors.textColor626,
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+        ),
+      ],
     );
   }
 }

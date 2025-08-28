@@ -34,7 +34,12 @@ import '../../features/car_owner_flow/profile/view/help_support_screen.dart';
 import '../../features/car_owner_flow/profile/view/profile_screen.dart';
 import '../../features/car_owner_flow/profile/view/update_password_screen.dart';
 import '../../features/car_owner_flow/reminders/view/add_reminder_screen.dart';
+import '../../features/dealership/dealer_cars/car_details/CarFeature/views/dealer_car_service_history_screen.dart';
+import '../../features/dealership/dealer_cars/car_details/CarFeature/views/dealer_create_invoice_vehicle_warranty.dart';
+import '../../features/dealership/dealer_cars/car_details/CarFeature/views/dealer_create_vehicle_warranty.dart';
+import '../../features/dealership/dealer_home/vehicle/views/dealer_add_vehicle_screen.dart';
 import '../../features/dealership/dealer_home/views/dealer_home_screen.dart';
+import '../../features/dealership/dealer_home/vehicle/views/dealer_request_service_screen.dart';
 import '../../features/dealership/dealer_nav_bar/bindings/dealer_nav_bar_binding.dart';
 import '../../features/dealership/dealer_nav_bar/view/dealer_nau_bar_screen.dart';
 import '../../features/privacy_policy/privacy_policy_screen.dart';
@@ -199,7 +204,11 @@ class AppPages {
       name: AppRoutes.buyerEditProfileScreen,
       page: () => BuyerEditProfileScreen(),
     ),
-
+    GetPage(
+      name: AppRoutes.buyerServiceHistoryDetailsScreen,
+      page: () => BuyerServiceHistoryDetailsScreen(),
+      binding: BuyerSearchBinding(),
+    ),
     GetPage(
       name: AppRoutes.dealerNauBarScreen,
       page: () => DealerNauBarScreen(),
@@ -213,10 +222,32 @@ class AppPages {
     ),
 
     GetPage(
-      name: AppRoutes.buyerServiceHistoryDetailsScreen,
-      page: () => BuyerServiceHistoryDetailsScreen(),
-      binding: BuyerSearchBinding(),
+      name: AppRoutes.dealerAddVehicleScreen,
+      page: () => DealerAddVehicleScreen(),
+      binding: DealerNavBarBinding(),
     ),
+
+    GetPage(
+      name: AppRoutes.dealerRequestServiceScreen,
+      page: () => DealerRequestServiceScreen(),
+      binding: DealerNavBarBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.dealerCarServiceHistoryScreen,
+      page: () => DealerCarServiceHistoryScreen(),
+      binding: DealerNavBarBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.dealerCreateVehicleWarranty,
+      page: () => DealerCreateVehicleWarranty(),
+      binding: DealerNavBarBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.dealerCreateInvoiceVehicleWarranty,
+      page: () => DealerCreateInvoiceVehicleWarranty(),
+      binding: DealerNavBarBinding(),
+    ),
+
   ];
 
   static final initialBinding = SplashBinding();

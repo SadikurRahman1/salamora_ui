@@ -5,8 +5,8 @@ import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
-class dealerBanner extends StatelessWidget {
-  dealerBanner({super.key, });
+class DealerBanner extends StatelessWidget {
+  DealerBanner({super.key, });
 
 
   final res = AppResponsive();
