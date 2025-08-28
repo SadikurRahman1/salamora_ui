@@ -38,6 +38,8 @@ class AppRoutes {
 
   static const dealerNauBarScreen = '/dealerNauBarScreen';
   static const dealerHomeScreen = '/dealerHomeScreen';
+  static const buyerServiceHistoryDetailsScreen = '/buyerServiceHistoryDetailsScreen';
+
 
 
 }

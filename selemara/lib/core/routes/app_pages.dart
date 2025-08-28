@@ -17,6 +17,8 @@ import '../../features/buyer/buyer_nav_bar/bindings/nav_bar_buyer_binding.dart';
 import '../../features/buyer/buyer_nav_bar/view/buyer_nau_bar_screen.dart';
 import '../../features/buyer/buyer_profile/view/buyer_change_password_screen.dart';
 import '../../features/buyer/buyer_profile/view/buyer_edit_profile_screen.dart';
+import '../../features/buyer/buyer_search/bindings/buyer_search_binding.dart';
+import '../../features/buyer/home/views/buyer_service_history_details_screen.dart';
 import '../../features/car_owner_flow/car_owner_nevbar/view/owner_navbar_screen.dart';
 import '../../features/car_owner_flow/home/binding/home_binding.dart';
 import '../../features/car_owner_flow/home/car_details/view/car_details_screen.dart';
@@ -185,13 +187,9 @@ class AppPages {
       binding: BuyerNavBarBinding(),
     ),
 
-
     GetPage(name: AppRoutes.buyerHomeScreen, page: () => BuyerHomeScreen()),
 
-    GetPage(
-      name: AppRoutes.buyerHomeScreen,
-      page: () => BuyerHomeScreen(),
-    ),
+    GetPage(name: AppRoutes.buyerHomeScreen, page: () => BuyerHomeScreen()),
     GetPage(
       name: AppRoutes.buyerChangePasswordScreen,
       page: () => BuyerChangePasswordScreen(),
@@ -214,7 +212,11 @@ class AppPages {
       // binding: DealerNavBarBinding(),
     ),
 
-
+    GetPage(
+      name: AppRoutes.buyerServiceHistoryDetailsScreen,
+      page: () => BuyerServiceHistoryDetailsScreen(),
+      binding: BuyerSearchBinding(),
+    ),
   ];
 
   static final initialBinding = SplashBinding();

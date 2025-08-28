@@ -79,11 +79,7 @@ class BuyerSearchScreen extends StatelessWidget {
                 btnColor: AppColors.orange,
                 borderRadius: 8,
                 onTap: () {
-
                   Get.to(()=> ScannerScreen());
-
-
-
                 },
               ),
               SizedBox(height: res.hp(12)),
@@ -106,7 +102,6 @@ class BuyerSearchScreen extends StatelessWidget {
                   controller.setVinInput(value);
                 },
 
-
               ),
               SizedBox(height: res.hp(12)),
               Obx(() {
@@ -120,11 +115,7 @@ class BuyerSearchScreen extends StatelessWidget {
                     fontSize: 16,
                     onTap: () {
                       if(!isEmpty){
-                        if (Get.locale?.languageCode == 'en') {
-                          Get.updateLocale(const Locale('ar', 'SA'));
-                        } else {
-                          Get.updateLocale(const Locale('en', 'US'));
-                        }
+                       controller.getVinSearchResult();
                       }
                     },
                   );
