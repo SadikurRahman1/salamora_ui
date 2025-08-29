@@ -281,11 +281,24 @@ final Map<String, String> enUS = {
   "saved_cars": "Saved Cars",
   "clear_all": "Clear All",
   "contact_now": "Contact Now",
-  "contact_now":  "Contact Now",
   "service_history_details": "Service History Details",
   "service_info": "Service Info",
   "oil_change_and_filter": "Oil Change & Filter",
   "elitepolish_auto_care": "ElitePolish Auto Care",
 
-
+  /// Dealer
+  "create_vehicle_warranty": "Create Vehicle Warranty",
+  "vehicle_name": "Vehicle Name",
+  "vin_number": "VIN Number",
+  "mileage": "Mileage",
+  "cost": "Cost",
+  "duration": "Duration",
+  "select_duration": "Select Duration",
+  "customer_information": "Customer Information",
+  "customer_name": "Customer Name",
+  "purchase_date": "Purchase Date",
+  "warranty_coverage_items": "Warranty Coverage Items",
+  "create_invoice": "Create Invoice",
+  "create_warranty": "Create Warranty",
+  "qr_code": "QR Code",
 };

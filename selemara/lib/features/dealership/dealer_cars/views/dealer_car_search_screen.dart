@@ -4,16 +4,17 @@ import 'package:selemara/core/constants/app_icons.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../common/widgets/custom_dropdown_btn.dart';
 import '../../common/widgets/recent_sales_widget.dart';
-import 'dealer_car_details_screen.dart';
+import '../car_details/views/dealer_car_details_screen.dart';
 
-class DealerCarScreen extends StatelessWidget {
-  DealerCarScreen({super.key});
+class DealerCarSearchScreen extends StatelessWidget {
+  DealerCarSearchScreen({super.key});
 
   final res = AppResponsive();
 
@@ -70,7 +71,9 @@ class DealerCarScreen extends StatelessWidget {
                       iconPath: AppIcons.plus,
                       iconColor: AppColors.whitColor,
                       btnColor: AppColors.primaryColor1,
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoutes.dealerAddVehicleScreen);
+                      },
                     ),
                   ),
                 ],

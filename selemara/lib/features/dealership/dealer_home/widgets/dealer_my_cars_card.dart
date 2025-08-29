@@ -6,12 +6,12 @@ import '../../../../core/constants/app_icons.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/app_text.dart';
 
-class CarInfoCard extends StatelessWidget {
+class DealerMyCarsCard extends StatelessWidget {
   final String? title;
   final String? subTitle;
   final String? carImagePath; // String path নেওয়া হলো
 
-  CarInfoCard({super.key, this.title, this.subTitle, this.carImagePath});
+  DealerMyCarsCard({super.key, this.title, this.subTitle, this.carImagePath});
 
   final res = AppResponsive();
 

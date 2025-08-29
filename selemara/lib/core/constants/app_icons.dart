@@ -54,5 +54,11 @@ class AppIcons {
   static const carActive = "assets/icons/car_active.png";
   static const carInActive = "assets/icons/car_in_active.png";
 
+  static const invoice = "assets/icons/invoice.png";
+  static const warranty = "assets/icons/warranty.png";
+  static const history = "assets/icons/history.png";
+
+
+
 
 }

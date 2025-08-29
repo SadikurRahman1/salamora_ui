@@ -93,39 +93,8 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   },
                 ),
               ),
+              SliverToBoxAdapter(child: SizedBox(height: res.wp(62))),
 
-              // SliverToBoxAdapter(
-              //   child: Obx(() {
-              //     final controller = Get.put(BuyerServiceHistoryController());
-              //
-              //     if (controller.serviceHistoryList.isEmpty) {
-              //       return Center(child: Text("No service history found"));
-              //     }
-              //
-              //     return ListView.builder(
-              //       shrinkWrap: true,
-              //       physics: NeverScrollableScrollPhysics(),
-              //       itemCount: controller.serviceHistoryList.length,
-              //       itemBuilder: (context, index) {
-              //         final item = controller.serviceHistoryList[index];
-              //
-              //         return BuyerHistoryCardWidget(
-              //           color: true,
-              //           title: item.serviceType,
-              //           date: item.preferredDate != null
-              //               ? item.preferredDate!.toLocal().toString().split(' ')[0]
-              //               : "-",
-              //           serviceCenter: item.garage?.business?.businessName ?? "-",
-              //           statusLabel: "Warranty",
-              //           invoiceLabel: "Invoice",
-              //           onTapOilChange: () {},
-              //           onTapWarranty: () {},
-              //           onTapInvoice: () {},
-              //         );
-              //       },
-              //     );
-              //   }),
-              // ),
             ],
           ),
         );
