@@ -300,4 +300,12 @@ final Map<String, String> arSA = {
   "create_invoice": "إنشاء فاتورة",
   "create_warranty": "إنشاء الضمان",
   "qr_code": "رمز QR ",
+  "recent_sales": "المبيعات الأخيرة",
+  "manage_cars_verified_records": "إدارة السيارات بسجلات خدمة myCarage الموثوقة",
+  "search_cars_name": "ابحث باسم السيارة...",
+  "all_status": "جميع الحالات",
+  "generate_qr_code": "إنشاء رمز الاستجابة السريعة",
+  "enter_vin": "أدخل رقم VIN",
+  "sel_price": "سعر البيع",
+  "payment_method": "طريقة الدفع"
 };

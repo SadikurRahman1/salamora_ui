@@ -57,6 +57,12 @@ class AppIcons {
   static const invoice = "assets/icons/invoice.png";
   static const warranty = "assets/icons/warranty.png";
   static const history = "assets/icons/history.png";
+  static const service = "assets/icons/services.png";
+  static const mitter = "assets/icons/miter.png";
+  static const color = "assets/icons/color.png";
+  static const calender = "assets/icons/calender.png";
+  static const search = "assets/icons/search.png";
+
 
 
 

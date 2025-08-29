@@ -27,7 +27,7 @@ class DealerNavBarItems {
 
   static List<Image> get activeIcons => [
     Image.asset(AppIcons.homeActive, height: res.hp(24), width: res.wp(24)),
-    Image.asset(AppIcons.carActive, height: res.hp(24), width: res.wp(24),color: AppColors.primaryColor),
+    Image.asset(AppIcons.carActive, height: res.hp(24), width: res.wp(24),color: AppColors.primaryColor1),
     Image.asset(AppIcons.profileActive, height: res.hp(24), width: res.wp(24)),
   ];
 

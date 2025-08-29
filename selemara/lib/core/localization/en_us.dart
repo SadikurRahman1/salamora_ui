@@ -301,4 +301,13 @@ final Map<String, String> enUS = {
   "create_invoice": "Create Invoice",
   "create_warranty": "Create Warranty",
   "qr_code": "QR Code",
+  "recent_sales": "Recent Sales",
+  "manage_cars_verified_records":
+      "Manage cars with verified myCarage service records",
+  "search_cars_name": "Search cars name...",
+  "all_status": "All Status",
+  "generate_qr_code": "Generate QR Code",
+  "enter_vin": "Enter VIN",
+  "sel_price": "Selling Price",
+  "payment_method": "Payment Method",
 };

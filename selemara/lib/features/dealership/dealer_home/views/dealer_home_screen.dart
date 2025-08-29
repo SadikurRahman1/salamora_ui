@@ -31,7 +31,7 @@ class DealerHomeScreen extends StatelessWidget {
             toolbarHeight: res.hp(50),
             title: HomeHeader(
               name: "Sadikur Rahman",
-              type: "Dealership".tr,
+              type: "dealership".tr,
               imagePath: AppImages.userProfile,
               notificationIconPath: AppIcons.notificationIconImage,
               imageSize: res.wp(40),
@@ -83,7 +83,7 @@ class DealerHomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AppText(
-                      "resent_sales".tr,
+                      "recent_sales".tr,
                       color: AppColors.textColor,
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -107,7 +107,7 @@ class DealerHomeScreen extends StatelessWidget {
                     return RecentSales(
                       imagePath: AppImages.carImage,
                       title: "2020 Toyota Camry",
-                      name: "Ahmed Al Mansouri",
+                      name: "Ahmed Al Mansour",
                       date: "1/15/2024",
                       imageBorderRadius: 5,
                       onTap: () {

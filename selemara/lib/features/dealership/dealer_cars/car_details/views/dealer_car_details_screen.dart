@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
-import '../../../common/widgets/custom_text_field.dart';
 import '../../widgets/car_image_card.dart';
 import '../CarFeature/views/dealer_car_service_history_screen.dart';
 
@@ -203,7 +202,7 @@ class DealerCarDetailsScreen extends StatelessWidget {
 
                     CustomTextFormField(
                       controller: TextEditingController(),
-                      hintText: "Enter VIN",
+                      hintText: "enter_vin".tr,
                       borderRadius: 25,
                     ),
                     SizedBox(height: res.hp(43)),

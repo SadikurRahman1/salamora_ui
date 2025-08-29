@@ -41,7 +41,7 @@ class DealerCarSearchScreen extends StatelessWidget {
               SizedBox(height: res.hp(8)),
 
               AppText(
-                "Manage cars with verified myCarage service records",
+                "manage_cars_verified_records".tr,
                 color: AppColors.textColor7085,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -51,7 +51,7 @@ class DealerCarSearchScreen extends StatelessWidget {
               CustomTextFormField(
                 borderRadius: 25,
                 prefixIcon: AppIcons.searchInActive,
-                hintText: "Search cars name...",
+                hintText: "search_cars_name".tr,
                 controller: TextEditingController(),
               ),
               SizedBox(height: res.hp(8)),
@@ -60,7 +60,7 @@ class DealerCarSearchScreen extends StatelessWidget {
                   Expanded(
                     child: CustomDropdownBtn(
                       items: [],
-                      selectedValue: 'All Status',
+                      selectedValue: 'all_status'.tr,
                       onChanged: (value) {},
                     ),
                   ),
