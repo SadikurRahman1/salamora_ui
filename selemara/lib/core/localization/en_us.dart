@@ -303,11 +303,27 @@ final Map<String, String> enUS = {
   "qr_code": "QR Code",
   "recent_sales": "Recent Sales",
   "manage_cars_verified_records":
-      "Manage cars with verified myCarage service records",
+  "Manage cars with verified myCarage service records",
   "search_cars_name": "Search cars name...",
   "all_status": "All Status",
   "generate_qr_code": "Generate QR Code",
   "enter_vin": "Enter VIN",
   "sel_price": "Selling Price",
   "payment_method": "Payment Method",
+
+  "ownership_details": "Ownership Details",
+  "service_ownership_details": "Service Ownership Details",
+
+  "miles": "Miles",
+  "location": "Location",
+  "phone": "Phone",
+  "period": "Period",
+  "mileage_range_sample": "Mileage Range",
+  "sale_date_example": "Sale Date",
+  "ownership_history": "Ownership History",
+  "owners": "Owners",
+  "current_owner": "Current Owner",
+  "first_owner": "First Owner",
+
+  "personal_information1": "Personal Information",
 };

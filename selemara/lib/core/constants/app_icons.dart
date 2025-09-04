@@ -62,6 +62,9 @@ class AppIcons {
   static const color = "assets/icons/color.png";
   static const calender = "assets/icons/calender.png";
   static const search = "assets/icons/search.png";
+  static const location = "assets/icons/location.png";
+  static const user = "assets/icons/user.png";
+  static const multipleUser = "assets/icons/multiple_user.png";
 
 
 
