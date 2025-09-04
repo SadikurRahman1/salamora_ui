@@ -7,7 +7,8 @@ import '../../../../../../core/widgets/custom_appbar.dart';
 import 'package:get/get.dart';
 import '../controller/vehicle_warranty_controller.dart';
 import '../widgets/date_fild_card.dart';
-import '../widgets/dealer_car_info_section.dart';
+import '../widgets/dual_input_row.dart';
+import '../widgets/single_input_row.dart';
 import '../widgets/text_and_dropdown_row.dart';
 
 class DealerCreateVehicleWarranty extends StatelessWidget {
@@ -26,122 +27,104 @@ class DealerCreateVehicleWarranty extends StatelessWidget {
         leading: Icon(Icons.arrow_back_ios, size: res.wp(24)),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: res.wp(24)),
+        padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
 
             SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(0, 4), // shadow position
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppText(
-                      "vehicle_information".tr, // Vehicle Information
-                      color: AppColors.textColor2A2A,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    SizedBox(height: res.hp(24)),
-                    DualInputRow(
-                      title1: "vehicle_name".tr,
-                      subtitle1: "bmw",
-                      title2: "color".tr,
-                      subtitle2: "Black",
-                      controller1: controller.coastController,
-                      controller2: controller.emailController,
-                    ),
-                    SizedBox(height: res.hp(12)),
-                    SingleInputField(
-                      title: "vin_number".tr,
-                      subtitle: "WBAFDHFIUGTFD",
-                      controller: controller.vinNumberController,
-                    ),
-                    SizedBox(height: res.hp(12)),
-                    SingleInputField(
-                      title: "mileage".tr,
-                      subtitle: "12331",
-                      controller: controller.mileageController,
-                    ),
-                    SizedBox(height: res.hp(12)),
-                    TextAndDropdownRow(
-                      title1: "coast".tr,
-                      subtitle1: "\$765",
-                      controller1: controller.coastController,
+              child: Card(
+                color: AppColors.whitColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppText(
+                        "vehicle_information".tr, // Vehicle Information
+                        color: AppColors.textColor2A2A,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      SizedBox(height: res.hp(24)),
+                      DualInputRow(
+                        title1: "vehicle_name".tr,
+                        subtitle1: "bmw",
+                        title2: "color".tr,
+                        subtitle2: "Black",
+                        controller1: controller.coastController,
+                        controller2: controller.emailController,
+                      ),
+                      SizedBox(height: res.hp(12)),
+                      SingleInputField(
+                        title: "vin_number".tr,
+                        subtitle: "WBAFDHFIUGTFD",
+                        controller: controller.vinNumberController,
+                      ),
+                      SizedBox(height: res.hp(12)),
+                      SingleInputField(
+                        title: "mileage".tr,
+                        subtitle: "12331",
+                        controller: controller.mileageController,
+                      ),
+                      SizedBox(height: res.hp(12)),
+                      TextAndDropdownRow(
+                        title1: "coast".tr,
+                        subtitle1: "\$765",
+                        controller1: controller.coastController,
 
-                      title2: "duration".tr,
-                      subtitle2: "select_duration".tr,
-                      selectedValue: controller.selectedDuration,
-                      dropdownItems: controller.durationList,
-                    ),
-                  ],
+                        title2: "duration".tr,
+                        subtitle2: "select_duration".tr,
+                        selectedValue: controller.selectedDuration,
+                        dropdownItems: controller.durationList,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
             SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
 
             SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      spreadRadius: 2,
-                      blurRadius: 8,
-                      offset: const Offset(0, 0), // shadow evenly all sides
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppText(
-                      "customer_information".tr,
-                      color: AppColors.textColor2A2A,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    SizedBox(height: res.hp(32)),
-                    SingleInputField(
-                      title: "customer_name".tr,
-                      subtitle: "Your Name",
-                      controller: controller.customerNameController,
-                    ),
-                    SizedBox(height: res.hp(12)),
-                    SingleInputField(
-                      title: "email".tr,
-                      subtitle: "example@gmail.com",
-                      controller: controller.emailController,
-                    ),
-                    SizedBox(height: res.hp(12)),
-                    SingleInputField(
-                      title: "phone_number".tr,
-                      subtitle: "(555) 123-456",
-                      controller: controller.phoneController,
-                    ),
-                    SizedBox(height: res.hp(12)),
-                    DateFieldCard(
-                      title: "purchase_date".tr,
-                      subtitle: "DD/MM/YYYY",
-                      controller: controller.purchaseDateController,
-                    ),
-                  ],
+              child: Card(
+                color: AppColors.whitColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppText(
+                        "customer_information".tr,
+                        color: AppColors.textColor2A2A,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      SizedBox(height: res.hp(32)),
+                      SingleInputField(
+                        title: "customer_name".tr,
+                        subtitle: "Your Name",
+                        controller: controller.customerNameController,
+                      ),
+                      SizedBox(height: res.hp(12)),
+                      SingleInputField(
+                        title: "email".tr,
+                        subtitle: "example@gmail.com",
+                        controller: controller.emailController,
+                      ),
+                      SizedBox(height: res.hp(12)),
+                      SingleInputField(
+                        title: "phone_number".tr,
+                        subtitle: "(555) 123-456",
+                        controller: controller.phoneController,
+                      ),
+                      SizedBox(height: res.hp(12)),
+                      DateFieldCard(
+                        title: "purchase_date".tr,
+                        subtitle: "DD/MM/YYYY",
+                        controller: controller.purchaseDateController,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -280,9 +263,9 @@ Widget _buildCheckbox(String label, RxBool obs) {
           onChanged: (val) => obs.value = val!,
           fillColor: MaterialStateProperty.resolveWith<Color>((states) {
             if (states.contains(MaterialState.selected)) {
-              return AppColors.primaryColor1; // checkbox ticked color
+              return AppColors.primaryColor1;
             }
-            return AppColors.geryColor; // unticked color
+            return AppColors.geryColor;
           }),
         ),
       ),

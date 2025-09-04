@@ -8,6 +8,7 @@ import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/home_header.dart';
+import '../../buyer_ownership_history.dart';
 import '../widgets/dealer_my_cars_card.dart';
 import '../widgets/dealer_banner.dart';
 import '../widgets/dealer_feature_card.dart';
@@ -31,7 +32,7 @@ class DealerHomeScreen extends StatelessWidget {
             toolbarHeight: res.hp(50),
             title: HomeHeader(
               name: "Sadikur Rahman",
-              type: "Dealership".tr,
+              type: "dealership".tr,
               imagePath: AppImages.userProfile,
               notificationIconPath: AppIcons.notificationIconImage,
               imageSize: res.wp(40),
@@ -49,7 +50,7 @@ class DealerHomeScreen extends StatelessWidget {
 
                 SizedBox(height: res.hp(30)),
 
-                _fitureCardSection(),
+                _featureCardSection(),
 
                 SizedBox(height: res.hp(30)),
 
@@ -83,7 +84,7 @@ class DealerHomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AppText(
-                      "resent_sales".tr,
+                      "recent_sales".tr,
                       color: AppColors.textColor,
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -107,7 +108,7 @@ class DealerHomeScreen extends StatelessWidget {
                     return RecentSales(
                       imagePath: AppImages.carImage,
                       title: "2020 Toyota Camry",
-                      name: "Ahmed Al Mansouri",
+                      name: "Ahmed Al Mansour",
                       date: "1/15/2024",
                       imageBorderRadius: 5,
                       onTap: () {
@@ -117,6 +118,16 @@ class DealerHomeScreen extends StatelessWidget {
                   },
                 ),
 
+                CustomButton(
+                  text: "view_ownership_history",
+                  iconPath: AppIcons.multipleUser,
+                  iconColor: AppColors.primaryColor1,
+                  btnColor: AppColors.primaryColor1.withAlpha(40),
+                  textColor: AppColors.primaryColor1,
+                  onTap: () {
+                    Get.to(() => BuyerOwnershipHistory());
+                  },
+                ),
               ]),
             ),
           ),
@@ -170,14 +181,14 @@ class DealerHomeScreen extends StatelessWidget {
             btnColor: AppColors.primaryColor1.withAlpha(40),
             onTap: () {
               Get.toNamed(AppRoutes.dealerRequestServiceScreen);
-              },
+            },
           ),
         ),
       ],
     );
   }
 
-  Widget _fitureCardSection() {
+  Widget _featureCardSection() {
     return Column(
       children: [
         Row(

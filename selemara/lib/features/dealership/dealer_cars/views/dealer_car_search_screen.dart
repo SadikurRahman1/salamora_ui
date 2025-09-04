@@ -12,14 +12,17 @@ import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../common/widgets/custom_dropdown_btn.dart';
 import '../../common/widgets/recent_sales_widget.dart';
 import '../car_details/views/dealer_car_details_screen.dart';
+import '../controller/dealer_car_controller.dart';
+import '../widgets/dropdown_and_btn.dart';
 
 class DealerCarSearchScreen extends StatelessWidget {
   DealerCarSearchScreen({super.key});
-
   final res = AppResponsive();
 
   @override
   Widget build(BuildContext context) {
+    DealerCarController controller = Get.find<DealerCarController>();
+
     return Scaffold(
       appBar: CustomAppBar(
         title: "search_cars".tr,
@@ -41,7 +44,7 @@ class DealerCarSearchScreen extends StatelessWidget {
               SizedBox(height: res.hp(8)),
 
               AppText(
-                "Manage cars with verified myCarage service records",
+                "manage_cars_verified_records".tr,
                 color: AppColors.textColor7085,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -51,33 +54,21 @@ class DealerCarSearchScreen extends StatelessWidget {
               CustomTextFormField(
                 borderRadius: 25,
                 prefixIcon: AppIcons.searchInActive,
-                hintText: "Search cars name...",
-                controller: TextEditingController(),
+                hintText: "search_cars_name".tr,
+                controller: controller.carSearchTEController,
               ),
               SizedBox(height: res.hp(8)),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomDropdownBtn(
-                      items: [],
-                      selectedValue: 'All Status',
-                      onChanged: (value) {},
-                    ),
-                  ),
-                  SizedBox(width: res.wp(20)),
-                  Expanded(
-                    child: CustomButton(
-                      text: 'add_vehicle'.tr,
-                      iconPath: AppIcons.plus,
-                      iconColor: AppColors.whitColor,
-                      btnColor: AppColors.primaryColor1,
-                      onTap: () {
-                        Get.toNamed(AppRoutes.dealerAddVehicleScreen);
-                      },
-                    ),
-                  ),
-                ],
+              DropdownAndBtn(
+                subtitle: 'Select Status',
+                selectedValue: controller.selectStatus,
+                dropdownItems: controller.statusList,
+                buttonText: 'add_vehicle'.tr,
+                onButtonTap: () {
+                  Get.toNamed(AppRoutes.dealerAddVehicleScreen);
+                },
+                buttonIconPath: AppIcons.plus,
               ),
+
               SizedBox(height: res.hp(10)),
               ListView.builder(
                 padding: EdgeInsets.zero,

@@ -99,8 +99,8 @@ class CarImageCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InfoRow(icon: AppIcons.searchInActive, text: "$miles miles"),
-                    InfoRow(icon: AppIcons.searchInActive, text: "$services Services"),
+                    InfoRow(icon: AppIcons.mitter, text: "$miles miles"),
+                    InfoRow(icon: AppIcons.service, text: "$services Services"),
                   ],
                 ),
 
@@ -110,15 +110,15 @@ class CarImageCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InfoRow(icon: AppIcons.searchInActive, text: carColor),
-                    InfoRow(icon: AppIcons.searchInActive, text: date),
+                    InfoRow(icon: AppIcons.color, text: carColor),
+                    InfoRow(icon: AppIcons.calendar, text: date),
                   ],
                 ),
 
                 SizedBox(height: res.hp(6)),
 
                 /// Model
-                InfoRow(icon: AppIcons.searchInActive, text: model),
+                InfoRow(icon: AppIcons.color, text: model),
 
                 const SizedBox(height: 24),
               ],

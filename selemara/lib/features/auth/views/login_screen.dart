@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomButton(
-                text: 'got to dealership'.tr,
+                text: 'go to dealership'.tr,
                 onTap: () {
                   Get.toNamed(AppRoutes.dealerNauBarScreen);
                 },
