@@ -125,7 +125,7 @@ class BuyerSearchController extends GetxController {
         final Map<String, dynamic> data = responseData.data["data"];
         vehicle.value = VehicleData.fromJson(data); // VehicleModel -> VehicleData
 
-        debugPrint("✅ VIN Search Success: ${vehicle.value?.name}");
+        debugPrint("✅ VIN Search Success: ${vehicle.value?.id}");
         // fetchServiceHistory();
         Get.to(() => BuyerCarDetailsScreen());
       } catch (e) {
@@ -141,42 +141,42 @@ class BuyerSearchController extends GetxController {
 
   RxList<ServiceHistoryItem> serviceHistoryList = <ServiceHistoryItem>[].obs;
 
-  // Future<void> fetchServiceHistory() async {
-  //   String? id = vehicle.value?.id; // uniqueId -> id
-  //   if (id == null) return;
-  //
-  //   isLoading.value = true;
-  //   try {
-  //     ResponseData responseData = await NetworkCaller().getRequest(
-  //       ApiUrls.serviceHistory(id),
-  //     );
-  //
-  //     if (responseData.isSuccess && responseData.data != null) {
-  //       try {
-  //         final Map<String, dynamic> decoded = responseData.data is String
-  //             ? jsonDecode(responseData.data)
-  //             : responseData.data;
-  //
-  //         final List<dynamic> dataList = decoded["data"]["data"];
-  //
-  //         serviceHistoryList.value =
-  //             dataList.map((e) => ServiceHistoryItem.fromJson(e)).toList();
-  //
-  //         debugPrint("🔍 Raw responseData.data: ${responseData.data}");
-  //         debugPrint("✅ Service History fetched: ${serviceHistoryList.length} items");
-  //         debugPrint("✅ ==================================");
-  //       } catch (e) {
-  //         debugPrint("❌ Data parsing error: $e");
-  //         Get.snackbar("Error", "Failed to parse service history data");
-  //       }
-  //     } else {
-  //       Get.snackbar("Error", responseData.message ?? "Failed to fetch data");
-  //     }
-  //   } catch (e) {
-  //     debugPrint("❌ API call error: $e");
-  //     Get.snackbar("Error", "Something went wrong");
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
+  Future<void> fetchServiceHistory() async {
+    String? id = vehicle.value?.id; // uniqueId -> id
+    if (id == null) return;
+
+    isLoading.value = true;
+    try {
+      ResponseData responseData = await NetworkCaller().getRequest(
+        ApiUrls.serviceHistory(id),
+      );
+
+      if (responseData.isSuccess && responseData.data != null) {
+        try {
+          final Map<String, dynamic> decoded = responseData.data is String
+              ? jsonDecode(responseData.data)
+              : responseData.data;
+
+          final List<dynamic> dataList = decoded["data"]["data"];
+
+          serviceHistoryList.value =
+              dataList.map((e) => ServiceHistoryItem.fromJson(e)).toList();
+
+          debugPrint("🔍 Raw responseData.data: ${responseData.data}");
+          debugPrint("✅ Service History fetched: ${serviceHistoryList.length} items");
+          debugPrint("✅ ==================================");
+        } catch (e) {
+          debugPrint("❌ Data parsing error: $e");
+          Get.snackbar("Error", "Failed to parse service history data");
+        }
+      } else {
+        Get.snackbar("Error", responseData.message ?? "Failed to fetch data");
+      }
+    } catch (e) {
+      debugPrint("❌ API call error: $e");
+      Get.snackbar("Error", "Something went wrong");
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }
