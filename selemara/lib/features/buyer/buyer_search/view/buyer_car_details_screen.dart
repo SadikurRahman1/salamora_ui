@@ -470,6 +470,7 @@ import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../dealership/common/widgets/dealer_history_card_widget.dart';
 import '../buyer_records/views/buyer_ownership_history.dart';
 import '../controller/buyer_search_controller.dart';
 import '../model/buyer_vin_search_model.dart';
@@ -481,7 +482,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BuyerSearchController controller = Get.find<BuyerSearchController>();
+    BuyerSearchController controller = Get.put(BuyerSearchController());
     final res = AppResponsive();
 
     return Scaffold(
@@ -524,36 +525,56 @@ class BuyerCarDetailsScreen extends StatelessWidget {
               SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
               SliverToBoxAdapter(
                 child: AppText(
-                  "Service History",
+                  "service_history".tr,
                   color: AppColors.textColor,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
-              // SliverToBoxAdapter(
-              //   child: ListView.builder(
-              //     shrinkWrap: true,
-              //     physics: const NeverScrollableScrollPhysics(),
-              //     itemCount: controller.serviceHistoryList.length,
-              //     itemBuilder: (context, index) {
-              //       final item = controller.serviceHistoryList[index];
-              //       return BuyerHistoryCardWidget(
-              //         color: true,
-              //         title: item.serviceType,
-              //         date: item.preferredDate != null
-              //             ? item.preferredDate!.toLocal().toString().split(' ')[0]
-              //             : "-",
-              //         serviceCenter: item.garage?.business?.businessName ?? "-",
-              //         statusLabel: "Warranty",
-              //         invoiceLabel: "Invoice",
-              //         onTapOilChange: () {},
-              //         onTapWarranty: () {},
-              //         onTapInvoice: () {},
-              //       );
-              //     },
-              //   ),
-              // ),
+              SliverToBoxAdapter(
+                child: Obx(() {
+                  if (controller.isLoading.value) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+
+                  if (controller.serviceHistoryList.isEmpty) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text("No service history available"),
+                      ),
+                    );
+                  }
+
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: controller.serviceHistoryList.length,
+                    itemBuilder: (context, index) {
+                      final item = controller.serviceHistoryList[index];
+                      return BuyerHistoryCardWidget(
+                        color: true,
+                        title: item.serviceType ?? "-",
+                        date: item.preferredDate != null
+                            ? item.preferredDate!.toLocal().toString().split(' ')[0]
+                            : "-",
+                        serviceCenter: item.garage?.business?.businessName ?? "-",
+                        statusLabel: "Warranty",
+                        invoiceLabel: "Invoice",
+                        onTapOilChange: () {},
+                        onTapWarranty: () {},
+                        onTapInvoice: () {},
+                      );
+                    },
+                  );
+                }),
+              ),
               SliverToBoxAdapter(child: SizedBox(height: res.wp(62))),
             ],
           ),
@@ -700,18 +721,18 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   vehicle.sellPrice != null ? "\$${vehicle.sellPrice}" : "0",
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.primaryColor,
+                  color: AppColors.primaryColor1,
                 ),
               ],
             ),
             const SizedBox(height: 16),
             _labelValueRow("VIN", vehicle.vin),
             const SizedBox(height: 8),
-            _labelValueRow("last_service".tr, "1/15/2024"),
+            _labelValueRow("make".tr, "------"),
             const SizedBox(height: 8),
-            _labelValueRow("next_service".tr, "4/15/2024"),
+            _labelValueRow("model".tr, vehicle.model),
             const SizedBox(height: 8),
-            _labelValueRow("service_record".tr, "8"),
+            _labelValueRow("year".tr, vehicle.year),
             const SizedBox(height: 8),
             _labelValueRow(
               "Documents",
