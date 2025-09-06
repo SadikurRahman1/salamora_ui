@@ -180,9 +180,9 @@ class AuthController extends GetxController {
       case 'GARAGE':
         Get.offAllNamed(AppRoutes.garageNavScreen);
         break;
-      // case 'DEALERSHIP':
-      //   Get.offAllNamed('/dealershipHome');
-      //   break;
+      case 'DEALERSHIP':
+        Get.offAllNamed('/dealershipHome');
+        break;
       case 'BUYER':
         Get.offAllNamed(AppRoutes.buyerNavScreen);
         break;

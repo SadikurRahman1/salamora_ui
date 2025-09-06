@@ -142,7 +142,7 @@ class NetworkCaller {
         await _preferencesHelper.remove(TokenKey.userId);
         await _preferencesHelper.remove(TokenKey.role);
 
-        Get.offAllNamed(AppRoutes.login);
+        Get.offNamed(AppRoutes.login);
         return ResponseData(
           isSuccess: false,
           message: 'Unauthorized access. Redirecting to login.',
