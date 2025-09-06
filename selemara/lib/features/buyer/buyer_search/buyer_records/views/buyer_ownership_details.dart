@@ -6,7 +6,7 @@ import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
-import 'oil_change_widgets.dart';
+import '../widgets/oil_change_widgets.dart';
 
 class BuyerOwnershipDetails extends StatelessWidget {
   BuyerOwnershipDetails({super.key});

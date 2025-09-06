@@ -10,7 +10,7 @@ import '../../buyer_profile/controller/buyer_profile_controller.dart';
 import '../widgets/buyer_banner.dart';
 import '../widgets/featured_card_widget.dart';
 import '../../common/widgets/activity_card_widget.dart';
-import 'buyer_car_details_screen.dart';
+import '../../buyer_search/view/buyer_car_details_screen.dart';
 
 class BuyerHomeScreen extends StatelessWidget {
   BuyerHomeScreen({super.key});

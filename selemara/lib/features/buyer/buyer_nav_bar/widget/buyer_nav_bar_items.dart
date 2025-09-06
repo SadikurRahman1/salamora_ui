@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import '../../buyer_profile/view/buyer_profile_screen.dart';
@@ -29,7 +30,7 @@ class BuyerNavBarItems {
     Image.asset(AppIcons.homeActive, height: res.hp(24), width: res.wp(24)),
     Image.asset(AppIcons.genearteActive, height: res.hp(24), width: res.wp(24)),
     Image.asset(AppIcons.saveActive, height: res.hp(24), width: res.wp(24)),
-    Image.asset(AppIcons.profileActive, height: res.hp(24), width: res.wp(24)),
+    Image.asset(AppIcons.profileActive, height: res.hp(24), width: res.wp(24),),
   ];
 
   static List<Image> get inActiveIcons => [

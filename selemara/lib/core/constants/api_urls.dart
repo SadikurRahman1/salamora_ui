@@ -1,5 +1,6 @@
 class ApiUrls {
-  static const String _baseUrl = "http://172.252.13.78:5013/api/v1";
+  // static const String _baseUrl = "http://172.252.13.78:5013/api/v1";
+  static const String _baseUrl = "http://10.0.20.216:5013/api/v1";
   static const String loginUrl = "$_baseUrl/auth/login";
   static const String registerUrl = "$_baseUrl/auth/register";
 
@@ -26,6 +27,7 @@ class ApiUrls {
   static String searchVin(String vin) => "$_baseUrl/vehicles/vin/$vin";
   static String serviceHistory(String id) => "$_baseUrl/services/service-history/$id";
 
-
+  static const String uploadImage = "$_baseUrl/assets/upload-multiple";
+  static const String addVehicles = "$_baseUrl/vehicles";
 
 }
