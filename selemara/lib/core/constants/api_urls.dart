@@ -25,7 +25,11 @@ class ApiUrls {
   static const String changePassword = "$_baseUrl/auth/change-password";
   static const String updateProfile = "$_baseUrl/users/update-profile";
   static String searchVin(String vin) => "$_baseUrl/vehicles/vin/$vin";
-  static String serviceHistory(String id) => "$_baseUrl/services/service-history/$id";
+  static String serviceHistory(String vin) => "$_baseUrl/services/service-history/$vin";
+  static String ownerHistory(String vin) => "$_baseUrl/vehicles/owner-history/$vin";
+
+  static const String vehicleHistoryByOwner = "$_baseUrl/vehicles/history/owner";
+
 
   static const String uploadImage = "$_baseUrl/assets/upload-multiple";
   static const String addVehicles = "$_baseUrl/vehicles";

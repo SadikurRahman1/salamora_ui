@@ -482,7 +482,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BuyerSearchController controller = Get.put(BuyerSearchController());
+    BuyerSearchController controller = Get.put(BuyerSearchController(),permanent: true);
     final res = AppResponsive();
 
     return Scaffold(
@@ -513,8 +513,11 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   iconColor: AppColors.primaryColor1,
                   btnColor: AppColors.primaryColor1.withAlpha(40),
                   textColor: AppColors.primaryColor1,
+                  isLoading: controller.isLoading.value,
                   onTap: () {
-                    Get.to(() => BuyerOwnershipHistory());
+
+                    controller.ownerHistory();
+
                   },
                 ),
               ),
@@ -543,11 +546,13 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                     );
                   }
 
-                  if (controller.serviceHistoryList.isEmpty) {
-                    return const Center(
+                  if (!controller.isPaid.value) {
+                    return Center(
                       child: Padding(
                         padding: EdgeInsets.all(16.0),
-                        child: Text("No service history available"),
+                        child: AppText("Please pay \$10 for unlocking",
+                        color: AppColors.red,
+                        fontSize: 16,),
                       ),
                     );
                   }
@@ -575,14 +580,14 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   );
                 }),
               ),
-              SliverToBoxAdapter(child: SizedBox(height: res.wp(62))),
+              SliverToBoxAdapter(child: SizedBox(height: res.wp(70))),
             ],
           ),
         );
       }),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.primaryColor1,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         label: Text(
           "contact_now".tr,

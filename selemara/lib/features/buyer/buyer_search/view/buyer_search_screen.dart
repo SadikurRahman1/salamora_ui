@@ -113,9 +113,11 @@ class BuyerSearchScreen extends StatelessWidget {
                     iconColor: isEmpty ? AppColors.textColor.withValues(alpha: 0.4) : AppColors.whitColor,
                     btnColor:isEmpty? AppColors.primaryColor.withValues(alpha: 0.1):AppColors.primaryColor,
                     fontSize: 16,
+                    isLoading: controller.isLoading.value,
                     onTap: () {
                       if(!isEmpty){
                        controller.getVinSearchResult();
+                       controller.fetchServiceHistory();
                       }
                     },
                   );
