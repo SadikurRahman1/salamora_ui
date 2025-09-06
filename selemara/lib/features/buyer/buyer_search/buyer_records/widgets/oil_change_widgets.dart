@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 
-import '../../core/constants/app_colors.dart';
-import '../../core/widgets/app_text.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/widgets/app_text.dart';
 
 class InfoCard extends StatelessWidget {
   final String title;

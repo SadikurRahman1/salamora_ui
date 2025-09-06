@@ -6,8 +6,10 @@ import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
+
+import '../widgets/owner_card_widget.dart';
 import 'buyer_ownership_details.dart';
-import 'owner_card_widget.dart';
+
 
 class BuyerOwnershipHistory extends StatelessWidget {
   BuyerOwnershipHistory({super.key});

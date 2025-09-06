@@ -3,7 +3,7 @@ import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/constants/widget_extensions.dart';
 
-import '../../core/widgets/app_text.dart';
+import '../../../../../core/widgets/app_text.dart';
 
 class OwnerCard extends StatelessWidget {
   final String name;

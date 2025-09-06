@@ -8,7 +8,7 @@ import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/home_header.dart';
-import '../../buyer_ownership_history.dart';
+import '../../../buyer/buyer_profile/controller/buyer_profile_controller.dart';
 import '../widgets/dealer_my_cars_card.dart';
 import '../widgets/dealer_banner.dart';
 import '../widgets/dealer_feature_card.dart';
@@ -21,6 +21,8 @@ class DealerHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<BuyerProfileController>();
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -30,13 +32,15 @@ class DealerHomeScreen extends StatelessWidget {
             elevation: 0,
             automaticallyImplyLeading: false,
             toolbarHeight: res.hp(50),
-            title: HomeHeader(
-              name: "Sadikur Rahman",
-              type: "dealership".tr,
-              imagePath: AppImages.userProfile,
-              notificationIconPath: AppIcons.notificationIconImage,
-              imageSize: res.wp(40),
-              iconSize: res.wp(30),
+            title: Obx(
+              () => HomeHeader(
+                name: controller.userData.value?.name ?? "",
+                type: "dealership".tr,
+                imagePath: AppImages.userProfile,
+                notificationIconPath: AppIcons.notificationIconImage,
+                imageSize: res.wp(40),
+                iconSize: res.wp(30),
+              ),
             ),
           ),
 
@@ -118,16 +122,7 @@ class DealerHomeScreen extends StatelessWidget {
                   },
                 ),
 
-                CustomButton(
-                  text: "view_ownership_history",
-                  iconPath: AppIcons.multipleUser,
-                  iconColor: AppColors.primaryColor1,
-                  btnColor: AppColors.primaryColor1.withAlpha(40),
-                  textColor: AppColors.primaryColor1,
-                  onTap: () {
-                    Get.to(() => BuyerOwnershipHistory());
-                  },
-                ),
+
               ]),
             ),
           ),
