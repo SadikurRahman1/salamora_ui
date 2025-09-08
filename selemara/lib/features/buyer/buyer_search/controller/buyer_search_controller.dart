@@ -99,6 +99,7 @@ import 'package:selemara/features/buyer/buyer_search/view/buyer_car_details_scre
 import '../../../../core/constants/api_urls.dart';
 import '../../../../core/services/network_caller.dart';
 import '../../../../core/services/response_data.dart';
+import '../buyer_records/views/buyer_ownership_details.dart';
 import '../buyer_records/views/buyer_ownership_history.dart';
 import '../model/buyer_vin_search_model.dart';
 import '../model/owner_details_model.dart';
@@ -238,59 +239,49 @@ class BuyerSearchController extends GetxController {
 
 
 
-  // RxList<OwnerData> ownerDetailsList = <OwnerData>[].obs;
-  //
-  // Future<void> ownerDetails(String id) async {
-  //   String vin = searchTEController.text.trim();
-  //
-  //   isLoading.value = true;
-  //   try {
-  //
-  //     Map<String, dynamic> body ={
-  //       "vin": "2T1BURHE0JC12378911",
-  //       "ownerId": "68b6c18b7654d9e8d35ca95d"
-  //     };
-  //
-  //     ResponseData responseData = await NetworkCaller().postRequest(
-  //         url: ApiUrls.vehicleHistoryByOwner,
-  //         body: body,
-  //     );
-  //
-  //     if (responseData.isSuccess && responseData.data != null) {
-  //       try {
-  //         isPaid.value = true;
-  //
-  //         final Map<String, dynamic> decoded = responseData.data is String
-  //             ? jsonDecode(responseData.data)
-  //             : responseData.data;
-  //
-  //         final List<dynamic> dataList = decoded["data"] ?? [];
-  //
-  //         if (dataList.isNotEmpty) {
-  //           ownerHistoryList.value =
-  //               dataList.map((e) => OwnerHistoryData.fromJson(e)).toList();
-  //
-  //           Get.to(() => BuyerOwnershipHistory());
-  //           debugPrint("✅ Owner History fetched: ${ownerHistoryList.length} items");
-  //         } else {
-  //           debugPrint("⚠ কোনো Owner History পাওয়া যায়নি");
-  //           Get.snackbar("Info", "No owner history found for this VIN");
-  //         }
-  //       } catch (e) {
-  //         debugPrint("❌ Data parsing error: $e");
-  //         Get.snackbar("Error", "Failed to parse owner history data");
-  //       }
-  //     } else {
-  //       Get.snackbar("Error", responseData.message ?? "Failed to fetch data");
-  //     }
-  //   } catch (e) {
-  //     debugPrint("❌ API call error: $e");
-  //     Get.snackbar("Error", "Something went wrong");
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
+  RxList<OwnerDetails> ownerDetailsList = <OwnerDetails>[].obs;
 
+  Future<void> ownerDetails(String id) async {
+    String vin = searchTEController.text.trim();
+
+    isLoading.value = true;
+    try {
+      ResponseData responseData = await NetworkCaller().getRequest(
+        ApiUrls.vehicleHistoryByOwner(vin, id),
+      );
+
+      if (responseData.isSuccess) {
+        final data = responseData.data['data'];
+
+        if (data == null) {
+          ownerDetailsList.clear();
+          debugPrint("⚠️ API returned null data");
+        } else if (data is Map<String, dynamic>) {
+          ownerDetailsList.value = [OwnerDetails.fromJson(data)];
+        }
+
+        // if (!Get.isOverlaysClosed && Get.isRegistered<BuyerSearchController>()) {
+        //   Get.to(() => BuyerOwnershipDetails());
+        // }
+
+        Get.to(() => BuyerOwnershipDetails());
+        debugPrint(ownerDetailsList.first.toJson().toString());
+
+        debugPrint("✅ Owner Details fetched: ${ownerDetailsList.length} items");
+      } else {
+        debugPrint("❌ API failed: ${responseData.message}");
+        Get.snackbar("Error", responseData.message ?? "Failed to fetch details");
+      }
+
+    } catch (e) {
+      debugPrint("❌ API call error: $e");
+      Get.snackbar("Error", "Something went wrong");
+    } finally {
+      isLoading.value = false;
+    }
+  }
 
 
 }
+
+

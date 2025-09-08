@@ -6,12 +6,27 @@ import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
+import '../../controller/buyer_search_controller.dart';
+import '../../model/owner_details_model.dart';
 import '../widgets/oil_change_widgets.dart';
 
 class BuyerOwnershipDetails extends StatelessWidget {
   BuyerOwnershipDetails({super.key});
 
+
+  String formatDate(String? isoDate) {
+    if (isoDate == null) return "N/A";
+
+    try {
+      DateTime dt = DateTime.parse(isoDate).toLocal();
+      return dt.toIso8601String().split('T')[0]; // Only date
+    } catch (e) {
+      return isoDate;
+    }
+  }
+
   final res = AppResponsive();
+  final BuyerSearchController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -29,75 +44,90 @@ class BuyerOwnershipDetails extends StatelessWidget {
           ),
         ),
       ),
-      body: CustomScrollView(
-        slivers: [
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate([
-                SizedBox(height: res.hp(12)),
-                Row(
-                  children: [
-                    Image.asset(AppIcons.user, color: Colors.blue, width: 16),
-                    SizedBox(width: res.wp(12)),
-                    AppText(
-                      "${"ownership_details".tr} - name",
-                      color: AppColors.textColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ],
-                ),
-                SizedBox(height: res.hp(12)),
+      body: Obx(() {
+        if (controller.isLoading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-                _personalInformation(),
+        if (controller.ownerDetailsList.isEmpty) {
+          return Center(child: Text("No owner details found"));
+        }
 
-                SizedBox(height: res.hp(12)),
+        final owner = controller.ownerDetailsList.first;
 
-                _ownerDetails(),
+        return CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  SizedBox(height: res.hp(12)),
+                  Row(
+                    children: [
+                      Image.asset(AppIcons.user, color: Colors.blue, width: 16),
+                      SizedBox(width: res.wp(12)),
+                      AppText(
+                        "${"ownership_details".tr} - ${owner.name ?? "Unknown"}",
+                        color: AppColors.textColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: res.hp(12)),
 
-                SizedBox(height: res.hp(24)),
-                Row(
-                  children: [
-                    Image.asset(
-                      AppIcons.serviceInactive,
-                      color: Colors.black,
-                      width: 16,
-                    ),
-                    SizedBox(width: res.wp(12)),
-                    AppText(
-                      "service_ownership_details".tr,
-                      color: AppColors.textColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ],
-                ),
-                SizedBox(height: res.hp(16)),
+                  // Personal info
+                  _personalInformation(owner),
+                  SizedBox(height: res.hp(12)),
 
-                ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  itemCount: 3,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return InfoCard(
-                      title: "oil_change".tr,
-                      date: "12/12/12".tr,
-                      company: "AutoCare Plus".tr,
-                      miles: "Miles".tr,
-                    );
-                  },
-                ),
-              ]),
+                  // Owner info
+                  _ownerDetails(owner),
+                  SizedBox(height: res.hp(24)),
+
+                  // Services
+                  Row(
+                    children: [
+                      Image.asset(
+                        AppIcons.serviceInactive,
+                        color: Colors.black,
+                        width: 16,
+                      ),
+                      SizedBox(width: res.wp(12)),
+                      AppText(
+                        "service_ownership_details".tr,
+                        color: AppColors.textColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: res.hp(16)),
+
+                  ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: owner.myServices?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      final service = owner.myServices![index];
+                      return InfoCard(
+                        title: service.serviceType ?? "N/A",
+                        date: formatDate(service.createdAt),
+                        company: service.garage?.business?.location ?? "N/A",
+                        miles: "${owner.currentMileage ?? 0} miles",
+                      );
+                    },
+                  ),
+                ]),
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
     );
   }
 
-  Widget _personalInformation() {
+  Widget _personalInformation(OwnerDetails owner) {
     return Card(
       color: AppColors.whitColor,
       child: Padding(
@@ -113,29 +143,21 @@ class BuyerOwnershipDetails extends StatelessWidget {
             ),
             SizedBox(height: res.hp(6)),
             AppText(
-              "${"name".tr} : Sadikur Rahman",
-              fontSize: 12,
-              color: AppColors.textColor,
-              fontWeight: FontWeight.w400,
-            ),
-            SizedBox(height: res.hp(6)),
-
-            AppText(
-              "${"location".tr} : Dhaka",
+              "${"name".tr} : ${owner.name ?? "N/A"}",
               fontSize: 12,
               color: AppColors.textColor,
               fontWeight: FontWeight.w400,
             ),
             SizedBox(height: res.hp(6)),
             AppText(
-              "${"phone".tr} : 01213412423",
+              "${"location".tr} : ${owner.location ?? "N/A"}",
               fontSize: 12,
-              fontWeight: FontWeight.w400,
               color: AppColors.textColor,
+              fontWeight: FontWeight.w400,
             ),
             SizedBox(height: res.hp(6)),
             AppText(
-              "${"email".tr} : 01213412423",
+              "${"business".tr} : ${owner.business ?? "N/A"}",
               fontSize: 12,
               fontWeight: FontWeight.w400,
               color: AppColors.textColor,
@@ -146,7 +168,7 @@ class BuyerOwnershipDetails extends StatelessWidget {
     );
   }
 
-  Widget _ownerDetails() {
+  Widget _ownerDetails(OwnerDetails owner) {
     return Card(
       color: AppColors.whitColor,
       child: Padding(
@@ -162,29 +184,21 @@ class BuyerOwnershipDetails extends StatelessWidget {
             ),
             SizedBox(height: res.hp(6)),
             AppText(
-              "${"period".tr} : da",
-              fontSize: 12,
-              color: AppColors.textColor,
-              fontWeight: FontWeight.w400,
-            ),
-            SizedBox(height: res.hp(6)),
-
-            AppText(
-              "${"duration".tr} : 2134",
+              "${"period".tr} : ${formatDate(owner.createdAt)}",
               fontSize: 12,
               color: AppColors.textColor,
               fontWeight: FontWeight.w400,
             ),
             SizedBox(height: res.hp(6)),
             AppText(
-              "${"mileage_range_sample".tr} : 123",
+              "${"mileage_range_sample".tr} : ${owner.currentMileage ?? 0}",
               fontSize: 12,
               fontWeight: FontWeight.w400,
               color: AppColors.textColor,
             ),
             SizedBox(height: res.hp(6)),
             AppText(
-              "${"sale_date_example".tr} : 02/14/1423",
+              "${"sale_date_example".tr} : ${owner.sellAt ?? "N/A"}",
               fontSize: 12,
               fontWeight: FontWeight.w400,
               color: AppColors.textColor,
@@ -195,3 +209,4 @@ class BuyerOwnershipDetails extends StatelessWidget {
     );
   }
 }
+

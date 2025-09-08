@@ -103,8 +103,13 @@ class BuyerOwnershipHistory extends StatelessWidget {
                         status: owner.isCurrentOwner == true ? "current_owner".tr : "first_owner".tr,
                         isCurrent: owner.isCurrentOwner == true ? true : false,
                         ontap: () {
-                          Get.to(() => BuyerOwnershipDetails());
-                          /// owner id pas korte hobe.
+                          // Get.to(() => BuyerOwnershipDetails());
+                          // /// owner id pas korte hobe.
+                          if (owner.owner?.id != null) {
+                            controller.ownerDetails(owner.owner!.id!);
+                          } else {
+                            Get.snackbar("Error", "Owner ID not found");
+                          }
                         },
                       );
                     }).toList(),
