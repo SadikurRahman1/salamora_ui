@@ -187,7 +187,6 @@ class BuyerSearchController extends GetxController {
   }
 
 
-
   RxList<OwnerHistoryData> ownerHistoryList = <OwnerHistoryData>[].obs;
 
   Future<void> ownerHistory() async {
