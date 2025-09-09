@@ -28,12 +28,6 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomButton(
-                text: 'go to dealership'.tr,
-                onTap: () {
-                  Get.toNamed(AppRoutes.dealerNauBarScreen);
-                },
-              ),
               AppText(
                 'welcome_back'.tr,
                 color: AppColors.textColor,
@@ -171,4 +165,3 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-////git add .

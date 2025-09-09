@@ -22,7 +22,7 @@ class BuyerEditProfileController extends GetxController {
   void onInit() {
     super.onInit();
     nameController.text = controller.userData.value?.name ?? "";
-    bioController.text = controller.userData.value?.bio ?? "";
+    // bioController.text = controller.userData.value?.bio ?? "";
   }
 
   Future<void> updateProfile() async {
@@ -32,7 +32,7 @@ class BuyerEditProfileController extends GetxController {
       final updateProfileBody = {
         "name": nameController.text,
         // "location": addressController.text,
-        "bio": bioController.text,
+        // "bio": bioController.text,
       };
 
       ResponseData responseData = await NetworkCaller().putRequest(

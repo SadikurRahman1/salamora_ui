@@ -15,6 +15,7 @@ import '../car_details/views/dealer_car_details_screen.dart';
 import '../controller/dealer_car_controller.dart';
 import '../widgets/dropdown_and_btn.dart';
 
+
 class DealerCarSearchScreen extends StatelessWidget {
   DealerCarSearchScreen({super.key});
   final res = AppResponsive();
@@ -31,65 +32,98 @@ class DealerCarSearchScreen extends StatelessWidget {
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: res.wp(20)),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppText(
-                "my_all_cars".tr,
-                color: AppColors.textColor,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-              SizedBox(height: res.hp(8)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: res.hp(12)),
+            AppText(
+              "my_all_cars".tr,
+              color: AppColors.textColor,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+            SizedBox(height: res.hp(8)),
 
-              AppText(
-                "manage_cars_verified_records".tr,
-                color: AppColors.textColor7085,
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-              ),
-              SizedBox(height: res.hp(12)),
+            AppText(
+              "manage_cars_verified_records".tr,
+              color: AppColors.textColor7085,
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+            ),
+            SizedBox(height: res.hp(12)),
 
-              CustomTextFormField(
-                borderRadius: 25,
-                prefixIcon: AppIcons.searchInActive,
-                hintText: "search_cars_name".tr,
-                controller: controller.carSearchTEController,
-              ),
-              SizedBox(height: res.hp(8)),
-              DropdownAndBtn(
-                subtitle: 'Select Status',
-                selectedValue: controller.selectStatus,
-                dropdownItems: controller.statusList,
-                buttonText: 'add_vehicle'.tr,
-                onButtonTap: () {
-                  Get.toNamed(AppRoutes.dealerAddVehicleScreen);
-                },
-                buttonIconPath: AppIcons.plus,
-              ),
+            CustomTextFormField(
+              borderRadius: 25,
+              prefixIcon: AppIcons.searchInActive,
+              hintText: "search_cars_name".tr,
+              controller: controller.carSearchTEController,
+              onChanged: (val) {
+                // controller.fetchDealerVehicle();
+                controller.searchVehicle(val);
+              }
+            ),
+            SizedBox(height: res.hp(8)),
 
-              SizedBox(height: res.hp(10)),
-              ListView.builder(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                itemCount: 10,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return RecentSales(
-                    imagePath: AppImages.carImage,
-                    title: "2020 Toyota Camry",
-                    name: "Ahmed Al Mansouri",
-                    date: "1/15/2024",
-                    imageBorderRadius: 5,
-                    onTap: () {
-                      Get.to(()=>DealerCarDetailsScreen());
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
+            DropdownAndBtn(
+              subtitle: 'Select Status',
+              selectedValue: controller.selectStatus,
+              dropdownItems: controller.statusList,
+              buttonText: 'add_vehicle'.tr,
+              onButtonTap: () {
+                Get.toNamed(AppRoutes.dealerAddVehicleScreen);
+              },
+              buttonIconPath: AppIcons.plus,
+            ),
+            SizedBox(height: res.hp(10)),
+
+            Expanded(
+              child: Obx(() {
+                if (controller.isLoading.value) {
+                  return Center(child: CircularProgressIndicator());
+                }
+
+                final filteredList = controller.dealerVehicles.where((vehicle) {
+                  final searchText = controller.carSearchTEController.text.toLowerCase();
+                  final matchesName = vehicle.name?.toLowerCase().contains(searchText) ?? false;
+                  final matchesStatus = controller.selectStatus.value == "All Status" ||
+                      controller.selectStatus.value.isEmpty ||
+                      (controller.selectStatus.value == "Pending" && !vehicle.isVerified!) ||
+                      (controller.selectStatus.value == "Completed" && vehicle.isVerified!);
+                  return matchesName && matchesStatus;
+                }).toList();
+
+                if (filteredList.isEmpty) {
+                  return Center(child: Text("No vehicles found"));
+                }
+
+                return ListView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: filteredList.length,
+                  itemBuilder: (context, index) {
+                    final vehicle = filteredList[index];
+                    return RecentSales(
+                      imagePath: vehicle.images != null && vehicle.images!.isNotEmpty
+                          ? vehicle.images![0]
+                          : AppImages.carImage,
+                      title: vehicle.name ?? "No Name",
+                      name: vehicle.brand ?? "Unknown Brand",
+                      date: vehicle.createdAt != null
+                          ? vehicle.createdAt!.toLocal().toString().split(' ')[0]
+                          : "N/A",
+                      imageBorderRadius: 5,
+                      onTap: () {
+                        if (vehicle.id != null) {
+                          controller.fetchSingleVehicle(vehicle.id!);
+                        } else {
+                          Get.snackbar("Error", "Owner ID not found");
+                        }
+                      },
+                    );
+                  },
+                );
+              }),
+            ),
+          ],
         ),
       ),
     );

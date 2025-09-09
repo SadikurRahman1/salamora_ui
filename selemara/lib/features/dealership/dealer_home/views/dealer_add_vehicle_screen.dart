@@ -55,9 +55,9 @@ class DealerAddVehicleScreen extends StatelessWidget {
                 // VIN
                 label2: "car_name".tr,
                 // Car Name
-                hint1: "car_owner".tr,
+                hint1: "vin".tr,
                 // Car Owner
-                hint2: "450000",
+                hint2: "Toyota ",
               ),
 
               SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
@@ -87,18 +87,7 @@ class DealerAddVehicleScreen extends StatelessWidget {
                 hint2: "silver".tr, // Silver
               ),
 
-              SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
 
-              // DealerCarInfoCard(
-              //   controllerA: controller.expiresController,
-              //   controllerB: controller.tremsController,
-              //   label1: "expires_date".tr,
-              //   // Expires Date
-              //   label2: "terms".tr,
-              //   // Terms
-              //   hint1: "2024",
-              //   hint2: "silver".tr, // Silver (maybe change to something else)
-              // ),
 
               SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
 
@@ -221,7 +210,6 @@ class DealerAddVehicleScreen extends StatelessWidget {
                         }
                       },
                     );
-
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -272,7 +260,9 @@ class DealerAddVehicleScreen extends StatelessWidget {
                         textIconWidth: 0,
                         text: "cancel".tr,
                         // Cancel
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                        },
                         textColor: Color(0xFFACACAC),
                       ),
                     ),
@@ -282,6 +272,7 @@ class DealerAddVehicleScreen extends StatelessWidget {
                       child: CustomButton(
                         btnColor: AppColors.primaryColor1,
                         text: "add_vehicle".tr, // Add Vehicle
+                        isLoading: controller.isLoading.value,
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             controller.submitVehicle();

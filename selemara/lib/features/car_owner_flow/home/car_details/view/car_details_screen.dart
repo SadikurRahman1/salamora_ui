@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 
+import '../../../../../core/constants/api_urls.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_icons.dart';
 import '../../../../../core/constants/app_responsive.dart';
@@ -90,6 +91,7 @@ class CarDetailsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                         child: Image.network(
                           "$baseUrl${carDetails?.images[0]}",
+                          // "${ApiUrls.baseUrlForImage}${carDetails?.images[0]}",
                           fit: BoxFit.cover,
                         ),
                       ),

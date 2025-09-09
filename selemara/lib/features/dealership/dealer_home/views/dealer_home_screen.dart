@@ -9,6 +9,7 @@ import 'package:selemara/core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/home_header.dart';
 import '../../../buyer/buyer_profile/controller/buyer_profile_controller.dart';
+import '../../dealer_cars/controller/dealer_car_controller.dart';
 import '../widgets/dealer_my_cars_card.dart';
 import '../widgets/dealer_banner.dart';
 import '../widgets/dealer_feature_card.dart';
@@ -22,6 +23,8 @@ class DealerHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<BuyerProfileController>();
+    DealerCarController dealerCarController = Get.find<DealerCarController>();
+    final myVehicle = dealerCarController.dealerVehicles.length;
 
     return Scaffold(
       body: CustomScrollView(
@@ -54,7 +57,7 @@ class DealerHomeScreen extends StatelessWidget {
 
                 SizedBox(height: res.hp(30)),
 
-                _featureCardSection(),
+                _featureCardSection(myVehicle),
 
                 SizedBox(height: res.hp(30)),
 
@@ -121,13 +124,53 @@ class DealerHomeScreen extends StatelessWidget {
                     );
                   },
                 ),
-
-
               ]),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _featureCardSection(int myVehicle) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DealerFeatureCard(
+              sideColor: AppColors.primaryColor1,
+              cardText: "my_vehicles".tr,
+              icon: AppIcons.carIcon2,
+              number: myVehicle.toString(),
+            ),
+            DealerFeatureCard(
+              sideColor: AppColors.primaryColor1,
+              cardText: "service_records".tr,
+              icon: AppIcons.check1,
+              number: '23',
+            ),
+          ],
+        ),
+        SizedBox(height: res.hp(16)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DealerFeatureCard(
+              sideColor: AppColors.primaryColor1,
+              cardText: "my_vehicles".tr,
+              icon: AppIcons.notificationHome,
+              number: '\$455',
+            ),
+            DealerFeatureCard(
+              sideColor: AppColors.primaryColor1,
+              cardText: "service_records".tr,
+              icon: AppIcons.dueSoon,
+              number: '3',
+            ),
+          ],
+        ),
+      ],
     );
   }
 
@@ -178,48 +221,6 @@ class DealerHomeScreen extends StatelessWidget {
               Get.toNamed(AppRoutes.dealerRequestServiceScreen);
             },
           ),
-        ),
-      ],
-    );
-  }
-
-  Widget _featureCardSection() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
-              cardText: "my_vehicles".tr,
-              icon: AppIcons.carIcon2,
-              number: '12',
-            ),
-            DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
-              cardText: "service_records".tr,
-              icon: AppIcons.check1,
-              number: '23',
-            ),
-          ],
-        ),
-        SizedBox(height: res.hp(16)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
-              cardText: "my_vehicles".tr,
-              icon: AppIcons.notificationHome,
-              number: '\$455',
-            ),
-            DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
-              cardText: "service_records".tr,
-              icon: AppIcons.dueSoon,
-              number: '3',
-            ),
-          ],
         ),
       ],
     );
