@@ -9,6 +9,7 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
+import 'buyer_car_details_screen.dart';
 import 'buyer_scanner_screen.dart';
 
 class BuyerSearchScreen extends StatelessWidget {
@@ -118,6 +119,7 @@ class BuyerSearchScreen extends StatelessWidget {
                       if(!isEmpty){
                        controller.getVinSearchResult();
                        controller.fetchServiceHistory();
+                       Get.to(() => BuyerCarDetailsScreen());
                       }
                     },
                   );

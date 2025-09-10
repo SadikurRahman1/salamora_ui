@@ -62,6 +62,7 @@ class DealerCarController extends GetxController {
 
   Future<void> fetchSingleVehicle(String id) async {
     isLoading.value = true;
+    singleVehicles.clear();
     try {
       ResponseData responseData = await NetworkCaller().getRequest(
         ApiUrls.singleVehicle(id),
@@ -75,10 +76,10 @@ class DealerCarController extends GetxController {
           final vehicle = SingleVehicle.fromJson(data);
 
 
-          singleVehicles.clear();
+
           singleVehicles.add(vehicle);
 
-          Get.to(() => DealerCarDetailsScreen());
+          // Get.to(() => DealerCarDetailsScreen());
           debugPrint("✅ Dealer vehicles loaded: ${singleVehicles.length}");
         } catch (e) {
           debugPrint("❌ Data parsing error: $e");

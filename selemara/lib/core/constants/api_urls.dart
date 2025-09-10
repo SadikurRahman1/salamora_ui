@@ -24,10 +24,12 @@ class ApiUrls {
   static const String changePassword = "$_baseUrl/auth/change-password";
   static const String updateProfile = "$_baseUrl/users/update-profile";
   static const String dealerVehicle = "$_baseUrl/vehicles/my";
+  static const String dealerVehicleSold = "$_baseUrl/vehicles/my/sold";
 
   static String searchVin(String vin) => "$_baseUrl/vehicles/vin/$vin";
   static String singleVehicle(String id) => "$_baseUrl/vehicles/id/$id";
   static String vehicleSearch (String search) => "$_baseUrl/vehicles/my?searchTerm=$search";
+  // static String vehicleLimit (String limit) => "$_baseUrl/vehicles/my?limit=$limit";
 
   static String serviceHistory(String vin) =>
       "$_baseUrl/services/service-history/$vin";

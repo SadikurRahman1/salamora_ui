@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
@@ -15,9 +16,9 @@ import '../car_details/views/dealer_car_details_screen.dart';
 import '../controller/dealer_car_controller.dart';
 import '../widgets/dropdown_and_btn.dart';
 
-
 class DealerCarSearchScreen extends StatelessWidget {
   DealerCarSearchScreen({super.key});
+
   final res = AppResponsive();
 
   @override
@@ -28,7 +29,7 @@ class DealerCarSearchScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "search_cars".tr,
         centerTitle: true,
-        leading: Icon(Icons.arrow_back, size: res.wp(24)),
+        // leading: Icon(Icons.arrow_back, size: res.wp(24)),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: res.wp(20)),
@@ -60,7 +61,7 @@ class DealerCarSearchScreen extends StatelessWidget {
               onChanged: (val) {
                 // controller.fetchDealerVehicle();
                 controller.searchVehicle(val);
-              }
+              },
             ),
             SizedBox(height: res.hp(8)),
 
@@ -79,18 +80,25 @@ class DealerCarSearchScreen extends StatelessWidget {
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.value) {
-                  return Center(child: CircularProgressIndicator());
+                  return SizedBox(child: buildShimmerBox());
                 }
 
-                final filteredList = controller.dealerVehicles.where((vehicle) {
-                  final searchText = controller.carSearchTEController.text.toLowerCase();
-                  final matchesName = vehicle.name?.toLowerCase().contains(searchText) ?? false;
-                  final matchesStatus = controller.selectStatus.value == "All Status" ||
-                      controller.selectStatus.value.isEmpty ||
-                      (controller.selectStatus.value == "Pending" && !vehicle.isVerified!) ||
-                      (controller.selectStatus.value == "Completed" && vehicle.isVerified!);
-                  return matchesName && matchesStatus;
-                }).toList();
+                final filteredList =
+                    controller.dealerVehicles.where((vehicle) {
+                      final searchText =
+                          controller.carSearchTEController.text.toLowerCase();
+                      final matchesName =
+                          vehicle.name?.toLowerCase().contains(searchText) ??
+                          false;
+                      final matchesStatus =
+                          controller.selectStatus.value == "All Status" ||
+                          controller.selectStatus.value.isEmpty ||
+                          (controller.selectStatus.value == "Pending" &&
+                              !vehicle.isVerified!) ||
+                          (controller.selectStatus.value == "Completed" &&
+                              vehicle.isVerified!);
+                      return matchesName && matchesStatus;
+                    }).toList();
 
                 if (filteredList.isEmpty) {
                   return Center(child: Text("No vehicles found"));
@@ -102,18 +110,23 @@ class DealerCarSearchScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final vehicle = filteredList[index];
                     return RecentSales(
-                      imagePath: vehicle.images != null && vehicle.images!.isNotEmpty
-                          ? vehicle.images![0]
-                          : AppImages.carImage,
+                      imagePath:
+                          vehicle.images != null && vehicle.images!.isNotEmpty
+                              ? vehicle.images![0]
+                              : AppImages.carImage,
                       title: vehicle.name ?? "No Name",
                       name: vehicle.brand ?? "Unknown Brand",
-                      date: vehicle.createdAt != null
-                          ? vehicle.createdAt!.toLocal().toString().split(' ')[0]
-                          : "N/A",
+                      date:
+                          vehicle.createdAt != null
+                              ? vehicle.createdAt!.toLocal().toString().split(
+                                ' ',
+                              )[0]
+                              : "N/A",
                       imageBorderRadius: 5,
                       onTap: () {
                         if (vehicle.id != null) {
                           controller.fetchSingleVehicle(vehicle.id!);
+                          Get.to(() => DealerCarDetailsScreen());
                         } else {
                           Get.snackbar("Error", "Owner ID not found");
                         }
@@ -124,6 +137,21 @@ class DealerCarSearchScreen extends StatelessWidget {
               }),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildShimmerBox() {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Container(
+        height: 90,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     );

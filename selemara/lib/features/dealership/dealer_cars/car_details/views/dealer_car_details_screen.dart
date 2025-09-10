@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_images.dart';
+import 'package:selemara/features/dealership/dealer_cars/car_details/CarFeature/views/sell_vehicle_screen.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../../../../core/constants/app_colors.dart';
 import '../../../../../../core/constants/app_icons.dart';
 import '../../../../../../core/constants/app_responsive.dart';
@@ -30,8 +32,8 @@ class DealerCarDetailsScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: res.wp(24)),
         child: Obx(() {
-          if (controller.singleVehicles.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
+          if (controller.isLoading.value) {
+            return buildSimpleDealerCarShimmer(res);
           }
 
           // ধরা যাক প্রথম গাড়ি ডিটেইলস দেখাবেন
@@ -70,13 +72,13 @@ class DealerCarDetailsScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: CustomButton(
-                            text: 'qr_code'.tr,
+                            text: 'sell_vehicle'.tr,
                             textColor: AppColors.textColor,
-                            iconPath: AppIcons.qrCode,
+                            iconPath: AppIcons.car1,
                             iconColor: AppColors.textColor,
                             btnColor: AppColors.primaryColor1.withAlpha(40),
                             onTap: () {
-                              _showBeautifulBottomSheet(context);
+                              Get.to(()=>SellVehicleScreen());
                             },
                           ),
                         ),
@@ -136,98 +138,166 @@ class DealerCarDetailsScreen extends StatelessWidget {
     );
   }
 
-  void _showBeautifulBottomSheet(BuildContext context) {
-    final res = AppResponsive();
+  // void _showBeautifulBottomSheet(BuildContext context) {
+  //   final res = AppResponsive();
+  //
+  //   showModalBottomSheet(
+  //     context: context,
+  //     isScrollControlled: true,
+  //     isDismissible: true,
+  //     backgroundColor: Colors.white,
+  //     shape: const RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+  //     ),
+  //     builder: (context) => Padding(
+  //       padding: EdgeInsets.only(
+  //         bottom: MediaQuery.of(context).viewInsets.bottom,
+  //       ),
+  //       child: SafeArea(
+  //         child: Padding(
+  //           padding: const EdgeInsets.all(24),
+  //           child: Column(
+  //             mainAxisSize: MainAxisSize.min,
+  //             crossAxisAlignment: CrossAxisAlignment.start,
+  //             children: [
+  //               Align(
+  //                 alignment: Alignment.topRight,
+  //                 child: GestureDetector(
+  //                   onTap: () => Navigator.of(context).pop(),
+  //                   child: Image.asset(
+  //                     AppIcons.cross,
+  //                     height: res.hp(24),
+  //                     width: res.wp(24),
+  //                   ),
+  //                 ),
+  //               ),
+  //               SizedBox(height: res.hp(24)),
+  //               Column(
+  //                 crossAxisAlignment: CrossAxisAlignment.center,
+  //                 children: [
+  //
+  //                   AppText(
+  //                     "scan_car_qr_code".tr,
+  //                     fontSize: res.sp(16),
+  //                     fontWeight: FontWeight.w600,
+  //                     color: AppColors.primaryTextColor,
+  //                   ),
+  //                   SizedBox(height: res.hp(8)),
+  //                   AppText(
+  //                     "point_camera_qr".tr,
+  //                     fontSize: res.sp(14),
+  //                     fontWeight: FontWeight.w400,
+  //                     color: AppColors.textColor.withValues(alpha: 0.8),
+  //                     textAlign: TextAlign.center,
+  //                   ),
+  //                   SizedBox(height: res.hp(20)),
+  //                 ],
+  //               ),
+  //               CustomTextFormField(
+  //                 controller: TextEditingController(),
+  //                 hintText: "name".tr,
+  //                 borderRadius: 25,
+  //               ),
+  //               SizedBox(height: res.hp(16)),
+  //               CustomTextFormField(
+  //                 controller: TextEditingController(),
+  //                 hintText: "price".tr,
+  //                 borderRadius: 25,
+  //               ),
+  //               SizedBox(height: res.hp(16)),
+  //               CustomTextFormField(
+  //                 controller: TextEditingController(),
+  //                 hintText: "Exp Date".tr,
+  //                 borderRadius: 25,
+  //               ),
+  //               SizedBox(height: res.hp(43)),
+  //               CustomButton(
+  //                 text: "generate_qr_code".tr,
+  //                 btnColor: AppColors.primaryColor1,
+  //                 onTap: () {},
+  //               ),
+  //               SizedBox(height: res.hp(43)),
+  //             ],
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      isDismissible: true,
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-      ),
-      builder: (context) => Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+
+
+  Widget buildSimpleDealerCarShimmer(AppResponsive res) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: res.hp(24)),
+
+            // Image skeleton
+            Container(
+              height: res.hp(200),
+              width: double.infinity,
+              color: Colors.white,
+            ),
+            SizedBox(height: res.hp(20)),
+            // Title skeleton
+            Container(
+              height: res.hp(20),
+              width: res.wp(180),
+              color: Colors.white,
+            ),
+            SizedBox(height: res.hp(8)),
+            Container(
+              height: res.hp(16),
+              width: res.wp(120),
+              color: Colors.white,
+            ),
+            SizedBox(height: res.hp(20)),
+
+            // Buttons skeleton
+            Row(
               children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () => Navigator.of(context).pop(),
-                    child: Image.asset(
-                      AppIcons.cross,
-                      height: res.hp(24),
-                      width: res.wp(24),
-                    ),
+                Expanded(
+                  child: Container(
+                    height: res.hp(50),
+                    color: Colors.white,
                   ),
                 ),
-                SizedBox(height: res.hp(24)),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      alignment: Alignment.center,
-                      height: res.wp(64),
-                      width: res.wp(64),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppColors.primaryColor.withValues(
-                          alpha: 0.1,
-                        ),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          AppIcons.qrCode,
-                          height: res.hp(32),
-                          width: res.wp(32),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    AppText(
-                      "scan_car_qr_code".tr,
-                      fontSize: res.sp(16),
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryTextColor,
-                    ),
-                    SizedBox(height: res.hp(8)),
-                    AppText(
-                      "point_camera_qr".tr,
-                      fontSize: res.sp(14),
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textColor.withValues(alpha: 0.8),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: res.hp(20)),
-                  ],
+                SizedBox(width: res.wp(20)),
+                Expanded(
+                  child: Container(
+                    height: res.hp(50),
+                    color: Colors.white,
+                  ),
                 ),
-                CustomTextFormField(
-                  controller: TextEditingController(),
-                  hintText: "enter_vin".tr,
-                  borderRadius: 25,
-                ),
-                SizedBox(height: res.hp(43)),
-                CustomButton(
-                  text: "generate_qr_code".tr,
-                  btnColor: AppColors.primaryColor1,
-                  onTap: () {},
-                ),
-                SizedBox(height: res.hp(43)),
               ],
             ),
-          ),
+            SizedBox(height: res.hp(16)),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: res.hp(50),
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(width: res.wp(20)),
+                Expanded(
+                  child: Container(
+                    height: res.hp(50),
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: res.hp(20)),
+          ],
         ),
       ),
     );
   }
+
 }

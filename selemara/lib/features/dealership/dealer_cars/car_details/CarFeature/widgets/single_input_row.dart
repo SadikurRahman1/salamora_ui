@@ -9,12 +9,14 @@ class SingleInputField extends StatelessWidget {
   final String title;
   final String subtitle;
   final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
+
 
   const SingleInputField({
     super.key,
     required this.title,
     required this.subtitle,
-    required this.controller,
+    required this.controller, this.onChanged,
   });
 
   @override
@@ -35,6 +37,7 @@ class SingleInputField extends StatelessWidget {
           borderRadius: 24,
           controller: controller,
           hintText: subtitle,
+          onChanged: onChanged,
         ),
       ],
     );
