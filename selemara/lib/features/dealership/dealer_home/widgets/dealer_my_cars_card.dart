@@ -1,17 +1,30 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:selemara/core/constants/widget_extensions.dart';
 
+import '../../../../core/constants/api_urls.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_icons.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/app_text.dart';
 
 class DealerMyCarsCard extends StatelessWidget {
-  final String? title;
-  final String? subTitle;
-  final String? carImagePath; // String path নেওয়া হলো
+  final String title;
+  final String subTitle;
+  final String carImagePath;
+  final VoidCallback? onTap;
+  final bool isVerified;
 
-  DealerMyCarsCard({super.key, this.title, this.subTitle, this.carImagePath});
+
+  DealerMyCarsCard({
+    super.key,
+    required this.title,
+    required this.subTitle,
+    required this.carImagePath,
+    this.onTap,
+    required this.isVerified,
+  });
 
   final res = AppResponsive();
 
@@ -26,41 +39,36 @@ class DealerMyCarsCard extends StatelessWidget {
             children: [
               SizedBox(
                 height: 112,
-                width: 213,
+                      width: 213,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    carImagePath ?? "assets/images/default_car.png",
-                    fit: BoxFit.fill,
+                    borderRadius: BorderRadius.circular(8),
+                  child: Image.network(
+                    ApiUrls.baseUrlForImage + carImagePath,
+                    width: res.wp(80),
+                    height: res.wp(72),
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      // যদি image load না হয়
+                      return Container(
+                        width: res.wp(80),
+                        height: res.wp(72),
+                        color: AppColors.textColor.withValues(alpha: 0.1),
+                        child: Icon(
+                          CupertinoIcons.photo,
+                          size: res.wp(40),
+                          color: AppColors.textColor.withValues(alpha: 0.3),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
-              // Left top badge
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  margin: EdgeInsets.all(8),
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                  decoration: BoxDecoration(
-                    color: AppColors.greenColor,
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        AppIcons.verified1,
-                        height: res.hp(12),
-                        width: res.wp(12),
-                      ),
-                      SizedBox(width: res.wp(2)),
-                      AppText(
-                        "verified".tr,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ],
-                  ),
+              Positioned(
+                top: 12,
+                left: 12,
+                child: Image.asset(
+                  isVerified ? AppIcons.unverified : AppIcons.verified,
+                  height: res.hp(16),
                 ),
               ),
             ],
@@ -77,14 +85,14 @@ class DealerMyCarsCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppText(
-                        title ?? "2018 Honda Civic",
+                        title ?? "----",
                         color: AppColors.textColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
                       const SizedBox(height: 4),
                       AppText(
-                        subTitle ?? "VIN: IHGCV2F6JLOOOOOO",
+                       "VIN :${subTitle ?? "VIN: ---"}",
                         color: AppColors.textColor,
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
@@ -104,7 +112,7 @@ class DealerMyCarsCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      ).onTap(onTap),
     );
   }
 }

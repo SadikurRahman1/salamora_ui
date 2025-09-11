@@ -210,7 +210,7 @@ class AppPages {
       binding: BuyerSearchBinding(),
     ),
     GetPage(
-      name: AppRoutes.dealerNauBarScreen,
+      name: AppRoutes.dealerNavBarScreen,
       page: () => DealerNauBarScreen(),
       binding: DealerNavBarBinding(),
     ),

@@ -9,9 +9,8 @@ class BuyerEditProfileController extends GetxController {
   var isLoading = false.obs;
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-  TextEditingController bioController = TextEditingController();
 
   // var selectedOption = ''.obs;
   // final List<String> genders = ['Male', 'Female', 'Other'];
@@ -22,7 +21,8 @@ class BuyerEditProfileController extends GetxController {
   void onInit() {
     super.onInit();
     nameController.text = controller.userData.value?.name ?? "";
-    bioController.text = controller.userData.value?.bio ?? "";
+    emailController.text = controller.userData.value?.email ?? "";
+
   }
 
   Future<void> updateProfile() async {
@@ -31,8 +31,9 @@ class BuyerEditProfileController extends GetxController {
     try {
       final updateProfileBody = {
         "name": nameController.text,
-        // "location": addressController.text,
-        "bio": bioController.text,
+        "email": emailController.text,
+        "location": addressController.text,
+
       };
 
       ResponseData responseData = await NetworkCaller().putRequest(
@@ -58,16 +59,14 @@ class BuyerEditProfileController extends GetxController {
   @override
   void dispose() {
     nameController.dispose();
-    phoneController.dispose();
+    emailController.dispose();
     addressController.dispose();
-    bioController.dispose();
     super.dispose();
   }
 
   void clear() {
     nameController.clear();
-    phoneController.clear();
+    emailController.clear();
     addressController.clear();
-    bioController.clear();
   }
 }

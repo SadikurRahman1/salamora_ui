@@ -463,12 +463,14 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:selemara/core/constants/api_urls.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../dealership/common/widgets/dealer_history_card_widget.dart';
 import '../buyer_records/views/buyer_ownership_history.dart';
@@ -494,7 +496,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
       body: Obx(() {
         final vehicle = controller.vehicle.value;
         if (vehicle == null) {
-          return const Center(child: CircularProgressIndicator());
+          return buildShimmerBox();
         }
 
         return Padding(
@@ -513,11 +515,10 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   iconColor: AppColors.primaryColor1,
                   btnColor: AppColors.primaryColor1.withAlpha(40),
                   textColor: AppColors.primaryColor1,
-                  isLoading: controller.isLoading.value,
+                  // isLoading: controller.isLoading.value,
                   onTap: () {
-
                     controller.ownerHistory();
-
+                    Get.to(() => BuyerOwnershipHistory());
                   },
                 ),
               ),
@@ -538,12 +539,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Obx(() {
                   if (controller.isLoading.value) {
-                    return const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
+                    return buildShimmerBox();
                   }
 
                   if (!controller.isPaid.value) {
@@ -613,7 +609,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
-              "http://10.0.20.216:5013$imageUrl",
+              ApiUrls.baseUrlForImage+imageUrl,
               height: res.hp(198),
               width: double.infinity,
               fit: BoxFit.cover,
@@ -907,6 +903,20 @@ class BuyerCarDetailsScreen extends StatelessWidget {
             else
               AppText("No documents uploaded"),
           ],
+        ),
+      ),
+    );
+  }
+  Widget buildShimmerBox() {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Container(
+        height: 70,
+        width: 213,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     );

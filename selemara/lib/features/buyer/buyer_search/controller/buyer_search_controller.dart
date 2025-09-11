@@ -131,7 +131,7 @@ class BuyerSearchController extends GetxController {
         vehicle.value = VehicleData.fromJson(data); // VehicleModel -> VehicleData
 
         debugPrint("✅ VIN Search Success: ${vehicle.value?.id}");
-        Get.to(() => BuyerCarDetailsScreen());
+        // Get.to(() => BuyerCarDetailsScreen());
         // fetchServiceHistory();
       } catch (e) {
         debugPrint("❌ Data parsing error: $e");
@@ -170,13 +170,12 @@ class BuyerSearchController extends GetxController {
 
           debugPrint("🔍 Raw responseData.data: ${responseData.data}");
           debugPrint("✅ Service History fetched: ${serviceHistoryList.length} items");
-          debugPrint("✅ ==================================");
         } catch (e) {
           debugPrint("❌ Data parsing error: $e");
           Get.snackbar("Error", "Failed to parse service history data");
         }
       } else {
-        Get.snackbar("Error", responseData.message ?? "Failed to fetch data");
+        Get.snackbar("Error", responseData.message ?? "Failed to fetch data");  ///===============
       }
     } catch (e) {
       debugPrint("❌ API call error: $e");
@@ -185,7 +184,6 @@ class BuyerSearchController extends GetxController {
       isLoading.value = false;
     }
   }
-
 
 
   RxList<OwnerHistoryData> ownerHistoryList = <OwnerHistoryData>[].obs;
@@ -213,7 +211,7 @@ class BuyerSearchController extends GetxController {
             ownerHistoryList.value =
                 dataList.map((e) => OwnerHistoryData.fromJson(e)).toList();
 
-            Get.to(() => BuyerOwnershipHistory());
+            // Get.to(() => BuyerOwnershipHistory());
             debugPrint("✅ Owner History fetched: ${ownerHistoryList.length} items");
           } else {
             debugPrint("⚠ কোনো Owner History পাওয়া যায়নি");
@@ -264,7 +262,7 @@ class BuyerSearchController extends GetxController {
         //   Get.to(() => BuyerOwnershipDetails());
         // }
 
-        Get.to(() => BuyerOwnershipDetails());
+        // Get.to(() => BuyerOwnershipDetails());
         debugPrint(ownerDetailsList.first.toJson().toString());
 
         debugPrint("✅ Owner Details fetched: ${ownerDetailsList.length} items");

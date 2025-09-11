@@ -1,6 +1,10 @@
 class ApiUrls {
   // static const String _baseUrl = "http://172.252.13.78:5013/api/v1";
   static const String _baseUrl = "http://10.0.20.216:5013/api/v1";
+
+
+  static const String baseUrlForImage = "http://10.0.20.216:5013";
+
   static const String loginUrl = "$_baseUrl/auth/login";
   static const String registerUrl = "$_baseUrl/auth/register";
 
@@ -19,8 +23,13 @@ class ApiUrls {
   //car buyer url
   static const String changePassword = "$_baseUrl/auth/change-password";
   static const String updateProfile = "$_baseUrl/users/update-profile";
+  static const String dealerVehicle = "$_baseUrl/vehicles/my";
+  static const String dealerVehicleSold = "$_baseUrl/vehicles/my/sold";
 
   static String searchVin(String vin) => "$_baseUrl/vehicles/vin/$vin";
+  static String singleVehicle(String id) => "$_baseUrl/vehicles/id/$id";
+  static String vehicleSearch (String search) => "$_baseUrl/vehicles/my?searchTerm=$search";
+  // static String vehicleLimit (String limit) => "$_baseUrl/vehicles/my?limit=$limit";
 
   static String serviceHistory(String vin) =>
       "$_baseUrl/services/service-history/$vin";

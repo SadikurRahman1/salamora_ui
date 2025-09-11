@@ -27,7 +27,7 @@ class AppIcons {
   static const plus = "assets/icons/plus.png";
   static const qrCode = "assets/icons/qr_code.png";
   static const verified = "assets/icons/verified.png";
-  static const pending = "assets/icons/pending.png";
+  static const unverified = "assets/icons/not_verified.png";
   static const backArrow = "assets/icons/back_arrow.png";
   static const plus1 = "assets/icons/plus1.png";
   static const model = "assets/icons/model.png";

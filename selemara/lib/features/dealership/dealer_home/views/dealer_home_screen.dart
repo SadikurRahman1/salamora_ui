@@ -1,14 +1,23 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/core/constants/widget_extensions.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/app_text.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/home_header.dart';
 import '../../../buyer/buyer_profile/controller/buyer_profile_controller.dart';
+import '../../dealer_cars/car_details/views/dealer_car_details_screen.dart';
+import '../../dealer_cars/controller/dealer_car_controller.dart';
+import '../../dealer_cars/views/dealer_car_search_screen.dart';
+import '../../dealer_nav_bar/controller/dealer_nav_bar_controller.dart';
+import '../controller/dealer_home_vehicle.dart';
 import '../widgets/dealer_my_cars_card.dart';
 import '../widgets/dealer_banner.dart';
 import '../widgets/dealer_feature_card.dart';
@@ -22,6 +31,8 @@ class DealerHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<BuyerProfileController>();
+    final dealerHomeVehicleController = Get.find<DealerHomeVehicleController>();
+    final dealerCarController = Get.find<DealerCarController>();
 
     return Scaffold(
       body: CustomScrollView(
@@ -75,12 +86,15 @@ class DealerHomeScreen extends StatelessWidget {
                       color: AppColors.primaryColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
-                    ),
+                    ).onTap(() {
+                      final navController = Get.find<DealerNavBarController>();
+                      navController.changeIndex(1);
+                    }),
                   ],
                 ),
                 SizedBox(height: res.hp(20)),
 
-                _horizontalCarSection(),
+                _horizontalCarSection(dealerCarController),
 
                 SizedBox(height: res.hp(30)),
 
@@ -93,36 +107,22 @@ class DealerHomeScreen extends StatelessWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
-                    AppText(
-                      "view_all".tr,
-                      color: AppColors.primaryColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    // AppText(
+                    //   "view_all".tr,
+                    //   color: AppColors.primaryColor,
+                    //   fontSize: 12,
+                    //   fontWeight: FontWeight.w600,
+                    // ),
                   ],
                 ),
                 SizedBox(height: res.hp(10)),
 
-                ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  itemCount: 3,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return RecentSales(
-                      imagePath: AppImages.carImage,
-                      title: "2020 Toyota Camry",
-                      name: "Ahmed Al Mansour",
-                      date: "1/15/2024",
-                      imageBorderRadius: 5,
-                      onTap: () {
-                        // Get.to(()=>BuyerCarDetailsScreen());
-                      },
-                    );
-                  },
+                _recentSalesVehicle(
+                  dealerHomeVehicleController,
+                  dealerCarController,
                 ),
 
-
+                SizedBox(height: res.hp(30)),
               ]),
             ),
           ),
@@ -131,26 +131,92 @@ class DealerHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _horizontalCarSection() {
+  Widget _featureCardSection() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DealerFeatureCard(
+              sideColor: AppColors.primaryColor1,
+              cardText: "Total Inventory".tr,
+              icon: AppIcons.carIcon2,
+              number: '9',
+            ),
+            DealerFeatureCard(
+              sideColor: AppColors.primaryColor1,
+              cardText: "Monthly Sales".tr,
+              icon: AppIcons.check1,
+              number: '23',
+            ),
+          ],
+        ),
+        SizedBox(height: res.hp(16)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DealerFeatureCard(
+              sideColor: AppColors.primaryColor1,
+              cardText: "Revenue".tr,
+              icon: AppIcons.notificationHome,
+              number: '\$455',
+            ),
+            DealerFeatureCard(
+              sideColor: AppColors.primaryColor1,
+              cardText: "Available Car".tr,
+              icon: AppIcons.dueSoon,
+              number: '3',
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _horizontalCarSection(DealerCarController controller) {
     return SizedBox(
       height: 200,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: 5,
-        itemBuilder:
-            (context, index) => Padding(
-              padding: EdgeInsets.only(right: res.wp(16)),
-              child: GestureDetector(
-                onTap: () {},
-                child: DealerMyCarsCard(
-                  title: "2018 Honda Civic",
-                  subTitle: "VIN: IHGCV2F6JLOOOOOO",
-                  carImagePath: AppImages.carImage,
-                ),
+      child: Obx(() {
+        if (controller.isLoading.value) {
+          return buildShimmerBox();
+        }
+
+        if (controller.dealerVehicles.isEmpty) {
+          return const Center(child: Text("No cars found"));
+        }
+
+        return ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount:
+              controller.dealerVehicles.length > 5
+                  ? 5
+                  : controller.dealerVehicles.length,
+          itemBuilder: (context, index) {
+            final vehicle = controller.dealerVehicles[index];
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DealerMyCarsCard(
+                title: "${vehicle.year ?? ''} ${vehicle.name ?? 'Unknown Car'}",
+                subTitle: vehicle.vin ?? '',
+                carImagePath:
+                    (vehicle.images != null && vehicle.images!.isNotEmpty)
+                        ? vehicle.images!.first
+                        : "https://via.placeholder.com/150",
+                isVerified: vehicle.isVerified == false,
+                onTap: () {
+                  if (vehicle.id != null) {
+                    controller.fetchSingleVehicle(vehicle.id!);
+                    Get.to(() => DealerCarDetailsScreen());
+                  } else {
+                    Get.snackbar("Error", "Owner ID not found");
+                  }
+                },
               ),
-            ),
-      ),
+            );
+          },
+        );
+      }),
     );
   }
 
@@ -183,45 +249,75 @@ class DealerHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _featureCardSection() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
-              cardText: "my_vehicles".tr,
-              icon: AppIcons.carIcon2,
-              number: '12',
-            ),
-            DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
-              cardText: "service_records".tr,
-              icon: AppIcons.check1,
-              number: '23',
-            ),
-          ],
+  Widget _recentSalesVehicle(
+    DealerHomeVehicleController controller,
+    DealerCarController dealerCarController,
+  ) {
+    return SizedBox(
+      child: Obx(() {
+        if (controller.isLoading.value) {
+          return Column(
+            children: [
+              buildShimmerBox(),
+              SizedBox(height: res.hp(20)),
+              buildShimmerBox(),
+              SizedBox(height: res.hp(20)),
+              buildShimmerBox(),
+              SizedBox(height: res.hp(20)),
+            ],
+          );
+        }
+
+        if (controller.recentVehicles.isEmpty) {
+          return const Center(child: Text("No cars found"));
+        }
+
+        return ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: controller.recentVehicles.length,
+          padding: EdgeInsets.zero,
+          itemBuilder: (context, index) {
+            final vehicle = controller.recentVehicles[index];
+
+            return RecentSales(
+              imagePath:
+                  (vehicle.images != null && vehicle.images!.isNotEmpty)
+                      ? vehicle.images!.first
+                      : AppImages.carImage,
+              title: vehicle.name ?? 'Unknown Car',
+              name: vehicle.buyer?.name ?? 'Unknown Buyer',
+              date:
+                  vehicle.sellAt != null
+                      ? vehicle.sellAt!.toIso8601String().split("T").first
+                      : "-",
+              imageBorderRadius: 8,
+              onTap: () {
+                if (vehicle.id != null) {
+                  dealerCarController.fetchSingleVehicle(vehicle.id!);
+                  Get.to(() => const DealerCarDetailsScreen());
+                } else {
+                  Get.snackbar("Error", "Vehicle ID not found");
+                }
+              },
+            );
+          },
+        );
+      }),
+    );
+  }
+
+  Widget buildShimmerBox() {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Container(
+        height: 90,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
         ),
-        SizedBox(height: res.hp(16)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
-              cardText: "my_vehicles".tr,
-              icon: AppIcons.notificationHome,
-              number: '\$455',
-            ),
-            DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
-              cardText: "service_records".tr,
-              icon: AppIcons.dueSoon,
-              number: '3',
-            ),
-          ],
-        ),
-      ],
+      ),
     );
   }
 }

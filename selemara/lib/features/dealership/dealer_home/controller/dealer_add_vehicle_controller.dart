@@ -6,12 +6,15 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/constants/token_key.dart';
 import '../../../../core/constants/api_urls.dart';
+import '../../dealer_cars/controller/dealer_car_controller.dart';
 import '../model/urls_model.dart';
 
 
 
 class DealerAddVehicleController extends GetxController {
   // Text controllers
+  var isLoading = false.obs;
+
   TextEditingController vinController = TextEditingController();
   TextEditingController carNameController = TextEditingController();
   TextEditingController makeController = TextEditingController();
@@ -26,6 +29,8 @@ class DealerAddVehicleController extends GetxController {
 
   RxList<FileUrl> uploadedVehicleFiles = <FileUrl>[].obs;
   RxList<FileUrl> uploadedDocumentFiles = <FileUrl>[].obs;
+
+  DealerCarController controller = Get.find();
 
   /// Add vehicle image
   void addVehicleFile(File file) {
@@ -91,6 +96,7 @@ class DealerAddVehicleController extends GetxController {
 
 
   Future<void> submitVehicle() async {
+    isLoading.value = true;
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(TokenKey.accessToken);
     if (token == null) return;
@@ -138,13 +144,18 @@ class DealerAddVehicleController extends GetxController {
         uploadedDocumentFiles.clear();
 
         super.onClose();
-        // Back করা
+
+        controller.fetchDealerVehicle();
         Get.back();
+
+
       }
 
     } catch (e) {
       print("Error submitting vehicle: $e");
     }
+
+    isLoading.value = false;
   }
 
 

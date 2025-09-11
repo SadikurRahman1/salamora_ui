@@ -14,7 +14,7 @@ class BuyerNavBarItems {
   static final List<Widget> screens = [
     BuyerHomeScreen(),
     BuyerSearchScreen(),
-    BuyerSavedCarScreen(),
+    // BuyerSavedCarScreen(),
     BuyerProfileScreen(),
 
   ];
@@ -22,14 +22,14 @@ class BuyerNavBarItems {
   static final List<String> labels = [
     'home'.tr,
     'search'.tr,
-    'saved'.tr,
+    // 'saved'.tr,
     'profile'.tr,
   ];
 
   static List<Image> get activeIcons => [
     Image.asset(AppIcons.homeActive, height: res.hp(24), width: res.wp(24)),
     Image.asset(AppIcons.genearteActive, height: res.hp(24), width: res.wp(24)),
-    Image.asset(AppIcons.saveActive, height: res.hp(24), width: res.wp(24)),
+    // Image.asset(AppIcons.saveActive, height: res.hp(24), width: res.wp(24)),
     Image.asset(AppIcons.profileActive, height: res.hp(24), width: res.wp(24),),
   ];
 
@@ -40,7 +40,7 @@ class BuyerNavBarItems {
       height: res.hp(24),
       width: res.wp(24),
     ),
-    Image.asset(AppIcons.saveInActive, height: res.hp(24), width: res.wp(24)),
+    // Image.asset(AppIcons.saveInActive, height: res.hp(24), width: res.wp(24)),
     Image.asset(
       AppIcons.profileInactive,
       height: res.hp(24),

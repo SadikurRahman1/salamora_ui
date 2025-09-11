@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:selemara/core/constants/api_urls.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
+
+import '../../../../core/constants/app_images.dart';
 
 class CarImageCard extends StatelessWidget {
   final String imagePath;
@@ -14,7 +17,7 @@ class CarImageCard extends StatelessWidget {
   final String date;
   final String model;
   final VoidCallback onContactTap;
-  final bool isPending;
+  final bool isVerified;
 
   CarImageCard({
     super.key,
@@ -27,7 +30,7 @@ class CarImageCard extends StatelessWidget {
     required this.date,
     required this.model,
     required this.onContactTap,
-    required this.isPending,
+    required this.isVerified,
   });
 
   final res = AppResponsive();
@@ -50,18 +53,37 @@ class CarImageCard extends StatelessWidget {
                   topLeft: Radius.circular(12),
                   topRight: Radius.circular(12),
                 ),
-                child: Image.asset(
-                  imagePath,
+                child: Image.network(
+                  ApiUrls.baseUrlForImage + imagePath,
                   height: res.hp(198),
                   width: double.infinity,
                   fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                            (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                      ),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      AppImages.carImage, // fallback asset image
+                      height: res.hp(198),
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    );
+                  },
                 ),
               ),
               Positioned(
                 top: 12,
                 left: 12,
                 child: Image.asset(
-                  isPending ? AppIcons.pending : AppIcons.verified,
+                  isVerified ? AppIcons.verified : AppIcons.unverified,
                   height: res.hp(28),
                 ),
               ),
@@ -78,12 +100,17 @@ class CarImageCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AppText(
-                      title,
-                      color: AppColors.textColor2A2A,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: AppText(
+                        title,
+                        color: AppColors.textColor2A2A,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
                     ),
+                    SizedBox(width: res.wp(8)),
                     AppText(
                       price,
                       fontSize: 20,
@@ -118,9 +145,9 @@ class CarImageCard extends StatelessWidget {
                 SizedBox(height: res.hp(6)),
 
                 /// Model
-                InfoRow(icon: AppIcons.color, text: model),
+                InfoRow(icon: AppIcons.car1, text: model),
 
-                const SizedBox(height: 24),
+                SizedBox(height: res.hp(24)),
               ],
             ),
           ),
@@ -134,6 +161,7 @@ class CarImageCard extends StatelessWidget {
 class InfoRow extends StatelessWidget {
   final String icon;
   final String text;
+
   const InfoRow({super.key, required this.icon, required this.text});
 
   @override

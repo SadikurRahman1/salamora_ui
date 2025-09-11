@@ -6,6 +6,7 @@ import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../controller/buyer_search_controller.dart';
 import '../widgets/owner_card_widget.dart';
 import 'buyer_ownership_details.dart';
@@ -35,7 +36,7 @@ class BuyerOwnershipHistory extends StatelessWidget {
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
-          return const Center(child: CircularProgressIndicator());
+          return buildShimmerList();
         }
 
         if (controller.ownerHistoryList.isEmpty) {
@@ -107,6 +108,7 @@ class BuyerOwnershipHistory extends StatelessWidget {
                           // /// owner id pas korte hobe.
                           if (owner.owner?.id != null) {
                             controller.ownerDetails(owner.owner!.id!);
+                            Get.to(() => BuyerOwnershipDetails());
                           } else {
                             Get.snackbar("Error", "Owner ID not found");
                           }
@@ -122,4 +124,27 @@ class BuyerOwnershipHistory extends StatelessWidget {
       }),
     );
   }
+  Widget buildShimmerList() {
+    return ListView.builder(
+      itemCount: 10,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return Shimmer.fromColors(
+          baseColor: Colors.grey[300]!,
+          highlightColor: Colors.grey[100]!,
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+            height: 90,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
 }

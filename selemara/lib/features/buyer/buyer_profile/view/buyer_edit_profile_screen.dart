@@ -119,38 +119,8 @@ class BuyerEditProfileScreen extends StatelessWidget {
 
                       SizedBox(height: res.hp(20)),
 
-                      // AppText(
-                      //   "phone_number".tr,
-                      //   color: AppColors.textColor2939,
-                      //   fontWeight: FontWeight.w500,
-                      //   fontSize: 16,
-                      // ),
-                      // SizedBox(height: res.hp(8)),
-                      //
-                      // BuyerCustomTextField(
-                      //   controller: controller.phoneController,
-                      //   hintText: 'phone_number_hint'.tr,
-                      // ),
-                      //
-                      // SizedBox(height: res.hp(20)),
-
-                      // AppText(
-                      //   "address".tr,
-                      //   color: AppColors.textColor2939,
-                      //   fontWeight: FontWeight.w500,
-                      //   fontSize: 16,
-                      // ),
-                      // SizedBox(height: res.hp(8)),
-                      //
-                      // BuyerCustomTextField(
-                      //   controller: controller.addressController,
-                      //   hintText: 'address'.tr,
-                      // ),
-                      //
-                      // SizedBox(height: res.hp(20)),
-
                       AppText(
-                        "bio".tr,
+                        "email".tr,
                         color: AppColors.textColor2939,
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
@@ -158,11 +128,41 @@ class BuyerEditProfileScreen extends StatelessWidget {
                       SizedBox(height: res.hp(8)),
 
                       BuyerCustomTextField(
-                        minLine: 2,
-                        maxLine: 5,
-                        controller: controller.bioController,
-                        hintText: 'enter_your_details'.tr,
+                        controller: controller.emailController,
+                        hintText: "your Email".tr,
                       ),
+                      //
+                      SizedBox(height: res.hp(20)),
+
+                      AppText(
+                        "address".tr,
+                        color: AppColors.textColor2939,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                      SizedBox(height: res.hp(8)),
+
+                      BuyerCustomTextField(
+                        controller: controller.addressController,
+                        hintText: 'address'.tr,
+                      ),
+
+                      SizedBox(height: res.hp(20)),
+
+                      // AppText(
+                      //   "bio".tr,
+                      //   color: AppColors.textColor2939,
+                      //   fontWeight: FontWeight.w500,
+                      //   fontSize: 16,
+                      // ),
+                      // SizedBox(height: res.hp(8)),
+
+                      // BuyerCustomTextField(
+                      //   minLine: 2,
+                      //   maxLine: 5,
+                      //   controller: controller.bioController,
+                      //   hintText: 'enter_your_details'.tr,
+                      // ),
 
 
                       SizedBox(height: res.hp(38)),

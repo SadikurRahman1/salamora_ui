@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:selemara/features/garage/garage_nav_bar/widget/owner_nav_bar_items.dart';
 import '../../../../core/constants/app_responsive.dart';
+import '../widget/dealer_nav_bar_items.dart';
 
 class DealerNavBarController extends GetxController {
   static var res = AppResponsive();
@@ -10,7 +10,7 @@ class DealerNavBarController extends GetxController {
   RxInt get currentIndex => _selectedIndex;
 
   void changeIndex(int index) {
-    if (index >= 0 && index < OwnerNavbarItems.screens.length) {
+    if (index >= 0 && index < DealerNavBarItems.screens.length) {
       _selectedIndex.value = index;
     }
   }
