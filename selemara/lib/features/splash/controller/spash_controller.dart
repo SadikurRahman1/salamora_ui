@@ -26,9 +26,9 @@ class SplashController extends GetxController {
           case 'CAR_OWNER':
             Get.offAllNamed(AppRoutes.ownerNavbarScreen);
             break;
-          // case 'DEALERSHIP':
-          //   Get.offAllNamed(AppRoutes.);
-          //   break;
+          case 'DEALERSHIP':
+            Get.offAllNamed(AppRoutes.dealerNauBarScreen);
+            break;
           case 'GARAGE':
             Get.offAllNamed(AppRoutes.garageNavScreen);
             break;
