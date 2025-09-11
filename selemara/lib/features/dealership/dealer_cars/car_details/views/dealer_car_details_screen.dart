@@ -35,8 +35,6 @@ class DealerCarDetailsScreen extends StatelessWidget {
           if (controller.isLoading.value) {
             return buildSimpleDealerCarShimmer(res);
           }
-
-          // ধরা যাক প্রথম গাড়ি ডিটেইলস দেখাবেন
           final vehicle = controller.singleVehicles.first;
 
           return CustomScrollView(
@@ -45,20 +43,22 @@ class DealerCarDetailsScreen extends StatelessWidget {
 
               SliverToBoxAdapter(
                 child: CarImageCard(
-                  imagePath: vehicle.images.isNotEmpty
-                      ? vehicle.images.first
-                      : AppImages.carImage,
+                  imagePath:
+                      vehicle.images.isNotEmpty
+                          ? vehicle.images.first
+                          : AppImages.carImage,
                   title: "${vehicle.year} ${vehicle.brand} ${vehicle.name}",
                   price: "\$${vehicle.price ?? '0'}",
                   miles: vehicle.currentMileage.toString(),
                   services: '',
                   carColor: vehicle.color,
-                  date: vehicle.createdAt != null
-                      ? vehicle.createdAt!.toString().split(" ").first
-                      : "-",
+                  date:
+                      vehicle.createdAt != null
+                          ? vehicle.createdAt!.toString().split(" ").first
+                          : "-",
                   model: vehicle.vin,
                   onContactTap: () {},
-                  isPending: !vehicle.isSold,
+                  isVerified: vehicle.isVerified,
                 ),
               ),
 
@@ -73,12 +73,23 @@ class DealerCarDetailsScreen extends StatelessWidget {
                         Expanded(
                           child: CustomButton(
                             text: 'sell_vehicle'.tr,
-                            textColor: AppColors.textColor,
+                            textColor:
+                                vehicle.isSold
+                                    ? AppColors.textColor.withAlpha(50)
+                                    : AppColors.textColor,
                             iconPath: AppIcons.car1,
-                            iconColor: AppColors.textColor,
-                            btnColor: AppColors.primaryColor1.withAlpha(40),
+                            iconColor:
+                                vehicle.isSold
+                                    ? AppColors.textColor.withAlpha(50)
+                                    : AppColors.textColor,
+                            btnColor:
+                                vehicle.isSold
+                                    ? AppColors.primaryColor1.withAlpha(8)
+                                    : AppColors.primaryColor1.withAlpha(40),
                             onTap: () {
-                              Get.to(()=>SellVehicleScreen());
+                              if (!vehicle.isSold) {
+                                Get.to(() => SellVehicleScreen());
+                              }
                             },
                           ),
                         ),
@@ -92,7 +103,8 @@ class DealerCarDetailsScreen extends StatelessWidget {
                             btnColor: AppColors.primaryColor1.withAlpha(40),
                             onTap: () {
                               Get.toNamed(
-                                  AppRoutes.dealerCreateInvoiceVehicleWarranty);
+                                AppRoutes.dealerCreateInvoiceVehicleWarranty,
+                              );
                             },
                           ),
                         ),
@@ -109,7 +121,9 @@ class DealerCarDetailsScreen extends StatelessWidget {
                             iconColor: AppColors.textColor,
                             btnColor: AppColors.primaryColor1.withAlpha(40),
                             onTap: () {
-                              Get.toNamed(AppRoutes.dealerCreateVehicleWarranty);
+                              Get.toNamed(
+                                AppRoutes.dealerCreateVehicleWarranty,
+                              );
                             },
                           ),
                         ),
@@ -137,10 +151,6 @@ class DealerCarDetailsScreen extends StatelessWidget {
       ),
     );
   }
-
-
-
-
 
   Widget buildSimpleDealerCarShimmer(AppResponsive res) {
     return Shimmer.fromColors(
@@ -176,17 +186,11 @@ class DealerCarDetailsScreen extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    height: res.hp(50),
-                    color: Colors.white,
-                  ),
+                  child: Container(height: res.hp(50), color: Colors.white),
                 ),
                 SizedBox(width: res.wp(20)),
                 Expanded(
-                  child: Container(
-                    height: res.hp(50),
-                    color: Colors.white,
-                  ),
+                  child: Container(height: res.hp(50), color: Colors.white),
                 ),
               ],
             ),
@@ -194,17 +198,11 @@ class DealerCarDetailsScreen extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    height: res.hp(50),
-                    color: Colors.white,
-                  ),
+                  child: Container(height: res.hp(50), color: Colors.white),
                 ),
                 SizedBox(width: res.wp(20)),
                 Expanded(
-                  child: Container(
-                    height: res.hp(50),
-                    color: Colors.white,
-                  ),
+                  child: Container(height: res.hp(50), color: Colors.white),
                 ),
               ],
             ),
@@ -214,5 +212,4 @@ class DealerCarDetailsScreen extends StatelessWidget {
       ),
     );
   }
-
 }

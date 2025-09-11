@@ -85,11 +85,11 @@ class DealerCarSearchScreen extends StatelessWidget {
 
                 final filteredList =
                     controller.dealerVehicles.where((vehicle) {
-                      final searchText =
-                          controller.carSearchTEController.text.toLowerCase();
-                      final matchesName =
-                          vehicle.name?.toLowerCase().contains(searchText) ??
-                          false;
+                      // final searchText =
+                      //     controller.carSearchTEController.text.toLowerCase();
+                      // final matchesName =
+                      //     vehicle.name?.toLowerCase().contains(searchText) ??
+                      //     false;
                       final matchesStatus =
                           controller.selectStatus.value == "All Status" ||
                           controller.selectStatus.value.isEmpty ||
@@ -97,7 +97,8 @@ class DealerCarSearchScreen extends StatelessWidget {
                               !vehicle.isVerified!) ||
                           (controller.selectStatus.value == "Completed" &&
                               vehicle.isVerified!);
-                      return matchesName && matchesStatus;
+                      return matchesStatus;
+                      // return matchesName && matchesStatus;
                     }).toList();
 
                 if (filteredList.isEmpty) {

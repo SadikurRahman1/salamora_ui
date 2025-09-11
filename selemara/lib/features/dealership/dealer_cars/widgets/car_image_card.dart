@@ -17,7 +17,7 @@ class CarImageCard extends StatelessWidget {
   final String date;
   final String model;
   final VoidCallback onContactTap;
-  final bool isPending;
+  final bool isVerified;
 
   CarImageCard({
     super.key,
@@ -30,7 +30,7 @@ class CarImageCard extends StatelessWidget {
     required this.date,
     required this.model,
     required this.onContactTap,
-    required this.isPending,
+    required this.isVerified,
   });
 
   final res = AppResponsive();
@@ -83,7 +83,7 @@ class CarImageCard extends StatelessWidget {
                 top: 12,
                 left: 12,
                 child: Image.asset(
-                  isPending ? AppIcons.pending : AppIcons.verified,
+                  isVerified ? AppIcons.verified : AppIcons.unverified,
                   height: res.hp(28),
                 ),
               ),

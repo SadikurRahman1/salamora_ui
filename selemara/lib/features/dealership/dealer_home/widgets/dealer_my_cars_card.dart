@@ -67,7 +67,7 @@ class DealerMyCarsCard extends StatelessWidget {
                 top: 12,
                 left: 12,
                 child: Image.asset(
-                  isVerified ? AppIcons.pending : AppIcons.verified,
+                  isVerified ? AppIcons.unverified : AppIcons.verified,
                   height: res.hp(16),
                 ),
               ),

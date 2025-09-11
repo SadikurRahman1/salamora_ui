@@ -18,7 +18,7 @@ class DealerNavBarBinding extends Bindings {
     Get.lazyPut(()=>BuyerProfileController());
     Get.lazyPut(()=>DealerAddVehicleController());
     Get.lazyPut(()=>DealerRequestServiceController(), fenix: true);
-    Get.lazyPut(()=>DealerServiceHistoryController());
+    Get.lazyPut(()=>DealerServiceHistoryController(), fenix: true);
     Get.lazyPut(()=>VehicleWarrantyController());
     Get.lazyPut(()=>CreateVehicleInvoiceWarrantyController());
     Get.lazyPut(()=>DealerCarController());

@@ -86,7 +86,7 @@ class DealerHomeScreen extends StatelessWidget {
                       color: AppColors.primaryColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
-                    ).onTap((){
+                    ).onTap(() {
                       final navController = Get.find<DealerNavBarController>();
                       navController.changeIndex(1);
                     }),
@@ -115,9 +115,14 @@ class DealerHomeScreen extends StatelessWidget {
                     // ),
                   ],
                 ),
-                // SizedBox(height: res.hp(10)),
+                SizedBox(height: res.hp(10)),
 
-                _recentSalesVehicle(dealerHomeVehicleController, dealerCarController),
+                _recentSalesVehicle(
+                  dealerHomeVehicleController,
+                  dealerCarController,
+                ),
+
+                SizedBox(height: res.hp(30)),
               ]),
             ),
           ),
@@ -125,8 +130,6 @@ class DealerHomeScreen extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _featureCardSection() {
     return Column(
@@ -185,7 +188,10 @@ class DealerHomeScreen extends StatelessWidget {
         return ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemCount: min(controller.dealerVehicles.length, 5),
+          itemCount:
+              controller.dealerVehicles.length > 5
+                  ? 5
+                  : controller.dealerVehicles.length,
           itemBuilder: (context, index) {
             final vehicle = controller.dealerVehicles[index];
             return Padding(
@@ -197,7 +203,7 @@ class DealerHomeScreen extends StatelessWidget {
                     (vehicle.images != null && vehicle.images!.isNotEmpty)
                         ? vehicle.images!.first
                         : "https://via.placeholder.com/150",
-                isVerified: vehicle.isVerified==false,
+                isVerified: vehicle.isVerified == false,
                 onTap: () {
                   if (vehicle.id != null) {
                     controller.fetchSingleVehicle(vehicle.id!);
@@ -243,7 +249,10 @@ class DealerHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _recentSalesVehicle(DealerHomeVehicleController controller, DealerCarController dealerCarController) {
+  Widget _recentSalesVehicle(
+    DealerHomeVehicleController controller,
+    DealerCarController dealerCarController,
+  ) {
     return SizedBox(
       child: Obx(() {
         if (controller.isLoading.value) {
@@ -255,7 +264,6 @@ class DealerHomeScreen extends StatelessWidget {
               SizedBox(height: res.hp(20)),
               buildShimmerBox(),
               SizedBox(height: res.hp(20)),
-
             ],
           );
         }
@@ -266,27 +274,30 @@ class DealerHomeScreen extends StatelessWidget {
 
         return ListView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: min(controller.recentVehicles.length, 5),
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: controller.recentVehicles.length,
+          padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
             final vehicle = controller.recentVehicles[index];
+
             return RecentSales(
               imagePath:
-              (vehicle.images != null && vehicle.images!.isNotEmpty)
-                  ? vehicle.images!.first
-                  : AppImages.carImage,
+                  (vehicle.images != null && vehicle.images!.isNotEmpty)
+                      ? vehicle.images!.first
+                      : AppImages.carImage,
               title: vehicle.name ?? 'Unknown Car',
-              name:  vehicle.buyer?.name ?? 'Unknown Buyer',
-              date: vehicle.sellAt != null
-                  ? vehicle.sellAt!.toString().split(" ").first
-                  : "-",
+              name: vehicle.buyer?.name ?? 'Unknown Buyer',
+              date:
+                  vehicle.sellAt != null
+                      ? vehicle.sellAt!.toIso8601String().split("T").first
+                      : "-",
               imageBorderRadius: 8,
               onTap: () {
                 if (vehicle.id != null) {
                   dealerCarController.fetchSingleVehicle(vehicle.id!);
-                  Get.to(() => DealerCarDetailsScreen());
+                  Get.to(() => const DealerCarDetailsScreen());
                 } else {
-                  Get.snackbar("Error", "Owner ID not found");
+                  Get.snackbar("Error", "Vehicle ID not found");
                 }
               },
             );
