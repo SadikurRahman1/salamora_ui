@@ -107,12 +107,12 @@ class DealerHomeScreen extends StatelessWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
-                    AppText(
-                      "view_all".tr,
-                      color: AppColors.primaryColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    // AppText(
+                    //   "view_all".tr,
+                    //   color: AppColors.primaryColor,
+                    //   fontSize: 12,
+                    //   fontWeight: FontWeight.w600,
+                    // ),
                   ],
                 ),
                 // SizedBox(height: res.hp(10)),

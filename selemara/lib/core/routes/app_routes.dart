@@ -37,7 +37,7 @@ class AppRoutes {
   static const buyerServiceHistoryDetailsScreen = '/buyerServiceHistoryDetailsScreen';
 
 
-  static const dealerNauBarScreen = '/dealerNauBarScreen';
+  static const dealerNavBarScreen = '/dealerNauBarScreen';
   static const dealerHomeScreen = '/dealerHomeScreen';
   static const dealerAddVehicleScreen = '/dealerAddVehicleScreen';
   static const dealerRequestServiceScreen = '/dealerRequestServiceScreen';
