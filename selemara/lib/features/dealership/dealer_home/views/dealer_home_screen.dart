@@ -136,13 +136,13 @@ class DealerHomeScreen extends StatelessWidget {
           children: [
             DealerFeatureCard(
               sideColor: AppColors.primaryColor1,
-              cardText: "my_vehicles".tr,
+              cardText: "Total Inventory".tr,
               icon: AppIcons.carIcon2,
               number: '9',
             ),
             DealerFeatureCard(
               sideColor: AppColors.primaryColor1,
-              cardText: "service_records".tr,
+              cardText: "Monthly Sales".tr,
               icon: AppIcons.check1,
               number: '23',
             ),
@@ -154,13 +154,13 @@ class DealerHomeScreen extends StatelessWidget {
           children: [
             DealerFeatureCard(
               sideColor: AppColors.primaryColor1,
-              cardText: "my_vehicles".tr,
+              cardText: "Revenue".tr,
               icon: AppIcons.notificationHome,
               number: '\$455',
             ),
             DealerFeatureCard(
               sideColor: AppColors.primaryColor1,
-              cardText: "service_records".tr,
+              cardText: "Available Car".tr,
               icon: AppIcons.dueSoon,
               number: '3',
             ),
