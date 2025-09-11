@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/token_key.dart';
 import 'package:selemara/core/helper/shared_preferences_helper.dart';
@@ -17,6 +18,7 @@ class SplashController extends GetxController {
   Future<void> _goToNextPage() async {
     Timer(const Duration(seconds: 2), () async {
       final role = _prefsHelper.getString(TokenKey.role);
+      debugPrint("roledaskdjksdj: $role");
 
       if (role != null && role.isNotEmpty) {
         switch (role) {

@@ -84,8 +84,9 @@ class AuthController extends GetxController {
         body: loginBody,
       );
 
-      if (response.isSuccess && response.data != null) {
+      if (response.isSuccess) {
         final data = response.data['data'];
+        debugPrint(data.toString());
 
         await _saveLoginData(data);
 
@@ -113,6 +114,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> _saveLoginData(Map<String, dynamic> data) async {
+    debugPrint("data${data.toString()}");
     await _prefsHelper.setString(TokenKey.accessToken, data['accessToken']);
     await _prefsHelper.setString(TokenKey.userId, data['id']);
     // await _prefsHelper.setString(TokenKey.name, data['name']);
@@ -181,7 +183,7 @@ class AuthController extends GetxController {
         Get.offAllNamed(AppRoutes.garageNavScreen);
         break;
       case 'DEALERSHIP':
-        Get.offAllNamed('/dealershipHome');
+        Get.offAllNamed(AppRoutes.dealerNauBarScreen);
         break;
       case 'BUYER':
         Get.offAllNamed(AppRoutes.buyerNavScreen);
