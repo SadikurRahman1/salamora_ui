@@ -22,7 +22,7 @@ class BuyerEditProfileController extends GetxController {
     super.onInit();
     nameController.text = controller.userData.value?.name ?? "";
     emailController.text = controller.userData.value?.email ?? "";
-    // addressController.text = controller.userData.value? ?? "";
+
   }
 
   Future<void> updateProfile() async {
