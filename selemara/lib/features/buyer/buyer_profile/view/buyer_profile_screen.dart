@@ -81,13 +81,11 @@ class BuyerProfileScreen extends StatelessWidget {
                       ],
                     ),
 
-                    Obx(
-                      ()=> AppText(
-                        controller.userData.value?.name ?? "No Name",
-                        fontSize: res.sp(20),
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.primaryTextColor,
-                      ),
+                    AppText(
+                      "John Smith",
+                      fontSize: res.sp(20),
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primaryTextColor,
                     ),
                   ],
                 ),

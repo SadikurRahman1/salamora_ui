@@ -7,6 +7,9 @@ import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/background_gradient.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 import 'package:selemara/features/auth/controller/auth_controller.dart';
+import 'package:selemara/features/auth/views/reset_password_screen.dart';
+
+import '../../../core/routes/app_routes.dart';
 
 class VerifyCodeScreen extends StatelessWidget {
   final String phoneNumber;
@@ -129,14 +132,9 @@ class VerifyCodeScreen extends StatelessWidget {
                     SizedBox(height: res.hp(25)),
                     CustomButton(
                       text: 'submit'.tr,
-                      onTap: () async {
-                        if (formKey.currentState!.validate()) {
-                          await authController.verifyPhone(
-                            otp: authController.otpTEController.text,
-                            isPasswordReset: isPasswordReset,
-                          );
-                        }
-                        // Get.toNamed(AppRoutes.resetPassword);
+                      onTap: ()  {
+
+                        Get.to(()=>ResetPasswordScreen(phoneNumber: '0',));
                       },
                     ),
                     SizedBox(height: res.hp(20)),

@@ -30,29 +30,29 @@ class BuyerProfileController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchUserProfile();
+
   }
 
-  Future<void> refreshProfile() async {
-    await fetchUserProfile();
-  }
-
-  Future<void> fetchUserProfile() async {
-    isLoading.value = true;
-
-    ResponseData responseData = await NetworkCaller().getRequest(
-      ApiUrls.getProfile,
-    );
-
-    if (responseData.isSuccess && responseData.data != null) {
-      final Map<String, dynamic> data = responseData.data["data"];
-      userData.value = UserDataModel.fromJson(data);
-    } else {
-      Get.snackbar("Error", responseData.message ?? "Failed to fetch profile");
-    }
-
-    isLoading.value = false;
-  }
+  // Future<void> refreshProfile() async {
+  //   await fetchUserProfile();
+  // }
+  //
+  // Future<void> fetchUserProfile() async {
+  //   isLoading.value = true;
+  //
+  //   ResponseData responseData = await NetworkCaller().getRequest(
+  //     ApiUrls.getProfile,
+  //   );
+  //
+  //   if (responseData.isSuccess && responseData.data != null) {
+  //     final Map<String, dynamic> data = responseData.data["data"];
+  //     userData.value = UserDataModel.fromJson(data);
+  //   } else {
+  //     Get.snackbar("Error", responseData.message ?? "Failed to fetch profile");
+  //   }
+  //
+  //   isLoading.value = false;
+  // }
 
 
 

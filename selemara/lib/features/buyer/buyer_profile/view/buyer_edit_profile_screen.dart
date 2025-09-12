@@ -149,20 +149,6 @@ class BuyerEditProfileScreen extends StatelessWidget {
 
                       SizedBox(height: res.hp(20)),
 
-                      // AppText(
-                      //   "bio".tr,
-                      //   color: AppColors.textColor2939,
-                      //   fontWeight: FontWeight.w500,
-                      //   fontSize: 16,
-                      // ),
-                      // SizedBox(height: res.hp(8)),
-
-                      // BuyerCustomTextField(
-                      //   minLine: 2,
-                      //   maxLine: 5,
-                      //   controller: controller.bioController,
-                      //   hintText: 'enter_your_details'.tr,
-                      // ),
 
 
                       SizedBox(height: res.hp(38)),
@@ -175,16 +161,10 @@ class BuyerEditProfileScreen extends StatelessWidget {
               ),
             ),
 
-            Obx(
-                  () => CustomButton(
-                isLoading: controller.isLoading.value,
-                text: "update_profile".tr,
-                onTap: () async {
-                  if (_formKey.currentState!.validate()) {
-                    await controller.updateProfile();
-                  }
-                },
-              ),
+            CustomButton(
+              isLoading: controller.isLoading.value,
+              text: "update_profile".tr,
+              onTap: ()  {},
             ),
             SizedBox(height: res.hp(24)),
           ],

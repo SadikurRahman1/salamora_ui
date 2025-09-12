@@ -9,6 +9,8 @@ import 'package:selemara/core/widgets/custom_button.dart';
 import 'package:selemara/core/widgets/custom_text_form_field.dart';
 import 'package:selemara/features/auth/controller/auth_controller.dart';
 
+import '../../../core/routes/app_routes.dart';
+
 class ResetPasswordScreen extends StatelessWidget {
   final String phoneNumber;
   const ResetPasswordScreen({super.key, required this.phoneNumber});
@@ -79,25 +81,8 @@ class ResetPasswordScreen extends StatelessWidget {
                     SizedBox(height: res.hp(80)),
                     CustomButton(
                       text: 'submit'.tr,
-                      onTap: () async {
-                        if (formKey.currentState!.validate()) {
-                          if (authController.passwordTEController.text !=
-                              authController.confirmPTEController.text) {
-                            Get.snackbar(
-                              "Password Mismatch",
-                              "New password and confirm password do not match.",
-                              snackPosition: SnackPosition.BOTTOM,
-                            );
-
-                            return;
-                          }
-                          await authController.resetPassword(
-                            phoneNumber,
-                            authController.passwordTEController.text,
-                          );
-
-                          // Get.toNamed(AppRoutes.login);
-                        }
+                      onTap: ()  {
+                          Get.toNamed(AppRoutes.login);
                       },
                     ),
                     SizedBox(height: res.hp(20)),

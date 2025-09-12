@@ -18,7 +18,10 @@ class BuyerOwnershipHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BuyerSearchController controller = Get.put(BuyerSearchController(), permanent: true);
+    BuyerSearchController controller = Get.put(
+      BuyerSearchController(),
+      permanent: true,
+    );
 
     return Scaffold(
       appBar: CustomAppBar(
@@ -34,96 +37,109 @@ class BuyerOwnershipHistory extends StatelessWidget {
           ),
         ),
       ),
-      body: Obx(() {
-        if (controller.isLoading.value) {
-          return buildShimmerList();
-        }
+      body: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate([
+                SizedBox(height: res.hp(12)),
 
-        if (controller.ownerHistoryList.isEmpty) {
-          return Center(
-            child: AppText(
-              "No ownership history found",
-              color: AppColors.textColor,
-              fontSize: 14,
-            ),
-          );
-        }
-
-        return CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate([
-                  SizedBox(height: res.hp(12)),
-
-                  /// Header Row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(AppIcons.multipleUser,
-                              color: Colors.blue, width: 16),
-                          SizedBox(width: res.wp(12)),
-                          AppText(
-                            "ownership_history".tr,
-                            color: AppColors.textColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: Colors.black12,
-                          borderRadius: BorderRadius.circular(20),
+                /// Header Row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(
+                          AppIcons.multipleUser,
+                          color: Colors.blue,
+                          width: 16,
                         ),
-                        child: AppText(
-                          "${controller.ownerHistoryList.length} ${'owners'.tr}",
+                        SizedBox(width: res.wp(12)),
+                        AppText(
+                          "ownership_history".tr,
                           color: AppColors.textColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
+                      ],
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
                       ),
-                    ],
-                  ),
+                      decoration: BoxDecoration(
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: AppText(
+                        "3 ${'owners'.tr}",
+                        color: AppColors.textColor,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
 
-                  SizedBox(height: res.hp(12)),
+                SizedBox(height: res.hp(12)),
 
-                  /// Owner List
-                  Column(
-                    children: controller.ownerHistoryList.map((owner) {
-                      return OwnerCard(
-                        name: owner.owner?.name ?? "Unknown",
-                        date: owner.createdAt != null
-                            ? owner.createdAt!.toLocal().toString().split(' ')[0]
-                            : "N/A",
-                        miles: "${owner.currentMileage ?? 0} miles",
-                        status: owner.isCurrentOwner == true ? "current_owner".tr : "first_owner".tr,
-                        isCurrent: owner.isCurrentOwner == true ? true : false,
-                        ontap: () {
-                          // Get.to(() => BuyerOwnershipDetails());
-                          // /// owner id pas korte hobe.
-                          if (owner.owner?.id != null) {
-                            controller.ownerDetails(owner.owner!.id!);
-                            Get.to(() => BuyerOwnershipDetails());
-                          } else {
-                            Get.snackbar("Error", "Owner ID not found");
-                          }
-                        },
-                      );
-                    }).toList(),
-                  )
-                ]),
-              ),
+                /// Owner List
+                Column(
+                  children: [
+                    OwnerCard(
+                      name: "John Smith",
+                      date: "1/15/2024",
+                      miles: "45,000 miles",
+                      status: "Current Owner".tr,
+                      isCurrent: true,
+                      ontap: () {
+                        Get.to(() => BuyerOwnershipDetails());
+                      },
+                    ),
+
+                    OwnerCard(
+                      name: "John Smith",
+                      date: "1/15/2024",
+                      miles: "45,000 miles",
+                      status: "first_owner".tr,
+                      isCurrent: false,
+                      ontap: () {
+                        Get.to(() => BuyerOwnershipDetails());
+                      },
+                    ),
+                    OwnerCard(
+                      name: "John Smith",
+                      date: "1/15/2024",
+                      miles: "45,000 miles",
+                      status: "first_owner".tr,
+                      isCurrent: false,
+                      ontap: () {
+                        Get.to(() => BuyerOwnershipDetails());
+                      },
+                    ),
+                    OwnerCard(
+                      name: "John Smith",
+                      date: "1/15/2024",
+                      miles: "45,000 miles",
+                      status: "first_owner".tr,
+                      isCurrent: false,
+                      ontap: () {
+                        Get.to(() => BuyerOwnershipDetails());
+                      },
+                    ),
+                  ],
+                ),
+              ]),
             ),
-          ],
-        );
-      }),
+          ),
+        ],
+      ),
     );
   }
+
   Widget buildShimmerList() {
     return ListView.builder(
       itemCount: 10,
@@ -146,5 +162,4 @@ class BuyerOwnershipHistory extends StatelessWidget {
       },
     );
   }
-
 }

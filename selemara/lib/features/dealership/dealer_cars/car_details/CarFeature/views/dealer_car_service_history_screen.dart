@@ -21,7 +21,7 @@ class DealerCarServiceHistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DealerCarController controller = Get.find<DealerCarController>();
+
     final res = AppResponsive();
 
     return Scaffold(
@@ -32,79 +32,66 @@ class DealerCarServiceHistoryScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: res.wp(24)),
-        child: Obx(() {
-          if (controller.isLoading.value) {
-            return buildSimpleDealerCarShimmer(res);
-          }
-          final vehicle = controller.singleVehicles.first;
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
 
-          return CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
-
-              SliverToBoxAdapter(
-                child: CarImageCard(
-                  imagePath:
-                  vehicle.images.isNotEmpty
-                      ? vehicle.images.first
-                      : AppImages.carImage,
-                  title: "${vehicle.year} ${vehicle.brand} ${vehicle.name}",
-                  price: "\$${vehicle.price ?? '0'}",
-                  miles: vehicle.currentMileage.toString(),
-                  services: '',
-                  carColor: vehicle.color,
-                  date:
-                  vehicle.createdAt != null
-                      ? vehicle.createdAt!.toString().split(" ").first
-                      : "-",
-                  model: vehicle.vin,
-                  onContactTap: () {},
-                  isVerified: vehicle.isVerified,
-                ),
+            SliverToBoxAdapter(
+              child: CarImageCard(
+                imagePath: AppImages.carImage,
+                title: "2020 Toyota Camry",
+                price: "23465",
+                miles: "3733",
+                services: '9',
+                carColor: "Black",
+                date: "1/15/2024",
+                model: "Toyta",
+                onContactTap: () {},
+                isVerified: false,
               ),
+            ),
 
-              SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
 
 
-          SliverToBoxAdapter(
-                child: AppText(
-                  "service_history".tr,
-                  color: AppColors.textColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+            SliverToBoxAdapter(
+              child: AppText(
+                "service_history".tr,
+                color: AppColors.textColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
+            ),
 
-              // নিচে আপনার বাটন গুলো থাকবে
-              SliverToBoxAdapter(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return BuyerHistoryCardWidget(
-                      color: (index % 2 == 0) ? true : false,
-                      title: "Oil Change & Fitter",
-                      date: "6/15/2025",
-                      serviceCenter: "Al Futtaim Service Center",
-                      statusLabel: "Warranty",
-                      invoiceLabel: "Invoice",
-                      onTapOilChange: () {
-                        _showBeautifulBottomSheet(context);
-                      },
-                      onTapWarranty: () {
+            // নিচে আপনার বাটন গুলো থাকবে
+            SliverToBoxAdapter(
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return BuyerHistoryCardWidget(
+                    color: (index % 2 == 0) ? true : false,
+                    title: "Oil Change & Fitter",
+                    date: "6/15/2025",
+                    serviceCenter: "Al Futtaim Service Center",
+                    statusLabel: "Warranty",
+                    invoiceLabel: "Invoice",
+                    onTapOilChange: () {
+                      _showBeautifulBottomSheet(context);
+                    },
+                    onTapWarranty: () {
 
-                      },
-                      onTapInvoice: () {},
-                    );
-                  },
-                ),
+                    },
+                    onTapInvoice: () {},
+                  );
+                },
               ),
-              SliverToBoxAdapter(child: SizedBox(height: res.wp(62))),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: res.wp(62))),
 
-            ],
-          );
-        }),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},

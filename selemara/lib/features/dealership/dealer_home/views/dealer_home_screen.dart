@@ -30,9 +30,7 @@ class DealerHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<BuyerProfileController>();
-    final dealerHomeVehicleController = Get.find<DealerHomeVehicleController>();
-    final dealerCarController = Get.find<DealerCarController>();
+
 
     return Scaffold(
       body: CustomScrollView(
@@ -43,15 +41,13 @@ class DealerHomeScreen extends StatelessWidget {
             elevation: 0,
             automaticallyImplyLeading: false,
             toolbarHeight: res.hp(50),
-            title: Obx(
-              () => HomeHeader(
-                name: controller.userData.value?.name ?? "",
-                type: "dealership".tr,
-                imagePath: AppImages.userProfile,
-                notificationIconPath: AppIcons.notificationIconImage,
-                imageSize: res.wp(40),
-                iconSize: res.wp(30),
-              ),
+            title:HomeHeader(
+              name: "john ",
+              type: "dealership".tr,
+              imagePath: AppImages.userProfile,
+              notificationIconPath: AppIcons.notificationIconImage,
+              imageSize: res.wp(40),
+              iconSize: res.wp(30),
             ),
           ),
 
@@ -94,7 +90,7 @@ class DealerHomeScreen extends StatelessWidget {
                 ),
                 SizedBox(height: res.hp(20)),
 
-                _horizontalCarSection(dealerCarController),
+                _horizontalCarSection(),
 
                 SizedBox(height: res.hp(30)),
 
@@ -107,20 +103,17 @@ class DealerHomeScreen extends StatelessWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
-                    // AppText(
-                    //   "view_all".tr,
-                    //   color: AppColors.primaryColor,
-                    //   fontSize: 12,
-                    //   fontWeight: FontWeight.w600,
-                    // ),
+                    AppText(
+                      "view_all".tr,
+                      color: AppColors.primaryColor,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ],
                 ),
                 SizedBox(height: res.hp(10)),
 
-                _recentSalesVehicle(
-                  dealerHomeVehicleController,
-                  dealerCarController,
-                ),
+                _recentSalesVehicle(),
 
                 SizedBox(height: res.hp(30)),
               ]),
@@ -173,50 +166,28 @@ class DealerHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _horizontalCarSection(DealerCarController controller) {
+  Widget _horizontalCarSection() {
     return SizedBox(
       height: 200,
-      child: Obx(() {
-        if (controller.isLoading.value) {
-          return buildShimmerBox();
-        }
-
-        if (controller.dealerVehicles.isEmpty) {
-          return const Center(child: Text("No cars found"));
-        }
-
-        return ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount:
-              controller.dealerVehicles.length > 5
-                  ? 5
-                  : controller.dealerVehicles.length,
-          itemBuilder: (context, index) {
-            final vehicle = controller.dealerVehicles[index];
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: DealerMyCarsCard(
-                title: "${vehicle.year ?? ''} ${vehicle.name ?? 'Unknown Car'}",
-                subTitle: vehicle.vin ?? '',
-                carImagePath:
-                    (vehicle.images != null && vehicle.images!.isNotEmpty)
-                        ? vehicle.images!.first
-                        : "https://via.placeholder.com/150",
-                isVerified: vehicle.isVerified == false,
-                onTap: () {
-                  if (vehicle.id != null) {
-                    controller.fetchSingleVehicle(vehicle.id!);
-                    Get.to(() => DealerCarDetailsScreen());
-                  } else {
-                    Get.snackbar("Error", "Owner ID not found");
-                  }
-                },
-              ),
-            );
-          },
-        );
-      }),
+      child:ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DealerMyCarsCard(
+              title: "2021 Honda Accord",
+              subTitle:'IHGCV2F6JLOOOOOO',
+              carImagePath: AppImages.carImage,
+              isVerified: false,
+              onTap: () {
+                Get.to(() => DealerCarDetailsScreen());
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -249,61 +220,27 @@ class DealerHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _recentSalesVehicle(
-    DealerHomeVehicleController controller,
-    DealerCarController dealerCarController,
-  ) {
+  Widget _recentSalesVehicle() {
     return SizedBox(
-      child: Obx(() {
-        if (controller.isLoading.value) {
-          return Column(
-            children: [
-              buildShimmerBox(),
-              SizedBox(height: res.hp(20)),
-              buildShimmerBox(),
-              SizedBox(height: res.hp(20)),
-              buildShimmerBox(),
-              SizedBox(height: res.hp(20)),
-            ],
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: 4,
+        padding: EdgeInsets.zero,
+        itemBuilder: (context, index) {
+
+          return RecentSales(
+            imagePath: AppImages.carImage,
+            title: '2020 Toyota Camry',
+            name: 'Ahmed Al Mansouri',
+            date: "1/15/2024",
+            imageBorderRadius: 8,
+            onTap: () {
+                Get.to(() => const DealerCarDetailsScreen());
+            },
           );
-        }
-
-        if (controller.recentVehicles.isEmpty) {
-          return const Center(child: Text("No cars found"));
-        }
-
-        return ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: controller.recentVehicles.length,
-          padding: EdgeInsets.zero,
-          itemBuilder: (context, index) {
-            final vehicle = controller.recentVehicles[index];
-
-            return RecentSales(
-              imagePath:
-                  (vehicle.images != null && vehicle.images!.isNotEmpty)
-                      ? vehicle.images!.first
-                      : AppImages.carImage,
-              title: vehicle.name ?? 'Unknown Car',
-              name: vehicle.buyer?.name ?? 'Unknown Buyer',
-              date:
-                  vehicle.sellAt != null
-                      ? vehicle.sellAt!.toIso8601String().split("T").first
-                      : "-",
-              imageBorderRadius: 8,
-              onTap: () {
-                if (vehicle.id != null) {
-                  dealerCarController.fetchSingleVehicle(vehicle.id!);
-                  Get.to(() => const DealerCarDetailsScreen());
-                } else {
-                  Get.snackbar("Error", "Vehicle ID not found");
-                }
-              },
-            );
-          },
-        );
-      }),
+        },
+      ),
     );
   }
 

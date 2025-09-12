@@ -51,8 +51,8 @@ class RecentSales extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(imageBorderRadius),
-              child: Image.network(
-                ApiUrls.baseUrlForImage + imagePath,
+              child: Image.asset(
+                imagePath,
                 width: res.wp(80),
                 height: res.wp(72),
                 fit: BoxFit.cover,

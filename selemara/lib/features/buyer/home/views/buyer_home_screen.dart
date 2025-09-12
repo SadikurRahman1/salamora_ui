@@ -19,7 +19,7 @@ class BuyerHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<BuyerProfileController>();
+
     return Scaffold(
       body:  CustomScrollView(
           slivers: [
@@ -29,9 +29,8 @@ class BuyerHomeScreen extends StatelessWidget {
               elevation: 0,
               automaticallyImplyLeading: false,
               toolbarHeight: res.hp(50),
-              title: Obx(
-                ()=> HomeHeader(
-                  name: controller.userData.value?.name ?? "",
+              title:HomeHeader(
+                  name: "John Smith",
                   type: "buyer".tr,
                   imagePath: AppImages.userProfile,
                   notificationIconPath: AppIcons.notificationIconImage,
@@ -39,7 +38,6 @@ class BuyerHomeScreen extends StatelessWidget {
                   iconSize: res.wp(30),
                 ),
               ),
-            ),
 
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: res.wp(16)),

@@ -15,8 +15,6 @@ class BuyerServiceHistoryDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // BuyerServiceHistoryController controller =Get.find<BuyerServiceHistoryController>();
-
     return Scaffold(
       appBar: CustomAppBar(
         title: "service_history_details".tr,

@@ -42,8 +42,8 @@ class DealerMyCarsCard extends StatelessWidget {
                       width: 213,
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    ApiUrls.baseUrlForImage + carImagePath,
+                  child: Image.asset(
+                    carImagePath,
                     width: res.wp(80),
                     height: res.wp(72),
                     fit: BoxFit.cover,

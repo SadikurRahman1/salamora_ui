@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     final AuthController authController = Get.find<AuthController>();
     final res = AppResponsive();
     return Scaffold(
@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: res.hp(80)),
               Form(
-                key: _formKey,
+                key: formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -85,11 +85,6 @@ class LoginScreen extends StatelessWidget {
                                 side: BorderSide(color: AppColors.primaryColor),
                                 activeColor: AppColors.primaryColor,
                                 checkColor: AppColors.whitColor,
-                                // fillColor: WidgetStateProperty.all<Color>(
-                                //   Colors.white,
-                                // ),
-                                // focusColor:AppColors.primaryColor ,
-                                // overlayColor: MaterialStateProperty.all(AppColors.primaryColor),
                                 value: authController.rememberMe.value,
                                 onChanged: (value) {
                                   authController.toggleRememberMe();
@@ -117,19 +112,33 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: res.hp(80)),
-                    Obx(
-                      () => CustomButton(
-                        isLoading: authController.isLoading.value,
-                        text: 'login'.tr,
-                        onTap: () async {
-                          if (_formKey.currentState!.validate()) {
-                            await authController.login();
-                          }
-                        },
-                      ),
+                    SizedBox(height: res.hp(30)),
+                    AppText(
+                      'Only For Testing Button'.tr,
+                      color: AppColors.textColor,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
                     ),
                     SizedBox(height: res.hp(20)),
+
+                    CustomButton(
+                      isLoading: authController.isLoading.value,
+                      text: 'Login Buyer'.tr,
+                      onTap: ()  {
+                        Get.offAllNamed(AppRoutes.buyerNavScreen);
+                      },
+                    ),
+                    SizedBox(height: res.hp(20)),
+
+                    CustomButton(
+                      isLoading: authController.isLoading.value,
+                      text: 'Login Dealership'.tr,
+                      onTap: ()  {
+                       Get.offAllNamed(AppRoutes.dealerNavBarScreen);
+                      },
+                    ),
+                    SizedBox(height: res.hp(20)),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

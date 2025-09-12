@@ -274,10 +274,6 @@ class DealerAddVehicleScreen extends StatelessWidget {
                         text: "add_vehicle".tr, // Add Vehicle
                         isLoading: controller.isLoading.value,
                         onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            controller.submitVehicle();
-                          }
-
                         },
                       ),
                     ),

@@ -202,27 +202,12 @@ class RegisterScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: res.hp(30)),
-                      Obx(
-                        () => CustomButton(
-                          text: 'register_account'.tr,
-                          isLoading: authController.isLoading.value,
-                          onTap: () {
-                            // Get.offAllNamed(AppRoutes.garageNavScreen);
-                            if (formKey.currentState!.validate()) {
-                              if (authController.passwordTEController.text !=
-                                  authController.confirmPTEController.text) {
-                                Get.snackbar(
-                                  "Password Mismatch",
-                                  "New password and confirm password do not match.",
-                                  snackPosition: SnackPosition.BOTTOM,
-                                );
+                      CustomButton(
+                        text: 'register_account'.tr,
+                        isLoading: authController.isLoading.value,
+                        onTap: () {
 
-                                return;
-                              }
-                              authController.signUp();
-                            }
-                          },
-                        ),
+                        },
                       ),
                       SizedBox(height: res.hp(10)),
                       Row(

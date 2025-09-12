@@ -80,16 +80,10 @@ class BuyerChangePasswordScreen extends StatelessWidget {
                       ),
                       SizedBox(height: res.hp(24)),
 
-                      Obx(
-                        () => CustomButton(
-                          isLoading: controller.isLoading.value,
-                          text: "update_password".tr,
-                          onTap: () async {
-                            if (_formKey.currentState!.validate()) {
-                              await controller.matchPassword();
-                            }
-                          },
-                        ),
+                      CustomButton(
+                        isLoading: controller.isLoading.value,
+                        text: "update_password".tr,
+                        onTap: ()  {},
                       ),
                     ],
                   ),

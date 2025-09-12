@@ -9,6 +9,7 @@ import 'package:selemara/core/widgets/background_gradient.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 import 'package:selemara/core/widgets/custom_text_form_field.dart';
 import 'package:selemara/features/auth/controller/auth_controller.dart';
+import 'package:selemara/features/auth/views/verify_code_screen.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
@@ -66,17 +67,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                     CustomButton(
                       text: 'continue'.tr,
                       onTap: () {
-                        if (formKey.currentState!.validate()) {
-                          Get.toNamed(
-                            AppRoutes.verify,
-                            arguments: {
-                              'phoneNumber':
-                                  authController.phoneNumberTEController.text
-                                      .trim(),
-                              'isPasswordReset': true,
-                            },
-                          );
-                        }
+                        Get.to(()=> VerifyCodeScreen(phoneNumber: '0',));
                       },
                     ),
                     SizedBox(height: res.hp(20)),

@@ -25,36 +25,6 @@ class BuyerEditProfileController extends GetxController {
 
   }
 
-  Future<void> updateProfile() async {
-    isLoading.value = true;
-
-    try {
-      final updateProfileBody = {
-        "name": nameController.text,
-        "email": emailController.text,
-        "location": addressController.text,
-
-      };
-
-      ResponseData responseData = await NetworkCaller().putRequest(
-        url: ApiUrls.updateProfile,
-        body: updateProfileBody,
-      );
-
-      if (responseData.isSuccess) {
-        controller.fetchUserProfile();
-        Get.back();
-        Get.snackbar("Success", "Profile update successfully!");
-        clear();
-      } else {
-        Get.snackbar("Failed", responseData.message ?? "Invalid credentials");
-      }
-
-      isLoading.value = false;
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
 
   @override
   void dispose() {

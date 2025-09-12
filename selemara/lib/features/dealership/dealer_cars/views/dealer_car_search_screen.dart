@@ -59,8 +59,6 @@ class DealerCarSearchScreen extends StatelessWidget {
               hintText: "search_cars_name".tr,
               controller: controller.carSearchTEController,
               onChanged: (val) {
-                // controller.fetchDealerVehicle();
-                controller.searchVehicle(val);
               },
             ),
             SizedBox(height: res.hp(8)),
@@ -78,64 +76,23 @@ class DealerCarSearchScreen extends StatelessWidget {
             SizedBox(height: res.hp(10)),
 
             Expanded(
-              child: Obx(() {
-                if (controller.isLoading.value) {
-                  return SizedBox(child: buildShimmerBox());
-                }
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: 10,
+                itemBuilder: (context, index) {
 
-                final filteredList =
-                    controller.dealerVehicles.where((vehicle) {
-                      // final searchText =
-                      //     controller.carSearchTEController.text.toLowerCase();
-                      // final matchesName =
-                      //     vehicle.name?.toLowerCase().contains(searchText) ??
-                      //     false;
-                      final matchesStatus =
-                          controller.selectStatus.value == "All Status" ||
-                          controller.selectStatus.value.isEmpty ||
-                          (controller.selectStatus.value == "Pending" &&
-                              !vehicle.isVerified!) ||
-                          (controller.selectStatus.value == "Completed" &&
-                              vehicle.isVerified!);
-                      return matchesStatus;
-                      // return matchesName && matchesStatus;
-                    }).toList();
-
-                if (filteredList.isEmpty) {
-                  return Center(child: Text("No vehicles found"));
-                }
-
-                return ListView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: filteredList.length,
-                  itemBuilder: (context, index) {
-                    final vehicle = filteredList[index];
-                    return RecentSales(
-                      imagePath:
-                          vehicle.images != null && vehicle.images!.isNotEmpty
-                              ? vehicle.images![0]
-                              : AppImages.carImage,
-                      title: vehicle.name ?? "No Name",
-                      name: vehicle.brand ?? "Unknown Brand",
-                      date:
-                          vehicle.createdAt != null
-                              ? vehicle.createdAt!.toLocal().toString().split(
-                                ' ',
-                              )[0]
-                              : "N/A",
-                      imageBorderRadius: 5,
-                      onTap: () {
-                        if (vehicle.id != null) {
-                          controller.fetchSingleVehicle(vehicle.id!);
-                          Get.to(() => DealerCarDetailsScreen());
-                        } else {
-                          Get.snackbar("Error", "Owner ID not found");
-                        }
-                      },
-                    );
-                  },
-                );
-              }),
+                  return RecentSales(
+                    imagePath: AppImages.carImage,
+                    title:  "2020 Toyota Camry",
+                    name: "Toyota",
+                    date: '1/15/2024',
+                    imageBorderRadius: 5,
+                    onTap: () {
+                        Get.to(() => DealerCarDetailsScreen());
+                    },
+                  );
+                },
+              ),
             ),
           ],
         ),
