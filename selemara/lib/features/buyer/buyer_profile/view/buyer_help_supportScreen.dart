@@ -16,8 +16,8 @@ import '../controller/buyer_help_support_controller.dart';
 import '../widgets/buyer_custom_text_field.dart';
 
 
-class BuyerHelpSupportscreen extends StatelessWidget {
-  BuyerHelpSupportscreen({super.key});
+class BuyerHelpSupportScreen extends StatelessWidget {
+  BuyerHelpSupportScreen({super.key});
 
   final res = AppResponsive();
   final controller = Get.put(BuyerHelpSupportController());
@@ -118,6 +118,7 @@ class BuyerHelpSupportscreen extends StatelessWidget {
                         AppIcons.upload,
                         height: res.hp(32),
                         width: res.wp(32),
+                        color: AppColors.primaryColor1,
                       ),
                       SizedBox(height: res.hp(16)),
 
@@ -144,6 +145,7 @@ class BuyerHelpSupportscreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: CustomButton(
+                btnColor: AppColors.primaryColor1,
                 text: "submit".tr,
                 onTap: () {},
               ),

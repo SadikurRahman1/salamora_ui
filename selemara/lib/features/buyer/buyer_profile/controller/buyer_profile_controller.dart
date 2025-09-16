@@ -7,13 +7,13 @@ import '../../../../core/services/response_data.dart';
 import '../model/user_data_model.dart';
 
 class BuyerProfileController extends GetxController {
-  var isDarkMode = false.obs;
+  var isActive = false.obs;
   var isLoading = false.obs;
   var userData = Rxn<UserDataModel>();
 
 
   void toggleTheme() {
-    isDarkMode.value = !isDarkMode.value;
+    isActive.value = !isActive.value;
   }
 
   var selectedLang = "English".obs;

@@ -162,6 +162,7 @@ class BuyerEditProfileScreen extends StatelessWidget {
             ),
 
             CustomButton(
+              btnColor: AppColors.primaryColor1,
               isLoading: controller.isLoading.value,
               text: "update_profile".tr,
               onTap: ()  {},

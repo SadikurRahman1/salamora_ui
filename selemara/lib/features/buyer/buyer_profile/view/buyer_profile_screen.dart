@@ -14,6 +14,7 @@ import 'package:get/get.dart';
 
 import '../widgets/buyer_profile_option_tile.dart';
 import 'buyer_edit_profile_screen.dart';
+import 'buyer_help_supportScreen.dart';
 
 
 class BuyerProfileScreen extends StatelessWidget {
@@ -145,11 +146,11 @@ class BuyerProfileScreen extends StatelessWidget {
                     children: [
                       Obx(
                         () => Switch(
-                          value: controller.isDarkMode.value,
+                          value: controller.isActive.value,
                           onChanged: (val) => controller.toggleTheme(),
                           inactiveThumbColor: Color(0xFF888888),
                           inactiveTrackColor: Colors.transparent,
-                          activeColor: AppColors.primaryColor,
+                          activeColor: AppColors.primaryColor1,
                           activeTrackColor: const Color(0xFFd8d8d8),
                         ),
                       ),
@@ -266,7 +267,7 @@ class BuyerProfileScreen extends StatelessWidget {
                 iconPath: AppIcons.customerSupport,
                 title: 'help_support'.tr,
                 onTap: () {
-                  Get.toNamed(AppRoutes.helpSupportScreen);
+                  Get.to(BuyerHelpSupportScreen());
                 },
                 textSize: 16,
                 bottomMargin: 0,
@@ -378,9 +379,9 @@ class BuyerProfileScreen extends StatelessWidget {
                           Get.back();
                         },
                         btnColor: AppColors.backGroundColor,
-                        borderColor: AppColors.primaryColor,
+                        borderColor: AppColors.primaryColor1,
                         isBorder: true,
-                        textColor: AppColors.primaryColor,
+                        textColor: AppColors.primaryColor1,
                         borderRadius: 8,
                       ),
                     ),
@@ -389,6 +390,7 @@ class BuyerProfileScreen extends StatelessWidget {
 
                     Expanded(
                       child: CustomButton(
+                        btnColor: AppColors.primaryColor1,
                         text: "yes".tr,
                         onTap: () async {
                           await _preferencesHelper.remove(TokenKey.accessToken);

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/api_urls.dart';
@@ -38,11 +37,11 @@ class BuyerCarDetailsScreen extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: res.hp(24))),
             _carImageCard(res),
             SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
-            _carDetailsCard(res, ),
+            _carDetailsCard(res),
             SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
             SliverToBoxAdapter(
               child: CustomButton(
-                text: "view_ownership_history",
+                text: "view_ownership_history".tr,
                 iconPath: AppIcons.multipleUser,
                 iconColor: AppColors.primaryColor1,
                 btnColor: AppColors.primaryColor1.withAlpha(40),
@@ -75,8 +74,8 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return BuyerHistoryCardWidget(
                     color: true,
-                    title:  "Oil Change & Fitter",
-                    date:"1/1/2024",
+                    title: "Oil Change & Fitter",
+                    date: "1/1/2024",
                     serviceCenter: "Al Futtaim Service Center",
                     statusLabel: "Warranty",
                     invoiceLabel: "Invoice",
@@ -108,15 +107,14 @@ class BuyerCarDetailsScreen extends StatelessWidget {
   }
 
   /// Car Images
-  Widget _carImageCard(AppResponsive res,) {
-
+  Widget _carImageCard(AppResponsive res) {
     return SliverToBoxAdapter(
       child: Stack(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(
-                AppImages.carImage,
+              AppImages.carImage,
               height: res.hp(198),
               width: double.infinity,
               fit: BoxFit.cover,
@@ -140,33 +138,33 @@ class BuyerCarDetailsScreen extends StatelessWidget {
             ),
           ),
           // Top-right save icon
-          Positioned(
-            top: 12,
-            right: 12,
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  color: AppColors.whitColor,
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  AppIcons.saveActive,
-                  height: res.hp(16),
-                  width: res.hp(16),
-                  color: AppColors.primaryColor,
-                ),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   top: 12,
+          //   right: 12,
+          //   child: GestureDetector(
+          //     onTap: () {},
+          //     child: Container(
+          //       padding: const EdgeInsets.all(6),
+          //       decoration: BoxDecoration(
+          //         color: AppColors.whitColor,
+          //         shape: BoxShape.circle,
+          //       ),
+          //       child: Image.asset(
+          //         AppIcons.saveActive,
+          //         height: res.hp(16),
+          //         width: res.hp(16),
+          //         color: AppColors.primaryColor,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
   }
 
   /// Car Details Card
-  Widget _carDetailsCard(AppResponsive res, ) {
+  Widget _carDetailsCard(AppResponsive res) {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -242,10 +240,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
             const SizedBox(height: 8),
             _labelValueRow("year".tr, "2020"),
             const SizedBox(height: 8),
-            _labelValueRow(
-              "Documents",
-              "3 uploaded",
-            ),
+            _labelValueRow("Documents", "3 uploaded"),
           ],
         ),
       ),
@@ -281,7 +276,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
   }
 
   /// Active Warranty Card
-  Widget _activeWarrantyCard(AppResponsive res,) {
+  Widget _activeWarrantyCard(AppResponsive res) {
     return SliverToBoxAdapter(
       child: GestureDetector(
         onTap: () {
@@ -343,7 +338,10 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 3,
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.greenColor,
                       borderRadius: BorderRadius.circular(24),
@@ -365,7 +363,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
   }
 
   /// Vehicle Documents Card
-  Widget _carDocumentsCard(AppResponsive res, ) {
+  Widget _carDocumentsCard(AppResponsive res) {
     return SliverToBoxAdapter(
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -396,16 +394,17 @@ class BuyerCarDetailsScreen extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 3,
               itemBuilder: (context, index) {
-
                 return BuyerVehicleDocumentCard(
                   policyTitle: "Auto Insurance Policy",
                   insuranceType: "Document".tr,
-                  startDate: "1/1/2024", // API দিতে হবে
-                  expiryDate: "12/31/2024", // API দিতে হবে
+                  startDate: "1/1/2024",
+                  // API দিতে হবে
+                  expiryDate: "12/31/2024",
+                  // API দিতে হবে
                   onDelete: () {},
                 );
               },
-            )
+            ),
           ],
         ),
       ),

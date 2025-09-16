@@ -81,6 +81,7 @@ class BuyerChangePasswordScreen extends StatelessWidget {
                       SizedBox(height: res.hp(24)),
 
                       CustomButton(
+                        btnColor: AppColors.primaryColor1,
                         isLoading: controller.isLoading.value,
                         text: "update_password".tr,
                         onTap: ()  {},

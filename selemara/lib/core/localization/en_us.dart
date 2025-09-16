@@ -326,4 +326,6 @@ final Map<String, String> enUS = {
   "first_owner": "First Owner",
 
   "personal_information1": "Personal Information",
+  "sell_vehicle": "Sell Vehicle",
+  "view_ownership_history": "View Ownership History"
 };

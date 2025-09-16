@@ -326,4 +326,6 @@ final Map<String, String> arSA = {
   "current_owner": "المالك الحالي",
   "first_owner": "المالك الأول",
   "personal_information1": "المعلومات الشخصية",
+  "sell_vehicle": "بيع المركبة",
+  "view_ownership_history": "عرض سجل الملكية"
 };
