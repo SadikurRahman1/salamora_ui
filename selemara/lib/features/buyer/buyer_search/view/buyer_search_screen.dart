@@ -100,22 +100,28 @@ class BuyerSearchScreen extends StatelessWidget {
                 hintText:   "enter_vin_manually".tr,
                 controller: controller.searchTEController,
                 onChanged: (value){
-
+                  controller.setVinInput(value);
                 },
 
               ),
               SizedBox(height: res.hp(12)),
-              CustomButton(
-                text: "search".tr,
-                textColor:  AppColors.whitColor,
-                iconPath: AppIcons.searchActive,
-                iconColor: AppColors.whitColor,
-                btnColor:AppColors.primaryColor,
-                fontSize: 16,
-                onTap: () {
-                  Get.to(() => BuyerCarDetailsScreen());
-                },
-              ),
+              Obx(() {
+                bool isEmpty = controller.vinInput.isEmpty;
+                return CustomButton(
+                  text: "search".tr,
+                  textColor: isEmpty ? AppColors.textColor.withValues(alpha: 0.4) : AppColors.whitColor,
+                  iconPath: isEmpty ? AppIcons.searchInActive:AppIcons.searchActive,
+                  iconColor: isEmpty ? AppColors.textColor.withValues(alpha: 0.4) : AppColors.whitColor,
+                  btnColor:isEmpty? AppColors.primaryColor1.withValues(alpha: 0.1):AppColors.primaryColor1,
+                  fontSize: 16,
+                  isLoading: controller.isLoading.value,
+                  onTap: () {
+                    if(!isEmpty){
+                      Get.to(() => BuyerCarDetailsScreen());
+                    }
+                  },
+                );
+              }),
               SizedBox(height: res.hp(32)),
               AppText(
                 "recent_search".tr,
