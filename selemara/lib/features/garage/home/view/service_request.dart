@@ -66,7 +66,7 @@ class ServiceRequest extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppText(
-                    'Vehicle Information',
+                    'vehicle_information'.tr,
                     color: AppColors.textColor626,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -110,7 +110,7 @@ class ServiceRequest extends StatelessWidget {
 
                   SizedBox(height: res.hp(16)),
                   AppText(
-                    'Customer Information',
+                    'customer_information'.tr,
                     color: AppColors.textColor626,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -153,7 +153,7 @@ class ServiceRequest extends StatelessWidget {
                   ),
                   SizedBox(height: res.hp(16)),
                   AppText(
-                    "Service Description",
+                    "service_description".tr,
                     color: AppColors.textColor626,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -193,7 +193,7 @@ class ServiceRequest extends StatelessWidget {
                 children: [
                   Expanded(
                     child: CustomButton(
-                      text: 'Decline Request',
+                      text: 'decline_request'.tr,
                       btnColor: AppColors.red,
                       onTap: () => _showDeclineDialog(context, res),
                     ),
@@ -201,8 +201,8 @@ class ServiceRequest extends StatelessWidget {
                   SizedBox(width: res.wp(10)),
                   Expanded(
                     child: CustomButton(
-                      text: 'Approve Request',
-                      btnColor: AppColors.primaryColor1,
+                      text: 'approve_request'.tr,
+                      btnColor: AppColors.primaryColor,
                       onTap: () => _showApproveDialog(context, res),
                     ),
                   ),
@@ -227,14 +227,14 @@ void _showDeclineDialog(BuildContext context, AppResponsive res) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             AppText(
-              "Respond to service Request",
+              "respond_to_service_request".tr,
               fontWeight: FontWeight.w600,
               fontSize: 16,
-              color: AppColors.primaryColor1,
+              color: AppColors.primaryColor,
             ),
             GestureDetector(
               onTap: () => Get.back(),
-              child: Icon(Icons.close, color: AppColors.primaryColor1),
+              child: Icon(Icons.close, color: AppColors.primaryColor),
             ),
           ],
         ),
@@ -243,7 +243,7 @@ void _showDeclineDialog(BuildContext context, AppResponsive res) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: res.hp(10)),
-            AppText("Estimated Cost", color: AppColors.textColor),
+            AppText("estimated_cost".tr, color: AppColors.textColor),
             SizedBox(height: res.hp(10)),
 
             TextField(
@@ -275,7 +275,7 @@ void _showDeclineDialog(BuildContext context, AppResponsive res) {
             children: [
               Expanded(
                 child: CustomButton(
-                  text: "cancel",
+                  text: "cancel".tr,
                   btnColor: AppColors.primaryColor.withAlpha(24),
                   textColor: AppColors.textColor,
                   onTap: () {
@@ -286,7 +286,7 @@ void _showDeclineDialog(BuildContext context, AppResponsive res) {
               SizedBox(width: res.wp(10)),
               Expanded(
                 child: CustomButton(
-                  text: "Submit",
+                  text: "submit".tr,
                   onTap: () {
                     Get.back();
                   },
@@ -311,14 +311,14 @@ void _showApproveDialog(BuildContext context, AppResponsive res) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             AppText(
-              "Respond to service Request",
+              "respond_to_service_request".tr,
               fontWeight: FontWeight.w600,
               fontSize: 16,
-              color: AppColors.primaryColor1,
+              color: AppColors.primaryColor,
             ),
             GestureDetector(
               onTap: () => Get.back(),
-              child: Icon(Icons.close, color: AppColors.primaryColor1),
+              child: Icon(Icons.close, color: AppColors.primaryColor),
             ),
           ],
         ),
@@ -327,7 +327,7 @@ void _showApproveDialog(BuildContext context, AppResponsive res) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: res.hp(10)),
-            AppText("Reason for Decline", color: AppColors.textColor),
+            AppText("reason_for_decline".tr, color: AppColors.textColor),
             SizedBox(height: res.hp(10)),
 
             TextField(
@@ -347,7 +347,7 @@ void _showApproveDialog(BuildContext context, AppResponsive res) {
             children: [
               Expanded(
                 child: CustomButton(
-                  text: "cancel",
+                  text: "cancel".tr,
                   btnColor: AppColors.primaryColor.withAlpha(24),
                   textColor: AppColors.textColor,
                   onTap: () {
@@ -358,7 +358,7 @@ void _showApproveDialog(BuildContext context, AppResponsive res) {
               SizedBox(width: res.wp(10)),
               Expanded(
                 child: CustomButton(
-                  text: "Submit",
+                  text: "submit".tr,
                   onTap: () {
                     Get.back();
                   },

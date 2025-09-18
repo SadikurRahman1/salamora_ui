@@ -95,7 +95,7 @@ class DealerCarServiceHistoryScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
-        backgroundColor: AppColors.primaryColor1,
+        backgroundColor: AppColors.primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         label: Row(
           children: [

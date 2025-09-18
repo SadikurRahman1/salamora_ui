@@ -206,7 +206,7 @@ class CreatePartsWarrantyScreen extends StatelessWidget {
                       ),
 
                       CustomButton(
-                        btnColor: AppColors.primaryColor1.withAlpha(45),
+                        btnColor: AppColors.primaryColor.withAlpha(45),
                         textIconWidth: 0,
                         text: "add".tr,
                         onTap: () {},
@@ -235,7 +235,7 @@ class CreatePartsWarrantyScreen extends StatelessWidget {
                   SizedBox(width: res.wp(20)),
                   Expanded(
                     child: CustomButton(
-                      btnColor: AppColors.primaryColor1,
+                      btnColor: AppColors.primaryColor,
                       text: "create_warranty".tr,
                       onTap: () {},
                     ),
@@ -263,7 +263,7 @@ Widget _buildCheckbox(String label, RxBool obs) {
           onChanged: (val) => obs.value = val!,
           fillColor: MaterialStateProperty.resolveWith<Color>((states) {
             if (states.contains(MaterialState.selected)) {
-              return AppColors.primaryColor1;
+              return AppColors.primaryColor;
             }
             return AppColors.geryColor;
           }),

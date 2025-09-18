@@ -93,7 +93,7 @@ class SellVehicleScreen extends StatelessWidget {
 
               CustomButton(
                 text: "sell_vehicle".tr,
-                btnColor: AppColors.primaryColor1,
+                btnColor: AppColors.primaryColor,
                 onTap: () {
                   controller.click();
                 },

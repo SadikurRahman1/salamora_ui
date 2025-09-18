@@ -85,7 +85,7 @@ class DropdownAndBtn extends StatelessWidget {
             text: buttonText,
             onTap: onButtonTap,
             iconPath: buttonIconPath ?? AppIcons.plus,
-            btnColor: buttonColor ?? AppColors.primaryColor1,
+            btnColor: buttonColor ?? AppColors.primaryColor,
             iconColor: buttonTextColor ?? AppColors.whitColor,
           ),
         ),

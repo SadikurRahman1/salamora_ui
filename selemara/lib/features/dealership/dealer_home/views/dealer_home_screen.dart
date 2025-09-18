@@ -131,13 +131,13 @@ class DealerHomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
+              sideColor: AppColors.primaryColor,
               cardText: "Total Inventory".tr,
               icon: AppIcons.carIcon2,
               number: '9',
             ),
             DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
+              sideColor: AppColors.primaryColor,
               cardText: "Monthly Sales".tr,
               icon: AppIcons.check1,
               number: '23',
@@ -149,13 +149,13 @@ class DealerHomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
+              sideColor: AppColors.primaryColor,
               cardText: "Revenue".tr,
               icon: AppIcons.notificationHome,
               number: '\$455',
             ),
             DealerFeatureCard(
-              sideColor: AppColors.primaryColor1,
+              sideColor: AppColors.primaryColor,
               cardText: "Available Car".tr,
               icon: AppIcons.dueSoon,
               number: '3',
@@ -199,7 +199,7 @@ class DealerHomeScreen extends StatelessWidget {
             text: 'add_vehicle'.tr,
             iconPath: AppIcons.plus,
             iconColor: AppColors.whitColor,
-            btnColor: AppColors.primaryColor1,
+            btnColor: AppColors.primaryColor,
             onTap: () {
               Get.toNamed(AppRoutes.dealerAddVehicleScreen);
             },
@@ -210,7 +210,7 @@ class DealerHomeScreen extends StatelessWidget {
           child: CustomButton(
             text: 'request_service'.tr,
             textColor: AppColors.textColor,
-            btnColor: AppColors.primaryColor1.withAlpha(40),
+            btnColor: AppColors.primaryColor.withAlpha(40),
             onTap: () {
               Get.toNamed(AppRoutes.dealerRequestServiceScreen);
             },

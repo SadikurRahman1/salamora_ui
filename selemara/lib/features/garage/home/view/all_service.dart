@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
-
 import '../widget/recent_service_card.dart';
 
 
@@ -23,7 +22,6 @@ class AllService extends StatelessWidget {
         itemCount: 15,
         shrinkWrap: true,
         padding: EdgeInsets.zero,
-        // physics: NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return RecentServiceCard(
             titleText: "Oil Change",

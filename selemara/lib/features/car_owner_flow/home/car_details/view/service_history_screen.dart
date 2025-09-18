@@ -94,7 +94,7 @@ class ServiceHistoryScreen extends StatelessWidget {
                 fontSize: 14,
                 iconWidth: res.wp(13),
                 iconHeight: res.wp(11),
-                btnColor: AppColors.primaryColor1,
+                btnColor: AppColors.primaryColor,
                 iconPath: AppIcons.plus1,
                 iconColor: AppColors.whitColor,
               ),

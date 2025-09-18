@@ -40,7 +40,7 @@ class VehicleDocumentCard extends StatelessWidget {
               children: [
                 AppText(
                   policyTitle,
-                  color: AppColors.primaryColor1,
+                  color: AppColors.primaryColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

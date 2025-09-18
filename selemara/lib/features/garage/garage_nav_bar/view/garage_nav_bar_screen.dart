@@ -43,7 +43,7 @@ class GarageNavBarScreen extends StatelessWidget {
               type: BottomNavigationBarType.fixed,
               backgroundColor: AppColors.backGroundColor,
               currentIndex: navController.currentIndex.value,
-              selectedItemColor: AppColors.primaryColor1,
+              selectedItemColor: AppColors.primaryColor,
               unselectedItemColor: AppColors.whitColor,
               onTap: navController.changeIndex,
               selectedLabelStyle: const TextStyle(
@@ -77,7 +77,7 @@ class GarageNavBarScreen extends StatelessWidget {
                           fontSize: 14,
                           color:
                               isActive
-                                  ? AppColors.primaryColor1
+                                  ? AppColors.primaryColor
                                   : AppColors.primaryTextColor,
                         ),
                       ),

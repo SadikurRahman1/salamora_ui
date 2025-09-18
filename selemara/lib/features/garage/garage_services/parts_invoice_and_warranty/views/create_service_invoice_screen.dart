@@ -146,7 +146,7 @@ class CreateServiceInvoiceScreen extends StatelessWidget {
                   SizedBox(width: res.wp(20)),
                   Expanded(
                     child: CustomButton(
-                      btnColor: AppColors.primaryColor1,
+                      btnColor: AppColors.primaryColor,
                       text: "create_invoice".tr,
                       onTap: () {},
                     ),

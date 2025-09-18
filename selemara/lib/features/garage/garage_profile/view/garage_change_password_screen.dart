@@ -6,13 +6,13 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import 'package:get/get.dart';
-import '../controller/buyer_update_password_controller.dart';
+import '../controller/garage_update_password_controller.dart';
 import '../widgets/buyer_custom_text_field.dart';
 
-class BuyerChangePasswordScreen extends StatelessWidget {
-  BuyerChangePasswordScreen({super.key});
+class GarageChangePasswordScreen extends StatelessWidget {
+  GarageChangePasswordScreen({super.key});
 
-  final controller = Get.put(BuyerUpdatePasswordController());
+  final controller = Get.put(GarageUpdatePasswordController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override

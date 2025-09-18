@@ -11,16 +11,16 @@ import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
-import '../../common/widgets/buyer_get_image.dart';
-import '../controller/buyer_help_support_controller.dart';
+import '../../../buyer/common/widgets/buyer_get_image.dart';
+import '../controller/garage_help_support_controller.dart';
 import '../widgets/buyer_custom_text_field.dart';
 
 
-class BuyerHelpSupportScreen extends StatelessWidget {
-  BuyerHelpSupportScreen({super.key});
+class GarageHelpSupportscreen extends StatelessWidget {
+  GarageHelpSupportscreen({super.key});
 
   final res = AppResponsive();
-  final controller = Get.put(BuyerHelpSupportController());
+  final controller = Get.put(GarageHelpSupportController());
 
   @override
   Widget build(BuildContext context) {

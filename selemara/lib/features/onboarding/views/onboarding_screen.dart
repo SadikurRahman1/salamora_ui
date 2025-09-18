@@ -46,17 +46,7 @@ class OnboardingScreen extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: res.hp(20)),
-                          // AppTextInter(
-                          //   item.title,
-                          //   textAlign: TextAlign.center,
-                          //   fontSize: res.sp(24),
-                          //   fontWeight: FontWeight.w600,
-                          //   color: AppColors.textColor,
-                          //   // style: TextStyle(
-                          //   //   fontSize: res.sp(20),
-                          //   //   fontWeight: FontWeight.bold,
-                          //   // ),
-                          // ),
+
                           SizedBox(height: res.hp(10)),
                           AppTextInter(
                             item.description,

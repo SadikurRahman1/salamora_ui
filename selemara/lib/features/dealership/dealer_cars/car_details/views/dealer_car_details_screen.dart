@@ -64,7 +64,7 @@ class DealerCarDetailsScreen extends StatelessWidget {
                           textColor: AppColors.textColor,
                           iconPath: AppIcons.car1,
                           iconColor: AppColors.textColor,
-                          btnColor:AppColors.primaryColor1.withAlpha(40),
+                          btnColor:AppColors.primaryColor.withAlpha(40),
                           onTap: () {
                               Get.to(() => SellVehicleScreen());
                           }
@@ -77,7 +77,7 @@ class DealerCarDetailsScreen extends StatelessWidget {
                           textColor: AppColors.textColor,
                           iconPath: AppIcons.invoice,
                           iconColor: AppColors.textColor,
-                          btnColor: AppColors.primaryColor1.withAlpha(40),
+                          btnColor: AppColors.primaryColor.withAlpha(40),
                           onTap: () {
                             Get.toNamed(
                               AppRoutes.dealerCreateInvoiceVehicleWarranty,
@@ -96,7 +96,7 @@ class DealerCarDetailsScreen extends StatelessWidget {
                           textColor: AppColors.textColor,
                           iconPath: AppIcons.warranty,
                           iconColor: AppColors.textColor,
-                          btnColor: AppColors.primaryColor1.withAlpha(40),
+                          btnColor: AppColors.primaryColor.withAlpha(40),
                           onTap: () {
                             Get.toNamed(
                               AppRoutes.dealerCreateVehicleWarranty,
@@ -111,7 +111,7 @@ class DealerCarDetailsScreen extends StatelessWidget {
                           textColor: AppColors.textColor,
                           iconPath: AppIcons.history,
                           iconColor: AppColors.textColor,
-                          btnColor: AppColors.primaryColor1.withAlpha(40),
+                          btnColor: AppColors.primaryColor.withAlpha(40),
                           onTap: () {
                             Get.to(() => DealerCarServiceHistoryScreen());
                           },

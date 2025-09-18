@@ -283,7 +283,7 @@ class CarDetailsScreen extends StatelessWidget {
 
                                 AppText(
                                   "view".tr,
-                                  color: AppColors.primaryColor1,
+                                  color: AppColors.primaryColor,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -389,8 +389,8 @@ class CarDetailsScreen extends StatelessWidget {
                             text: 'upload_document'.tr,
                             onTap: () {},
                             iconPath: AppIcons.upload,
-                            btnColor: AppColors.primaryColor1,
-                            borderColor: AppColors.primaryColor1,
+                            btnColor: AppColors.primaryColor,
+                            borderColor: AppColors.primaryColor,
                             iconColor: AppColors.whitColor,
                             iconHeight: 20,
                             iconWidth: 20,
@@ -434,7 +434,7 @@ class CarDetailsScreen extends StatelessWidget {
                   margin: EdgeInsets.only(right: 30,top: res.screenHeight/3),
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryColor1,
+                    color: AppColors.primaryColor,
                     borderRadius: BorderRadius.circular(24),
                   ),
                   child: Row(

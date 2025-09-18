@@ -67,7 +67,7 @@ class ServiceDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppText(
-                    'Vehicle Information',
+                    'vehicle_information'.tr,
                     color: AppColors.textColor626,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -110,8 +110,9 @@ class ServiceDetails extends StatelessWidget {
                   ),
 
                   SizedBox(height: res.hp(16)),
+
                   AppText(
-                    'Customer Information',
+                    'customer_information'.tr,
                     color: AppColors.textColor626,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -154,7 +155,7 @@ class ServiceDetails extends StatelessWidget {
                   ),
                   SizedBox(height: res.hp(16)),
                   AppText(
-                    "Service Description",
+                    "service_description".tr,
                     color: AppColors.textColor626,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -190,7 +191,7 @@ class ServiceDetails extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
             SliverToBoxAdapter(
               child: AppText(
-                "Extra Parts".tr,
+                "extra_parts".tr,
                 color: AppColors.textColor,
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
@@ -215,7 +216,7 @@ class ServiceDetails extends StatelessWidget {
               child: Column(
                 children: [
                   CustomButton(
-                    text: "Generate Invoice",
+                    text: "generate_invoice".tr,
                     iconPath: AppIcons.invoice,
                     onTap: () {
                       Get.toNamed(AppRoutes.createServiceInvoice);
@@ -223,11 +224,11 @@ class ServiceDetails extends StatelessWidget {
                   ),
                   SizedBox(height: res.hp(16)),
                   CustomButton(
-                    text: "warranty",
+                    text: "warranty".tr,
                     iconPath: AppIcons.warranty,
-                    iconColor: AppColors.primaryColor1,
-                    textColor: AppColors.primaryColor1,
-                    btnColor: AppColors.primaryColor1.withAlpha(24),
+                    iconColor: AppColors.primaryColor,
+                    textColor: AppColors.primaryColor,
+                    btnColor: AppColors.primaryColor.withAlpha(24),
                     onTap: () {
                       Get.toNamed(AppRoutes.createPartsWarranty);
 
@@ -235,11 +236,11 @@ class ServiceDetails extends StatelessWidget {
                   ),
                   SizedBox(height: res.hp(16)),
                   CustomButton(
-                    text: "Transfer Service",
+                    text: "transfer_service".tr,
                     iconPath: AppIcons.invoice,
-                    iconColor: AppColors.primaryColor1,
-                    textColor: AppColors.primaryColor1,
-                    btnColor: AppColors.primaryColor1.withAlpha(24),
+                    iconColor: AppColors.primaryColor,
+                    textColor: AppColors.primaryColor,
+                    btnColor: AppColors.primaryColor.withAlpha(24),
                     onTap: () {},
                   ),
                 ],

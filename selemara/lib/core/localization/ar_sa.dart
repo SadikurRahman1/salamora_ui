@@ -327,5 +327,22 @@ final Map<String, String> arSA = {
   "first_owner": "المالك الأول",
   "personal_information1": "المعلومات الشخصية",
   "sell_vehicle": "بيع المركبة",
-  "view_ownership_history": "عرض سجل الملكية"
+  "view_ownership_history": "عرض سجل الملكية",
+
+  "service": "خدمة",
+  "in_progress": "قيدالتنفيذ",
+  "service_details": "تفاصيل الخدمة",
+  "extra_parts": "قطع إضافية",
+  "generate_invoice": "إنشاء فاتورة",
+  "transfer_service": "نقل الخدمة",
+  "all_request": "جميع الطلبات",
+  "all_service": "جميع الخدمات",
+  "service_request": "طلب خدمة",
+  "decline_request": "رفض الطلب",
+  "approve_request": "الموافقة على الطلب",
+  "respond_to_service_request": "الرد على طلب الخدمة",
+  "estimated_cost": "التكلفة المقدرة",
+  "reason_for_decline": "سبب الرفض",
+
+
 };

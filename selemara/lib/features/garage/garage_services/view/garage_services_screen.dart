@@ -31,7 +31,7 @@ class GarageServicesScreen extends StatelessWidget {
               tabs: [
                 Tab(
                   child: Text(
-                    "InProgress",
+                    "in_progress".tr,
                     style: TextStyle(
                       color: ctrl.getTabColor(0),
                       fontWeight: FontWeight.w600,
@@ -40,7 +40,7 @@ class GarageServicesScreen extends StatelessWidget {
                 ),
                 Tab(
                   child: Text(
-                    "Completed",
+                    "completed".tr,
                     style: TextStyle(
                       color: ctrl.getTabColor(1),
                       fontWeight: FontWeight.w600,

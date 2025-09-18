@@ -43,9 +43,9 @@ class BuyerCarDetailsScreen extends StatelessWidget {
               child: CustomButton(
                 text: "view_ownership_history".tr,
                 iconPath: AppIcons.multipleUser,
-                iconColor: AppColors.primaryColor1,
-                btnColor: AppColors.primaryColor1.withAlpha(40),
-                textColor: AppColors.primaryColor1,
+                iconColor: AppColors.primaryColor,
+                btnColor: AppColors.primaryColor.withAlpha(40),
+                textColor: AppColors.primaryColor,
                 // isLoading: controller.isLoading.value,
                 onTap: () {
                   Get.to(() => BuyerOwnershipHistory());
@@ -92,7 +92,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
-        backgroundColor: AppColors.primaryColor1,
+        backgroundColor: AppColors.primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         label: Text(
           "contact_now".tr,
@@ -227,7 +227,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                   "6860",
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.primaryColor1,
+                  color: AppColors.primaryColor,
                 ),
               ],
             ),

@@ -270,7 +270,7 @@ class DealerAddVehicleScreen extends StatelessWidget {
                     SizedBox(width: res.wp(20)),
                     Expanded(
                       child: CustomButton(
-                        btnColor: AppColors.primaryColor1,
+                        btnColor: AppColors.primaryColor,
                         text: "add_vehicle".tr, // Add Vehicle
                         isLoading: controller.isLoading.value,
                         onTap: () {

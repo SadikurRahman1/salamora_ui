@@ -77,7 +77,7 @@ class BuyerNauBarScreen extends StatelessWidget {
                           fontSize: 14,
                           color:
                               isActive
-                                  ? AppColors.primaryColor1
+                                  ? AppColors.primaryColor
                                   : AppColors.primaryTextColor,
                         ),
                       ),

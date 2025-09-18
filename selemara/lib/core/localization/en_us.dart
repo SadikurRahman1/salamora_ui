@@ -303,7 +303,7 @@ final Map<String, String> enUS = {
   "qr_code": "QR Code",
   "recent_sales": "Recent Sales",
   "manage_cars_verified_records":
-  "Manage cars with verified myCarage service records",
+      "Manage cars with verified myCarage service records",
   "search_cars_name": "Search cars name...",
   "all_status": "All Status",
   "generate_qr_code": "Generate QR Code",
@@ -327,5 +327,23 @@ final Map<String, String> enUS = {
 
   "personal_information1": "Personal Information",
   "sell_vehicle": "Sell Vehicle",
-  "view_ownership_history": "View Ownership History"
+  "view_ownership_history": "View Ownership History",
+  "service": "Service",
+  "in_progress": "InProgress",
+  "service_details": "Service Details",
+  "extra_parts": "Extra Parts",
+  "generate_invoice": "Generate Invoice",
+  "transfer_service": "Transfer Service",
+  "all_request": "All Requests",
+  "all_service": "All Services",
+  "service_request": "Service Request",
+  "decline_request": "Decline Request",
+  "approve_request": "Approve Request",
+  "respond_to_service_request": "Respond to Service Request",
+  "estimated_cost": "Estimated Cost",
+  "reason_for_decline": "Reason for Decline",
+
+
+
+
 };

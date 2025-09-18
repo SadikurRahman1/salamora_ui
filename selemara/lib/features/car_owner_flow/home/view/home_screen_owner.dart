@@ -79,7 +79,7 @@ class HomeScreenOwner extends StatelessWidget {
                               children: [
                                 GarageFeatureCard(
                                   res: res,
-                                  sideColor: AppColors.primaryColor1,
+                                  sideColor: AppColors.primaryColor,
                                   cardText: "my_vehicles".tr,
 
                                   icon: AppIcons.carIcon2,
@@ -87,7 +87,7 @@ class HomeScreenOwner extends StatelessWidget {
 
                                 GarageFeatureCard(
                                   res: res,
-                                  sideColor: AppColors.primaryColor1,
+                                  sideColor: AppColors.primaryColor,
                                   icon: AppIcons.check1,
                                   cardText: "service_records".tr,
                                 ),
@@ -103,13 +103,13 @@ class HomeScreenOwner extends StatelessWidget {
                               children: [
                                 GarageFeatureCard(
                                   res: res,
-                                  sideColor: AppColors.primaryColor1,
+                                  sideColor: AppColors.primaryColor,
                                   cardText: "alerts".tr,
                                   icon: AppIcons.notificationHome,
                                 ),
                                 GarageFeatureCard(
                                   res: res,
-                                  sideColor: AppColors.primaryColor1,
+                                  sideColor: AppColors.primaryColor,
                                   cardText: "due_soon".tr,
                                   icon: AppIcons.dueSoon,
                                 ),
@@ -311,7 +311,7 @@ class HomeScreenOwner extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 6, horizontal: 15),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryColor1,
+                    color: AppColors.primaryColor,
 
                     borderRadius: BorderRadius.circular(24),
                   ),

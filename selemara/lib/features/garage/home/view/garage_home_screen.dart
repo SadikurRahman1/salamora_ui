@@ -35,7 +35,7 @@ class GarageHomeScreen extends StatelessWidget {
             toolbarHeight: res.hp(50),
             title: HomeHeader(
               name: "John Doe",
-              type: "Garage",
+              type: "garage".tr,
               imagePath: AppImages.userProfile,
               notificationIconPath: AppIcons.notificationIconImage,
               imageSize: res.wp(40),
@@ -71,13 +71,13 @@ class GarageHomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AppText(
-                      "Service Request",
+                      "service_request".tr,
                       color: AppColors.textColor,
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
                     ),
                     AppText(
-                      "View All",
+                      "view_all".tr,
                       color: AppColors.primaryColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -91,13 +91,13 @@ class GarageHomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AppText(
-                      "Recent Service",
+                      "recent_service".tr,
                       color: AppColors.textColor,
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
                     AppText(
-                      "View All",
+                      "view_all".tr,
                       color: AppColors.primaryColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,

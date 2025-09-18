@@ -9,15 +9,15 @@ import '../../../../core/constants/app_images.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../controller/buyer_edit_profile_controller.dart';
+import '../controller/garage_edit_profile_controller.dart';
 import '../widgets/buyer_custom_text_field.dart';
 
 
-class BuyerEditProfileScreen extends StatelessWidget {
-  BuyerEditProfileScreen({super.key});
+class GarageEditProfileScreen extends StatelessWidget {
+  GarageEditProfileScreen({super.key});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final controller = Get.put(BuyerEditProfileController());
+  final controller = Get.put(GarageEditProfileController());
 
   @override
   Widget build(BuildContext context) {

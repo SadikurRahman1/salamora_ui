@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
-import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
-
 import '../../../../core/routes/app_routes.dart';
-import '../../../../core/widgets/custom_button.dart';
 import '../widget/service_request_card.dart';
 
 class AllRequest extends StatelessWidget {
@@ -26,7 +22,6 @@ class AllRequest extends StatelessWidget {
         itemCount: 15,
         shrinkWrap: true,
         padding: EdgeInsets.zero,
-        // physics: NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return ServiceRequestCard(
             name: "Ahmed Al Mansouri",

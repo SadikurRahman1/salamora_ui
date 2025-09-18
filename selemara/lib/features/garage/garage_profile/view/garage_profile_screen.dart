@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/routes/app_routes.dart';
+import 'package:selemara/features/garage/garage_profile/view/garage_change_password_screen.dart';
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/constants/token_key.dart';
@@ -9,23 +10,23 @@ import '../../../../core/helper/shared_preferences_helper.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../controller/buyer_profile_controller.dart';
+import '../controller/garage_profile_controller.dart';
 import 'package:get/get.dart';
 
 import '../widgets/buyer_profile_option_tile.dart';
-import 'buyer_edit_profile_screen.dart';
-import 'buyer_help_supportScreen.dart';
+import 'garage_edit_profile_screen.dart';
+import 'garage_help_supportScreen.dart';
 
 
-class BuyerProfileScreen extends StatelessWidget {
-  BuyerProfileScreen({super.key});
+class GarageProfileScreen extends StatelessWidget {
+  GarageProfileScreen({super.key});
 
   final res = AppResponsive();
   final SharedPreferencesHelper _preferencesHelper = SharedPreferencesHelper();
 
   @override
   Widget build(BuildContext context) {
-    final controller =  Get.find<BuyerProfileController>();
+    final controller =  Get.find<GarageProfileController>();
 
     return Scaffold(
       appBar: CustomAppBar(title: 'profile'.tr, centerTitle: true),
@@ -83,9 +84,21 @@ class BuyerProfileScreen extends StatelessWidget {
                     ),
 
                     AppText(
-                      "John Smith",
+                      "ElitePolish Auto Care",
                       fontSize: res.sp(20),
                       fontWeight: FontWeight.w600,
+                      color: AppColors.primaryTextColor,
+                    ),
+                    AppText(
+                      "3885 Al Bandariyyah Street ",
+                      fontSize: res.sp(14),
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textColor7085,
+                    ),
+                    AppText(
+                      "https://mystore.com",
+                      fontSize: res.sp(14),
+                      fontWeight: FontWeight.w400,
                       color: AppColors.primaryTextColor,
                     ),
                   ],
@@ -96,11 +109,11 @@ class BuyerProfileScreen extends StatelessWidget {
 
               BuyerProfileOptionTile(
                 onTap: () {
-                  Get.toNamed(AppRoutes.buyerEditProfileScreen);
+                  // Get.toNamed(AppRoutes.buyerEditProfileScreen);
+                  Get.to(()=> GarageEditProfileScreen());
                 },
                 iconPath: AppImages.profileIcon,
                 title: 'profile'.tr,
-
                 textSize: 16,
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
@@ -170,7 +183,8 @@ class BuyerProfileScreen extends StatelessWidget {
                 iconPath: AppImages.lock,
                 title: 'password'.tr,
                 onTap: () {
-                  Get.toNamed(AppRoutes.buyerChangePasswordScreen);
+                  // Get.toNamed(AppRoutes.buyerChangePasswordScreen);
+                  Get.to(()=>GarageChangePasswordScreen());
                 },
                 textSize: 16,
                 bottomMargin: 0,
@@ -195,6 +209,7 @@ class BuyerProfileScreen extends StatelessWidget {
                 title: 'privacy_policy'.tr,
                 onTap: () {
                   Get.toNamed(AppRoutes.privacyPolicyScreen);
+                  // Get.to();
                 },
                 textSize: 16,
                 bottomMargin: 0,
@@ -267,7 +282,7 @@ class BuyerProfileScreen extends StatelessWidget {
                 iconPath: AppIcons.customerSupport,
                 title: 'help_support'.tr,
                 onTap: () {
-                  Get.to(BuyerHelpSupportScreen());
+                  Get.to(GarageHelpSupportscreen());
                 },
                 textSize: 16,
                 bottomMargin: 0,
