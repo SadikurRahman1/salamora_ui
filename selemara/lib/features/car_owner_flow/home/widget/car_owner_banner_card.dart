@@ -35,7 +35,7 @@ class CarOwnerBannerCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               AppText(
-                "welcome_back".tr, // translation key
+                "welcome_back_a".tr, // translation key
                 color: AppColors.textColor,
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
@@ -51,7 +51,7 @@ class CarOwnerBannerCard extends StatelessWidget {
           ),
           SizedBox(height: res.hp(4)),
           AppText(
-            "track_service_history".tr, // translation key
+            "track_your_car".tr, // translation key
             fontSize: 14,
             fontWeight: FontWeight.w400,
             color: AppColors.textColor626.withValues(alpha: 0.8),

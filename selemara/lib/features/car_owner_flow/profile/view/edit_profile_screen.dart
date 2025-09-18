@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_responsive.dart';
-import 'package:get/get.dart';
-
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../controller/edit_profile_controller.dart';
@@ -23,7 +22,7 @@ class EditProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'my_profile'.tr,
-        leading: Container(
+        leading: SizedBox(
           height: res.hp(10),
           width: res.wp(10),
           child: Image.asset(
@@ -52,7 +51,7 @@ class EditProfileScreen extends StatelessWidget {
                           Stack(
                             children: [
                               Container(
-                                margin: EdgeInsets.all(20),
+                                margin: EdgeInsets.all(10),
                                 alignment: Alignment.topCenter,
                                 height: res.wp(80),
                                 width: res.wp(80),
@@ -80,13 +79,13 @@ class EditProfileScreen extends StatelessWidget {
                               ),
 
                               Positioned(
-                                bottom: 10,
+                                bottom: res.wp(7),
                                 right: 20,
                                 child: GestureDetector(
                                   child: Image.asset(
                                     AppImages.edit,
-                                    height: res.hp(32),
-                                    width: res.wp(32),
+                                    height: res.hp(20),
+                                    width: res.wp(20),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -159,17 +158,17 @@ class EditProfileScreen extends StatelessWidget {
                       hintText: 'enter_your_details'.tr,
                     ),
 
-
                     SizedBox(height: res.hp(38)),
-
-
-
                   ],
                 ),
               ),
             ),
 
-            CustomButton(text: "update_profile".tr, onTap: () {}),
+            CustomButton(
+              text: "update_profile".tr,
+              onTap: () {},
+              btnColor: Color(0xFF2E3A49),
+            ),
             SizedBox(height: res.hp(24)),
           ],
         ),

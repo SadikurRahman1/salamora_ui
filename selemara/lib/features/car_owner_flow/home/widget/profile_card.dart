@@ -7,14 +7,22 @@ import '../../../../core/widgets/app_text.dart';
 class ProfileCard extends StatelessWidget {
   final res = AppResponsive();
 
- final String? title;
- final String? subTitle;
- final String? textStatus;
- final Color? textColor;
- final Color? boxColor;
+  final String? title;
+  final String? subTitle;
+  final String? textStatus;
+  final Color? textColor;
+  final double? padding;
+  final Color? boxColor;
 
-
-  ProfileCard({super.key, this.title, this.subTitle, this.textColor, this.boxColor, this.textStatus});
+  ProfileCard({
+    super.key,
+    this.title,
+    this.subTitle,
+    this.textColor,
+    this.boxColor,
+    this.textStatus,
+    this.padding,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +31,7 @@ class ProfileCard extends StatelessWidget {
       // height: res.hp(70),
       padding: EdgeInsets.symmetric(
         horizontal: res.hp(10),
-        vertical: res.wp(10),
+        vertical: res.wp(padding ?? 10),
       ),
       decoration: BoxDecoration(
         color: AppColors.whitColor,
@@ -63,14 +71,14 @@ class ProfileCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppText(
-                   title?? "Ahmed Al Mansouri",
+                    title ?? "Ahmed Al Mansouri",
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textColor,
                   ),
                   SizedBox(height: res.hp(5)),
                   AppText(
-                   subTitle?? "Toyota Camry - Al Futtaim Service",
+                    subTitle ?? "Toyota Camry - Al Futtaim Service",
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textColor.withValues(alpha: 0.8),
@@ -82,14 +90,14 @@ class ProfileCard extends StatelessWidget {
 
           // SizedBox(width: res.hp(20)),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 5.0,horizontal: 13),
+            padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 13),
             decoration: BoxDecoration(
-              color:boxColor?? AppColors.yallowColor.withValues(alpha: 0.1),
+              color: boxColor ?? AppColors.yallowColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(res.sp(20)),
             ),
             child: AppText(
-             textStatus?? "Pending",
-              color:textColor?? AppColors.yallowColor,
+              textStatus ?? "Pending",
+              color: textColor ?? AppColors.yallowColor,
               fontSize: 12,
               fontWeight: FontWeight.w600,
             ),

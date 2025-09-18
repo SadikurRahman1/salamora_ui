@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 import 'package:selemara/features/car_owner_flow/home/car_details/controller/service_history_controller.dart';
 
 import '../../../../../core/constants/app_colors.dart';
@@ -9,11 +10,15 @@ import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../view/invoice_details_screen.dart';
 import '../../widget/service_card.dart';
-import 'package:get/get.dart';
 
 class ServiceHistoryScreen extends StatelessWidget {
   ServiceHistoryScreen({super.key});
+
+  String _formatDate(DateTime date) {
+    return "${date.day}/${date.month}/${date.year}";
+  }
 
   final res = AppResponsive();
   final ServiceHistoryController controller = Get.find();
@@ -56,8 +61,15 @@ class ServiceHistoryScreen extends StatelessWidget {
                       return Padding(
                         padding: EdgeInsets.only(bottom: res.hp(16)),
                         child: ServiceCard(
-                          onTapInvoice: () {
-                            Get.toNamed(AppRoutes.invoiceDetailsScreen);
+                          onTapInvoice: () async {
+                            final data =
+                                await InvoiceApiService.fetchInvoiceData(
+                                  "#ARZ324-01",
+                                );
+
+                            Get.to(
+                              () => InvoiceDetailsScreen(invoiceData: data),
+                            );
                           },
                           onTapOilChange: () {
                             _showBeautifulBottomSheet(context);
@@ -89,12 +101,12 @@ class ServiceHistoryScreen extends StatelessWidget {
                 textIconWidth: 4,
                 text: "request_service".tr,
                 onTap: () {
-                  // Get.toNamed(AppRoutes.addVehicleScreen);
+                  Get.toNamed(AppRoutes.requestServiceScreen);
                 },
                 fontSize: 14,
                 iconWidth: res.wp(13),
                 iconHeight: res.wp(11),
-                btnColor: AppColors.primaryColor,
+                btnColor: AppColors.primaryColor1,
                 iconPath: AppIcons.plus1,
                 iconColor: AppColors.whitColor,
               ),
@@ -176,7 +188,7 @@ class ServiceHistoryScreen extends StatelessWidget {
                       "oil_change_description".tr,
                       fontWeight: FontWeight.w400,
                       fontSize: 14,
-                      color: const Color(0xFF375d82),
+                      color: AppColors.primaryColor1,
                     ),
 
                     SizedBox(height: res.hp(10)),
@@ -187,16 +199,14 @@ class ServiceHistoryScreen extends StatelessWidget {
                           AppIcons.calendar,
                           height: res.hp(16),
                           width: res.wp(24),
-                          color: AppColors.primaryColor,
+                          color: AppColors.primaryColor1,
                         ),
-
                         SizedBox(width: res.wp(3)),
-
                         AppText(
                           "service_date_example".tr,
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
-                          color: const Color(0xFF515151),
+                          color: AppColors.primaryColor1,
                         ),
                       ],
                     ),
@@ -209,16 +219,14 @@ class ServiceHistoryScreen extends StatelessWidget {
                           AppIcons.map,
                           height: res.hp(16),
                           width: res.wp(24),
-                          color: AppColors.primaryColor,
+                          color: AppColors.primaryColor1,
                         ),
-
                         SizedBox(width: res.wp(3)),
-
                         AppText(
                           "al_futtaim_service_center".tr,
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
-                          color: const Color(0xFF515151),
+                          color: AppColors.primaryColor1,
                         ),
                       ],
                     ),
@@ -231,16 +239,14 @@ class ServiceHistoryScreen extends StatelessWidget {
                           AppIcons.download,
                           height: res.hp(16),
                           width: res.wp(24),
-                          color: AppColors.primaryColor,
+                          color: AppColors.primaryColor1,
                         ),
-
                         SizedBox(width: res.wp(3)),
-
                         AppText(
                           "download_invoice".tr,
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
-                          color: AppColors.primaryColor,
+                          color: AppColors.primaryColor1,
                         ),
                       ],
                     ),
@@ -251,7 +257,7 @@ class ServiceHistoryScreen extends StatelessWidget {
                       '\$65.99',
                       fontWeight: FontWeight.w700,
                       fontSize: 20,
-                      color: AppColors.primaryColor,
+                      color: AppColors.primaryColor1,
                     ),
 
                     SizedBox(height: res.hp(12)),
@@ -264,9 +270,7 @@ class ServiceHistoryScreen extends StatelessWidget {
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
-
                         SizedBox(width: res.wp(8)),
-
                         Obx(
                           () => RatingBar.builder(
                             initialRating: controller.rating.value,
@@ -276,8 +280,10 @@ class ServiceHistoryScreen extends StatelessWidget {
                             itemCount: 5,
                             itemSize: res.wp(20),
                             itemBuilder:
-                                (_, __) =>
-                                    Icon(Icons.star, color: Colors.amber),
+                                (_, __) => const Icon(
+                                  Icons.star,
+                                  color: Color(0xFFFACC15),
+                                ),
                             onRatingUpdate: (newRating) {
                               controller.rating.value = newRating;
                             },
@@ -288,11 +294,329 @@ class ServiceHistoryScreen extends StatelessWidget {
 
                     SizedBox(height: res.hp(43)),
 
-                    CustomButton(text: "re_service".tr, onTap: () {}),
+                    // ✅ Button to open another bottom sheet
+                    CustomButton(
+                      text: "re_service".tr,
+                      onTap: () {
+                        Navigator.of(
+                          context,
+                        ).pop(); // close current bottom sheet
+
+                        Future.delayed(const Duration(milliseconds: 200), () {
+                          _showSecondBottomSheet(
+                            context,
+                          ); // open new bottom sheet
+                        });
+                      },
+                      btnColor: AppColors.primaryColor1,
+                    ),
 
                     SizedBox(height: res.hp(43)),
                   ],
                 ),
+              ),
+            ),
+          ),
+    );
+  }
+
+  /// Second bottom sheet
+  void _showSecondBottomSheet(BuildContext context) {
+    final RxList<bool> isChecked = List.generate(5, (_) => false).obs;
+    final List<String> options = [
+      "Oil Change & Filter",
+      "AC Service",
+      "Brake Inspection",
+      "Engine Checkup",
+    ];
+    final res = AppResponsive();
+    final controller = Get.find<ServiceHistoryController>();
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder:
+          (context) => Padding(
+            padding: EdgeInsets.only(
+              left: 24,
+              right: 24,
+              top: 24,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 24,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// Close Button
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: Image.asset(
+                        AppIcons.cross,
+                        height: res.hp(24),
+                        width: res.wp(24),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: res.hp(16)),
+
+                  /// Reservice Type Label
+                  Row(
+                    children: [
+                      AppText(
+                        "Reservice Type".tr,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textColor,
+                        fontSize: 14,
+                      ),
+                      AppText(
+                        " * ".tr,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.red,
+                        fontSize: 14,
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: res.hp(8)),
+
+                  /// Reservice Type Dropdown
+                  Obx(
+                    () => DropdownButtonFormField<String>(
+                      value: controller.selectedLevel.value,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFF3F3F3),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFF3F3F3),
+                          ),
+                        ),
+                      ),
+                      dropdownColor: Colors.white,
+                      icon: const Padding(
+                        padding: EdgeInsets.only(right: 8),
+                        child: Icon(Icons.arrow_drop_down, color: Colors.grey),
+                      ),
+                      style: const TextStyle(color: Colors.grey, fontSize: 14),
+                      hint: Text(
+                        "Full Services".tr,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                      items:
+                          controller.serviceTypeList
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: AppText(
+                                    e,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.textColor,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                      onChanged: (val) => controller.changeLevel(val),
+                    ),
+                  ),
+
+                  SizedBox(height: res.hp(16)),
+
+                  /// Urgency Level Label
+                  AppText(
+                    "Urgency Level".tr,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textColor,
+                    fontSize: 14,
+                  ),
+
+                  SizedBox(height: res.hp(8)),
+
+                  /// Urgency Level Dropdown
+                  Obx(
+                    () => DropdownButtonFormField<String>(
+                      // initialValue: controller.selectedLevel.value,
+                      value:controller.selectedLevel.value,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFF3F3F3),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFF3F3F3),
+                          ),
+                        ),
+                      ),
+                      dropdownColor: Colors.white,
+                      icon: const Padding(
+                        padding: EdgeInsets.only(right: 8),
+                        child: Icon(Icons.arrow_drop_down, color: Colors.grey),
+                      ),
+                      style: const TextStyle(color: Colors.grey, fontSize: 14),
+                      hint: Text(
+                        "Medium - Within a week".tr,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                      items:
+                          controller.urgencyList
+                              .map(
+                                (e) => DropdownMenuItem(
+                                  value: e,
+                                  child: AppText(
+                                    e,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.textColor,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                      onChanged: (val) => controller.changeLevel(val),
+                    ),
+                  ),
+
+                  SizedBox(height: res.hp(16)),
+
+                  /// Preferred Date Label
+                  AppText(
+                    "preferred_date".tr,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textColor,
+                    fontSize: 14,
+                  ),
+
+                  SizedBox(height: res.hp(8)),
+
+                  /// Date Picker
+                  Obx(() {
+                    final date = controller.selectedDate.value;
+                    final displayText =
+                        date != null ? _formatDate(date) : "select_date".tr;
+
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(24),
+                      onTap: () => controller.pickDate(context),
+                      child: InputDecorator(
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 12,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(24),
+                            borderSide: const BorderSide(
+                              color: Color(0xFFF3F3F3),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(24),
+                            borderSide: const BorderSide(
+                              color: Color(0xFFF3F3F3),
+                            ),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                displayText,
+                                style: TextStyle(
+                                  color:
+                                      date != null ? Colors.black : Colors.grey,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            Image.asset(
+                              AppIcons.calendar,
+                              height: res.hp(20),
+                              width: res.wp(20),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+                  SizedBox(height: res.hp(16)),
+                  AppText(
+                    "Parts Name",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: AppColors.textColor,
+                  ),
+
+                  SizedBox(height: res.hp(8)),
+
+                  Obx(
+                    () => Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: List.generate(options.length, (index) {
+                        return Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Checkbox(
+                              activeColor: AppColors.black,
+                              value: isChecked[index],
+                              onChanged: (val) {
+                                isChecked[index] = val ?? false;
+                              },
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              // ✅ remove extra padding
+                              visualDensity:
+                                  VisualDensity
+                                      .compact, // ✅ reduce space around checkbox
+                            ),
+                            Text(
+                              options[index],
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 12),
+                          ],
+                        );
+                      }),
+                    ),
+                  ),
+
+                  SizedBox(height: res.hp(8)),
+                  CustomButton(
+                    text: "submit".tr,
+                    onTap: () {},
+                    btnColor: AppColors.black,
+                  ),
+
+                  SizedBox(height: res.hp(24)),
+                ],
               ),
             ),
           ),

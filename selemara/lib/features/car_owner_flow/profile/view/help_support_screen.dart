@@ -139,18 +139,60 @@ class HelpSupportScreen extends StatelessWidget {
                 ),
               ),
             ),
+
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
+
+            SliverToBoxAdapter(
+              child: AppText(
+                "attach_file".tr,
+                color: AppColors.textColor2939,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
+
+            SliverToBoxAdapter(
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.symmetric(horizontal: 17, vertical: 13),
+                decoration: BoxDecoration(
+                  color: Color(0xFFeaf0fd),
+                  border: Border.all(width: 1, color: Color(0xFFCCCCCC)),
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      AppIcons.upload,
+                      height: res.hp(16),
+                      width: res.wp(16),
+                    ),
+                    SizedBox(width: res.wp(10)),
+                    AppText(
+                      "attach_file".tr,
+                      color: AppColors.textColor2939,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
             SliverToBoxAdapter(child: SizedBox(height: res.hp(48))),
 
             SliverToBoxAdapter(
               child: CustomButton(
                 text: "submit".tr,
                 onTap: () {},
+                btnColor: AppColors.primaryColor1,
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
-
 }

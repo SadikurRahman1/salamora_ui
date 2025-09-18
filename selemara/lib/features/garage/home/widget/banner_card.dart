@@ -20,12 +20,13 @@ class BannerCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(res.sp(16)),
-        gradient: LinearGradient(
-          colors: [
-            Color(0xFF00A16E).withValues(alpha: 0.3),
-            Color(0xFF2563EB).withValues(alpha: 0.5),
-          ],
-        ),
+        // gradient: LinearGradient(
+        //   colors: [
+        //     Color(0xFF00A16E).withValues(alpha: 0.3),
+        //     Color(0xFF2563EB).withValues(alpha: 0.5),
+        //   ],
+        // ),
+        color: AppColors.lightGray
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

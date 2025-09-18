@@ -7,7 +7,7 @@ import '../../../../../../core/widgets/custom_appbar.dart';
 import 'package:get/get.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import '../../../../../../core/widgets/custom_button.dart';
-import '../../../car_owner_flow/profile/widget/custom_text_field.dart';
+import '../../common/widgets/custom_text_field.dart';
 import '../controller/dealer_request_service_controller.dart';
 
 

@@ -7,6 +7,7 @@ import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_responsive.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
+import '../../my_car_add_vehicle/view/key_value_text.dart';
 
 class WarrantyDetailsScreen extends StatelessWidget {
   WarrantyDetailsScreen({super.key});
@@ -92,46 +93,49 @@ class WarrantyDetailsScreen extends StatelessWidget {
             ),
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(12))),
-
             SliverToBoxAdapter(
-              child: AppText(
-                "warranty_information".tr,
-                color: AppColors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+              child: KeyValueText(
+                keyText: "warranty_status".tr,
+                valueText: "Active",
+                fontSize: 16,
+                keyColor: AppColors.black,
+                valueColor: AppColors.black,
               ),
             ),
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
 
             SliverToBoxAdapter(
-              child: AppText(
-                "warranty_provider_honda_uae".tr,
-                color: AppColors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+              child: KeyValueText(
+                keyText: "warranty_provider_honda_uae".tr,
+                valueText: "Honda UAE",
+                fontSize: 16,
+                keyColor: AppColors.black,
+                valueColor: AppColors.black,
               ),
             ),
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
 
             SliverToBoxAdapter(
-              child: AppText(
-                "location_gulshan_dhaka".tr,
-                color: AppColors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+              child: KeyValueText(
+                keyText: "due_date".tr,
+                valueText: "15 October 2025 (3 months)",
+                fontSize: 16,
+                keyColor: AppColors.black,
+                valueColor: AppColors.black,
               ),
             ),
-
             SliverToBoxAdapter(child: SizedBox(height: res.hp(8))),
 
             SliverToBoxAdapter(
-              child: AppText(
-                "covered_services".tr,
-                color: AppColors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
+              child: KeyValueText(
+                keyText: "covered_services".tr,
+                valueText: "",
+                fontSize: 18,
+                keyColor: AppColors.black,
+                fontWeight: FontWeight.w700,
+                valueColor: AppColors.black,
               ),
             ),
 
@@ -143,14 +147,14 @@ class WarrantyDetailsScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Color(0xFFeaf0fd),
+                      color: AppColors.greenLight,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: AppText(
                       "engine_checkup".tr,
-                      color: AppColors.primaryColor,
+                      color: AppColors.greenColor,
                       fontSize: 12,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
 
@@ -159,14 +163,14 @@ class WarrantyDetailsScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Color(0xFFeaf0fd),
+                      color: AppColors.greenLight,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: AppText(
                       "oil_change".tr,
-                      color: AppColors.primaryColor,
+                      color: AppColors.greenColor,
                       fontSize: 12,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
 
@@ -175,14 +179,14 @@ class WarrantyDetailsScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Color(0xFFeaf0fd),
+                      color: AppColors.greenLight,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: AppText(
                       "ac_service".tr,
-                      color: AppColors.primaryColor,
+                      color: AppColors.greenColor,
                       fontSize: 12,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
 
@@ -190,14 +194,14 @@ class WarrantyDetailsScreen extends StatelessWidget {
                     margin: EdgeInsets.only(top: 16),
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Color(0xFFeaf0fd),
+                      color: AppColors.greenLight,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: AppText(
                       "brake_inspection".tr,
-                      color: AppColors.primaryColor,
+                      color: AppColors.greenColor,
                       fontSize: 12,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
@@ -266,6 +270,7 @@ class WarrantyDetailsScreen extends StatelessWidget {
                 textIconWidth: 5,
                 text: "download".tr,
                 iconPath: AppIcons.download,
+                btnColor: AppColors.black,
                 onTap: () {},
               ),
             ),
@@ -276,5 +281,4 @@ class WarrantyDetailsScreen extends StatelessWidget {
       ),
     );
   }
-
 }

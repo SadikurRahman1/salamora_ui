@@ -94,9 +94,9 @@ class HomeControllerOwner extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getProfile();
-    getAllCar();
-    getService();
+    // getProfile();
+    // getAllCar();
+    // getService();
   }
 }
 ////

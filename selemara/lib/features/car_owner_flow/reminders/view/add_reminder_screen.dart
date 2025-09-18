@@ -204,7 +204,13 @@ class AddReminderScreen extends StatelessWidget {
 
             SliverToBoxAdapter(child: SizedBox(height: res.hp(48))),
 
-            SliverToBoxAdapter(child: CustomButton(text: "save", onTap: () {})),
+            SliverToBoxAdapter(
+              child: CustomButton(
+                text: "save",
+                onTap: () {},
+                btnColor: AppColors.primaryColor1,
+              ),
+            ),
           ],
         ),
       ),

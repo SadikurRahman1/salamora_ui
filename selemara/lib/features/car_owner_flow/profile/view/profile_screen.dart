@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/routes/app_routes.dart';
@@ -12,9 +13,7 @@ import '../../../../core/helper/shared_preferences_helper.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
-
 import '../controller/profile_controller.dart';
-import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -94,27 +93,21 @@ class ProfileScreen extends StatelessWidget {
 
               SizedBox(height: res.hp(20)),
 
-
-
               buildProfileOptionTile(
-
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
-
-
                 ),
-
 
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
-
 
                 context,
                 iconPath: AppImages.profileIcon,
                 title: 'profile'.tr,
                 onTap: () {
-                  Get.toNamed(AppRoutes.editProfileScreen);                },
+                  Get.toNamed(AppRoutes.editProfileScreen);
+                },
               ),
 
               Container(
@@ -174,30 +167,22 @@ class ProfileScreen extends StatelessWidget {
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
 
-
-
               buildProfileOptionTile(
-
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
-
-
                 ),
-
 
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
-
 
                 context,
                 iconPath: AppImages.lock,
                 title: 'password'.tr,
                 onTap: () {
-                  Get.toNamed(AppRoutes.updatePasswordScreen);                },
+                  Get.toNamed(AppRoutes.updatePasswordScreen);
+                },
               ),
-
-
 
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 16),
@@ -206,34 +191,23 @@ class ProfileScreen extends StatelessWidget {
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
 
-
-
               buildProfileOptionTile(
-
-
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
-
-
                 ),
-
 
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
 
-
                 context,
-                iconPath:  AppImages.privacy,
+                iconPath: AppImages.privacy,
                 title: 'privacy_policy'.tr,
                 onTap: () {
-                  Get.toNamed(AppRoutes.privacyPolicyScreen);                },
-              )
-
-
-
-
-              ,Container(
+                  Get.toNamed(AppRoutes.privacyPolicyScreen);
+                },
+              ),
+              Container(
                 margin: EdgeInsets.only(bottom: 15, top: 16),
                 width: double.infinity,
                 height: 1,
@@ -263,7 +237,7 @@ class ProfileScreen extends StatelessWidget {
 
                   /// Right side: dropdown
                   Obx(
-                        () => DropdownButton<String>(
+                    () => DropdownButton<String>(
                       value: controller.selectedLang.value,
                       icon: const Icon(Icons.arrow_right, size: 26),
                       underline: SizedBox(),
@@ -272,14 +246,16 @@ class ProfileScreen extends StatelessWidget {
                           controller.changeLang(value);
                         }
                       },
-                      items: ["English", "Arabic"].map((String lang) {
-                        return DropdownMenuItem<String>(
-                          value: lang,
-                          child: Text(lang),
-                        );
-                      }).toList(),
+                      items:
+                          ["English", "Arabic"].map((String lang) {
+                            return DropdownMenuItem<String>(
+                              value: lang,
+                              child: Text(lang),
+                            );
+                          }).toList(),
                     ),
-                  ),                ],
+                  ),
+                ],
               ),
 
               Container(
@@ -288,31 +264,22 @@ class ProfileScreen extends StatelessWidget {
                 height: 1,
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
-
-
 
               buildProfileOptionTile(
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
-
-
                 ),
 
-
                 bottomMargin: 0,
-                  padding: EdgeInsets.all(0),
+                padding: EdgeInsets.all(0),
                 context,
-                iconPath:AppIcons.customerSupport,
+                iconPath: AppIcons.customerSupport,
                 title: 'help_support'.tr,
                 onTap: () {
-
                   Get.toNamed(AppRoutes.helpSupportScreen);
-
-
                 },
               ),
-
 
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 16),
@@ -322,19 +289,18 @@ class ProfileScreen extends StatelessWidget {
               ),
 
               buildProfileOptionTile(
+                textSize: 16,
+                bottomMargin: 0,
+                padding: EdgeInsets.all(0),
 
-                  textSize: 16,
-                  bottomMargin: 0,
-                  padding: EdgeInsets.all(0),
-
-                  // optional
-                  boxDecoration: BoxDecoration(
-                    color: Colors.blue.shade50,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
+                // optional
+                boxDecoration: BoxDecoration(
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(15),
+                ),
 
                 context,
-                iconPath:AppImages.logout,
+                iconPath: AppImages.logout,
                 title: 'logout'.tr,
                 onTap: () {
                   showBeautifulBottomSheet(context);
@@ -416,13 +382,11 @@ class ProfileScreen extends StatelessWidget {
                         text: "no".tr,
                         onTap: () {
                           Navigator.pop(context);
-
-
                         },
                         btnColor: AppColors.backGroundColor,
-                        borderColor: AppColors.primaryColor,
+                        borderColor: AppColors.primaryColor1,
                         isBorder: true,
-                        textColor: AppColors.primaryColor,
+                        textColor: AppColors.primaryColor1,
                         borderRadius: 8,
                       ),
                     ),
@@ -431,13 +395,12 @@ class ProfileScreen extends StatelessWidget {
 
                     Expanded(
                       child: CustomButton(
+                        btnColor: AppColors.primaryColor1,
+
                         text: "yes".tr,
                         onTap: () {
-
                           preferencesHelper.remove(TokenKey.accessToken);
                           Get.offAllNamed(AppRoutes.login);
-
-
                         },
                         borderRadius: 8,
                       ),
@@ -456,16 +419,16 @@ class ProfileScreen extends StatelessWidget {
 }
 
 Widget buildProfileOptionTile(
-    BuildContext context, {
-      required String iconPath,
-      required String title,
-      double? textSize,
-      double? bottomMargin,
-      EdgeInsets? padding,
-      String? backArrow,
-      BoxDecoration? boxDecoration,
-      VoidCallback? onTap,
-    }) {
+  BuildContext context, {
+  required String iconPath,
+  required String title,
+  double? textSize,
+  double? bottomMargin,
+  EdgeInsets? padding,
+  String? backArrow,
+  BoxDecoration? boxDecoration,
+  VoidCallback? onTap,
+}) {
   final res = AppResponsive();
   final isRTL = Directionality.of(context) == TextDirection.rtl;
 
@@ -475,13 +438,15 @@ Widget buildProfileOptionTile(
     child: Material(
       color: AppColors.backGroundColor,
       child: InkWell(
-        borderRadius: boxDecoration?.borderRadius as BorderRadius? ??
+        borderRadius:
+            boxDecoration?.borderRadius as BorderRadius? ??
             BorderRadius.circular(0),
         onTap: onTap,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         child: Padding(
-          padding: padding ??
+          padding:
+              padding ??
               EdgeInsets.only(
                 top: res.hp(12),
                 left: res.wp(12),
@@ -511,14 +476,16 @@ Widget buildProfileOptionTile(
               ),
               backArrow == null
                   ? Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.rotationY(isRTL ? math.pi : 0), // ✅ Flip RTL
-                child: Image.asset(
-                  AppImages.backArrow,
-                  height: res.hp(24),
-                  width: res.wp(24),
-                ),
-              )
+                    alignment: Alignment.center,
+                    transform: Matrix4.rotationY(
+                      isRTL ? math.pi : 0,
+                    ), // ✅ Flip RTL
+                    child: Image.asset(
+                      AppImages.backArrow,
+                      height: res.hp(24),
+                      width: res.wp(24),
+                    ),
+                  )
                   : const SizedBox.shrink(),
             ],
           ),

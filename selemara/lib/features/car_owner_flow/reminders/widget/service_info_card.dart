@@ -41,7 +41,7 @@ class ServiceInfoCard extends StatelessWidget {
             child: Container(
               width: res.wp(20),
               decoration: BoxDecoration(
-                color: sideBarColor,
+                color: AppColors.primaryColor1,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(res.sp(15)),
                   bottomLeft: Radius.circular(res.sp(15)),

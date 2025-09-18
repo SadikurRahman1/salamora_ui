@@ -163,7 +163,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.invoiceDetailsScreen,
-      page: () => InvoiceDetailsScreen(),
+      page: () => InvoiceDetailsScreen(invoiceData: Get.arguments["invoiceData"],),
       binding: HomeBinding(),
     ),
 
@@ -260,11 +260,18 @@ class AppPages {
       page: () => CreatePartsWarrantyScreen(),
       binding: GarageBinding(),
     ),
+
     GetPage(
       name: AppRoutes.createServiceInvoice,
       page: () => CreateServiceInvoiceScreen(),
       binding: GarageBinding(),
     ),
+
+    // GetPage(
+    //   name: AppRoutes.createServiceInvoice,
+    //   page: () => CreateServiceInvoiceScreen(),
+    //   binding: GarageBinding(),
+    // ),
 
   ];
 

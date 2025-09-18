@@ -83,8 +83,8 @@ class OwnerNavbarScreen extends StatelessWidget {
                               fontSize: res.sp(14),
                               color:
                                   isActive
-                                      ? AppColors.primaryColor
-                                      : AppColors.primaryTextColor,
+                                      ? AppColors.black
+                                      : Color(0xFF828c9d),
                             ),
                           ),
                         ],

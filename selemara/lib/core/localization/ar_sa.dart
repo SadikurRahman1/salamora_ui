@@ -119,6 +119,9 @@ final Map<String, String> arSA = {
   "service_user_name": "أحمد المنصوري",
   "service_subtitle": "تويوتا كامري - خدمة الفطيم",
 
+  "track_your_car": "تتبع سجل صيانة سيارتك وابقَ على اطلاع بأعمال الصيانة",
+  "welcome_back_a": "مرحبًا بعودتك!",
+
   //// car details addad by arif
   "car_details": "تفاصيل السيارة",
   "2020_car_title": "هوندا سيفيك 2020",
@@ -138,7 +141,7 @@ final Map<String, String> arSA = {
   "extended_warranty": "الضمان الممتد",
   "upload_document": "رفع وثيقة",
   "service_history": "تاريخ الخدمة",
-  "service_record": "سجلات الخدمة:",
+  "warranty_status": "حالة الضمان:",
 
   ///   Request service added by arif
   "garage_service_center_name": "اسم المرآب / مركز الخدمة",
@@ -165,6 +168,7 @@ final Map<String, String> arSA = {
 
   "oil_change_description":
   "تغيير زيت صناعي كامل واستبدال الفلتر. تم فحص جميع مستويات السوائل وضغط الإطارات.",
+
   "service_date_example": "15/1/2024",
   "download_invoice": "تحميل الفاتورة",
   "your_rating": "تقييمك:",
@@ -197,8 +201,8 @@ final Map<String, String> arSA = {
   "location_gulshan_dhaka": "الموقع: 123، جُلشن، دكا",
   "service_date_15_july_2025": "تاريخ الخدمة: 15 يوليو 2025",
   "warranty_information": "معلومات الضمان",
-  "warranty_provider_honda_uae": "مزود الضمان: هوندا الإمارات",
-  "covered_services": "الخدمات المغطاة:",
+  "warranty_provider_honda_uae": "مزود الضمان: هوندا الإمارات:",
+  "covered_services": " الخدمات المغطاة : ",
   "engine_checkup": "فحص المحرك",
   "oil_change": "تغيير الزيت",
   "ac_service": "خدمة التكييف",
@@ -209,6 +213,8 @@ final Map<String, String> arSA = {
   "show_warranty_before_service": "يجب عرض شاشة الضمان قبل الخدمة.",
   "one_time_use_per_service": "استخدام لمرة واحدة لكل نوع خدمة.",
   "download": "تحميل",
+
+  "due_date": "تاريخ الاستحقاق",
 
   /// privacy policy screen add by Arif
   'introduction': 'مقدمة',
@@ -257,6 +263,7 @@ final Map<String, String> arSA = {
   "upload_vehicle_image": "تحميل صورة المركبة",
   "click_to_upload_images_max_6": "انقر لتحميل الصور (بحد أقصى 6)",
   "png_jpg_up_to_10mb_each": "PNG، JPG حتى 10 ميغابايت لكل منها",
+  "attach_file_ar": "إرفاق ملف",
 
   /// buyer section
   "search_car": "بحث عن سيارة",
@@ -299,7 +306,8 @@ final Map<String, String> arSA = {
   "create_warranty": "إنشاء الضمان",
   "qr_code": "رمز QR ",
   "recent_sales": "المبيعات الأخيرة",
-  "manage_cars_verified_records": "إدارة السيارات بسجلات خدمة myCarage الموثوقة",
+  "manage_cars_verified_records":
+  "إدارة السيارات بسجلات خدمة myCarage الموثوقة",
   "search_cars_name": "ابحث باسم السيارة...",
   "all_status": "جميع الحالات",
   "generate_qr_code": "إنشاء رمز الاستجابة السريعة",
@@ -313,7 +321,6 @@ final Map<String, String> arSA = {
   "autocar_plus": "أوتوكار بلس",
   "miles_sample": "٤٥٦٤٥٤ ميل",
 
-
   "miles": "الأميال",
   "location": "الموقع",
   "phone": "الهاتف",
@@ -326,8 +333,12 @@ final Map<String, String> arSA = {
   "current_owner": "المالك الحالي",
   "first_owner": "المالك الأول",
   "personal_information1": "المعلومات الشخصية",
+
   "sell_vehicle": "بيع المركبة",
   "view_ownership_history": "عرض سجل الملكية",
+  "price": "السعر",
+  "warranty_provider": "مقدم الضمان",
+  "warranty_month": "شهر الضمان",
 
   "service": "خدمة",
   "in_progress": "قيدالتنفيذ",

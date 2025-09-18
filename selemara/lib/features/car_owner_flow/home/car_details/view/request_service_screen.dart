@@ -1,16 +1,16 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
 import '../../../../../core/constants/app_responsive.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
-import 'package:get/get.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../profile/widget/custom_text_field.dart';
-import '../controller/request_service_controller.dart';
 import '../../widget/car_info_section.dart';
+import '../controller/request_service_controller.dart';
 
 class RequestServiceScreen extends StatelessWidget {
   RequestServiceScreen({super.key});
@@ -33,7 +33,7 @@ class RequestServiceScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: res.wp(24)),
         child: Obx(() {
-          return controller.allGarageList.value == null
+          return controller.allGarageList.value != null
               ? Center(child: CircularProgressIndicator())
               : CustomScrollView(
                 slivers: [
@@ -211,15 +211,17 @@ class RequestServiceScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
 
-                  // CarInfoSection(
-                  //   controllerA: controller.phoneController,
-                  //   controllerB: controller.emailController,
-                  //   label1: "phone_number".tr,
-                  //   label2: "email".tr,
-                  //   hint1: "2024",
-                  //   hint2: "Silver",
-                  // ),
+                  CarInfoSection(
+                    controllerA: controller.phoneController,
+                    controllerB: controller.emailController,
+                    label1: "Phone Number".tr, // VIN
+                    label2: "Email".tr, // Car Name
+                    hint1: "+113289078".tr, // Car Owner
+                    hint2: "Enter your email",
+                  ),
+
                   SliverToBoxAdapter(child: SizedBox(height: res.hp(16))),
 
                   SliverToBoxAdapter(
@@ -235,6 +237,7 @@ class RequestServiceScreen extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: Obx(
                       () => DropdownButtonFormField<String>(
+                        // initialValue: controller.selectedLevel.value,
                         value: controller.selectedLevel.value,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
@@ -380,6 +383,7 @@ class RequestServiceScreen extends StatelessWidget {
 
                         Expanded(
                           child: CustomButton(
+                            btnColor: AppColors.black,
                             text: "submit".tr,
                             onTap: () {
                               controller.postRequestService();

@@ -7,9 +7,11 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
-import '../../../../core/constants/app_responsive.dart';
-import '../widget/invoice_row_text.dart';
-import '../widget/three_column_text_row.dart';
+import '../../../../../core/constants/app_responsive.dart';
+import '../widgets/invoice_row_text.dart';
+import '../widgets/three_column_text_row.dart';
+
+
 
 // Models
 class Company {
@@ -321,11 +323,11 @@ class InvoiceApiService {
   }
 }
 
-class InvoiceDetailsScreen extends StatelessWidget {
+class GarageInvoiceDetailsScreen extends StatelessWidget {
   final InvoiceData invoiceData;
   final res = AppResponsive();
 
-  InvoiceDetailsScreen({Key? key, required this.invoiceData}) : super(key: key);
+  GarageInvoiceDetailsScreen({Key? key, required this.invoiceData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

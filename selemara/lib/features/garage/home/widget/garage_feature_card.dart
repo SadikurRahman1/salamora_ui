@@ -30,21 +30,21 @@ class GarageFeatureCard extends StatelessWidget {
         child: Stack(
           children: [
             // Colored side bar
-            Positioned(
-              left: 0,
-              top: 0,
-              bottom: 0,
-              child: Container(
-                width: res.wp(20),
-                decoration: BoxDecoration(
-                  color: sideColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(res.sp(15)),
-                    bottomLeft: Radius.circular(res.sp(15)),
-                  ),
-                ),
-              ),
-            ),
+            // Positioned(
+            //   left: 0,
+            //   top: 0,
+            //   bottom: 0,
+            //   child: Container(
+            //     width: res.wp(20),
+            //     decoration: BoxDecoration(
+            //       color: sideColor,
+            //       borderRadius: BorderRadius.only(
+            //         topLeft: Radius.circular(res.sp(15)),
+            //         bottomLeft: Radius.circular(res.sp(15)),
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
             // Main card
             Container(

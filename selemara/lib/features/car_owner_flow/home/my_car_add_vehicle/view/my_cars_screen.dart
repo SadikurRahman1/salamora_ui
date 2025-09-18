@@ -44,7 +44,7 @@ class MyCarsScreen extends StatelessWidget {
                     width: res.wp(128),
                     child: CustomButton(
                       text: "add_vehicle".tr,
-                      btnColor: AppColors.primaryColor,
+                      btnColor: AppColors.primaryColor1,
                       iconHeight: 14,
                       iconWidth: 14,
                       onTap: () {

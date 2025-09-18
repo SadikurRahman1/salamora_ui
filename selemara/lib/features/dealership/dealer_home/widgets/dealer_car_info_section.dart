@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:selemara/features/car_owner_flow/profile/widget/custom_text_field.dart';
-
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/app_text.dart';
+import '../../common/widgets/custom_text_field.dart';
 
 class DealerCarInfoCard extends StatelessWidget {
   final String label1;

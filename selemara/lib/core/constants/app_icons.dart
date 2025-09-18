@@ -4,8 +4,8 @@ class AppIcons {
   static const homeActive = "assets/icons/home_active.png";
   static const serviceInactive = "assets/icons/service_inactive.png";
   static const serviceActive = "assets/icons/service_active.png";
-  static const remindersInactive = "assets/icons/reminders_inactive.png";
-  static const reminderActive = "assets/icons/reminder_active.png";
+  static const remindersInactive = "assets/icons/reminders.png";
+  static const reminderActive = "assets/icons/reminders_active.png";
   static const profileInactive = "assets/icons/profile_inactive.png";
   static const profileActive = "assets/icons/profile_active.png";
 
@@ -44,6 +44,7 @@ class AppIcons {
   static const language = "assets/icons/language.png";
   static const verified1 = "assets/icons/verified1.png";
   static const carIcon2 = "assets/icons/car_icon2.png";
+  static const carOwner = "assets/icons/car_owner.png";
 
   static const saveActive = "assets/icons/save_active.png";
   static const saveInActive = "assets/icons/save_in_active.png";
@@ -65,9 +66,6 @@ class AppIcons {
   static const location = "assets/icons/location.png";
   static const user = "assets/icons/user.png";
   static const multipleUser = "assets/icons/multiple_user.png";
-
-
-
-
-
+  static const remainderActive = "assets/icons/remainder_active.png";
+  static const wrenActive = "assets/icons/wren_active.png";
 }

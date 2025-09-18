@@ -26,6 +26,7 @@ class RemindersScreen extends StatelessWidget {
           text: "Add Reminder",
           iconPath: AppIcons.plus1,
           iconColor: AppColors.whitColor,
+          btnColor: AppColors.primaryColor1,
           iconWidth: 14,
           iconHeight: 14,
           onTap: () {

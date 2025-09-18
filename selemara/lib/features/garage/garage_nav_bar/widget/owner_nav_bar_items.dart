@@ -20,7 +20,6 @@ class OwnerNavbarItems {
   static final List<String> labels = [
     'home'.tr,
     'services'.tr,
-    // 'generate'.tr,
     'profile'.tr,
   ];
 

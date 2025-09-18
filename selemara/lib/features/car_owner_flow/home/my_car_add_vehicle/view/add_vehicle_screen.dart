@@ -1,18 +1,19 @@
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
+
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_responsive.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
 import '../../../profile/widget/custom_text_field.dart';
-import '../controller/add_vehicle_controller.dart';
 import '../../widget/car_info_section.dart';
-import 'package:get/get.dart';
-
 import '../../widget/get_image.dart';
+import '../controller/add_vehicle_controller.dart';
 
 class AddVehicleScreen extends StatelessWidget {
   AddVehicleScreen({super.key});
@@ -244,8 +245,8 @@ class AddVehicleScreen extends StatelessWidget {
                   SizedBox(width: res.wp(20)),
                   Expanded(
                     child: CustomButton(
-                      btnColor: AppColors.primaryColor,
-                      text: "add_vehicle".tr, // Add Vehicle
+                      btnColor: AppColors.primaryColor1,
+                      text: "submit".tr, // Add Vehicle
                       onTap: () {},
                     ),
                   ),

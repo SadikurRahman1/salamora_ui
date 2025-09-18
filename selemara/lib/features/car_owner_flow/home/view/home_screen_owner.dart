@@ -10,10 +10,10 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/home_header.dart';
-import '../../../garage/home/widget/garage_feature_card.dart';
 import '../controller/home_controller_owner.dart';
 import '../widget/car_info_card.dart';
 import '../widget/car_owner_banner_card.dart';
+import '../widget/car_owner_feature_card.dart';
 import '../widget/profile_card.dart';
 
 class HomeScreenOwner extends StatelessWidget {
@@ -34,7 +34,7 @@ class HomeScreenOwner extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: res.wp(0)),
               child:
-                  controller.profileResponse.value == null
+                  controller.profileResponse.value != null
                       ? Center(child: CircularProgressIndicator())
                       : CustomScrollView(
                         slivers: [
@@ -48,7 +48,7 @@ class HomeScreenOwner extends StatelessWidget {
                             automaticallyImplyLeading: false,
                             toolbarHeight: res.hp(50),
                             title: HomeHeader(
-                              name: data?.name ?? "",
+                              name: data?.name ?? "John Doe",
                               type: "Car Owner",
                               imagePath: AppImages.userProfile,
                               notificationIconPath:
@@ -77,20 +77,22 @@ class HomeScreenOwner extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                // GarageFeatureCard(
-                                //   res: res,
-                                //   sideColor: AppColors.primaryColor,
-                                //   cardText: "my_vehicles".tr,
-                                //
-                                //   icon: AppIcons.carIcon2,
-                                // ),
+                                CarOwnerFeatureCard(
+                                  count: "2",
+                                  res: res,
+                                  sideColor: AppColors.primaryColor1,
+                                  cardText: "my_vehicles".tr,
 
-                                // GarageFeatureCard(
-                                //   res: res,
-                                //   sideColor: AppColors.primaryColor,
-                                //   icon: AppIcons.check1,
-                                //   cardText: "service_records".tr,
-                                // ),
+                                  icon: AppIcons.carIcon2,
+                                ),
+
+                                CarOwnerFeatureCard(
+                                  count: "23",
+                                  res: res,
+                                  sideColor: AppColors.primaryColor1,
+                                  icon: AppIcons.check1,
+                                  cardText: "service_records".tr,
+                                ),
                               ],
                             ),
                           ),
@@ -101,18 +103,20 @@ class HomeScreenOwner extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                // GarageFeatureCard(
-                                //   res: res,
-                                //   sideColor: AppColors.primaryColor,
-                                //   cardText: "alerts".tr,
-                                //   icon: AppIcons.notificationHome,
-                                // ),
-                                // GarageFeatureCard(
-                                //   res: res,
-                                //   sideColor: AppColors.primaryColor,
-                                //   cardText: "due_soon".tr,
-                                //   icon: AppIcons.dueSoon,
-                                // ),
+                                CarOwnerFeatureCard(
+                                  count: "5",
+                                  res: res,
+                                  sideColor: AppColors.primaryColor1,
+                                  cardText: "alerts".tr,
+                                  icon: AppIcons.notificationHome,
+                                ),
+                                CarOwnerFeatureCard(
+                                  count: "3",
+                                  res: res,
+                                  sideColor: AppColors.primaryColor1,
+                                  cardText: "due_soon".tr,
+                                  icon: AppIcons.dueSoon,
+                                ),
                               ],
                             ),
                           ),
@@ -157,7 +161,7 @@ class HomeScreenOwner extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.only(left: res.wp(16)),
                               child: SizedBox(
-                                height: res.hp(212),
+                                height: res.hp(200),
                                 child: Obx(() {
                                   var dataList =
                                       controller.allCarList.value?.data;
@@ -167,8 +171,10 @@ class HomeScreenOwner extends StatelessWidget {
 
                                   return ListView.builder(
                                     shrinkWrap: true,
+                                    padding: EdgeInsets.zero,
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: dataList?.length,
+                                    // itemCount: dataList?.length,
+                                    itemCount: 5,
                                     itemBuilder:
                                         (context, index) => Padding(
                                           padding: EdgeInsets.only(
@@ -183,11 +189,13 @@ class HomeScreenOwner extends StatelessWidget {
                                             },
                                             child: CarInfoCard(
                                               title:
-                                                  dataList?[index].name ?? "",
+                                                  dataList?[index].name ??
+                                                  "2018 Honda Civic",
                                               subTitle:
-                                                  dataList?[index].vin ?? "",
-                                              carImage:
-                                                  dataList?[index].images[0],
+                                                  dataList?[index].vin ??
+                                                  "VIN: IHGCV2F6JLOOOOOO",
+                                              carImage: AppIcons.carOwner,
+                                              isCheck: true,
                                             ),
                                           ),
                                         ),
@@ -196,6 +204,7 @@ class HomeScreenOwner extends StatelessWidget {
                               ),
                             ),
                           ),
+
                           SliverToBoxAdapter(
                             child: Padding(
                               padding: EdgeInsets.symmetric(
@@ -222,7 +231,7 @@ class HomeScreenOwner extends StatelessWidget {
                             ),
                           ),
                           SliverToBoxAdapter(
-                            child: SizedBox(height: res.hp(10)),
+                            child: SizedBox(height: res.hp(0)),
                           ),
                           SliverToBoxAdapter(
                             child: Padding(
@@ -230,76 +239,110 @@ class HomeScreenOwner extends StatelessWidget {
                                 horizontal: res.wp(16),
                               ),
                               child: Obx(() {
-                                var serviceData =
+                                // var serviceData =
+                                //     controller.allServicesList.value?.data;
+                                // return serviceData == null ||
+                                //         serviceData.isEmpty
+                                //     ? const SizedBox(
+                                //       width: 30,
+                                //       height: 30,
+                                //       child: CircularProgressIndicator(
+                                //         strokeWidth: 3,
+                                //       ),
+                                //     )
+                                //     :
+
+                                var service =
                                     controller.allServicesList.value?.data;
-                                return serviceData == null ||
-                                        serviceData.isEmpty
-                                    ? const SizedBox(
-                                      width: 30,
-                                      height: 30,
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 3,
+                                var serviceData = [
+                                  'ACCEPTED',
+                                  'DECLINED',
+                                  'pending',
+                                ];
+
+                                return ListView.builder(
+                                  itemCount: serviceData.length,
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.only(top: 16),
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                        bottom: 12,
                                       ),
-                                    )
-                                    : ListView.builder(
-                                      itemCount: serviceData.length,
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemBuilder: (context, index) {
-                                        return Padding(
-                                          padding: const EdgeInsets.only(
-                                            bottom: 12,
-                                          ),
-                                          child: ProfileCard(
-                                            title: "service_user_name".tr,
-                                            subTitle: "service_subtitle".tr,
-                                            textStatus:
-                                                serviceData[index]
-                                                            .garageSideStatus ==
-                                                        "ACCEPTED"
-                                                    ? "completed".tr
-                                                    : serviceData[index]
-                                                            .garageSideStatus ==
-                                                        "DECLINED"
-                                                    ? "declined".tr
-                                                    : "pending".tr,
+                                      child: ProfileCard(
+                                        title: "service_user_name".tr,
+                                        subTitle: "service_subtitle".tr,
+                                        textStatus:
+                                            serviceData[index] == "ACCEPTED"
+                                                ? "completed".tr
+                                                : serviceData[index] ==
+                                                    "DECLINED"
+                                                ? "declined".tr
+                                                : "pending".tr,
 
-                                            textColor:
-                                                serviceData[index]
-                                                            .garageSideStatus ==
-                                                        "ACCEPTED"
-                                                    ? AppColors.greenColor
-                                                    : serviceData[index]
-                                                            .garageSideStatus ==
-                                                        "DECLINED"
-                                                    ? AppColors.red
-                                                    : null,
+                                        textColor:
+                                            serviceData[index] == "ACCEPTED"
+                                                ? AppColors.greenColor
+                                                : serviceData[index] ==
+                                                    "DECLINED"
+                                                ? AppColors.red
+                                                : null,
 
-                                            boxColor:
-                                                serviceData[index]
-                                                            .garageSideStatus ==
-                                                        "ACCEPTED"
-                                                    ? AppColors.greenLight
-                                                    : serviceData[index]
-                                                            .garageSideStatus ==
-                                                        "DECLINED"
-                                                    ? AppColors.redLight
-                                                    : null,
-                                          ),
-                                        );
-                                      },
+                                        boxColor:
+                                            serviceData[index] == "ACCEPTED"
+                                                ? AppColors.greenLight
+                                                : serviceData[index] ==
+                                                    "DECLINED"
+                                                ? AppColors.redLight
+                                                : null,
+                                      ),
                                     );
+                                  },
+                                );
                               }),
                             ),
-                          ),
-                          SliverToBoxAdapter(
-                            child: SizedBox(height: res.hp(16)),
                           ),
                         ],
                       ),
             ),
 
+            // ProfileCard(
+            //   title: "service_user_name".tr,
+            //   subTitle: "service_subtitle".tr,
+            //   textStatus:
+            //   serviceData[index]
+            //       .garageSideStatus ==
+            //       "ACCEPTED"
+            //       ? "completed".tr
+            //       : serviceData[index]
+            //       .garageSideStatus ==
+            //       "DECLINED"
+            //       ? "declined".tr
+            //       : "pending".tr,
+            //
+            //   textColor:
+            //   serviceData[index]
+            //       .garageSideStatus ==
+            //       "ACCEPTED"
+            //       ? AppColors.greenColor
+            //       : serviceData[index]
+            //       .garageSideStatus ==
+            //       "DECLINED"
+            //       ? AppColors.red
+            //       : null,
+            //
+            //   boxColor:
+            //   serviceData[index]
+            //       .garageSideStatus ==
+            //       "ACCEPTED"
+            //       ? AppColors.greenLight
+            //       : serviceData[index]
+            //       .garageSideStatus ==
+            //       "DECLINED"
+            //       ? AppColors.redLight
+            //       : null,
+            // )
             Positioned(
               bottom: res.hp(20),
               right: res.wp(16),
@@ -309,27 +352,21 @@ class HomeScreenOwner extends StatelessWidget {
                   Get.toNamed(AppRoutes.addVehicleScreen);
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 15),
+                  padding: EdgeInsets.symmetric(vertical: 13, horizontal: 25),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
+                    color: AppColors.primaryColor1,
 
                     borderRadius: BorderRadius.circular(24),
                   ),
 
                   child: Row(
                     children: [
+                      Icon(Icons.add, color: AppColors.whitColor),
+                      SizedBox(width: res.wp(4)),
                       AppText(
                         "Add Vehicle ",
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
-                      ),
-
-                      SizedBox(width: res.wp(4)),
-
-                      Image.asset(
-                        AppIcons.plus,
-                        height: res.hp(16),
-                        width: res.wp(16),
                       ),
                     ],
                   ),

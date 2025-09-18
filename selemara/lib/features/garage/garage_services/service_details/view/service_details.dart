@@ -11,6 +11,7 @@ import 'package:selemara/features/buyer/home/widgets/cover_service_widget.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../dealership/dealer_cars/car_details/CarFeature/views/dealer_create_invoice_vehicle_warranty.dart';
 import '../../../../dealership/dealer_cars/car_details/CarFeature/views/dealer_create_vehicle_warranty.dart';
+import '../../parts_invoice_and_warranty/views/garage_invoice_details_screen.dart';
 
 class ServiceDetails extends StatelessWidget {
   ServiceDetails({super.key});
@@ -241,7 +242,9 @@ class ServiceDetails extends StatelessWidget {
                     iconColor: AppColors.primaryColor,
                     textColor: AppColors.primaryColor,
                     btnColor: AppColors.primaryColor.withAlpha(24),
-                    onTap: () {},
+                    onTap: () {
+                      // Get.to(()=>GarageInvoiceDetailsScreen(invoiceData: ,));
+                    },
                   ),
                 ],
               ),

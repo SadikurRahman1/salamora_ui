@@ -125,7 +125,9 @@ class LoginScreen extends StatelessWidget {
                       isLoading: authController.isLoading.value,
                       text: 'Login Car Owner',
                       onTap: ()  {
-                        // Get.offAllNamed(AppRoutes.garageNavScreen);
+                        Get.toNamed(AppRoutes.ownerNavbarScreen);
+
+
                       },
                     ),
                     SizedBox(height: res.hp(20)),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/custom_button.dart';
 
-import '../../../../../core/constants/api_urls.dart';
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_icons.dart';
 import '../../../../../core/constants/app_responsive.dart';
@@ -10,7 +10,6 @@ import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
 import '../../controller/home_controller_owner.dart';
 import '../../widget/vehicle_document_card.dart';
-import 'package:get/get.dart';
 
 class CarDetailsScreen extends StatelessWidget {
   CarDetailsScreen({super.key});
@@ -74,7 +73,6 @@ class CarDetailsScreen extends StatelessWidget {
 
       body: Obx(() {
         var carDetails = controller.allCarList.value?.data[index];
-        String baseUrl = "http://172.252.13.78:5013";
 
         return Stack(
           children: [
@@ -89,10 +87,14 @@ class CarDetailsScreen extends StatelessWidget {
                       height: res.hp(208),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          "$baseUrl${carDetails?.images[0]}",
-                          // "${ApiUrls.baseUrlForImage}${carDetails?.images[0]}",
-                          fit: BoxFit.cover,
+
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(14),
+                          child: Image.asset(
+                            AppIcons.carOwner,
+
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -128,8 +130,8 @@ class CarDetailsScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     AppText(
-                                      carDetails?.name ?? "",
-                                      // "2020 Honda Civic"
+                                      // carDetails?.name ?? "",
+                                      "2020 Honda Civic",
                                       color: AppColors.textColor2A2A,
                                       fontSize: 24,
                                       fontWeight: FontWeight.w600,
@@ -139,7 +141,8 @@ class CarDetailsScreen extends StatelessWidget {
                                     Row(
                                       children: [
                                         AppText(
-                                          carDetails?.color ?? "", // "Silver"
+                                          carDetails?.color ??
+                                              "Silver", // "Silver"
                                           color: AppColors.textColor626,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
@@ -163,8 +166,8 @@ class CarDetailsScreen extends StatelessWidget {
                                         ),
 
                                         AppText(
-                                          "${carDetails?.currentMileage.toString()}  miles",
-                                          // "45,000 miles"
+                                          // "${carDetails?.currentMileage.toString()}  miles",
+                                          "45,000 miles",
                                           color: AppColors.textColor626,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
@@ -214,27 +217,36 @@ class CarDetailsScreen extends StatelessWidget {
 
                           _labelValueRow(
                             "vin_label".tr,
-                            carDetails?.vin ?? "",
+                            carDetails?.vin ?? "CV2F6JLOOOOOO",
                             context,
                           ),
                           Padding(padding: EdgeInsets.only(top: 8)),
                           _labelValueRow(
                             "last_service".tr,
-                            carDetails?.lastService ?? "0",
+                            carDetails?.lastService ?? "1/15/2024",
+                            context,
+                          ),
+
+                          Padding(padding: EdgeInsets.only(top: 8)),
+                          _labelValueRow(
+                            "next_service".tr,
+                            carDetails?.lastService ?? "4/15/2024",
                             context,
                           ),
 
                           Padding(padding: EdgeInsets.only(top: 8)),
                           _labelValueRow(
                             "service_record".tr,
-                            carDetails?.totalService.toString() ?? "",
+                            // carDetails?.totalService.toString() ??
+                            "8",
                             context,
                           ),
 
                           Padding(padding: EdgeInsets.only(top: 8)),
                           _labelValueRow(
                             "documents".tr,
-                            carDetails?.documents.length.toString() ?? "",
+                            carDetails?.documents.length.toString() ??
+                                "2 uploaded",
                             context,
                           ),
                         ],
@@ -283,7 +295,7 @@ class CarDetailsScreen extends StatelessWidget {
 
                                 AppText(
                                   "view".tr,
-                                  color: AppColors.primaryColor,
+                                  color: AppColors.primaryColor1,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -389,37 +401,30 @@ class CarDetailsScreen extends StatelessWidget {
                             text: 'upload_document'.tr,
                             onTap: () {},
                             iconPath: AppIcons.upload,
-                            btnColor: AppColors.primaryColor,
-                            borderColor: AppColors.primaryColor,
+                            btnColor: AppColors.primaryColor1,
+                            borderColor: AppColors.primaryColor1,
                             iconColor: AppColors.whitColor,
                             iconHeight: 20,
                             iconWidth: 20,
+                          ),
+                          SizedBox(height: res.hp(16)),
+
+                          CustomButton(
+                            btnColor: Color(0xFFF5F5F5),
+                            textIconWidth: 0,
+                            text: "full_service_history".tr,
+
+                            // Cancel
+                            onTap: () {
+                              Get.toNamed(AppRoutes.serviceHistoryScreen);
+                            },
+                            textColor: Color(0xFF2E3A49),
                           ),
                         ],
                       ),
                     ),
                   ),
                   SliverToBoxAdapter(child: SizedBox(height: res.hp(20))),
-
-                  SliverToBoxAdapter(
-                    child: Row(
-                      children: [
-                        CustomButton(
-                          btnColor: Color(0xFFF5F5F5),
-                          textIconWidth: 0,
-                          text: "full_service_history".tr,
-
-                          // Cancel
-                          onTap: () {
-                            Get.toNamed(AppRoutes.serviceHistoryScreen);
-                          },
-                          textColor: Color(0xFF2E3A49),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  SliverToBoxAdapter(child: SizedBox(height: res.hp(30))),
                 ],
               ),
             ),
@@ -431,10 +436,10 @@ class CarDetailsScreen extends StatelessWidget {
                   Get.toNamed(AppRoutes.addVehicleScreen);
                 },
                 child: Container(
-                  margin: EdgeInsets.only(right: 30,top: res.screenHeight/3),
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  margin: EdgeInsets.only(right: 30, top: res.screenHeight / 3),
+                  padding: EdgeInsets.symmetric(vertical: 14, horizontal: 20),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
+                    color: AppColors.primaryColor1,
                     borderRadius: BorderRadius.circular(24),
                   ),
                   child: Row(
@@ -445,13 +450,11 @@ class CarDetailsScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
                       ),
-
                     ],
                   ),
                 ),
               ),
             ),
-
           ],
         );
       }),
@@ -467,7 +470,7 @@ class CarDetailsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          flex: 2,
+          flex: 3,
           child: Align(
             alignment: isRTL ? Alignment.topRight : Alignment.topLeft,
             // ✅ RTL flip

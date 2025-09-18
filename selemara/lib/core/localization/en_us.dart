@@ -44,22 +44,22 @@ final Map<String, String> enUS = {
 
   'onboard_title_1': 'Smart AutoCare',
   'onboard_desc_1':
-      'Register your car, maintain complete service history, get reminders, and share verified records with confidence.',
+  'Register your car, maintain complete service history, get reminders, and share verified records with confidence.',
 
   'onboard_title_2': 'Service & History',
   'onboard_desc_2':
-      'Complete digital service management system with multi-branch support, invoice generation, and customer relationship tools.',
+  'Complete digital service management system with multi-branch support, invoice generation, and customer relationship tools.',
 
   'onboard_title_3': 'Check Before You Buy',
   'onboard_desc_3':
-      'Scan QR codes to verify complete service history. Check maintenance records and buy cars with full transparency.',
+  'Scan QR codes to verify complete service history. Check maintenance records and buy cars with full transparency.',
 
   'onboard_title_4': 'Grow Your Garage Business',
   'onboard_desc_4':
-      'List cars with verified service history, build trust with buyers, and use professional tools for premium sales.',
+  'List cars with verified service history, build trust with buyers, and use professional tools for premium sales.',
 
   'email_verification_info':
-      'Enter your phone number, we will send a verification code to the phone number',
+  'Enter your phone number, we will send a verification code to the phone number',
   'forgot_password_title': 'Forgot Password',
   'continue': 'Continue',
   'verify_code': 'Verify Code',
@@ -67,7 +67,7 @@ final Map<String, String> enUS = {
   'submit': 'Submit',
   'reset_password': 'Reset Password',
   'password_requirement':
-      'Your password must be at least 8 characters long and include a combination of letters, numbers',
+  'Your password must be at least 8 characters long and include a combination of letters, numbers',
 
   /// Profile screen add by Arif
   'profile': 'Profile',
@@ -98,12 +98,12 @@ final Map<String, String> enUS = {
   /// privacy policy screen   add by Arif
   'introduction': 'Introduction',
   'we_value_your_privacy':
-      'We value your privacy and are committed to protecting your personal information. By using [App Name], you agree to the collection and use of your data as described in this policy.',
+  'We value your privacy and are committed to protecting your personal information. By using [App Name], you agree to the collection and use of your data as described in this policy.',
 
   'information_we_collect': 'Information We Collect',
   'we_may_collect:': 'We may collect:',
   'personal_information':
-      'Personal Information: Name, email, phone number, and payment details.',
+  'Personal Information: Name, email, phone number, and payment details.',
   'location_data': 'Location Data: To show nearby car wash services.',
 
   'usage_data_app': 'Usage Data: App interactions and preferences',
@@ -114,14 +114,14 @@ final Map<String, String> enUS = {
   'send_updates_and_offers.': 'Send updates and offers.',
   'sharing_your_ata': 'Sharing Your Data',
   'we_only_share_data':
-      'We only share data with trusted service providers, car wash partners, or legal authorities when required.',
+  'We only share data with trusted service providers, car wash partners, or legal authorities when required.',
 
   'security': 'Security',
   'we_use_secure_methods':
-      'We use secure methods to protect your data but cannot guarantee complete security.',
+  'We use secure methods to protect your data but cannot guarantee complete security.',
   'your_rights': 'Your Rights',
   'you_can_access_update':
-      'You can access, update, or delete your data and opt-out of communications at any time.',
+  'You can access, update, or delete your data and opt-out of communications at any time.',
   'contact_us': 'Contact Us',
   'for_questions_or': 'For questions or concerns, email us at [Insert Email].',
 
@@ -154,6 +154,10 @@ final Map<String, String> enUS = {
   "recent_service": "Recent Service",
   "service_user_name": "Ahmed Al Mansouri",
   "service_subtitle": "Toyota Camry - Al Futtaim Service",
+  "track_your_car":
+  "Track your car's service history and stay on top of maintenance",
+  "welcome_back_a": "Welcome back. !",
+  "warranty_status": "Warranty Status :",
 
   //// car details added by arif
   "car_details": "Car Details",
@@ -199,7 +203,7 @@ final Map<String, String> enUS = {
   "select_date": "Select Date",
   "service_description": "Service Description",
   "describe_service_hint":
-      "Describe the service needed, any symptoms, or specific requirements",
+  "Describe the service needed, any symptoms, or specific requirements",
   "cancel": "Cancel",
 
   /// service history added by arif
@@ -209,7 +213,7 @@ final Map<String, String> enUS = {
   "warranty": "Warranty",
   "invoice": "Invoice",
   "oil_change_description":
-      "Full synthetic oil change and filter replacement. Checked all fluid levels and tire pressure.",
+  "Full synthetic oil change and filter replacement. Checked all fluid levels and tire pressure.",
   "service_date_example": "1/15/2024",
   "download_invoice": "Download invoice",
   "your_rating": "Your Rating:",
@@ -223,7 +227,7 @@ final Map<String, String> enUS = {
   "location_gulshan_dhaka": "Location: 123, Gulshan, Dhaka",
   "service_date_15_july_2025": "Service Date: 15 July 2025",
   "warranty_information": "Warranty Information",
-  "warranty_provider_honda_uae": "Warranty Provider: Honda UAE",
+  "warranty_provider_honda_uae": "Warranty Provider: ",
   "covered_services": "Covered Services:",
   "engine_checkup": "Engine Checkup",
   "oil_change": "Oil Change",
@@ -231,12 +235,13 @@ final Map<String, String> enUS = {
   "brake_inspection": "Brake Inspection",
   "terms_conditions": "Terms & Conditions",
   "warranty_valid_services_only":
-      "This warranty is only valid for the listed services.",
+  "This warranty is only valid for the listed services.",
   "accident_damage_not_covered": "Any damage due to accidents is not covered.",
   "show_warranty_before_service":
-      "You must show this warranty screen before service.",
+  "You must show this warranty screen before service.",
   "one_time_use_per_service": "One-time use per service type.",
   "download": "Download",
+  "due_date": "Due Date:",
 
   ///     My Car  added by Arif
   "car_2020_honda_civic": "2020 Honda Civic",
@@ -259,7 +264,7 @@ final Map<String, String> enUS = {
   "current_mileage": "Current Mileage",
   "upload_vehicle_image": "Upload Vehicle Image",
   "click_to_upload_images_max_6": "Click to upload images (Max 6)",
-  "png_jpg_up_to_10mb_each": "PNG, JPG up to 10MB each",
+  "attach_file": "Attach File",
 
   /// buyer section
   "search_car": "Search Car",
@@ -272,7 +277,7 @@ final Map<String, String> enUS = {
   "scan_car_qr_code": "Scan Car QR Code",
   "scan_now": "Scan Now",
   "point_camera_qr":
-      "Point your camera at the car's QR code to view its complete service history",
+  "Point your camera at the car's QR code to view its complete service history",
   "or": "OR",
   "enter_vin_manually": "Enter VIN Manually",
   "search": "Search",
@@ -281,6 +286,9 @@ final Map<String, String> enUS = {
   "saved_cars": "Saved Cars",
   "clear_all": "Clear All",
   "contact_now": "Contact Now",
+
+  "contact_now": "Contact Now",
+
   "service_history_details": "Service History Details",
   "service_info": "Service Info",
   "oil_change_and_filter": "Oil Change & Filter",
@@ -303,7 +311,7 @@ final Map<String, String> enUS = {
   "qr_code": "QR Code",
   "recent_sales": "Recent Sales",
   "manage_cars_verified_records":
-      "Manage cars with verified myCarage service records",
+  "Manage cars with verified myCarage service records",
   "search_cars_name": "Search cars name...",
   "all_status": "All Status",
   "generate_qr_code": "Generate QR Code",
@@ -326,8 +334,15 @@ final Map<String, String> enUS = {
   "first_owner": "First Owner",
 
   "personal_information1": "Personal Information",
+
   "sell_vehicle": "Sell Vehicle",
   "view_ownership_history": "View Ownership History",
+  "price": "Price",
+  "warranty_provider": "Warranty Provider",
+  "warranty_month": "Warranty Month",
+
+
+
   "service": "Service",
   "in_progress": "InProgress",
   "service_details": "Service Details",
@@ -344,10 +359,5 @@ final Map<String, String> enUS = {
   "reason_for_decline": "Reason for Decline",
   "garage_profile_description": "ElitePolish Auto Care offers premium car cleaning and detailing services designed to keep your vehicle looking its best. With fast, reliable, and affordable solutions, we provide exterior washes, interior detailing, and specialized treatments like waxing and polishing. Our skilled team uses top-quality products to ensure exceptional results every time. Convenient online booking and mobile app functionality make it easy to keep your car shining with just a tap.",
   "garage_profile": "Garage Profile",
-
-
-
-
-
 
 };
