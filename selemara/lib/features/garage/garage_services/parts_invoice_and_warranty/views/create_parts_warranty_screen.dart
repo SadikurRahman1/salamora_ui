@@ -56,27 +56,48 @@ class CreatePartsWarrantyScreen extends StatelessWidget {
                         controller2: controller.emailController,
                       ),
                       SizedBox(height: res.hp(12)),
-                      SingleInputField(
-                        title: "vin_number".tr,
-                        subtitle: "WBAFDHFIUGTFD",
-                        controller: controller.vinNumberController,
+
+                       DualInputRow(
+                        title1: "vin_number".tr,
+                        subtitle1: "WBAFDHFIUGTFD",
+                        title2: "Number Plate".tr,
+                        subtitle2: "ABCD 1234",
+                        controller1: controller.vinNumberController,
+                        controller2: controller.plateController,
                       ),
                       SizedBox(height: res.hp(12)),
+
+
+
+                      // SingleInputField(
+                      //   title: "vin_number".tr,
+                      //   subtitle: "WBAFDHFIUGTFD",
+                      //   controller: controller.vinNumberController,
+                      // ),
+                      // SizedBox(height: res.hp(12)),
                       SingleInputField(
                         title: "mileage".tr,
                         subtitle: "12331",
                         controller: controller.mileageController,
                       ),
                       SizedBox(height: res.hp(12)),
-                      TextAndDropdownRow(
+                      // TextAndDropdownRow(
+                      //   title1: "coast".tr,
+                      //   subtitle1: "\$765",
+                      //   controller1: controller.coastController,
+                      //
+                      //   title2: "duration".tr,
+                      //   subtitle2: "select_duration".tr,
+                      //   selectedValue: controller.selectedDuration,
+                      //   dropdownItems: controller.durationList,
+                      // ),
+                      DualInputRow(
                         title1: "coast".tr,
                         subtitle1: "\$765",
-                        controller1: controller.coastController,
-
                         title2: "duration".tr,
-                        subtitle2: "select_duration".tr,
-                        selectedValue: controller.selectedDuration,
-                        dropdownItems: controller.durationList,
+                        subtitle2: "Month",
+                        controller1: controller.coastController,
+                        controller2: controller.durationController,
                       ),
                     ],
                   ),

@@ -14,7 +14,8 @@ class RecentServiceCard extends StatelessWidget {
     super.key,
     required this.titleText,
     required this.subTitleText,
-    required this.currentStatus, this.onTap,
+    required this.currentStatus,
+    this.onTap,
   });
 
   final res = AppResponsive();

@@ -23,7 +23,7 @@ class CreateServiceInvoiceScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: "create_vehicle_warranty".tr,
+        title: "Create Service Invoice".tr,
         leading: Icon(Icons.arrow_back_ios, size: res.wp(24)),
       ),
       body: Padding(
@@ -56,10 +56,13 @@ class CreateServiceInvoiceScreen extends StatelessWidget {
                         controller2: controller.emailController,
                       ),
                       SizedBox(height: res.hp(12)),
-                      SingleInputField(
-                        title: "vin_number".tr,
-                        subtitle: "WBAFDHFIUGTFD",
-                        controller: controller.vinNumberController,
+                      DualInputRow(
+                        title1: "vin_number".tr,
+                        subtitle1: "WBAFDHFIUGTFD",
+                        title2: "Number Plate".tr,
+                        subtitle2: "ABCD 1234",
+                        controller1: controller.vinNumberController,
+                        controller2: controller.plateController,
                       ),
                       SizedBox(height: res.hp(12)),
                       SingleInputField(
@@ -69,7 +72,7 @@ class CreateServiceInvoiceScreen extends StatelessWidget {
                       ),
                       SizedBox(height: res.hp(12)),
                       TextAndDropdownRow(
-                        title1: "sel_price (\$)".tr,
+                        title1: "Sel Price (\$)".tr,
                         subtitle1: "\$765",
                         controller1: controller.saleController,
 

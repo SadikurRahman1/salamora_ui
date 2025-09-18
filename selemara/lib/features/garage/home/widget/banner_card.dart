@@ -26,7 +26,7 @@ class BannerCard extends StatelessWidget {
         //     Color(0xFF2563EB).withValues(alpha: 0.5),
         //   ],
         // ),
-        color: AppColors.lightGray
+        color: AppColors.primaryColor
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +35,7 @@ class BannerCard extends StatelessWidget {
             children: [
               AppText(
                 "Elite Auto Service Center",
-                color: AppColors.textColor,
+                // color: AppColors.textColor,
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
@@ -56,13 +56,14 @@ class BannerCard extends StatelessWidget {
                 width: res.wp(16),
                 height: res.wp(16),
                 fit: BoxFit.cover,
+                color: AppColors.whitColor,
               ),
               SizedBox(width: res.wp(5)),
               AppText(
                 "Dubai, UAE",
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
-                color: AppColors.textColor626.withValues(alpha: 0.8),
+                // color: AppColors.textColor626.withValues(alpha: 0.8),
               ),
               SizedBox(width: res.wp(16)),
               Image.asset(
@@ -70,13 +71,14 @@ class BannerCard extends StatelessWidget {
                 width: res.wp(20),
                 height: res.wp(20),
                 fit: BoxFit.contain,
+                color: AppColors.whitColor,
+
               ),
               SizedBox(width: res.wp(5)),
               AppText(
                 "+971 4 123 4567",
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
-                color: AppColors.textColor626.withValues(alpha: 0.8),
               ),
             ],
           ),

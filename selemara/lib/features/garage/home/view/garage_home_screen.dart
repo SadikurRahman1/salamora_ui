@@ -53,22 +53,18 @@ class GarageHomeScreen extends StatelessWidget {
                   children: [
                     GarageFeatureCard(
                       sideColor: AppColors.blueColor,
-                      title: "total_services".tr,
+                      title: "Total Service".tr,
                       value: "5",
                       icon: AppIcons.car,
-                      onTap: () {
-                        print("Card tapped!");
-                      },
+                      onTap: () {},
                     ),
 
                     GarageFeatureCard(
                       sideColor: AppColors.greenColor,
-                      title: "customer".tr,
+                      title: "Customer".tr,
                       value: "5",
                       icon: AppIcons.check1,
-                      onTap: () {
-                        print("Card tapped!");
-                      },
+                      onTap: () {},
                     ),
 
                   ],
@@ -147,7 +143,7 @@ class GarageHomeScreen extends StatelessWidget {
 
   Widget _recentService(AppResponsive res) {
     return ListView.separated(
-      itemCount: 2,
+      itemCount: 4,
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       physics: NeverScrollableScrollPhysics(),

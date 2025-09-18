@@ -16,6 +16,7 @@ class CreateServiceInvoiceController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController purchaseDateController = TextEditingController();
+  TextEditingController plateController = TextEditingController();
   Rxn<File> file = Rxn<File>();
 
   var selectPayment = RxString('');

@@ -14,7 +14,7 @@ class GarageServicesScreen extends StatelessWidget {
   GarageServicesScreen({super.key});
 
   final res = AppResponsive();
-  final controller = Get.put(GarageServiceController());
+  final controller = Get.put(GarageServiceController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class GarageServicesScreen extends StatelessWidget {
           appBar: CustomAppBar(
             title: "service".tr,
             centerTitle: true,
-            leading: Icon(Icons.arrow_back, size: res.wp(24)),
+            // leading: Icon(Icons.arrow_back, size: res.wp(24)),
             bottom: TabBar(
               controller: ctrl.tabController,
               indicatorColor: ctrl.getIndicatorColor(),

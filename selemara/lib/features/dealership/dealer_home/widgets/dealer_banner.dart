@@ -27,7 +27,7 @@ class DealerBanner extends StatelessWidget {
         //     Color(0xFF2563EB).withValues(alpha: 0.5),
         //   ],
         // ),
-          color: AppColors.lightGray
+          color: AppColors.primaryColor
       ),
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -39,7 +39,7 @@ class DealerBanner extends StatelessWidget {
               children: [
                 AppText(
                  "${"welcome_back".tr}. !", // translation key
-                  color: AppColors.textColor,
+                  // color: AppColors.textColor,
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
@@ -57,7 +57,7 @@ class DealerBanner extends StatelessWidget {
               "Track your car's service history and stay on top of maintenance",
               fontSize: 14,
               fontWeight: FontWeight.w400,
-              color: AppColors.textColor626.withValues(alpha: 0.8),
+              // color: AppColors.textColor626.withValues(alpha: 0.8),
             ),
             SizedBox(height: res.hp(5)),
 

@@ -27,14 +27,14 @@ class BuyerBanner extends StatelessWidget {
         //     Color(0xFF2563EB).withValues(alpha: 0.5),
         //   ],
         // ),
-          color: AppColors.lightGray
+          color: AppColors.primaryColor
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(
             "${"welcome_back".tr} !",
-            color: AppColors.textColor,
+            // color: AppColors.textColor,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -43,7 +43,7 @@ class BuyerBanner extends StatelessWidget {
             "find_verified_cars".tr,
             fontSize: 14,
             fontWeight: FontWeight.w400,
-            color: AppColors.textColor626.withValues(alpha: 0.8),
+            // color: AppColors.textColor626.withValues(alpha: 0.8),
           ),
           SizedBox(height: res.hp(5)),
           Row(
@@ -55,13 +55,13 @@ class BuyerBanner extends StatelessWidget {
                     "2",
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textColor626,
+                    // color: AppColors.textColor626,
                   ),
                   AppText(
                     "search_car".tr,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: AppColors.textColor626,
+                    // color: AppColors.textColor626,
                   ),
                 ],
               ),
@@ -71,13 +71,13 @@ class BuyerBanner extends StatelessWidget {
                     "8",
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textColor626,
+                    // color: AppColors.textColor626,
                   ),
                   AppText(
                     "save_car".tr,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: AppColors.textColor626,
+                    // color: AppColors.textColor626,
                   ),
                 ],
               ),
@@ -87,13 +87,13 @@ class BuyerBanner extends StatelessWidget {
                     "3",
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textColor626,
+                    // color: AppColors.textColor626,
                   ),
                   AppText(
                     "qr_scans".tr,
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: AppColors.textColor626,
+                    // color: AppColors.textColor626,
                   ),
                 ],
               ),

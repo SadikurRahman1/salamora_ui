@@ -23,21 +23,21 @@ class DealerFeatureCard extends StatelessWidget {
       width: res.wp(160),
       child: Stack(
         children: [
-          Positioned(
-            left: 0,
-            top: 0,
-            bottom: 0,
-            child: Container(
-              width: res.wp(20),
-              decoration: BoxDecoration(
-                color: sideColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(res.sp(15)),
-                  bottomLeft: Radius.circular(res.sp(15)),
-                ),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   left: 0,
+          //   top: 0,
+          //   bottom: 0,
+          //   child: Container(
+          //     width: res.wp(20),
+          //     decoration: BoxDecoration(
+          //       color: sideColor,
+          //       borderRadius: BorderRadius.only(
+          //         topLeft: Radius.circular(res.sp(15)),
+          //         bottomLeft: Radius.circular(res.sp(15)),
+          //       ),
+          //     ),
+          //   ),
+          // ),
 
           Container(
             margin: EdgeInsets.only(left: res.wp(5)),

@@ -16,10 +16,12 @@ class CreatePartsWarrantyController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController purchaseDateController = TextEditingController();
+  TextEditingController plateController = TextEditingController();
+  TextEditingController durationController = TextEditingController();
   Rxn<File> file = Rxn<File>();
-
-  var selectedDuration = RxString('');
-  var durationList = <String>[].obs;
+  //
+  // var selectedDuration = RxString('');
+  // var durationList = <String>[].obs;
 
   var engine = true.obs;
   var transmission = true.obs;
@@ -32,6 +34,6 @@ class CreatePartsWarrantyController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    durationList.assignAll(["6 Months", "12 Months", "24 Months"]);
+    // durationList.assignAll(["6 Months", "12 Months", "24 Months"]);
   }
 }

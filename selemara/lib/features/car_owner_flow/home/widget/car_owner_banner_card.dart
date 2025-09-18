@@ -21,12 +21,13 @@ class CarOwnerBannerCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(res.sp(16)),
-        gradient: LinearGradient(
-          colors: [
-            const Color(0xFF00A16E).withValues(alpha: 0.3),
-            const Color(0xFF2563EB).withValues(alpha: 0.5),
-          ],
-        ),
+        // gradient: LinearGradient(
+        //   colors: [
+        //     const Color(0xFF00A16E).withValues(alpha: 0.3),
+        //     const Color(0xFF2563EB).withValues(alpha: 0.5),
+        //   ],
+        // ),
+          color: AppColors.primaryColor
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +37,7 @@ class CarOwnerBannerCard extends StatelessWidget {
             children: [
               AppText(
                 "welcome_back_a".tr, // translation key
-                color: AppColors.textColor,
+                // color: AppColors.textColor,
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
@@ -54,7 +55,7 @@ class CarOwnerBannerCard extends StatelessWidget {
             "track_your_car".tr, // translation key
             fontSize: 14,
             fontWeight: FontWeight.w400,
-            color: AppColors.textColor626.withValues(alpha: 0.8),
+            // color: AppColors.textColor626.withValues(alpha: 0.8),
           ),
         ],
       ),
