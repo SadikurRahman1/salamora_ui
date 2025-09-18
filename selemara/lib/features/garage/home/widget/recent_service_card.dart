@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/core/constants/widget_extensions.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
 class RecentServiceCard extends StatelessWidget {
-  final AppResponsive res;
   final String titleText;
   final String subTitleText;
   final String currentStatus;
-  const RecentServiceCard({
+  final VoidCallback? onTap;
+
+  RecentServiceCard({
     super.key,
-    required this.res,
     required this.titleText,
     required this.subTitleText,
-    required this.currentStatus,
+    required this.currentStatus, this.onTap,
   });
+
+  final res = AppResponsive();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,7 @@ class RecentServiceCard extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
               ),
-              SizedBox(width: res.wp(5)),
+              SizedBox(width: res.wp(10)),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -83,6 +86,6 @@ class RecentServiceCard extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ).onTap(onTap);
   }
 }

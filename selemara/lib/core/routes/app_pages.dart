@@ -42,6 +42,9 @@ import '../../features/dealership/dealer_home/views/dealer_home_screen.dart';
 import '../../features/dealership/dealer_home/views/dealer_request_service_screen.dart';
 import '../../features/dealership/dealer_nav_bar/bindings/dealer_nav_bar_binding.dart';
 import '../../features/dealership/dealer_nav_bar/view/dealer_nau_bar_screen.dart';
+import '../../features/garage/garage_services/parts_invoice_and_warranty/views/create_parts_warranty_screen.dart';
+import '../../features/garage/garage_services/parts_invoice_and_warranty/views/create_service_invoice_screen.dart';
+import '../../features/garage/home/view/service_request.dart';
 import '../../features/privacy_policy/privacy_policy_screen.dart';
 
 class AppPages {
@@ -246,6 +249,21 @@ class AppPages {
       name: AppRoutes.dealerCreateInvoiceVehicleWarranty,
       page: () => DealerCreateInvoiceVehicleWarranty(),
       binding: DealerNavBarBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.serviceRequest,
+      page: () => ServiceRequest(),
+      binding: GarageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.createPartsWarranty,
+      page: () => CreatePartsWarrantyScreen(),
+      binding: GarageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.createServiceInvoice,
+      page: () => CreateServiceInvoiceScreen(),
+      binding: GarageBinding(),
     ),
 
   ];

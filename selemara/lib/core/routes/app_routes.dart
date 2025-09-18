@@ -44,6 +44,12 @@ class AppRoutes {
   static const dealerCarServiceHistoryScreen = '/dealerCarServiceHistoryScreen';
   static const dealerCreateVehicleWarranty = '/dealerCreateVehicleWarranty';
   static const dealerCreateInvoiceVehicleWarranty = '/dealerCreateInvoiceVehicleWarranty';
+  static const serviceRequest = '/serviceRequest';
+
+
+  static const createPartsWarranty = '/createPartsWarranty';
+  static const createServiceInvoice = '/createServiceInvoice';
+
 
 
 

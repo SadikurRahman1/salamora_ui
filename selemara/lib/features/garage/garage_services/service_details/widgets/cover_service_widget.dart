@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/app_colors.dart';
 
 class CoveredServicesWidget extends StatelessWidget {
   final List<String> services;
@@ -18,13 +18,13 @@ class CoveredServicesWidget extends StatelessWidget {
             return Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: AppColors.greenLight,
+                color: AppColors.primaryColor.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Text(
                 service,
                 style: TextStyle(
-                  color: AppColors.greenColor,
+                  color: AppColors.primaryColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
+import 'package:selemara/core/constants/widget_extensions.dart';
+import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/home_header.dart';
+import 'package:selemara/features/garage/home/view/all_request.dart';
 import 'package:selemara/features/garage/home/widget/banner_card.dart';
 import 'package:selemara/features/garage/home/widget/garage_feature_card.dart';
 import 'package:selemara/features/garage/home/widget/recent_service_card.dart';
 import 'package:selemara/features/garage/home/widget/service_request_card.dart';
+
+import 'all_service.dart';
 
 class GarageHomeScreen extends StatelessWidget {
   const GarageHomeScreen({super.key});
@@ -74,7 +81,7 @@ class GarageHomeScreen extends StatelessWidget {
                       color: AppColors.primaryColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
-                    ),
+                    ).onTap(()=>Get.to(()=>AllRequest())),
                   ],
                 ),
                 SizedBox(height: res.hp(10)),
@@ -94,7 +101,7 @@ class GarageHomeScreen extends StatelessWidget {
                       color: AppColors.primaryColor,
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
-                    ),
+                    ).onTap(()=>Get.to(()=>AllService())),
                   ],
                 ),
                 SizedBox(height: res.hp(10)),
@@ -110,31 +117,40 @@ class GarageHomeScreen extends StatelessWidget {
 
   Widget _serviceRequest(AppResponsive res) {
     return ListView.separated(
+      itemCount: 2,
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
-        return ServiceRequestCard(res: res);
+        return ServiceRequestCard(
+          name: "Ahmed Al Mansouri",
+          service: "Oil Change",
+          date: "1/20/2024",
+          imagePath: "assets/icons/profile_home.png",
+          onTap: () {
+            Get.toNamed(AppRoutes.serviceRequest);
+          },
+        );
       },
-      itemCount: 2,
+
       separatorBuilder: (__, ___) => SizedBox(height: res.hp(10)),
     );
   }
 
   Widget _recentService(AppResponsive res) {
     return ListView.separated(
+      itemCount: 2,
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
         return RecentServiceCard(
-          res: res,
           titleText: "Oil Change",
           subTitleText: "Toyota Camry - Al Futtaim Service",
           currentStatus: 'Pending',
+          onTap: (){},
         );
       },
-      itemCount: 2,
       separatorBuilder: (__, ___) => SizedBox(height: res.hp(10)),
     );
   }
