@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
+import 'package:selemara/core/constants/widget_extensions.dart';
 import 'package:selemara/core/routes/app_routes.dart';
 import 'package:selemara/features/garage/garage_profile/view/garage_change_password_screen.dart';
 import '../../../../core/constants/app_images.dart';
@@ -16,6 +17,7 @@ import 'package:get/get.dart';
 import '../widgets/buyer_profile_option_tile.dart';
 import 'garage_edit_profile_screen.dart';
 import 'garage_help_supportScreen.dart';
+import 'garage_profile_secend_screen.dart';
 
 
 class GarageProfileScreen extends StatelessWidget {
@@ -83,24 +85,31 @@ class GarageProfileScreen extends StatelessWidget {
                       ],
                     ),
 
-                    AppText(
-                      "ElitePolish Auto Care",
-                      fontSize: res.sp(20),
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.primaryTextColor,
-                    ),
-                    AppText(
-                      "3885 Al Bandariyyah Street ",
-                      fontSize: res.sp(14),
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textColor7085,
-                    ),
-                    AppText(
-                      "https://mystore.com",
-                      fontSize: res.sp(14),
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.primaryTextColor,
-                    ),
+                    Column(
+                      children: [
+                        AppText(
+                          "ElitePolish Auto Care",
+                          fontSize: res.sp(20),
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.primaryTextColor,
+                        ),
+                        AppText(
+                          "3885 Al Bandariyyah Street ",
+                          fontSize: res.sp(14),
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.textColor7085,
+                        ),
+                        AppText(
+                          "https://mystore.com",
+                          fontSize: res.sp(14),
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.primaryTextColor,
+                        ),
+                      ],
+                    ).onTap((){
+                      Get.to(()=>GarageProfileSecondScreen());
+                    }),
+
                   ],
                 ),
               ),

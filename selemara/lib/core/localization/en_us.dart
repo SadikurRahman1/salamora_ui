@@ -342,6 +342,10 @@ final Map<String, String> enUS = {
   "respond_to_service_request": "Respond to Service Request",
   "estimated_cost": "Estimated Cost",
   "reason_for_decline": "Reason for Decline",
+  "garage_profile_description": "ElitePolish Auto Care offers premium car cleaning and detailing services designed to keep your vehicle looking its best. With fast, reliable, and affordable solutions, we provide exterior washes, interior detailing, and specialized treatments like waxing and polishing. Our skilled team uses top-quality products to ensure exceptional results every time. Convenient online booking and mobile app functionality make it easy to keep your car shining with just a tap.",
+  "garage_profile": "Garage Profile",
+
+
 
 
 

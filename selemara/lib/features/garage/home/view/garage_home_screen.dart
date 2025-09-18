@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_images.dart';
@@ -14,7 +13,6 @@ import 'package:selemara/features/garage/home/widget/banner_card.dart';
 import 'package:selemara/features/garage/home/widget/garage_feature_card.dart';
 import 'package:selemara/features/garage/home/widget/recent_service_card.dart';
 import 'package:selemara/features/garage/home/widget/service_request_card.dart';
-
 import 'all_service.dart';
 
 class GarageHomeScreen extends StatelessWidget {
@@ -54,15 +52,25 @@ class GarageHomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GarageFeatureCard(
-                      res: res,
-                      sideColor: AppColors.primaryColor,
-                      cardText: "Total Services",
+                      sideColor: AppColors.blueColor,
+                      title: "total_services".tr,
+                      value: "5",
+                      icon: AppIcons.car,
+                      onTap: () {
+                        print("Card tapped!");
+                      },
                     ),
+
                     GarageFeatureCard(
-                      res: res,
                       sideColor: AppColors.greenColor,
-                      cardText: "Customers",
+                      title: "customer".tr,
+                      value: "5",
+                      icon: AppIcons.check1,
+                      onTap: () {
+                        print("Card tapped!");
+                      },
                     ),
+
                   ],
                 ),
                 SizedBox(height: res.hp(20)),

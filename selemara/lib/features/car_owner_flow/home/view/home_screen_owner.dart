@@ -77,20 +77,20 @@ class HomeScreenOwner extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                GarageFeatureCard(
-                                  res: res,
-                                  sideColor: AppColors.primaryColor,
-                                  cardText: "my_vehicles".tr,
+                                // GarageFeatureCard(
+                                //   res: res,
+                                //   sideColor: AppColors.primaryColor,
+                                //   cardText: "my_vehicles".tr,
+                                //
+                                //   icon: AppIcons.carIcon2,
+                                // ),
 
-                                  icon: AppIcons.carIcon2,
-                                ),
-
-                                GarageFeatureCard(
-                                  res: res,
-                                  sideColor: AppColors.primaryColor,
-                                  icon: AppIcons.check1,
-                                  cardText: "service_records".tr,
-                                ),
+                                // GarageFeatureCard(
+                                //   res: res,
+                                //   sideColor: AppColors.primaryColor,
+                                //   icon: AppIcons.check1,
+                                //   cardText: "service_records".tr,
+                                // ),
                               ],
                             ),
                           ),
@@ -101,18 +101,18 @@ class HomeScreenOwner extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                GarageFeatureCard(
-                                  res: res,
-                                  sideColor: AppColors.primaryColor,
-                                  cardText: "alerts".tr,
-                                  icon: AppIcons.notificationHome,
-                                ),
-                                GarageFeatureCard(
-                                  res: res,
-                                  sideColor: AppColors.primaryColor,
-                                  cardText: "due_soon".tr,
-                                  icon: AppIcons.dueSoon,
-                                ),
+                                // GarageFeatureCard(
+                                //   res: res,
+                                //   sideColor: AppColors.primaryColor,
+                                //   cardText: "alerts".tr,
+                                //   icon: AppIcons.notificationHome,
+                                // ),
+                                // GarageFeatureCard(
+                                //   res: res,
+                                //   sideColor: AppColors.primaryColor,
+                                //   cardText: "due_soon".tr,
+                                //   icon: AppIcons.dueSoon,
+                                // ),
                               ],
                             ),
                           ),
