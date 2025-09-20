@@ -24,6 +24,7 @@ class RegisterScreen extends StatelessWidget {
     final res = AppResponsive();
     return Scaffold(
       body: BackgroundGradient(
+        isOnBoarding: false,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: res.wp(16),

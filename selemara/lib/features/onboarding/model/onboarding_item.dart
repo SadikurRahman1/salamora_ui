@@ -2,12 +2,12 @@ import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_images.dart';
 
 class OnboardingItem {
-  final String imagePath;
+  final String text;
   final String title;
   final String description;
 
   OnboardingItem({
-    required this.imagePath,
+    required this.text,
     required this.title,
     required this.description,
   });
@@ -15,23 +15,23 @@ class OnboardingItem {
 
 final List<OnboardingItem> onboardingPages = [
   OnboardingItem(
-    imagePath: AppImages.onBoardingOne,
-    title: 'onboard_title_1'.tr,
+    text: "Track Your Vehicle",
+    title: 'FOR CAR OWNERS'.tr,
     description: 'onboard_desc_1'.tr,
   ),
   OnboardingItem(
-    imagePath: AppImages.onBoardingTwo,
-    title: 'onboard_title_2'.tr,
+    text: "Manage Your Business",
+    title: ' FOR GARAGES'.tr,
     description: 'onboard_desc_2'.tr,
   ),
   OnboardingItem(
-    imagePath: AppImages.onBoardingThree,
-    title: 'onboard_title_3'.tr,
+    text: "Buy With Confidence ",
+    title: 'FOR GARAGES'.tr,
     description: 'onboard_desc_3'.tr,
   ),
   OnboardingItem(
-    imagePath: AppImages.onBoardingFour,
-    title: 'onboard_title_4'.tr,
+    text: "Sell Premium Cars",
+    title: ' FOR DEALERSHIPS'.tr,
     description: 'onboard_desc_4'.tr,
   ),
 ];

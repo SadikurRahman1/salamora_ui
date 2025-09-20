@@ -34,27 +34,44 @@ class OnboardingScreen extends StatelessWidget {
                     return Padding(
                       padding: EdgeInsets.all(res.wp(10)),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(res.wp(16)),
-                            child: Image.asset(
-                              item.imagePath,
-                              width: double.infinity,
-                              height: res.hp(250),
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                          SizedBox(height: res.hp(20)),
+                          // ClipRRect(
+                          //   borderRadius: BorderRadius.circular(res.wp(16)),
+                          //   child: Image.asset(
+                          //     item.imagePath,
+                          //     width: double.infinity,
+                          //     height: res.hp(250),
+                          //     fit: BoxFit.contain,
+                          //   ),
+                          // ),
+                          SizedBox(height: res.hp(70)),
 
-                          SizedBox(height: res.hp(10)),
+                          AppTextInter(
+                            item.text,
+                            textAlign: TextAlign.center,
+                            color: AppColors.whitColor,
+                            fontSize: res.sp(14),
+                          ),
+                          SizedBox(height: res.hp(8)),
+
+                          AppTextInter(
+                            item.title,
+                            textAlign: TextAlign.center,
+                            color: AppColors.whitColor,
+                            fontSize: res.sp(24),
+                            fontWeight: FontWeight.bold,
+                          ),
+                          SizedBox(height: res.hp(8)),
+
                           AppTextInter(
                             item.description,
                             textAlign: TextAlign.center,
-                            color: AppColors.textColor.withValues(alpha: 0.8),
-                            fontSize: res.sp(14),
+                            color: AppColors.lightGray,
+                            fontSize: res.sp(16),
+                            fontWeight: FontWeight.w400,
                           ),
-                          SizedBox(height: res.hp(10)),
+                          SizedBox(height: res.hp(16)),
                         ],
                       ),
                     );
@@ -83,7 +100,7 @@ class OnboardingScreen extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: res.hp(100)),
+              SizedBox(height: res.hp(80)),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: res.wp(20)),
                 child: Column(
@@ -100,15 +117,12 @@ class OnboardingScreen extends StatelessWidget {
                     SizedBox(height: res.hp(10)),
                     CustomButton(
                       text: 'skip'.tr,
-                      textColor: AppColors.darkBlueGrey.withValues(alpha: 0.6),
+                      textColor: AppColors.lightGray.withValues(alpha: 0.6),
                       onTap: controller.skip,
                       isBorder: true,
                       btnColor: AppColors.skipBtnColor.withValues(alpha: 0.01),
                     ),
-                    // TextButton(
-                    //   onPressed: controller.skip,
-                    //   child: Text('Skip', style: TextStyle(fontSize: res.sp(14))),
-                    // ),
+
                   ],
                 ),
               ),

@@ -53,6 +53,7 @@ class VerifyCodeScreen extends StatelessWidget {
 
     return Scaffold(
       body: BackgroundGradient(
+        isOnBoarding: false,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: res.wp(16)),
           child: Column(

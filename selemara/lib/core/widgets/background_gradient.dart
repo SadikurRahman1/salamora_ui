@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
+import 'package:selemara/core/constants/app_images.dart';
 
 class BackgroundGradient extends StatelessWidget {
+  final bool isOnBoarding;
   final Widget? child;
 
-  const BackgroundGradient({super.key, this.child});
+  const BackgroundGradient({super.key, this.child, this.isOnBoarding = true});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +16,7 @@ class BackgroundGradient extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           color: AppColors.whitColor,
+          image:isOnBoarding? DecorationImage(image: AssetImage(AppImages.onBoarding),fit: BoxFit.cover):null
           // gradient: LinearGradient(
           //   colors: [
           //     Color(0xFF2563EB).withValues(alpha: 0.2),
