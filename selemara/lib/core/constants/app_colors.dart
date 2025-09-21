@@ -37,7 +37,8 @@ class AppColors {
   static const Color orangeE6 = Color(0xFFf8eae6);
   static const Color orangeDeep = Color(0xFFAF2A00);
   static const Color orangeLight = Color(0xFFf8eae6);
-  static const Color yallowColor = Color(0xFFFACC15);
+  static const Color yellowColor = Color(0xFFFACC15);
+  static const Color yellowLight = Color(0xFFFFFAE8);
 
   static const Color black = Color(0xFF000000);
   static const Color borderEditText = Color(0xFFD0D5DD);

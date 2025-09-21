@@ -4,14 +4,14 @@ import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
-class GarageFeatureCard extends StatelessWidget {
+class FeatureCard extends StatelessWidget {
   final Color sideColor;
   final String title;
   final String value;
   final String? icon;
   final VoidCallback? onTap; // Optional tap callback
 
-  GarageFeatureCard({
+  FeatureCard({
     super.key,
     required this.sideColor,
     required this.title,

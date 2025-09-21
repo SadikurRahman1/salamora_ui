@@ -243,7 +243,7 @@ class ServiceDetails extends StatelessWidget {
                     textColor: AppColors.primaryColor,
                     btnColor: AppColors.primaryColor.withAlpha(24),
                     onTap: () {
-                      // Get.to(()=>GarageInvoiceDetailsScreen(invoiceData: ,));
+                      Get.to(()=>InvoiceDetailsScreen());
                     },
                   ),
                 ],

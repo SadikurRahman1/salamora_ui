@@ -4,6 +4,8 @@ import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
+import '../../../common/widget/c_banner.dart';
+
 class BannerCard extends StatelessWidget {
   const BannerCard({super.key, required this.res});
 
@@ -11,23 +13,7 @@ class BannerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: res.screenWidth,
-
-      padding: EdgeInsets.symmetric(
-        horizontal: res.wp(16),
-        vertical: res.hp(20),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(res.sp(16)),
-        // gradient: LinearGradient(
-        //   colors: [
-        //     Color(0xFF00A16E).withValues(alpha: 0.3),
-        //     Color(0xFF2563EB).withValues(alpha: 0.5),
-        //   ],
-        // ),
-        color: AppColors.primaryColor
-      ),
+    return CBanner(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -72,7 +58,6 @@ class BannerCard extends StatelessWidget {
                 height: res.wp(20),
                 fit: BoxFit.contain,
                 color: AppColors.whitColor,
-
               ),
               SizedBox(width: res.wp(5)),
               AppText(

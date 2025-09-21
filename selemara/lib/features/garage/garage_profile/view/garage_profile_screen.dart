@@ -11,6 +11,7 @@ import '../../../../core/helper/shared_preferences_helper.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../common/widget/c_toggle_button.dart';
 import '../controller/garage_profile_controller.dart';
 import 'package:get/get.dart';
 
@@ -163,21 +164,14 @@ class GarageProfileScreen extends StatelessWidget {
                     ],
                   ),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Obx(
-                        () => Switch(
-                          value: controller.isActive.value,
-                          onChanged: (val) => controller.toggleTheme(),
-                          inactiveThumbColor: Color(0xFF888888),
-                          inactiveTrackColor: Colors.transparent,
-                          activeColor: AppColors.primaryColor,
-                          activeTrackColor: const Color(0xFFd8d8d8),
-                        ),
-                      ),
-                    ],
+                  ////
+                  CToggleButton(
+                    value: controller.isActive,
+                    onChanged: (val) {
+                      controller.isActive.value = val;
+                    },
                   ),
+
                 ],
               ),
 

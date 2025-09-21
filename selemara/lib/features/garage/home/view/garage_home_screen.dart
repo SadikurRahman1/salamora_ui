@@ -10,9 +10,9 @@ import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/home_header.dart';
 import 'package:selemara/features/garage/home/view/all_request.dart';
 import 'package:selemara/features/garage/home/widget/banner_card.dart';
-import 'package:selemara/features/garage/home/widget/garage_feature_card.dart';
 import 'package:selemara/features/garage/home/widget/recent_service_card.dart';
 import 'package:selemara/features/garage/home/widget/service_request_card.dart';
+import '../../../common/widget/feature_card.dart';
 import 'all_service.dart';
 
 class GarageHomeScreen extends StatelessWidget {
@@ -51,7 +51,7 @@ class GarageHomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    GarageFeatureCard(
+                    FeatureCard(
                       sideColor: AppColors.blueColor,
                       title: "Total Service".tr,
                       value: "5",
@@ -59,7 +59,7 @@ class GarageHomeScreen extends StatelessWidget {
                       onTap: () {},
                     ),
 
-                    GarageFeatureCard(
+                    FeatureCard(
                       sideColor: AppColors.greenColor,
                       title: "Customer".tr,
                       value: "5",
@@ -151,7 +151,7 @@ class GarageHomeScreen extends StatelessWidget {
         return RecentServiceCard(
           titleText: "Oil Change",
           subTitleText: "Toyota Camry - Al Futtaim Service",
-          currentStatus: 'Pending',
+          isPending: index % 2 == 0,
           onTap: (){},
         );
       },

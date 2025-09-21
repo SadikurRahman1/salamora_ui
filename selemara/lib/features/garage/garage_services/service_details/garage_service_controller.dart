@@ -54,12 +54,12 @@ class GarageServiceController extends GetxController
 
   Color getTabColor(int index) {
     if (tabController.index != index) return AppColors.textColor;
-    return index == 0 ? AppColors.yallowColor : AppColors.greenColor;
+    return index == 0 ? AppColors.yellowColor : AppColors.greenColor;
   }
 
   Color getIndicatorColor() {
     return tabController.index == 0
-        ? AppColors.yallowColor
+        ? AppColors.yellowColor
         : AppColors.greenColor;
   }
 

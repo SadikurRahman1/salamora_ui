@@ -92,12 +92,12 @@ class ProfileCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 13),
             decoration: BoxDecoration(
-              color: boxColor ?? AppColors.yallowColor.withValues(alpha: 0.1),
+              color: boxColor ?? AppColors.yellowColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(res.sp(20)),
             ),
             child: AppText(
               textStatus ?? "Pending",
-              color: textColor ?? AppColors.yallowColor,
+              color: textColor ?? AppColors.yellowColor,
               fontSize: 12,
               fontWeight: FontWeight.w600,
             ),

@@ -4,6 +4,7 @@ import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/constants/widget_extensions.dart';
 import 'package:selemara/core/widgets/app_text.dart';
+import 'package:selemara/features/common/widget/c_circle.dart';
 
 class ServiceRequestCard extends StatelessWidget {
   final String name;
@@ -86,14 +87,7 @@ class ServiceRequestCard extends StatelessWidget {
                     color: AppColors.textColor.withValues(alpha: 0.8),
                   ),
                   SizedBox(width: res.wp(5)),
-                  Container(
-                    width: res.wp(8),
-                    height: res.wp(8),
-                    decoration: BoxDecoration(
-                      color: AppColors.textColor.withValues(alpha: 0.5),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
+                  CCircle(color: AppColors.textColor.withValues(alpha: 0.5)),
                   SizedBox(width: res.wp(5)),
                   AppText(
                     "Date: $date",

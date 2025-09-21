@@ -4,18 +4,20 @@ import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/constants/widget_extensions.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 
+import '../../../common/widget/c_circle.dart';
+
 class RecentServiceCard extends StatelessWidget {
   final String titleText;
   final String subTitleText;
-  final String currentStatus;
+  final bool isPending;
   final VoidCallback? onTap;
 
   RecentServiceCard({
     super.key,
     required this.titleText,
     required this.subTitleText,
-    required this.currentStatus,
     this.onTap,
+    required this.isPending,
   });
 
   final res = AppResponsive();
@@ -43,14 +45,9 @@ class RecentServiceCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                width: res.wp(8),
-                height: res.wp(8),
-                decoration: BoxDecoration(
-                  color: AppColors.greenColor,
-                  shape: BoxShape.circle,
-                ),
-              ),
+
+              CCircle(color: AppColors.greenColor,),
+
               SizedBox(width: res.wp(10)),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,14 +70,14 @@ class RecentServiceCard extends StatelessWidget {
             ],
           ),
           Container(
-            padding: EdgeInsets.all(5.0),
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             decoration: BoxDecoration(
-              color: AppColors.yallowColor.withValues(alpha: 0.1),
+              color: isPending ? AppColors.yellowLight : AppColors.greenLight,
               borderRadius: BorderRadius.circular(res.sp(20)),
             ),
             child: AppText(
-              currentStatus,
-              color: AppColors.yallowColor,
+              isPending ? "Pending" : "Completed",
+              color: isPending ? AppColors.yellowColor : AppColors.greenColor,
               fontSize: 12,
               fontWeight: FontWeight.w600,
             ),
@@ -90,3 +87,5 @@ class RecentServiceCard extends StatelessWidget {
     ).onTap(onTap);
   }
 }
+
+

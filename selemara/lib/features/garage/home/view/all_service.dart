@@ -26,8 +26,8 @@ class AllService extends StatelessWidget {
           return RecentServiceCard(
             titleText: "Oil Change",
             subTitleText: "Toyota Camry - Al Futtaim Service",
-            currentStatus: 'Pending',
             onTap: (){},
+            isPending: index % 2 == 0,
           );
         },
 
