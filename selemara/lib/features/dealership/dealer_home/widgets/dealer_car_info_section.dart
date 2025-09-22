@@ -42,7 +42,7 @@ class DealerCarInfoCard extends StatelessWidget {
                 SizedBox(height: res.hp(8)),
                 CustomTextField(
                   borderRadius: 24,
-                  bordarColor: AppColors.borderColor3f3,
+                  borderColor: AppColors.borderColor3f3,
                   controller: controllerA,
                   hintText: hint1,
                 ),
@@ -65,7 +65,7 @@ class DealerCarInfoCard extends StatelessWidget {
                 SizedBox(height: res.hp(8)),
                 CustomTextField(
                   borderRadius: 24,
-                  bordarColor: AppColors.borderColor3f3,
+                  borderColor: AppColors.borderColor3f3,
                   controller: controllerB,
                   hintText: hint2,
                 ),

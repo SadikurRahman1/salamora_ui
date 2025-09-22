@@ -11,7 +11,7 @@ import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_appbar.dart';
 import 'package:get/get.dart';
 import '../../../../../../core/widgets/custom_button.dart';
-import '../../../../../buyer/home/widgets/buyer_history_card_widget.dart';
+import '../../../../../common/widget/service_history_card_widget.dart';
 import '../../../controller/dealer_car_controller.dart';
 import '../controller/dealer_service_history_controller.dart';
 import '../../../widgets/car_image_card.dart';
@@ -70,7 +70,7 @@ class DealerCarServiceHistoryScreen extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return BuyerHistoryCardWidget(
+                  return ServiceHistoryCardWidget(
                     color: (index % 2 == 0) ? true : false,
                     title: "Oil Change & Fitter",
                     date: "6/15/2025",

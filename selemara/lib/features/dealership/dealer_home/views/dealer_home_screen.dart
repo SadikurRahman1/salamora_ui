@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
@@ -12,12 +10,8 @@ import 'package:selemara/core/widgets/app_text.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/home_header.dart';
-import '../../../buyer/buyer_profile/controller/buyer_profile_controller.dart';
 import '../../dealer_cars/car_details/views/dealer_car_details_screen.dart';
-import '../../dealer_cars/controller/dealer_car_controller.dart';
-import '../../dealer_cars/views/dealer_car_search_screen.dart';
 import '../../dealer_nav_bar/controller/dealer_nav_bar_controller.dart';
-import '../controller/dealer_home_vehicle.dart';
 import '../widgets/dealer_my_cars_card.dart';
 import '../widgets/dealer_banner.dart';
 import '../widgets/dealer_feature_card.dart';

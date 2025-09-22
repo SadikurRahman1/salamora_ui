@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-import '../../../../../../core/constants/app_colors.dart';
-import '../../../../../../core/constants/app_responsive.dart';
-import '../../../../../../core/widgets/app_text.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_responsive.dart';
+import '../../../../core/widgets/app_text.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 
 class SingleDropdownBtn extends StatelessWidget {
   final String title2;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../core/constants/app_colors.dart';
-import '../../../../../../core/constants/app_responsive.dart';
-import '../../../../../../core/widgets/app_text.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_responsive.dart';
+import '../../../../core/widgets/app_text.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 
 class TextAndDropdownRow extends StatelessWidget {
   final String title1;

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../../buyer/buyer_profile/controller/buyer_profile_controller.dart';
+import '../../../common/profile/controller/my_profile_controller.dart';
 import '../../dealer_cars/car_details/CarFeature/controller/create_vehicle_invoice_warranty_controller.dart';
 import '../../dealer_cars/car_details/CarFeature/controller/sell_vehicle_controller.dart';
 import '../../dealer_cars/car_details/CarFeature/controller/vehicle_warranty_controller.dart';
@@ -15,7 +15,7 @@ class DealerNavBarBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(()=>DealerNavBarController());
-    Get.lazyPut(()=>BuyerProfileController());
+    Get.lazyPut(()=>MyProfileController());
     Get.lazyPut(()=>DealerAddVehicleController());
     Get.lazyPut(()=>DealerRequestServiceController(), fenix: true);
     Get.lazyPut(()=>DealerServiceHistoryController(), fenix: true);

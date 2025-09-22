@@ -7,7 +7,7 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextInputType? keyboardType;
   final bool obscureText;
-  final Color? bordarColor;
+  final Color? borderColor;
   final double? borderRadius;
   final int? maxLine;
   final int? minLine;
@@ -18,7 +18,7 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.keyboardType,
     this.obscureText = false,
-    this.bordarColor,
+    this.borderColor,
     this.borderRadius,
     this.maxLine,
     this.minLine,
@@ -44,20 +44,20 @@ class CustomTextField extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 8),
           borderSide: BorderSide(
-            color: bordarColor ?? AppColors.borderEditText,
+            color: borderColor ?? AppColors.borderEditText,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 8),
           borderSide: BorderSide(
-            color: bordarColor ?? AppColors.borderEditText,
+            color: borderColor ?? AppColors.borderEditText,
             width: 1,
           ),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 8),
           borderSide: BorderSide(
-            color: bordarColor ?? AppColors.borderEditText,
+            color: borderColor ?? AppColors.borderEditText,
             width: 1,
           ),
         ),

@@ -5,11 +5,12 @@ import '../../../../../../core/constants/app_responsive.dart';
 import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_appbar.dart';
 import 'package:get/get.dart';
+import '../../../../../common/widget/date_fild_card.dart';
+import '../../../../../common/widget/dual_input_row.dart';
+import '../../../../../common/widget/single_input_row.dart';
+import '../../../../../common/widget/text_and_dropdown_row.dart';
 import '../controller/create_vehicle_invoice_warranty_controller.dart';
-import '../widgets/date_fild_card.dart';
-import '../widgets/dual_input_row.dart';
-import '../widgets/single_input_row.dart';
-import '../widgets/text_and_dropdown_row.dart';
+
 
 class DealerCreateInvoiceVehicleWarranty extends StatelessWidget {
   DealerCreateInvoiceVehicleWarranty({super.key});

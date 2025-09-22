@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 import '../controller/garage_update_password_controller.dart';
 import '../widgets/buyer_custom_text_field.dart';
 
-class GarageChangePasswordScreen extends StatelessWidget {
-  GarageChangePasswordScreen({super.key});
+class ProfilePasswordChangeScreen extends StatelessWidget {
+  ProfilePasswordChangeScreen({super.key});
 
   final controller = Get.put(GarageUpdatePasswordController());
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();

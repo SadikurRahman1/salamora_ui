@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
-import 'package:selemara/features/buyer/buyer_profile/view/buyer_profile_screen.dart';
-
+import 'package:selemara/features/common/profile/view/my_profile_screen.dart';
 import '../../dealer_cars/views/dealer_car_search_screen.dart';
 import '../../dealer_home/views/dealer_home_screen.dart';
 
@@ -15,7 +14,7 @@ class DealerNavBarItems {
   static final List<Widget> screens = [
     DealerHomeScreen(),
     DealerCarSearchScreen(),
-    BuyerProfileScreen()
+    MyProfileScreen()
 
   ];
 

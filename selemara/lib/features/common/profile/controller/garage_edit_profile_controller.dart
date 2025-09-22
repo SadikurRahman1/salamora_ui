@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../../core/constants/api_urls.dart';
 import '../../../../core/services/network_caller.dart';
 import '../../../../core/services/response_data.dart';
-import 'garage_profile_controller.dart';
+import 'my_profile_controller.dart';
 
 class GarageEditProfileController extends GetxController {
   var isLoading = false.obs;
@@ -15,7 +15,7 @@ class GarageEditProfileController extends GetxController {
   // var selectedOption = ''.obs;
   // final List<String> genders = ['Male', 'Female', 'Other'];
 
-  GarageProfileController controller = Get.find<GarageProfileController>();
+  MyProfileController controller = Get.find<MyProfileController>();
 
   @override
   void onInit() {

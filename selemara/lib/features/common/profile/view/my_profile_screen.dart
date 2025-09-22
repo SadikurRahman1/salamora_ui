@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
-import 'package:selemara/core/constants/widget_extensions.dart';
 import 'package:selemara/core/routes/app_routes.dart';
-import 'package:selemara/features/garage/garage_profile/view/garage_change_password_screen.dart';
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/constants/token_key.dart';
@@ -12,24 +10,25 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../common/widget/c_toggle_button.dart';
-import '../controller/garage_profile_controller.dart';
+import '../../widget/profile_header.dart';
+import '../controller/my_profile_controller.dart';
 import 'package:get/get.dart';
 
 import '../widgets/buyer_profile_option_tile.dart';
-import 'garage_edit_profile_screen.dart';
-import 'garage_help_supportScreen.dart';
-import 'garage_profile_secend_screen.dart';
+import 'profile_password_change_screen.dart';
+import 'profile_edit_screen.dart';
+import 'profile_help_support_screen.dart';
+import 'garage_service_screen.dart';
 
-
-class GarageProfileScreen extends StatelessWidget {
-  GarageProfileScreen({super.key});
+class MyProfileScreen extends StatelessWidget {
+  MyProfileScreen({super.key});
 
   final res = AppResponsive();
   final SharedPreferencesHelper _preferencesHelper = SharedPreferencesHelper();
 
   @override
   Widget build(BuildContext context) {
-    final controller =  Get.find<GarageProfileController>();
+    final controller = Get.find<MyProfileController>();
 
     return Scaffold(
       appBar: CustomAppBar(title: 'profile'.tr, centerTitle: true),
@@ -39,88 +38,21 @@ class GarageProfileScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: res.hp(0)),
-              Align(
-                alignment: Alignment.center,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(20),
-                          alignment: Alignment.topCenter,
-                          height: res.wp(80),
-                          width: res.wp(80),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(80),
-                            border: Border.all(
-                              width: 7,
-                              color: AppColors.profileBorderColor,
-                            ),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(res.wp(40)),
 
-                            // half-width for a perfect circle
-                            child: Image.asset(
-                              AppImages.manIcon,
-                              height: res.hp(80),
-                              width: res.wp(80),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-
-                        Positioned(
-                          bottom: 10,
-                          right: 20,
-                          child: GestureDetector(
-                            child: Image.asset(
-                              AppImages.edit,
-                              height: res.hp(32),
-                              width: res.wp(32),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    Column(
-                      children: [
-                        AppText(
-                          "ElitePolish Auto Care",
-                          fontSize: res.sp(20),
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primaryTextColor,
-                        ),
-                        AppText(
-                          "3885 Al Bandariyyah Street ",
-                          fontSize: res.sp(14),
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textColor7085,
-                        ),
-                        AppText(
-                          "https://mystore.com",
-                          fontSize: res.sp(14),
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.primaryTextColor,
-                        ),
-                      ],
-                    ).onTap((){
-                      Get.to(()=>GarageProfileSecondScreen());
-                    }),
-
-                  ],
-                ),
+              ProfileHeader(
+                image: AppImages.manIcon,
+                name: "ElitePolish Auto Care",
+                location: "3885 Al Bandanna Street",
+                onEdit: () {
+                  Get.to(() => ProfileEditScreen());
+                },
               ),
 
               SizedBox(height: res.hp(20)),
 
               BuyerProfileOptionTile(
                 onTap: () {
-                  // Get.toNamed(AppRoutes.buyerEditProfileScreen);
-                  Get.to(()=> GarageEditProfileScreen());
+                  Get.to(() => GarageProfileSecondScreen());
                 },
                 iconPath: AppImages.profileIcon,
                 title: 'profile'.tr,
@@ -128,7 +60,6 @@ class GarageProfileScreen extends StatelessWidget {
                 bottomMargin: 0,
                 padding: EdgeInsets.all(0),
 
-                // optional
                 boxDecoration: BoxDecoration(
                   color: Colors.blue.shade50,
                   borderRadius: BorderRadius.circular(15),
@@ -171,7 +102,6 @@ class GarageProfileScreen extends StatelessWidget {
                       controller.isActive.value = val;
                     },
                   ),
-
                 ],
               ),
 
@@ -187,7 +117,7 @@ class GarageProfileScreen extends StatelessWidget {
                 title: 'password'.tr,
                 onTap: () {
                   // Get.toNamed(AppRoutes.buyerChangePasswordScreen);
-                  Get.to(()=>GarageChangePasswordScreen());
+                  Get.to(() => ProfilePasswordChangeScreen());
                 },
                 textSize: 16,
                 bottomMargin: 0,
@@ -255,7 +185,7 @@ class GarageProfileScreen extends StatelessWidget {
 
                   /// Right side: dropdown
                   Obx(
-                        () => DropdownButton<String>(
+                    () => DropdownButton<String>(
                       value: controller.selectedLang.value,
                       icon: const Icon(Icons.arrow_right, size: 26),
                       underline: SizedBox(),
@@ -264,14 +194,16 @@ class GarageProfileScreen extends StatelessWidget {
                           controller.changeLang(value);
                         }
                       },
-                      items: ["English", "Arabic"].map((String lang) {
-                        return DropdownMenuItem<String>(
-                          value: lang,
-                          child: Text(lang),
-                        );
-                      }).toList(),
+                      items:
+                          ["English", "Arabic"].map((String lang) {
+                            return DropdownMenuItem<String>(
+                              value: lang,
+                              child: Text(lang),
+                            );
+                          }).toList(),
                     ),
-                  ),                ],
+                  ),
+                ],
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 16),
@@ -280,12 +212,11 @@ class GarageProfileScreen extends StatelessWidget {
                 decoration: BoxDecoration(color: Color(0xFFEAECF0)),
               ),
 
-
               BuyerProfileOptionTile(
                 iconPath: AppIcons.customerSupport,
                 title: 'help_support'.tr,
                 onTap: () {
-                  Get.to(GarageHelpSupportscreen());
+                  Get.to(ProfileHelpSupportScreen());
                 },
                 textSize: 16,
                 bottomMargin: 0,

@@ -5,16 +5,16 @@ import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/features/garage/home/view/garage_home_screen.dart';
 
-import '../../garage_profile/view/garage_profile_screen.dart';
+import '../../../common/profile/view/my_profile_screen.dart';
 import '../../garage_services/view/garage_services_screen.dart';
 
-class OwnerNavbarItems {
+class GarageNavbarItems {
   static final res = AppResponsive();
 
   static final List<Widget> screens = [
     const GarageHomeScreen(),
     GarageServicesScreen(),
-    GarageProfileScreen(),
+    MyProfileScreen(),
   ];
 
   static final List<String> labels = [

@@ -16,8 +16,8 @@ import '../controller/garage_help_support_controller.dart';
 import '../widgets/buyer_custom_text_field.dart';
 
 
-class GarageHelpSupportscreen extends StatelessWidget {
-  GarageHelpSupportscreen({super.key});
+class ProfileHelpSupportScreen extends StatelessWidget {
+  ProfileHelpSupportScreen({super.key});
 
   final res = AppResponsive();
   final controller = Get.put(GarageHelpSupportController());

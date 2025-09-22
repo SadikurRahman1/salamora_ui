@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:selemara/features/garage/garage_nav_bar/controller/garage_nav_bar_controller.dart';
-import 'package:selemara/features/garage/garage_nav_bar/widget/owner_nav_bar_items.dart';
+import 'package:selemara/features/garage/garage_nav_bar/widget/garage_nav_bar_items.dart';
 
 import '../../../../core/constants/app_colors.dart';
 
@@ -15,7 +15,7 @@ class GarageNavBarScreen extends StatelessWidget {
 
     return Scaffold(
       body: Obx(
-        () => OwnerNavbarItems.screens[navController.currentIndex.value],
+        () => GarageNavbarItems.screens[navController.currentIndex.value],
       ),
       bottomNavigationBar: Obx(
         () => Container(
@@ -54,7 +54,7 @@ class GarageNavBarScreen extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
               ),
-              items: List.generate(OwnerNavbarItems.activeIcons.length, (
+              items: List.generate(GarageNavbarItems.activeIcons.length, (
                 index,
               ) {
                 final isActive = navController.currentIndex == index;
@@ -65,12 +65,12 @@ class GarageNavBarScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       isActive
-                          ? OwnerNavbarItems.activeIcons[index]
-                          : OwnerNavbarItems.inActiveIcons[index],
+                          ? GarageNavbarItems.activeIcons[index]
+                          : GarageNavbarItems.inActiveIcons[index],
                       const SizedBox(height: 5),
                       Text(
-                        OwnerNavbarItems.labels.length > index
-                            ? OwnerNavbarItems.labels[index]
+                        GarageNavbarItems.labels.length > index
+                            ? GarageNavbarItems.labels[index]
                             : '',
                         style: TextStyle(
                           fontWeight: FontWeight.w400,

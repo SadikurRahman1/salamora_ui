@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:selemara/core/constants/api_urls.dart';
 import 'package:selemara/core/constants/app_colors.dart';
 import 'package:selemara/core/constants/app_icons.dart';
 import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import 'package:selemara/core/widgets/custom_appbar.dart';
-import 'package:shimmer/shimmer.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../../../dealership/common/widgets/dealer_history_card_widget.dart';
+import '../../../common/widget/service_history_card_widget.dart';
 import '../buyer_records/views/buyer_ownership_history.dart';
-import '../controller/buyer_search_controller.dart';
-import '../model/buyer_vin_search_model.dart';
 import '../../home/widgets/buyer_vehicle_document_card.dart';
 import '../../../../core/routes/app_routes.dart';
 
@@ -72,7 +68,7 @@ class BuyerCarDetailsScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return BuyerHistoryCardWidget(
+                  return ServiceHistoryCardWidget(
                     color: true,
                     title: "Oil Change & Fitter",
                     date: "1/1/2024",

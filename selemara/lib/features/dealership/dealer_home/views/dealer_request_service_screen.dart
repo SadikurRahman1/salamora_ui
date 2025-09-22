@@ -342,7 +342,7 @@ class DealerRequestServiceScreen extends StatelessWidget {
                 maxLine: 2,
                 minLine: 1,
                 borderRadius: 4,
-                bordarColor: AppColors.borderColor3f3,
+                borderColor: AppColors.borderColor3f3,
                 controller: controller.descriptionController,
                 hintText: "describe_service_hint".tr,
               ),

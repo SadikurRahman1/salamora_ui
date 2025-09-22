@@ -6,10 +6,19 @@ import '../../../../core/services/network_caller.dart';
 import '../../../../core/services/response_data.dart';
 import '../model/user_data_model.dart';
 
-class BuyerProfileController extends GetxController {
+class MyProfileController extends GetxController {
   var isActive = false.obs;
   var isLoading = false.obs;
   var userData = Rxn<UserDataModel>();
+
+
+  void toggle() {
+    isActive.value = !isActive.value;
+  }
+
+  void setValue(bool val) {
+    isActive.value = val;
+  }
 
 
   void toggleTheme() {
@@ -32,31 +41,6 @@ class BuyerProfileController extends GetxController {
     super.onInit();
 
   }
-
-  // Future<void> refreshProfile() async {
-  //   await fetchUserProfile();
-  // }
-  //
-  // Future<void> fetchUserProfile() async {
-  //   isLoading.value = true;
-  //
-  //   ResponseData responseData = await NetworkCaller().getRequest(
-  //     ApiUrls.getProfile,
-  //   );
-  //
-  //   if (responseData.isSuccess && responseData.data != null) {
-  //     final Map<String, dynamic> data = responseData.data["data"];
-  //     userData.value = UserDataModel.fromJson(data);
-  //   } else {
-  //     Get.snackbar("Error", responseData.message ?? "Failed to fetch profile");
-  //   }
-  //
-  //   isLoading.value = false;
-  // }
-
-
-
-
 
 
 

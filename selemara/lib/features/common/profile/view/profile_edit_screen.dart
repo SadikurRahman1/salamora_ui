@@ -9,12 +9,13 @@ import '../../../../core/constants/app_images.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../widget/profile_header.dart';
 import '../controller/garage_edit_profile_controller.dart';
 import '../widgets/buyer_custom_text_field.dart';
 
 
-class GarageEditProfileScreen extends StatelessWidget {
-  GarageEditProfileScreen({super.key});
+class ProfileEditScreen extends StatelessWidget {
+  ProfileEditScreen({super.key});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final controller = Get.put(GarageEditProfileController());
@@ -26,6 +27,7 @@ class GarageEditProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'my_profile'.tr,
+        centerTitle: true,
         leading: SizedBox(
           height: res.hp(10),
           width: res.wp(10),
@@ -49,57 +51,12 @@ class GarageEditProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: res.hp(0)),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.all(20),
-                                  alignment: Alignment.topCenter,
-                                  height: res.wp(80),
-                                  width: res.wp(80),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(80),
-                                    border: Border.all(
-                                      width: 7,
-
-                                      color: AppColors.profileBorderColor,
-                                    ),
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                      res.wp(40),
-                                    ),
-
-                                    // half-width for a perfect circle
-                                    child: Image.asset(
-                                      AppImages.manIcon,
-                                      height: res.hp(80),
-                                      width: res.wp(80),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-
-                                Positioned(
-                                  bottom: 10,
-                                  right: 20,
-                                  child: GestureDetector(
-                                    child: Image.asset(
-                                      AppImages.edit,
-                                      height: res.hp(32),
-                                      width: res.wp(32),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                      ProfileHeader(
+                        image: AppImages.manIcon,
+                        name: "ElitePolish Auto Care",
+                        location: "3885 Al Bandanna Street",
+                        onEdit: () {
+                        },
                       ),
 
                       SizedBox(height: res.hp(20)),

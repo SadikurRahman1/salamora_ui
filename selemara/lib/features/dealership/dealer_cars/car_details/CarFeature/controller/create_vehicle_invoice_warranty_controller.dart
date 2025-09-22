@@ -25,6 +25,6 @@ class CreateVehicleInvoiceWarrantyController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    paymentList.assignAll(["Cash", "Bakas", "Google Pay"]);
+    paymentList.assignAll(["Cash", "Bakes", "Google Pay"]);
   }
 }

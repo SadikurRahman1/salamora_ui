@@ -104,7 +104,7 @@ class DealerAddVehicleScreen extends StatelessWidget {
               SliverToBoxAdapter(
                 child: CustomTextField(
                   borderRadius: 24,
-                  bordarColor: AppColors.borderColor3f3,
+                  borderColor: AppColors.borderColor3f3,
                   controller: controller.currentController,
                   hintText: "450000",
                 ),

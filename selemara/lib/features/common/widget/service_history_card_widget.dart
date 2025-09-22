@@ -5,7 +5,7 @@ import '../../../../core/constants/app_icons.dart';
 import '../../../../core/constants/app_responsive.dart';
 import '../../../../core/widgets/app_text.dart';
 
-class BuyerHistoryCardWidget extends StatelessWidget {
+class ServiceHistoryCardWidget extends StatelessWidget {
   final String title;
   final String date;
   final String serviceCenter;
@@ -16,7 +16,7 @@ class BuyerHistoryCardWidget extends StatelessWidget {
   final VoidCallback? onTapWarranty;
   final VoidCallback? onTapInvoice;
 
-  const BuyerHistoryCardWidget({
+  const ServiceHistoryCardWidget({
     super.key,
     required this.title,
     required this.date,

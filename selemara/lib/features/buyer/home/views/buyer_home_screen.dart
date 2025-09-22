@@ -6,7 +6,6 @@ import 'package:selemara/core/constants/app_images.dart';
 import 'package:selemara/core/constants/app_responsive.dart';
 import 'package:selemara/core/widgets/app_text.dart';
 import '../../../../core/widgets/home_header.dart';
-import '../../buyer_profile/controller/buyer_profile_controller.dart';
 import '../widgets/buyer_banner.dart';
 import '../widgets/featured_card_widget.dart';
 import '../../common/widgets/activity_card_widget.dart';

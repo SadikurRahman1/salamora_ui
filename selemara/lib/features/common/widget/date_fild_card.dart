@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/widgets/app_text.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
-import '../../../../../../core/constants/app_colors.dart';
-import '../../../../../../core/constants/app_responsive.dart';
+import '../../../../core/widgets/app_text.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_responsive.dart';
 
 class DateFieldCard extends StatelessWidget {
   final String title;

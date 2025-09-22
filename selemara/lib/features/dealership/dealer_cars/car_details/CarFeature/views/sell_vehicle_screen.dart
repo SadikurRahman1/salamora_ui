@@ -5,12 +5,9 @@ import '../../../../../../../core/widgets/app_text.dart';
 import '../../../../../../../core/widgets/custom_appbar.dart';
 import 'package:get/get.dart';
 import '../../../../../../core/widgets/custom_button.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
-import '../../../controller/dealer_car_controller.dart';
+import '../../../../../common/widget/date_fild_card.dart';
+import '../../../../../common/widget/single_input_row.dart';
 import '../controller/sell_vehicle_controller.dart';
-import '../widgets/date_fild_card.dart';
-import '../widgets/single_dropdown_btn.dart';
-import '../widgets/single_input_row.dart';
 
 
 class SellVehicleScreen extends StatelessWidget {
